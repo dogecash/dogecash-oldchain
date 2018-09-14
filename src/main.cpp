@@ -2208,7 +2208,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
 }
 
 //Treasury blocks start from 70,000 and then each 10,000th block
-int nStartTreasuryBlock = 170;
+int nStartTreasuryBlock = INT_MAX;
 int nTreasuryBlockStep = 1;
 
 bool IsTreasuryBlock(int nHeight)
