@@ -56,7 +56,7 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("00006eb8f6f84dd032d09adc52515dc697fcc7505ea7ec430126e3a4811d8654")); 
+    (0, uint256("0x000005fe7b8430691cefdbd4680743fceecac2a20ba9eae0ebef245833661859")); 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
     1514540176, // * UNIX timestamp of last checkpoint block
@@ -103,12 +103,12 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x72;
-        pchMessageStart[1] = 0x52;
-        pchMessageStart[2] = 0x58;
-        pchMessageStart[3] = 0x67;
+        pchMessageStart[0] = 0x7c;
+        pchMessageStart[1] = 0x5a;
+        pchMessageStart[2] = 0x7d;
+        pchMessageStart[3] = 0x6u;
         vAlertPubKey = ParseHex("04c32c8ab64b43228550115a862847deb294b776a71d6395e9c49477d13eac413f022e40462770dbc665f8a32aeec2a5d87839239f9a0b91a85269f90e79ab0ccc");
-        nDefaultPort = 30001;
+        nDefaultPort = 6739;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // DogeCash starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;
@@ -164,9 +164,9 @@ public:
         assert(genesis.hashMerkleRoot == uint256("0xde5afb43672fa4ab55bcb775aa852d114d5909aff58ad048bce7d412b6db74df")); 
 
 
-        hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0000cc75a7c6fa2ce8186e24f872e43acf88b21a1cc02aa11a4ceaee2a562d4c"));
-        assert(genesis.hashMerkleRoot == uint256("3bf54807365f102ff9cdb07cf5f4af411503d5b544835dc96a5beaee140ad419"));
+        // hashGenesisBlock = genesis.GetHash();
+        // assert(hashGenesisBlock == uint256("0000cc75a7c6fa2ce8186e24f872e43acf88b21a1cc02aa11a4ceaee2a562d4c"));
+        // assert(genesis.hashMerkleRoot == uint256("3bf54807365f102ff9cdb07cf5f4af411503d5b544835dc96a5beaee140ad419"));
 
         vSeeds.push_back(CDNSSeedData("dogecashnet.com", "seed.dogecashnet.com"));
         vSeeds.push_back(CDNSSeedData("dogecash.cc", "explorer.dogecash.cc"));
@@ -262,6 +262,8 @@ public:
         nLastPOWBlock = 200;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
+                nMasternodeCollateralLimit = 5000; //MN collateral
+
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
         nMaxMoneyOut = 43199500 * COIN;
         nZerocoinStartHeight = 201576;

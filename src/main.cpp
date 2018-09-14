@@ -2109,42 +2109,78 @@ int64_t GetBlockValue(int nHeight)
 		nSubsidy = GetTreasuryAward(nHeight);
         
 	} else {
-	    if (nHeight == 0) {
-	        nSubsidy = 250 * COIN;  //genesis
-	    } else if(nHeight == 1 ){   
-	        nSubsidy = 1450000 * COIN;  //1,450,000
-	    } else if(nHeight > 1 && nHeight <= 800) { //PoW phase
-			nSubsidy = 30 * COIN;
-		} else if(nHeight > 800 && nHeight <= 1800) { //PoS phase
-			nSubsidy = 10 * COIN; // "instamine"
-	    } else if(nHeight > 1800 && nHeight <= 3200) {
-			nSubsidy = 650 * COIN;
-	    } else if(nHeight > 3200 && nHeight <= 6000) { 
-			nSubsidy = 850 * COIN;
-	    } else if(nHeight > 6000 && nHeight <= 12000) { 
-			nSubsidy = 1050 * COIN;
-	    } else if(nHeight > 12000 && nHeight <= 20000) { 
-			nSubsidy = 1250 * COIN;
-	    } else if(nHeight > 20000 && nHeight <= 100000) { 
-			nSubsidy = 450 * COIN;
-	    } else if(nHeight > 100000 && nHeight <= targetFork1) { 
-			nSubsidy = 350 * COIN;
-	    } else if(nHeight > targetFork1 && nHeight <= 330390) {
-			nSubsidy = 80 * COIN;
-		} else if(nHeight > 330390 && nHeight <= 459990) {
-			nSubsidy = 40 * COIN;
-		} else if(nHeight > 459990 && nHeight <= 985590) {
-			nSubsidy = 20 * COIN;
-		} else if(nHeight > 985590 && nHeight <= 1511190) {
-			nSubsidy = 10 * COIN;
-		} else if(nHeight > 1511190 && nHeight <= 2036790) {
-			nSubsidy = 5 * COIN;
-		} else if(nHeight > 2036790 && nHeight <= 2562390) {
-			nSubsidy = 2.5 * COIN;
-		} else if(nHeight > 2562390) {
-			int nMul = (nHeight - 2562390)/525600;
-			nSubsidy = 0.6125 * COIN / pow(2,nMul);  //halving each year
-		}
+        {
+
+    ///Pow Phase
+	bool phase1 = nHeight > 1 && nHeight <= Params().LAST_POW_BLOCK();
+    //POS Starts here
+bool phase2 = nHeight > Params().LAST_POW_BLOCK() && nHeight <= 9999;
+bool phase3 = nHeight > 10000 && nHeight <= 100000;
+bool phase4 = nHeight > 100000 && nHeight <= 200000;
+bool phase5 = nHeight > 200000 && nHeight <= 525600;
+bool phase6 = nHeight > 525601 && nHeight <= 1051200;
+bool phase7 = nHeight > 1051200 && nHeight <= 1576801;
+
+
+		
+	int64_t nSubsidy = 1 * COIN;
+		if (nHeight == 1) return 630000 * COIN;
+	if(phase1) 
+        nSubsidy = 1* COIN;
+    else if (phase2)
+        nSubsidy = 10* COIN;
+         else if (phase3)
+        nSubsidy = 16* COIN;
+         else if (phase4)
+        nSubsidy = 14* COIN;
+        else if (phase5)
+        nSubsidy = 12* COIN;
+            else if (phase6)
+        nSubsidy = 10* COIN;
+          else if (phase7)
+        nSubsidy = 6* COIN;
+        else 
+                nSubsidy = 6* COIN;
+
+	return nSubsidy;
+}
+
+	    // if (nHeight == 0) {
+	    //     nSubsidy = 250 * COIN;  //genesis
+	    // } else if(nHeight == 1 ){   
+	    //     nSubsidy = 1450000 * COIN;  //1,450,000
+	    // } else if(nHeight > 1 && nHeight <= 800) { //PoW phase
+		// 	nSubsidy = 30 * COIN;
+		// } else if(nHeight > 800 && nHeight <= 1800) { //PoS phase
+		// 	nSubsidy = 10 * COIN; // "instamine"
+	    // } else if(nHeight > 1800 && nHeight <= 3200) {
+		// 	nSubsidy = 650 * COIN;
+	    // } else if(nHeight > 3200 && nHeight <= 6000) { 
+		// 	nSubsidy = 850 * COIN;
+	    // } else if(nHeight > 6000 && nHeight <= 12000) { 
+		// 	nSubsidy = 1050 * COIN;
+	    // } else if(nHeight > 12000 && nHeight <= 20000) { 
+		// 	nSubsidy = 1250 * COIN;
+	    // } else if(nHeight > 20000 && nHeight <= 100000) { 
+		// 	nSubsidy = 450 * COIN;
+	    // } else if(nHeight > 100000 && nHeight <= targetFork1) { 
+		// 	nSubsidy = 350 * COIN;
+	    // } else if(nHeight > targetFork1 && nHeight <= 330390) {
+		// 	nSubsidy = 80 * COIN;
+		// } else if(nHeight > 330390 && nHeight <= 459990) {
+		// 	nSubsidy = 40 * COIN;
+		// } else if(nHeight > 459990 && nHeight <= 985590) {
+		// 	nSubsidy = 20 * COIN;
+		// } else if(nHeight > 985590 && nHeight <= 1511190) {
+		// 	nSubsidy = 10 * COIN;
+		// } else if(nHeight > 1511190 && nHeight <= 2036790) {
+		// 	nSubsidy = 5 * COIN;
+		// } else if(nHeight > 2036790 && nHeight <= 2562390) {
+		// 	nSubsidy = 2.5 * COIN;
+		// } else if(nHeight > 2562390) {
+		// 	int nMul = (nHeight - 2562390)/525600;
+		// 	nSubsidy = 0.6125 * COIN / pow(2,nMul);  //halving each year
+		// }
     }
     
     return nSubsidy;
@@ -2159,10 +2195,10 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
             return 0;
     }
 	
-	// 80% for Masternodes
-	if (nHeight <= 800) {
+	// initial blocks have no mn reward
+	if (nHeight <= 165) {
 	      ret = blockValue  / 100 * 0;
-	} else if (nHeight > 1) {
+	} else if (nHeight > 165) {
 		  ret = blockValue  / 100 * 80; //80%
 		
 	}
@@ -2172,26 +2208,28 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
 }
 
 //Treasury blocks start from 70,000 and then each 10,000th block
-int nStartTreasuryBlock = 70000;
-int nTreasuryBlockStep = 1000;
+int nStartTreasuryBlock = 170;
+int nTreasuryBlockStep = 1;
 
 bool IsTreasuryBlock(int nHeight)
 {
 	if(nHeight < nStartTreasuryBlock)
 		return false;
-	else if( (nHeight-nStartTreasuryBlock) % nTreasuryBlockStep == 0)
-		return true;
+
 	else
-		return false;
+		return true;
 }
 
 int64_t GetTreasuryAward(int nHeight)
 {
 	if(IsTreasuryBlock(nHeight)) {
 		if(nHeight == nStartTreasuryBlock)
-			return 200010 * COIN; //200,000 for the first treasury block, 10 - reward to PoS
-		else
-			return 15010 * COIN; //15,000 for each next block
+			return 200 * COIN; //200 for the first treasury block, 10 - reward to PoS
+		else{
+            // int p = 3/100;
+            // int devreward = GetBlockValue(nHeight) / 100 * 3;
+			return (GetBlockValue(nHeight) / 100 * 3) * COIN ; //3% of block reward for dev
+            }
 	} else
 		return 0;
 }
