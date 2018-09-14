@@ -144,21 +144,26 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "BTC appreciated by 73 percent in May 2017 as it jumped from $1,348 to $2,330.";
+    const char* pszTimestamp = "DogeCash Network StartGenesis - Aug-30-2018,Meanwhile BTC sees a slight retracement to 6875$"; 
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 250 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04bcfbea59ec97482475f554db08f7f67c5c5a95a52a356b052d0ed87862815796fe6022c33a0baf09fcd8d3ee98ebb6aa6a77fb43d716641242cfd45369a88e7d") << OP_CHECKSIG;
+        txNew.vout[0].nValue = 50 * COIN; 
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG; 
+
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1525551420;  // Thursday, Saturday, May 5, 2018 8:17:00 PM GNT
+        genesis.nTime = 1517542208; 
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 0x4059;
-		
+      genesis.nNonce = 4024; 
+        hashGenesisBlock = genesis.GetHash();
+        assert(hashGenesisBlock == uint256("0x000005fe7b8430691cefdbd4680743fceecac2a20ba9eae0ebef245833661859")); 
+        assert(genesis.hashMerkleRoot == uint256("0xde5afb43672fa4ab55bcb775aa852d114d5909aff58ad048bce7d412b6db74df")); 
+
+
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0000cc75a7c6fa2ce8186e24f872e43acf88b21a1cc02aa11a4ceaee2a562d4c"));
         assert(genesis.hashMerkleRoot == uint256("3bf54807365f102ff9cdb07cf5f4af411503d5b544835dc96a5beaee140ad419"));
@@ -267,9 +272,9 @@ public:
         nBlockLastGoodCheckpoint = 9891730; //Last valid accumulator checkpoint
         
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1525345200;  // Thursday, May 3, 2018 11:00:00 AM
+        genesis.nTime = 1517542208; 
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 0x1d8a;
+      genesis.nNonce = 4024; 
 
 	    hashGenesisBlock = genesis.GetHash();
         //assert(hashGenesisBlock == uint256("0x000007cff63ef602a51bf074e384b3516f0dd202f14d52f7c8c9b1af9423ab2e"));
@@ -336,9 +341,9 @@ public:
         nTargetTimespan = 24 * 60 * 60; // DogeCash: 1 day
         nTargetSpacing = 1 * 60;        // DogeCash: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1515524400;
+        genesis.nTime = 1517542208; 
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 732084;
+      genesis.nNonce = 4024; 
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 51436;
