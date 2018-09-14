@@ -120,10 +120,11 @@ public:
         nTargetSpacing = 60; //DogeCash: 1 minute
         nMaturity = 120;
         nMasternodeCountDrift = 20;
-        nMaxMoneyOut = 500000000 * COIN; //500,000,000
-
+        nMasternodeCollateralLimit = 5000; //MN collateral
+        nMaxMoneyOut = 21000000 * COIN; //21 mill
+        nMinStakeReserve = 100;
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 800;
+        nLastPOWBlock = 550;
         nModifierUpdateBlock = 999999999;
         nZerocoinStartHeight = 801;
         nAccumulatorStartHeight = 1;
