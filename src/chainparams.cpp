@@ -177,9 +177,9 @@ public:
         vSeeds.push_back(CDNSSeedData("seed4", "seed4.dogecashnet.com"));
         vSeeds.push_back(CDNSSeedData("seed5", "seed5.dogecashnet.com"));
                 
-		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 65);
+		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
 		base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
-		base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);
+		base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 122);
 		base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
 		base58Prefixes[EXT_SECRET_KEY] = list_of(0x02)(0x21)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
         // 	BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
@@ -189,7 +189,7 @@ public:
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
         fRequireRPCPassword = true;
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = false;
         fAllowMinDifficultyBlocks = false;
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
