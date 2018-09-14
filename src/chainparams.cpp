@@ -168,14 +168,14 @@ public:
         // assert(hashGenesisBlock == uint256("0000cc75a7c6fa2ce8186e24f872e43acf88b21a1cc02aa11a4ceaee2a562d4c"));
         // assert(genesis.hashMerkleRoot == uint256("3bf54807365f102ff9cdb07cf5f4af411503d5b544835dc96a5beaee140ad419"));
 
-        vSeeds.push_back(CDNSSeedData("dogecashnet.com", "seed.dogecashnet.com"));
-        vSeeds.push_back(CDNSSeedData("dogecash.cc", "explorer.dogecash.cc"));
-        vSeeds.push_back(CDNSSeedData("3rd-one", "199.188.205.252"));
+        vSeeds.push_back(CDNSSeedData("45.76.229.12", "45.76.229.12"));
+        // vSeeds.push_back(CDNSSeedData("dogecash.cc", "explorer.dogecash.cc"));
+        // vSeeds.push_back(CDNSSeedData("3rd-one", "199.188.205.252"));
         
-        vSeeds.push_back(CDNSSeedData("seed2", "seed2.dogecashnet.com"));
-        vSeeds.push_back(CDNSSeedData("seed3", "seed3.dogecashnet.com"));
-        vSeeds.push_back(CDNSSeedData("seed4", "seed4.dogecashnet.com"));
-        vSeeds.push_back(CDNSSeedData("seed5", "seed5.dogecashnet.com"));
+        // vSeeds.push_back(CDNSSeedData("seed2", "seed2.dogecashnet.com"));
+        // vSeeds.push_back(CDNSSeedData("seed3", "seed3.dogecashnet.com"));
+        // vSeeds.push_back(CDNSSeedData("seed4", "seed4.dogecashnet.com"));
+        // vSeeds.push_back(CDNSSeedData("seed5", "seed5.dogecashnet.com"));
                 
 		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
 		base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
