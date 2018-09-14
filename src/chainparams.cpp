@@ -96,7 +96,7 @@ public:
     CMainParams()
     {
         networkID = CBaseChainParams::MAIN;
-        vTreasuryRewardAddress="TKVGyrpqMNjpcMfLWDB8SyoMMF67bGcQ4z";
+        vTreasuryRewardAddress="DKv8dUifgBKkWM1nwjad7yNasQ41yA9ntR";
         strNetworkID = "main";
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -117,8 +117,8 @@ public:
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // DogeCash: 1 day  
-        nTargetSpacing = 60; //DogeCash: 1 minute
-        nMaturity = 120;
+        nTargetSpacing = 15; //DogeCash: 15 seconds
+        nMaturity = 1;
         nMasternodeCountDrift = 20;
         nMasternodeCollateralLimit = 5000; //MN collateral
         nMaxMoneyOut = 21000000 * COIN; //21 mill
@@ -199,7 +199,7 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "0464b1f34052a9fa87d18516fd97bfd70ed78a3424d59e9b9ffa9ea7fa35b50d376ec01b0923a2c7a8edfbfd2787247aadea861d4c6d8fb5814b708ddfb153aafc";
+        strSporkKey = "02ccdc7783bdfe181dd10e00bac8814a0d359b26378d5cf6df7652604515fb59d2";
         strObfuscationPoolDummyAddress = "Jeax8jHDQ1s2kHVjysEoTQncVdUrNBuXtp";
         nStartMasternodePayments = 1403728576; //Wed, 25 Jun 2014 20:36:16 GMT
 
