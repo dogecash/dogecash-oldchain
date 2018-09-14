@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TRTT_CSPORKDB_H
-#define TRTT_CSPORKDB_H
+#ifndef DOGEC_CSPORKDB_H
+#define DOGEC_CSPORKDB_H
 
 #include <boost/filesystem/path.hpp>
 #include "leveldbwrapper.h"
@@ -25,4 +25,4 @@ public:
 };
 
 
-#endif //TRTT_CSPORKDB_H
+#endif //DOGEC_CSPORKDB_H

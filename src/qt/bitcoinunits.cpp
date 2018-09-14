@@ -19,18 +19,18 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(TRTT);
-    unitlist.append(mTRTT);
-    unitlist.append(uTRTT);
+    unitlist.append(DOGEC);
+    unitlist.append(mDOGEC);
+    unitlist.append(uDOGEC);
     return unitlist;
 }
 
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case TRTT:
-    case mTRTT:
-    case uTRTT:
+    case DOGEC:
+    case mDOGEC:
+    case uDOGEC:
         return true;
     default:
         return false;
@@ -40,12 +40,12 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
-    case TRTT:
-        return QString("trittium");
-    case mTRTT:
-        return QString("mtrittium");
-    case uTRTT:
-        return QString::fromUtf8("utrittium");
+    case DOGEC:
+        return QString("dogecash");
+    case mDOGEC:
+        return QString("mdogecash");
+    case uDOGEC:
+        return QString::fromUtf8("udogecash");
     default:
         return QString("???");
     }
@@ -55,23 +55,23 @@ QString BitcoinUnits::name(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case TRTT:
-            return QString("TRTT");
-        case mTRTT:
-            return QString("mTRTT");
-        case uTRTT:
-            return QString::fromUtf8("μTRTT");
+        case DOGEC:
+            return QString("DOGEC");
+        case mDOGEC:
+            return QString("mDOGEC");
+        case uDOGEC:
+            return QString::fromUtf8("μDOGEC");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case TRTT:
-            return QString("tTRTT");
-        case mTRTT:
-            return QString("mtTRTT");
-        case uTRTT:
-            return QString::fromUtf8("μtTRTT");
+        case DOGEC:
+            return QString("tDOGEC");
+        case mDOGEC:
+            return QString("mtDOGEC");
+        case uDOGEC:
+            return QString::fromUtf8("μtDOGEC");
         default:
             return QString("???");
         }
@@ -82,23 +82,23 @@ QString BitcoinUnits::description(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case TRTT:
-            return QString("TRTT");
-        case mTRTT:
-            return QString("Milli-TRTT (1 / 1" THIN_SP_UTF8 "000)");
-        case uTRTT:
-            return QString("Micro-TRTT (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case DOGEC:
+            return QString("DOGEC");
+        case mDOGEC:
+            return QString("Milli-DOGEC (1 / 1" THIN_SP_UTF8 "000)");
+        case uDOGEC:
+            return QString("Micro-DOGEC (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case TRTT:
-            return QString("TestTRTTs");
-        case mTRTT:
-            return QString("Milli-TestTRTT (1 / 1" THIN_SP_UTF8 "000)");
-        case uTRTT:
-            return QString("Micro-TestTRTT (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case DOGEC:
+            return QString("TestDOGECs");
+        case mDOGEC:
+            return QString("Milli-TestDOGEC (1 / 1" THIN_SP_UTF8 "000)");
+        case uDOGEC:
+            return QString("Micro-TestDOGEC (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -108,11 +108,11 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case TRTT:
+    case DOGEC:
         return 100000000;
-    case mTRTT:
+    case mDOGEC:
         return 100000;
-    case uTRTT:
+    case uDOGEC:
         return 100;
     default:
         return 100000000;
@@ -122,11 +122,11 @@ qint64 BitcoinUnits::factor(int unit)
 int BitcoinUnits::decimals(int unit)
 {
     switch (unit) {
-    case TRTT:
+    case DOGEC:
         return 8;
-    case mTRTT:
+    case mDOGEC:
         return 5;
-    case uTRTT:
+    case uDOGEC:
         return 2;
     default:
         return 0;

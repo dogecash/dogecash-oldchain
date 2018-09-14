@@ -1,34 +1,34 @@
-bin_PROGRAMS += qt/trittium-qt
+bin_PROGRAMS += qt/dogecash-qt
 EXTRA_LIBRARIES += qt/libbitcoinqt.a
 
-# trittium qt core #
+# dogecash qt core #
 QT_TS = \
-  qt/locale/trittium_bg.ts \
-  qt/locale/trittium_ca.ts \
-  qt/locale/trittium_cs.ts \
-  qt/locale/trittium_da.ts \
-  qt/locale/trittium_de.ts \
-  qt/locale/trittium_en.ts \
-  qt/locale/trittium_en_US.ts \
-  qt/locale/trittium_es.ts \
-  qt/locale/trittium_fi.ts \
-  qt/locale/trittium_fr_FR.ts \
-  qt/locale/trittium_hr.ts \
-  qt/locale/trittium_it.ts \
-  qt/locale/trittium_ja.ts \
-  qt/locale/trittium_ko_KR.ts \
-  qt/locale/trittium_nl.ts \
-  qt/locale/trittium_pl.ts \
-  qt/locale/trittium_pt.ts \
-  qt/locale/trittium_pt_BR.ts \
-  qt/locale/trittium_ro_RO.ts \
-  qt/locale/trittium_ru.ts \
-  qt/locale/trittium_sk.ts \
-  qt/locale/trittium_sv.ts \
-  qt/locale/trittium_tr.ts \
-  qt/locale/trittium_uk.ts \
-  qt/locale/trittium_zh_CN.ts \
-  qt/locale/trittium_zh_TW.ts
+  qt/locale/dogecash_bg.ts \
+  qt/locale/dogecash_ca.ts \
+  qt/locale/dogecash_cs.ts \
+  qt/locale/dogecash_da.ts \
+  qt/locale/dogecash_de.ts \
+  qt/locale/dogecash_en.ts \
+  qt/locale/dogecash_en_US.ts \
+  qt/locale/dogecash_es.ts \
+  qt/locale/dogecash_fi.ts \
+  qt/locale/dogecash_fr_FR.ts \
+  qt/locale/dogecash_hr.ts \
+  qt/locale/dogecash_it.ts \
+  qt/locale/dogecash_ja.ts \
+  qt/locale/dogecash_ko_KR.ts \
+  qt/locale/dogecash_nl.ts \
+  qt/locale/dogecash_pl.ts \
+  qt/locale/dogecash_pt.ts \
+  qt/locale/dogecash_pt_BR.ts \
+  qt/locale/dogecash_ro_RO.ts \
+  qt/locale/dogecash_ru.ts \
+  qt/locale/dogecash_sk.ts \
+  qt/locale/dogecash_sv.ts \
+  qt/locale/dogecash_tr.ts \
+  qt/locale/dogecash_uk.ts \
+  qt/locale/dogecash_zh_CN.ts \
+  qt/locale/dogecash_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -54,7 +54,7 @@ QT_FORMS_UI = \
   qt/forms/sendcoinsentry.ui \
   qt/forms/signverifymessagedialog.ui \
   qt/forms/transactiondescdialog.ui \
-  qt/forms/ztrittiumcontroldialog.ui
+  qt/forms/zdogecashcontroldialog.ui
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
@@ -107,23 +107,23 @@ QT_MOC_CPP = \
   qt/moc_walletframe.cpp \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp \
-  qt/moc_ztrittiumcontroldialog.cpp
+  qt/moc_zdogecashcontroldialog.cpp
 
 BITCOIN_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/trittium.moc \
+  qt/dogecash.moc \
   qt/bitcoinamountfield.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_trittium.cpp
-QT_QRC = qt/trittium.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_trittium_locale.cpp
-QT_QRC_LOCALE = qt/trittium_locale.qrc
+QT_QRC_CPP = qt/qrc_dogecash.cpp
+QT_QRC = qt/dogecash.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_dogecash_locale.cpp
+QT_QRC_LOCALE = qt/dogecash_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
@@ -187,7 +187,7 @@ BITCOIN_QT_H = \
   qt/walletmodeltransaction.h \
   qt/walletview.h \
   qt/winshutdownmonitor.h \
-  qt/ztrittiumcontroldialog.h
+  qt/zdogecashcontroldialog.h
 
 RES_ICONS = \
   qt/res/icons/add.png \
@@ -241,12 +241,12 @@ RES_ICONS = \
   qt/res/icons/tx_input.png \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
-  qt/res/icons/unit_trittium.png \
-  qt/res/icons/unit_mtrittium.png \
-  qt/res/icons/unit_utrittium.png \
-  qt/res/icons/unit_ttrittium.png \
-  qt/res/icons/unit_tmtrittium.png \
-  qt/res/icons/unit_tutrittium.png
+  qt/res/icons/unit_dogecash.png \
+  qt/res/icons/unit_mdogecash.png \
+  qt/res/icons/unit_udogecash.png \
+  qt/res/icons/unit_tdogecash.png \
+  qt/res/icons/unit_tmdogecash.png \
+  qt/res/icons/unit_tudogecash.png
 
 BITCOIN_QT_CPP = \
   qt/bitcoinaddressvalidator.cpp \
@@ -308,7 +308,7 @@ BITCOIN_QT_CPP += \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
   qt/walletview.cpp \
-  qt/ztrittiumcontroldialog.cpp
+  qt/zdogecashcontroldialog.cpp
 
 endif
 
@@ -316,7 +316,7 @@ RES_IMAGES = \
   qt/res/images/about.png \
   qt/res/images/splash.png \
   qt/res/images/splash_testnet.png \
-  qt/res/images/trittium_logo_horizontal.png \
+  qt/res/images/dogecash_logo_horizontal.png \
   qt/res/images/downArrow.png \
   qt/res/images/downArrow_small.png \
   qt/res/images/upArrow_small.png \
@@ -332,7 +332,7 @@ RES_CSS = \
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
-BITCOIN_RC = qt/res/trittium-qt-res.rc
+BITCOIN_RC = qt/res/dogecash-qt-res.rc
 
 BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms
@@ -352,69 +352,69 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitcoinqt_a_OBJECTS) $(qt_trittium_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_dogecash_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# trittium-qt binary #
-qt_trittium_qt_CPPFLAGS = $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+# dogecash-qt binary #
+qt_dogecash_qt_CPPFLAGS = $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
 
-qt_trittium_qt_SOURCES = qt/trittium.cpp
+qt_dogecash_qt_SOURCES = qt/dogecash.cpp
 if TARGET_DARWIN
-  qt_trittium_qt_SOURCES += $(BITCOIN_MM)
+  qt_dogecash_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  qt_trittium_qt_SOURCES += $(BITCOIN_RC)
+  qt_dogecash_qt_SOURCES += $(BITCOIN_RC)
 endif
-qt_trittium_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+qt_dogecash_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-qt_trittium_qt_LDADD += $(LIBBITCOIN_WALLET)
+qt_dogecash_qt_LDADD += $(LIBBITCOIN_WALLET)
 endif
 if ENABLE_ZMQ
-qt_trittium_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+qt_dogecash_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_trittium_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBBITCOIN_UNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBLEVELDB) $(LIBMEMENV) \
+qt_dogecash_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBBITCOIN_UNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-qt_trittium_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_trittium_qt_LIBTOOLFLAGS = --tag CXX
+qt_dogecash_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_dogecash_qt_LIBTOOLFLAGS = --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 .SECONDARY: $(QT_QM)
 
-qt/trittiumstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES)
+qt/dogecashstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-translate: qt/trittiumstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: qt/dogecashstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/trittium_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/dogecash_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@test -f $(@D)/$(<F) || cp -f $< $(@D)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name trittium_locale $(@D)/$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name dogecash_locale $(@D)/$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name trittium $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name dogecash $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
 
 CLEANFILES += $(CLEAN_QT)
 
-trittium_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_trittium_qt_OBJECTS) qt/trittium-qt$(EXEEXT) $(LIBBITCOINQT)
+dogecash_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_dogecash_qt_OBJECTS) qt/dogecash-qt$(EXEEXT) $(LIBBITCOINQT)
 
-trittium_qt : qt/trittium-qt$(EXEEXT)
+dogecash_qt : qt/dogecash-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

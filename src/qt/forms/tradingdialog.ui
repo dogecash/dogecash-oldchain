@@ -181,7 +181,7 @@
       <string>Asks</string>
      </property>
     </widget>
-    <widget class="QLabel" name="TRTTSupply">
+    <widget class="QLabel" name="DOGECSupply">
      <property name="geometry">
       <rect>
        <x>540</x>
@@ -197,7 +197,7 @@
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="TRTTDemand">
+    <widget class="QLabel" name="DOGECDemand">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -432,7 +432,7 @@
     <attribute name="title">
      <string>Buy</string>
     </attribute>
-    <widget class="QPushButton" name="BuyTRTT">
+    <widget class="QPushButton" name="BuyDOGEC">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -442,10 +442,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Buy TRTT</string>
+      <string>Buy DOGEC</string>
      </property>
      <property name="icon">
-      <iconset resource="../trittium.qrc">
+      <iconset resource="../dogecash.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -512,7 +512,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>TRTT</string>
+      <string>DOGEC</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -1704,10 +1704,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>TRTT</string>
+      <string>DOGEC</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="UnitsInputTRTT">
+    <widget class="QLineEdit" name="UnitsInputDOGEC">
      <property name="geometry">
       <rect>
        <x>310</x>
@@ -1741,7 +1741,7 @@
       </font>
      </property>
     </widget>
-    <widget class="QPushButton" name="SellTRTTBTN">
+    <widget class="QPushButton" name="SellDOGECBTN">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1751,10 +1751,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Sell TRTT</string>
+      <string>Sell DOGEC</string>
      </property>
      <property name="icon">
-      <iconset resource="../trittium">
+      <iconset resource="../dogecash">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -1777,12 +1777,12 @@
          </font>
         </property>
         <property name="text">
-         <string>TRTT Available:</string>
+         <string>DOGEC Available:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="TRTTAvailableLabel">
+       <widget class="QLabel" name="DOGECAvailableLabel">
         <property name="palette">
          <palette>
           <active>
@@ -2213,7 +2213,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="labelTRTT">
+       <widget class="QLabel" name="labelDOGEC">
         <property name="font">
          <font>
           <weight>75</weight>
@@ -2221,7 +2221,7 @@
          </font>
         </property>
         <property name="text">
-         <string>TRTT</string>
+         <string>DOGEC</string>
         </property>
        </widget>
       </item>
@@ -2733,7 +2733,7 @@
       <string>TextLabel</string>
      </property>
     </widget>
-    <widget class="QLabel" name="TRTTBalanceLabel">
+    <widget class="QLabel" name="DOGECBalanceLabel">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2762,7 +2762,7 @@
       </font>
      </property>
      <property name="text">
-      <string>TRTT Balance:</string>
+      <string>DOGEC Balance:</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_12">
@@ -2784,7 +2784,7 @@
       <string>BTC Balance:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="TRTTAvailableLabel_2">
+    <widget class="QLabel" name="DOGECAvailableLabel_2">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2813,7 +2813,7 @@
       </font>
      </property>
      <property name="text">
-      <string>TRTT Available:</string>
+      <string>DOGEC Available:</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_14">
@@ -2832,10 +2832,10 @@
       </font>
      </property>
      <property name="text">
-      <string>TRTT Pending:</string>
+      <string>DOGEC Pending:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="TRTTPendingLabel">
+    <widget class="QLabel" name="DOGECPendingLabel">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2928,7 +2928,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Bittrex TRTT Deposit Address:</string>
+      <string>Bittrex DOGEC Deposit Address:</string>
      </property>
     </widget>
     <widget class="QPushButton" name="GenDepositBTN">
@@ -2941,10 +2941,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Generate Trittium Deposit Address</string>
+      <string>Generate DogeCash Deposit Address</string>
      </property>
      <property name="icon">
-      <iconset resource="../trittium.qrc">
+      <iconset resource="../dogecash.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -3155,7 +3155,7 @@
        <string notr="true">border: 1px solid #61696c;margin-left:4px;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnConvertTrittium">
+     <widget class="QPushButton" name="btnConvertDogeCash">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -3206,7 +3206,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="../trittium.qrc">:/icons/transaction_1</pixmap>
+       <pixmap resource="../dogecash.qrc">:/icons/transaction_1</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -3253,7 +3253,7 @@
       <string>Update API Keys</string>
      </property>
      <property name="icon">
-      <iconset resource="../trittium.qrc">
+      <iconset resource="../dogecash.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -3408,7 +3408,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="../trittium.qrc"/>
+  <include location="../dogecash.qrc"/>
  </resources>
  <connections/>
 </ui>

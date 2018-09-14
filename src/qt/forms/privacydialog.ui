@@ -31,7 +31,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
        <item>
-        <widget class="QLabel" name="zTRTTLabel">
+        <widget class="QLabel" name="zDOGECLabel">
          <property name="minimumSize">
           <size>
            <width>460</width>
@@ -52,13 +52,13 @@
           </font>
          </property>
          <property name="toolTip">
-          <string>TRTT which were anonymized via Zerocin Protocol</string>
+          <string>DOGEC which were anonymized via Zerocin Protocol</string>
          </property>
          <property name="autoFillBackground">
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>Zerocoin TRTT (zTRTT)</string>
+          <string>Zerocoin DOGEC (zDOGEC)</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -74,7 +74,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <item>
-                <widget class="QLabel" name="labelzTRTTActions">
+                <widget class="QLabel" name="labelzDOGECActions">
                  <property name="font">
                   <font>
                    <pointsize>12</pointsize>
@@ -83,7 +83,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>zTRTT Actions:</string>
+                  <string>zDOGEC Actions:</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -91,9 +91,9 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzTRTTSyncStatus">
+                <widget class="QLabel" name="labelzDOGECSyncStatus">
                  <property name="toolTip">
-                  <string>The displayed information may be out of date. Your wallet automatically synchronizes with the Trittium network after a connection is established, but this process has not completed yet.</string>
+                  <string>The displayed information may be out of date. Your wallet automatically synchronizes with the DogeCash network after a connection is established, but this process has not completed yet.</string>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QLabel { color: red; }</string>
@@ -137,7 +137,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_4">
                <item>
-                <widget class="QPushButton" name="pushButtonMintzTRTT">
+                <widget class="QPushButton" name="pushButtonMintzDOGEC">
                  <property name="minimumSize">
                   <size>
                    <width>131</width>
@@ -145,10 +145,10 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>Enter an amount of Trittium to convert (mint) to zTrittium</string>
+                  <string>Enter an amount of DogeCash to convert (mint) to zDogeCash</string>
                  </property>
                  <property name="text">
-                  <string>Convert TRTT to zTRTT</string>
+                  <string>Convert DOGEC to zDOGEC</string>
                  </property>
                 </widget>
                </item>
@@ -169,16 +169,16 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzTRTT_2">
+                <widget class="QLabel" name="labelzDOGEC_2">
                  <property name="text">
-                  <string>zTRTT</string>
+                  <string>zDOGEC</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzTRTTAmountText">
+                <widget class="QLabel" name="labelzDOGECAmountText">
                  <property name="toolTip">
-                  <string>Available Balance are coins (Trittium) which are confirmed and not locked or Masternode collaterals.</string>
+                  <string>Available Balance are coins (DogeCash) which are confirmed and not locked or Masternode collaterals.</string>
                  </property>
                  <property name="text">
                   <string>Available Balance:</string>
@@ -189,12 +189,12 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzTRTTAmountValue">
+                <widget class="QLabel" name="labelzDOGECAmountValue">
                  <property name="toolTip">
-                  <string>Enter an amount of Trittium to convert to zTrittium</string>
+                  <string>Enter an amount of DogeCash to convert to zDogeCash</string>
                  </property>
                  <property name="text">
-                  <string>0.000 000 00 TRTT</string>
+                  <string>0.000 000 00 DOGEC</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -223,7 +223,7 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>Reset Zerocoin (zTrittium) Wallet DB. Deletes transactions that did not make it into the blockchain.</string>
+                  <string>Reset Zerocoin (zDogeCash) Wallet DB. Deletes transactions that did not make it into the blockchain.</string>
                  </property>
                  <property name="text">
                   <string>Reset</string>
@@ -370,7 +370,7 @@
                     <enum>Qt::ActionsContextMenu</enum>
                    </property>
                    <property name="text">
-                    <string notr="true">0.00 TRTT</string>
+                    <string notr="true">0.00 DOGEC</string>
                    </property>
                    <property name="textInteractionFlags">
                     <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -474,21 +474,21 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QPushButton" name="pushButtonZTrittiumControl">
+                <widget class="QPushButton" name="pushButtonZDogeCashControl">
                  <property name="text">
-                  <string>zTrittium Control</string>
+                  <string>zDogeCash Control</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzTrittiumSelected">
+                <widget class="QLabel" name="labelzDogeCashSelected">
                  <property name="text">
-                  <string>zTrittium Selected:</string>
+                  <string>zDogeCash Selected:</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzTrittiumSelected_int">
+                <widget class="QLabel" name="labelzDogeCashSelected_int">
                  <property name="text">
                   <string>0</string>
                  </property>
@@ -542,7 +542,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_6">
                <item>
-                <widget class="QPushButton" name="pushButtonSpendzTRTT">
+                <widget class="QPushButton" name="pushButtonSpendzDOGEC">
                  <property name="minimumSize">
                   <size>
                    <width>131</width>
@@ -550,17 +550,17 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>Send zTRTT. Without 'Pay To:' address creates payments to yourself.</string>
+                  <string>Send zDOGEC. Without 'Pay To:' address creates payments to yourself.</string>
                  </property>
                  <property name="text">
-                  <string>Send zTRTT</string>
+                  <string>Send zDOGEC</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzTRTTBalanceText">
+                <widget class="QLabel" name="labelzDOGECBalanceText">
                  <property name="toolTip">
-                  <string>Available (mature and spendable) zTRTT for spending</string>
+                  <string>Available (mature and spendable) zDOGEC for spending</string>
                  </property>
                  <property name="text">
                   <string>Available Balance:</string>
@@ -579,12 +579,12 @@
                   </font>
                  </property>
                  <property name="toolTip">
-                  <string>Available (mature and spendable) zTRTT for spending
+                  <string>Available (mature and spendable) zDOGEC for spending
 
-zTRTT are mature when they have more than 20 confirmations AND more than 1 mints of the same denomination after them were minted</string>
+zDOGEC are mature when they have more than 20 confirmations AND more than 1 mints of the same denomination after them were minted</string>
                  </property>
                  <property name="text">
-                  <string>0 zTRTT</string>
+                  <string>0 zDOGEC</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -607,7 +607,7 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
                <item>
                 <widget class="QLabel" name="labelSecurityLevel">
                  <property name="toolTip">
-                  <string>Security Level for Zerocoin (zTrittium) Transactions. More is better, but needs more time and resources.</string>
+                  <string>Security Level for Zerocoin (zDogeCash) Transactions. More is better, but needs more time and resources.</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
@@ -695,7 +695,7 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>The Trittium address to send the payment to. Creates local payment to yourself when empty.</string>
+                    <string>The DogeCash address to send the payment to. Creates local payment to yourself when empty.</string>
                    </property>
                   </widget>
                  </item>
@@ -708,7 +708,7 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../trittium.qrc">
+                    <iconset resource="../dogecash.qrc">
                      <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
                    </property>
                    <property name="shortcut">
@@ -725,7 +725,7 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../trittium.qrc">
+                    <iconset resource="../dogecash.qrc">
                      <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
                    </property>
                    <property name="shortcut">
@@ -784,15 +784,15 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
                  <property name="buddy">
-                  <cstring>zTRTTpayAmount</cstring>
+                  <cstring>zDOGECpayAmount</cstring>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="zTRTTpayAmount"/>
+                <widget class="QLineEdit" name="zDOGECpayAmount"/>
                </item>
                <item>
-                <widget class="QLabel" name="labelzTRTT">
+                <widget class="QLabel" name="labelzDOGEC">
                  <property name="minimumSize">
                   <size>
                    <width>55</width>
@@ -800,7 +800,7 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
                   </size>
                  </property>
                  <property name="text">
-                  <string>zTRTT</string>
+                  <string>zDOGEC</string>
                  </property>
                 </widget>
                </item>
@@ -833,7 +833,7 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
                   <enum>Qt::LeftToRight</enum>
                  </property>
                  <property name="text">
-                  <string>Convert Change Back to zTRTT (might cost additional fees)</string>
+                  <string>Convert Change Back to zDOGEC (might cost additional fees)</string>
                  </property>
                 </widget>
                </item>
@@ -886,7 +886,7 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_21">
                <item>
-                <widget class="QLabel" name="labelzTRTTStats">
+                <widget class="QLabel" name="labelzDOGECStats">
                  <property name="font">
                   <font>
                    <pointsize>12</pointsize>
@@ -895,10 +895,10 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
                   </font>
                  </property>
                  <property name="toolTip">
-                  <string>Information about the available zTrittium funds.</string>
+                  <string>Information about the available zDogeCash funds.</string>
                  </property>
                  <property name="text">
-                  <string>zTRTT Stats:</string>
+                  <string>zDOGEC Stats:</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -960,10 +960,10 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
                   </font>
                  </property>
                  <property name="toolTip">
-                  <string>Total Balance including unconfirmed and immature zTRTT</string>
+                  <string>Total Balance including unconfirmed and immature zDOGEC</string>
                  </property>
                  <property name="text">
-                  <string>Total zTRTT Balance:</string>
+                  <string>Total zDOGEC Balance:</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -998,10 +998,10 @@ zTRTT are mature when they have more than 20 confirmations AND more than 1 mints
                   </font>
                  </property>
                  <property name="toolTip">
-                  <string>Total Balance including unconfirmed and immature zTRTT</string>
+                  <string>Total Balance including unconfirmed and immature zDOGEC</string>
                  </property>
                  <property name="text">
-                  <string>0 zTRTT</string>
+                  <string>0 zDOGEC</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1576,7 +1576,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
          <enum>Qt::ActionsContextMenu</enum>
         </property>
         <property name="text">
-         <string notr="true">0.000 000 00 TRTT</string>
+         <string notr="true">0.000 000 00 DOGEC</string>
         </property>
         <property name="textInteractionFlags">
          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -1650,7 +1650,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
            <enum>Qt::ActionsContextMenu</enum>
           </property>
           <property name="text">
-           <string notr="true">0.00 TRTT</string>
+           <string notr="true">0.00 DOGEC</string>
           </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -1847,7 +1847,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
          <enum>Qt::ActionsContextMenu</enum>
         </property>
         <property name="text">
-         <string notr="true">0.000 000 00 TRTT</string>
+         <string notr="true">0.000 000 00 DOGEC</string>
         </property>
         <property name="textInteractionFlags">
          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -2192,7 +2192,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../trittium.qrc"/>
+  <include location="../dogecash.qrc"/>
  </resources>
  <connections/>
 </ui>

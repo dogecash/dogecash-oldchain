@@ -361,7 +361,7 @@ public:
 
     //check to see if we should vote on this
     void AutoCheck();
-    //total trittium paid out by this budget
+    //total dogecash paid out by this budget
     CAmount GetTotalPayout();
     //vote on this finalized budget as a masternode
     void SubmitVote();

@@ -66,15 +66,15 @@ bin_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += trittiumd
+  bin_PROGRAMS += dogecashd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += trittium-cli trittium-tx
+  bin_PROGRAMS += dogecash-cli dogecash-tx
 endif
 
 .PHONY: FORCE
-# trittium core #
+# dogecash core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   accumulators.h \
@@ -190,7 +190,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between trittiumd and trittium-qt
+# server: shared between dogecashd and dogecash-qt
 libbitcoin_server_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
@@ -236,7 +236,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between trittiumd and trittium-qt, but only linked
+# wallet: shared between dogecashd and dogecash-qt, but only linked
 # when wallet enabled
 
 libbitcoin_wallet_a_CFLAGS = -fPIC
@@ -356,7 +356,7 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
   libzerocoin/Params.cpp \
   libzerocoin/SerialNumberSignatureOfKnowledge.cpp
 
-# common: shared between trittiumd, and trittium-qt and non-server tools
+# common: shared between dogecashd, and dogecash-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_common_a_SOURCES = \
   accumulators.cpp \
@@ -416,7 +416,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 libbitcoin_util_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-# cli: shared between trittium-cli and trittium-qt
+# cli: shared between dogecash-cli and dogecash-qt
 libbitcoin_cli_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_SOURCES = \
   rpcclient.cpp \
@@ -426,7 +426,7 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-trittiumd_LDADD = \
+dogecashd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UNIVALUE) \
@@ -438,26 +438,26 @@ trittiumd_LDADD = \
   $(LIBSECP256K1)
 
 if ENABLE_ZMQ
-trittiumd_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+dogecashd_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-trittiumd_LDADD += libbitcoin_wallet.a
+dogecashd_LDADD += libbitcoin_wallet.a
 endif
-trittiumd_SOURCES = trittiumd.cpp
+dogecashd_SOURCES = dogecashd.cpp
 #
 
 if TARGET_WINDOWS
-trittiumd_SOURCES += trittiumd-res.rc
+dogecashd_SOURCES += dogecashd-res.rc
 endif
 
-trittiumd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-trittiumd_CPPFLAGS = $(BITCOIN_INCLUDES)
-trittiumd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+dogecashd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+dogecashd_CPPFLAGS = $(BITCOIN_INCLUDES)
+dogecashd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 
-# trittium-cli binary #
-trittium_cli_LDADD = \
+# dogecash-cli binary #
+dogecash_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBBITCOIN_UTIL) \
   $(BOOST_LIBS) \
@@ -465,14 +465,14 @@ trittium_cli_LDADD = \
   $(CRYPTO_LIBS) \
   $(EVENT_LIBS)
 
-trittium_cli_SOURCES = \
-  trittium-cli.cpp
+dogecash_cli_SOURCES = \
+  dogecash-cli.cpp
 
-trittium_cli_CPPFLAGS = $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+dogecash_cli_CPPFLAGS = $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
 #
 
-# trittium-tx binary #
-trittium_tx_LDADD = \
+# dogecash-tx binary #
+dogecash_tx_LDADD = \
   $(LIBBITCOIN_UNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_ZEROCOIN) \
@@ -482,15 +482,15 @@ trittium_tx_LDADD = \
   $(BOOST_LIBS) \
   $(CRYPTO_LIBS)
 
-trittium_tx_SOURCES = trittium-tx.cpp
-trittium_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
+dogecash_tx_SOURCES = dogecash-tx.cpp
+dogecash_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
-trittium_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+dogecash_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-trittium_cli_SOURCES += trittium-cli-res.rc
+dogecash_cli_SOURCES += dogecash-cli-res.rc
 endif
-trittium_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+dogecash_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h

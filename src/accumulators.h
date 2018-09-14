@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TRTT_ACCUMULATORS_H
-#define TRTT_ACCUMULATORS_H
+#ifndef DOGEC_ACCUMULATORS_H
+#define DOGEC_ACCUMULATORS_H
 
 #include "libzerocoin/Accumulator.h"
 #include "libzerocoin/Denominations.h"
@@ -22,4 +22,4 @@ uint32_t ParseChecksum(uint256 nChecksum, libzerocoin::CoinDenomination denomina
 uint32_t GetChecksum(const CBigNum &bnValue);
 bool InvalidCheckpointRange(int nHeight);
 
-#endif //TRTT_ACCUMULATORS_H
+#endif //DOGEC_ACCUMULATORS_H

@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between trittium-cli and trittiumd)
- * of a given instance of the Trittium system.
+ * CBaseChainParams defines the base parameters (shared between dogecash-cli and dogecashd)
+ * of a given instance of the DogeCash system.
  */
 class CBaseChainParams
 {

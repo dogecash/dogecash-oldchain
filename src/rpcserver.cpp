@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 The Trittium developers
+// Copyright (c) 2018 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -238,10 +238,10 @@ Value stop(const Array& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop Trittium server.");
+            "\nStop DogeCash server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "Trittium server stopping";
+    return "DogeCash server stopping";
 }
 
 
@@ -319,36 +319,36 @@ static const CRPCCommand vRPCCommands[] =
         {"hidden", "reconsiderblock", &reconsiderblock, true, true, false},
         {"hidden", "setmocktime", &setmocktime, true, false, false},
 
-        /* Trittium features */
-        {"trittium", "masternode", &masternode, true, true, false},
-        {"trittium", "listmasternodes", &listmasternodes, true, true, false},
-        {"trittium", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"trittium", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"trittium", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"trittium", "masternodedebug", &masternodedebug, true, true, false},
-        {"trittium", "startmasternode", &startmasternode, true, true, false},
-        {"trittium", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"trittium", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"trittium", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"trittium", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"trittium", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"trittium", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"trittium", "mnbudget", &mnbudget, true, true, false},
-        {"trittium", "preparebudget", &preparebudget, true, true, false},
-        {"trittium", "submitbudget", &submitbudget, true, true, false},
-        {"trittium", "mnbudgetvote", &mnbudgetvote, true, true, false},
-        {"trittium", "getbudgetvotes", &getbudgetvotes, true, true, false},
-        {"trittium", "getnextsuperblock", &getnextsuperblock, true, true, false},
-        {"trittium", "getbudgetprojection", &getbudgetprojection, true, true, false},
-        {"trittium", "getbudgetinfo", &getbudgetinfo, true, true, false},
-        {"trittium", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
-        {"trittium", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"trittium", "checkbudgets", &checkbudgets, true, true, false},
-        {"trittium", "mnsync", &mnsync, true, true, false},
-        {"trittium", "spork", &spork, true, true, false},
-        {"trittium", "getpoolinfo", &getpoolinfo, true, true, false},
+        /* DogeCash features */
+        {"dogecash", "masternode", &masternode, true, true, false},
+        {"dogecash", "listmasternodes", &listmasternodes, true, true, false},
+        {"dogecash", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"dogecash", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"dogecash", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"dogecash", "masternodedebug", &masternodedebug, true, true, false},
+        {"dogecash", "startmasternode", &startmasternode, true, true, false},
+        {"dogecash", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"dogecash", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"dogecash", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"dogecash", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"dogecash", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"dogecash", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"dogecash", "mnbudget", &mnbudget, true, true, false},
+        {"dogecash", "preparebudget", &preparebudget, true, true, false},
+        {"dogecash", "submitbudget", &submitbudget, true, true, false},
+        {"dogecash", "mnbudgetvote", &mnbudgetvote, true, true, false},
+        {"dogecash", "getbudgetvotes", &getbudgetvotes, true, true, false},
+        {"dogecash", "getnextsuperblock", &getnextsuperblock, true, true, false},
+        {"dogecash", "getbudgetprojection", &getbudgetprojection, true, true, false},
+        {"dogecash", "getbudgetinfo", &getbudgetinfo, true, true, false},
+        {"dogecash", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
+        {"dogecash", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"dogecash", "checkbudgets", &checkbudgets, true, true, false},
+        {"dogecash", "mnsync", &mnsync, true, true, false},
+        {"dogecash", "spork", &spork, true, true, false},
+        {"dogecash", "getpoolinfo", &getpoolinfo, true, true, false},
 #ifdef ENABLE_WALLET
-        {"trittium", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
+        {"dogecash", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
 
         /* Wallet */
         {"wallet", "addmultisigaddress", &addmultisigaddress, true, false, true},
@@ -627,16 +627,16 @@ void StartRPCThreads()
         unsigned char rand_pwd[32];
         GetRandBytes(rand_pwd, 32);
         uiInterface.ThreadSafeMessageBox(strprintf(
-                                             _("To use trittiumd, or the -server option to trittium-qt, you must set an rpcpassword in the configuration file:\n"
+                                             _("To use dogecashd, or the -server option to dogecash-qt, you must set an rpcpassword in the configuration file:\n"
                                                "%s\n"
                                                "It is recommended you use the following random password:\n"
-                                               "rpcuser=trittiumrpc\n"
+                                               "rpcuser=dogecashrpc\n"
                                                "rpcpassword=%s\n"
                                                "(you do not need to remember this password)\n"
                                                "The username and password MUST NOT be the same.\n"
                                                "If the file does not exist, create it with owner-readable-only file permissions.\n"
                                                "It is also recommended to set alertnotify so you are notified of problems;\n"
-                                               "for example: alertnotify=echo %%s | mail -s \"Trittium Alert\" admin@foo.com\n"),
+                                               "for example: alertnotify=echo %%s | mail -s \"DogeCash Alert\" admin@foo.com\n"),
                                              GetConfigFile().string(),
                                              EncodeBase58(&rand_pwd[0], &rand_pwd[0] + 32)),
             "", CClientUIInterface::MSG_ERROR | CClientUIInterface::SECURE);
@@ -1087,7 +1087,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> trittium-cli " + methodname + " " + args + "\n";
+    return "> dogecash-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)

@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both trittiumd and trittium-qt, to make it harder for attackers to
+ * for both dogecashd and dogecash-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Trittium Core");
+const std::string CLIENT_NAME("DogeCash Core");
 
 /**
  * Client version number

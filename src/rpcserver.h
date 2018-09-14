@@ -96,7 +96,7 @@ public:
 };
 
 /**
- * Trittium RPC command dispatcher.
+ * DogeCash RPC command dispatcher.
  */
 class CRPCTable
 {

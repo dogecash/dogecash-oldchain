@@ -12,7 +12,7 @@
 #include "spork.h"
 
 //
-// Bootup the Masternode, look for a 50000 TRTT input and register on the network
+// Bootup the Masternode, look for a 50000 DOGEC input and register on the network
 //
 void CActiveMasternode::ManageStatus()
 {

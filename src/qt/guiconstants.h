@@ -11,9 +11,9 @@
 static const int MODEL_UPDATE_DELAY = 250;
 
 /* AskPassphraseDialog -- Maximum passphrase length */
-static const int MAX_PASSTRTTASE_SIZE = 1024;
+static const int MAX_PASSDOGECASE_SIZE = 1024;
 
-/* Trittium GUI -- Size of icons in status bar */
+/* DogeCash GUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -48,9 +48,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 35
 
-#define QAPP_ORG_NAME "Trittium"
-#define QAPP_ORG_DOMAIN "trittium.org"
-#define QAPP_APP_NAME_DEFAULT "Trittium-Qt"
-#define QAPP_APP_NAME_TESTNET "Trittium-Qt-testnet"
+#define QAPP_ORG_NAME "DogeCash"
+#define QAPP_ORG_DOMAIN "dogecash.org"
+#define QAPP_APP_NAME_DEFAULT "DogeCash-Qt"
+#define QAPP_APP_NAME_TESTNET "DogeCash-Qt-testnet"
 
 #endif // BITCOIN_QT_GUICONSTANTS_H

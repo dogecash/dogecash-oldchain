@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 The Trittium developers
+// Copyright (c) 2018 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -109,15 +109,15 @@ public:
         pchMessageStart[3] = 0x67;
         vAlertPubKey = ParseHex("04c32c8ab64b43228550115a862847deb294b776a71d6395e9c49477d13eac413f022e40462770dbc665f8a32aeec2a5d87839239f9a0b91a85269f90e79ab0ccc");
         nDefaultPort = 30001;
-        bnProofOfWorkLimit = ~uint256(0) >> 20; // Trittium starting difficulty is 1 / 2^12
+        bnProofOfWorkLimit = ~uint256(0) >> 20; // DogeCash starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // Trittium: 1 day  
-        nTargetSpacing = 60; //Trittium: 1 minute
+        nTargetTimespan = 1 * 60; // DogeCash: 1 day  
+        nTargetSpacing = 60; //DogeCash: 1 minute
         nMaturity = 120;
         nMasternodeCountDrift = 20;
         nMaxMoneyOut = 500000000 * COIN; //500,000,000
@@ -162,14 +162,14 @@ public:
         assert(hashGenesisBlock == uint256("0000cc75a7c6fa2ce8186e24f872e43acf88b21a1cc02aa11a4ceaee2a562d4c"));
         assert(genesis.hashMerkleRoot == uint256("3bf54807365f102ff9cdb07cf5f4af411503d5b544835dc96a5beaee140ad419"));
 
-        vSeeds.push_back(CDNSSeedData("trittiumnet.com", "seed.trittiumnet.com"));
-        vSeeds.push_back(CDNSSeedData("trittium.cc", "explorer.trittium.cc"));
+        vSeeds.push_back(CDNSSeedData("dogecashnet.com", "seed.dogecashnet.com"));
+        vSeeds.push_back(CDNSSeedData("dogecash.cc", "explorer.dogecash.cc"));
         vSeeds.push_back(CDNSSeedData("3rd-one", "199.188.205.252"));
         
-        vSeeds.push_back(CDNSSeedData("seed2", "seed2.trittiumnet.com"));
-        vSeeds.push_back(CDNSSeedData("seed3", "seed3.trittiumnet.com"));
-        vSeeds.push_back(CDNSSeedData("seed4", "seed4.trittiumnet.com"));
-        vSeeds.push_back(CDNSSeedData("seed5", "seed5.trittiumnet.com"));
+        vSeeds.push_back(CDNSSeedData("seed2", "seed2.dogecashnet.com"));
+        vSeeds.push_back(CDNSSeedData("seed3", "seed3.dogecashnet.com"));
+        vSeeds.push_back(CDNSSeedData("seed4", "seed4.dogecashnet.com"));
+        vSeeds.push_back(CDNSSeedData("seed5", "seed5.dogecashnet.com"));
                 
 		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 65);
 		base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
@@ -251,8 +251,8 @@ public:
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // Trittium: 1 day
-        nTargetSpacing = 1 * 60;  // Trittium: 1 minute
+        nTargetTimespan = 1 * 60; // DogeCash: 1 day
+        nTargetSpacing = 1 * 60;  // DogeCash: 1 minute
         nLastPOWBlock = 200;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
@@ -275,9 +275,9 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("testnet.trittium.io", "testnet.trittium.io"));         // Single node address
-        vSeeds.push_back(CDNSSeedData("testnet1.trittium.io", "testnet1.trittium.io"));       // Single node address
-        vSeeds.push_back(CDNSSeedData("testnet2.trittium.io", "testnet2.trittium.io"));       // Single node address
+        vSeeds.push_back(CDNSSeedData("testnet.dogecash.io", "testnet.dogecash.io"));         // Single node address
+        vSeeds.push_back(CDNSSeedData("testnet1.dogecash.io", "testnet1.dogecash.io"));       // Single node address
+        vSeeds.push_back(CDNSSeedData("testnet2.dogecash.io", "testnet2.dogecash.io"));       // Single node address
 
 
 		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 65);
@@ -332,8 +332,8 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetTimespan = 24 * 60 * 60; // Trittium: 1 day
-        nTargetSpacing = 1 * 60;        // Trittium: 1 minutes
+        nTargetTimespan = 24 * 60 * 60; // DogeCash: 1 day
+        nTargetSpacing = 1 * 60;        // DogeCash: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1515524400;
         genesis.nBits = 0x1e0ffff0;
