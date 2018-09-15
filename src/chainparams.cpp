@@ -103,10 +103,10 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x7c;
-        pchMessageStart[1] = 0x5a;
-        pchMessageStart[2] = 0x7d;
-        pchMessageStart[3] = 0x6u;
+        pchMessageStart[0] = 0x7a;
+        pchMessageStart[1] = 0x5d;
+        pchMessageStart[2] = 0x7c;
+        pchMessageStart[3] = 0x6a;
         vAlertPubKey = ParseHex("04c32c8ab64b43228550115a862847deb294b776a71d6395e9c49477d13eac413f022e40462770dbc665f8a32aeec2a5d87839239f9a0b91a85269f90e79ab0ccc");
         nDefaultPort = 6739;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // DogeCash starting difficulty is 1 / 2^12
@@ -228,7 +228,7 @@ std::string CChainParams::GetTreasuryRewardAddressAtHeight(int nHeight) const {
 }
 
 CScript CChainParams::GetTreasuryRewardScriptAtHeight(int nHeight) const {
-    CBitcoinAddress address(GetTreasuryRewardAddressAtHeight(nHeight).c_str());
+    CBitcoinAddress address(GetTreasuryRewardAddressAtHeight(nHeight));
     assert(address.IsValid());
 
     CScript script = GetScriptForDestination(address.Get());

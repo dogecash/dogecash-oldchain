@@ -1,0 +1,9 @@
+*.Po
+*.a
+settings.json
+*.log
+*.o
+*.dirstamp
+*.json.h
+*.raw.h
+*.Plo
