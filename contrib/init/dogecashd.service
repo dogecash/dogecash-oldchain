@@ -1,0 +1,26 @@
+[Unit]
+Description=DogeCash's distributed currency daemon
+After=network.target
+
+[Service]
+User=dogecash
+Group=dogecash
+
+Type=forking
+PIDFile=/var/lib/dogecashd/dogecashd.pid
+
+ExecStart=/usr/bin/dogecashd -daemon -pid=/var/lib/dogecashd/dogecashd.pid \
+          -conf=/etc/dogecash/dogecash.conf -datadir=/var/lib/dogecashd
+
+ExecStop=-/usr/bin/dogecash-cli -conf=/etc/dogecash/dogecash.conf \
+         -datadir=/var/lib/dogecashd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

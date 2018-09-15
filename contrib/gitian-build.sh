@@ -17,7 +17,7 @@ osx=true
 SIGNER=
 VERSION=
 commit=false
-url=https://github.com/jiyocoin/jiyo-core/
+url=https://github.com/dogecashcoin/dogecash-core/
 proc=2
 mem=2000
 lxc=true
@@ -31,7 +31,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the jiyo, gitian-builder, gitian.sigs, and jiyo-detached-sigs.
+Run this script from the directory containing the dogecash, gitian-builder, gitian.sigs, and dogecash-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -39,7 +39,7 @@ version		Version number, commit, or branch to build. If building a commit or bra
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
--u|--url	Specify the URL of the repository. Default is https://github.com/jiyoproject/jiyo
+-u|--url	Specify the URL of the repository. Default is https://github.com/dogecashproject/dogecash
 -v|--verify 	Verify the gitian build
 -b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
@@ -237,8 +237,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/jiyocoin/jiyo-core/gitian.sigs.git
-    git clone https://github.com/jiyocoin/jiyo-core/jiyo-detached-sigs.git
+    git clone https://github.com/dogecashcoin/dogecash-core/gitian.sigs.git
+    git clone https://github.com/dogecashcoin/dogecash-core/dogecash-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -252,7 +252,7 @@ then
 fi
 
 # Set up build
-pushd ./jiyo
+pushd ./dogecash
 git fetch
 git checkout ${COMMIT}
 popd
@@ -261,7 +261,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./jiyo-binaries/${VERSION}
+	mkdir -p ./dogecash-binaries/${VERSION}
 
 	# Build Dependencies
 	echo ""
@@ -271,7 +271,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../jiyo/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../dogecash/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -279,9 +279,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit jiyo=${COMMIT} --url jiyo=${url} ../jiyo/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../jiyo/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/jiyo-*.tar.gz build/out/src/jiyo-*.tar.gz ../jiyo-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit dogecash=${COMMIT} --url dogecash=${url} ../dogecash/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../dogecash/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/dogecash-*.tar.gz build/out/src/dogecash-*.tar.gz ../dogecash-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -289,10 +289,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit jiyo=${COMMIT} --url jiyo=${url} ../jiyo/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../jiyo/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/jiyo-*-win-unsigned.tar.gz inputs/jiyo-win-unsigned.tar.gz
-	    mv build/out/jiyo-*.zip build/out/jiyo-*.exe ../jiyo-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit dogecash=${COMMIT} --url dogecash=${url} ../dogecash/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../dogecash/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/dogecash-*-win-unsigned.tar.gz inputs/dogecash-win-unsigned.tar.gz
+	    mv build/out/dogecash-*.zip build/out/dogecash-*.exe ../dogecash-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -300,10 +300,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit jiyo=${COMMIT} --url jiyo=${url} ../jiyo/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../jiyo/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/jiyo-*-osx-unsigned.tar.gz inputs/jiyo-osx-unsigned.tar.gz
-	    mv build/out/jiyo-*.tar.gz build/out/jiyo-*.dmg ../jiyo-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit dogecash=${COMMIT} --url dogecash=${url} ../dogecash/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../dogecash/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/dogecash-*-osx-unsigned.tar.gz inputs/dogecash-osx-unsigned.tar.gz
+	    mv build/out/dogecash-*.tar.gz build/out/dogecash-*.dmg ../dogecash-binaries/${VERSION}
 	fi
 	# AArch64
 	if [[ $aarch64 = true ]]
@@ -311,9 +311,9 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} AArch64"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit jiyo=${COMMIT} --url jiyo=${url} ../jiyo/contrib/gitian-descriptors/gitian-aarch64.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../jiyo/contrib/gitian-descriptors/gitian-aarch64.yml
-	    mv build/out/jiyo-*.tar.gz build/out/src/jiyo-*.tar.gz ../jiyo-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit dogecash=${COMMIT} --url dogecash=${url} ../dogecash/contrib/gitian-descriptors/gitian-aarch64.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../dogecash/contrib/gitian-descriptors/gitian-aarch64.yml
+	    mv build/out/dogecash-*.tar.gz build/out/src/dogecash-*.tar.gz ../dogecash-binaries/${VERSION}
 	popd
 
         if [[ $commitFiles = true ]]
@@ -340,32 +340,32 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../jiyo/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../dogecash/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../jiyo/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../dogecash/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../jiyo/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../dogecash/contrib/gitian-descriptors/gitian-osx.yml
 	# AArch64
 	echo ""
 	echo "Verifying v${VERSION} AArch64"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../jiyo/contrib/gitian-descriptors/gitian-aarch64.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../dogecash/contrib/gitian-descriptors/gitian-aarch64.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../jiyo/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../dogecash/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../jiyo/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../dogecash/contrib/gitian-descriptors/gitian-osx-signer.yml
 	popd
 fi
 
@@ -380,10 +380,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../jiyo/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../jiyo/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/jiyo-*win64-setup.exe ../jiyo-binaries/${VERSION}
-	    mv build/out/jiyo-*win32-setup.exe ../jiyo-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../dogecash/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../dogecash/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/dogecash-*win64-setup.exe ../dogecash-binaries/${VERSION}
+	    mv build/out/dogecash-*win32-setup.exe ../dogecash-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -391,9 +391,9 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../jiyo/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../jiyo/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/jiyo-osx-signed.dmg ../jiyo-binaries/${VERSION}/jiyo-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../dogecash/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../dogecash/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/dogecash-osx-signed.dmg ../dogecash-binaries/${VERSION}/dogecash-${VERSION}-osx.dmg
 	fi
 	popd
 

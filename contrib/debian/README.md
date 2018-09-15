@@ -1,21 +1,21 @@
 
 Debian
 ====================
-This directory contains files used to package jiyod/jiyo-qt
-for Debian-based Linux systems. If you compile jiyod/jiyo-qt yourself, there are some useful files here.
+This directory contains files used to package dogecashd/dogecash-qt
+for Debian-based Linux systems. If you compile dogecashd/dogecash-qt yourself, there are some useful files here.
 
-## jiyo: URI support ##
+## dogecash: URI support ##
 
 
-jiyo-qt.desktop  (Gnome / Open Desktop)
+dogecash-qt.desktop  (Gnome / Open Desktop)
 To install:
 
-	sudo desktop-file-install jiyo-qt.desktop
+	sudo desktop-file-install dogecash-qt.desktop
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your jiyoqt binary to `/usr/bin`
-and the `../../share/pixmaps/jiyo128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your dogecashqt binary to `/usr/bin`
+and the `../../share/pixmaps/dogecash128.png` to `/usr/share/pixmaps`
 
-jiyo-qt.protocol (KDE)
+dogecash-qt.protocol (KDE)
 
