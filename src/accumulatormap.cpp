@@ -37,10 +37,10 @@ bool AccumulatorMap::Load(uint256 nCheckpoint)
         uint32_t nChecksum = ParseChecksum(nCheckpoint, denom);
 
         CBigNum bnValue;
-        // if (!zerocoinDB->ReadAccumulatorValue(nChecksum, bnValue)) {
-        //     LogPrintf("%s : cannot find checksum %d\n", __func__, nChecksum);
-        //     return false;
-        // }
+        if (!zerocoinDB->ReadAccumulatorValue(nChecksum, bnValue)) {
+            LogPrintf("%s : cannot find checksum %d\n", __func__, nChecksum);
+            return false;
+        }
 
         mapAccumulators.at(denom)->setValue(bnValue);
     }
