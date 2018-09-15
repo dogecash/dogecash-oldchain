@@ -172,7 +172,7 @@
         <translation>Подтверждение шифрования кошелька</translation>
     </message>
     <message>
-        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your TRITTIUMs from being stolen by malware infecting your computer.</source>
+        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DogeCashs from being stolen by malware infecting your computer.</source>
         <translation>DogeCash сейчас закроется, чтобы завершить процесс шифрования. Помните, что шифрование вашего кошелька не может полностью защитить ваши DogeCash от кражи с использованием вредоносного ПО.</translation>
     </message>
     <message>
@@ -180,8 +180,8 @@
         <translation>Вы действительно хотите зашифровать свой кошелек?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR TRITTIUM&lt;/b&gt;!</source>
-        <translation>Внимание: если вы зашифруете свой кошелёк и потеряете от него пароль, то вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ СВОИ TRITTIUM&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DogeCash&lt;/b&gt;!</source>
+        <translation>Внимание: если вы зашифруете свой кошелёк и потеряете от него пароль, то вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ СВОИ DogeCash&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -610,7 +610,7 @@
         <translation>&amp;Конфиденциальность</translation>
     </message>
     <message>
-        <source>Privacy Action for zTRITTIUM and Obfuscation</source>
+        <source>Privacy Action for zDogeCash and Obfuscation</source>
         <translation>Конфиденциальное действие и обфускация</translation>
     </message>
     <message>
@@ -1516,32 +1516,32 @@ Please check the address and try again.</source>
         <translation>Выберите уровень конфиденциальности.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 10000 TRITTIUM</source>
-        <translation>Используйте 2 разные мастерноды для смешивания средств до 10000 TRITTIUM</translation>
+        <source>Use 2 separate masternodes to mix funds up to 10000 DogeCash</source>
+        <translation>Используйте 2 разные мастерноды для смешивания средств до 10000 DogeCash</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 10000 TRITTIUM</source>
-        <translation>Используйте 8 разных мастернод для смешивания средств до 10000 TRITTIUM</translation>
+        <source>Use 8 separate masternodes to mix funds up to 10000 DogeCash</source>
+        <translation>Используйте 8 разных мастернод для смешивания средств до 10000 DogeCash</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Используйте 16 разных мастернод</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 TRITTIUM to anonymize 10000 TRITTIUM</source>
-        <translation>Этот вариант является самым быстрым и будет стоить порядка ~0.025 TRITTIUM для анонимизации 10000 TRITTIUM</translation>
+        <source>This option is the quickest and will cost about ~0.025 DogeCash to anonymize 10000 DogeCash</source>
+        <translation>Этот вариант является самым быстрым и будет стоить порядка ~0.025 DogeCash для анонимизации 10000 DogeCash</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 TRITTIUM to anonymize 10000 TRITTIUM</source>
-        <translation>Это средний по скорости вариант и он будет стоить около 0.05 TRITTIUM для анонимизации 10000 TRITTIUM</translation>
+        <source>This option is moderately fast and will cost about 0.05 DogeCash to anonymize 10000 DogeCash</source>
+        <translation>Это средний по скорости вариант и он будет стоить около 0.05 DogeCash для анонимизации 10000 DogeCash</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>Это самый медленный и безопасный вариант. Максимальная анонимность стоит</translation>
     </message>
     <message>
-        <source>0.1 TRITTIUM per 10000 TRITTIUM you anonymize.</source>
-        <translation>0.1 TRITTIUM за 10000 TRITTIUM которые вы собираетесь анонимизировать.</translation>
+        <source>0.1 DogeCash per 10000 DogeCash you anonymize.</source>
+        <translation>0.1 DogeCash за 10000 DogeCash которые вы собираетесь анонимизировать.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
@@ -1684,16 +1684,16 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Карта порта, использующего &amp;UPnP</translation>
     </message>
     <message>
-        <source>Percentage of incoming TRITTIUM which get automatically converted to zTRITTIUM via Zerocoin Protocol (min: 10%)</source>
-        <translation>Процент приходящих TRITTIUM, которые автоматически конвертируются в zTRITTIUM благодаря Zerocoin протоколу (min: 10%)</translation>
+        <source>Percentage of incoming DogeCash which get automatically converted to zDogeCash via Zerocoin Protocol (min: 10%)</source>
+        <translation>Процент приходящих DogeCash, которые автоматически конвертируются в zDogeCash благодаря Zerocoin протоколу (min: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zTRITTIUM</source>
-        <translation>Процент  авточеканненых zTRITTIUM</translation>
+        <source>Percentage of autominted zDogeCash</source>
+        <translation>Процент  авточеканненых zDogeCash</translation>
     </message>
     <message>
-        <source>Preferred Automint zTRITTIUM Denomination</source>
-        <translation>Предпочитаемый номинал авточеканной  монеты  zTRITTIUM</translation>
+        <source>Preferred Automint zDogeCash Denomination</source>
+        <translation>Предпочитаемый номинал авточеканной  монеты  zDogeCash</translation>
     </message>
     <message>
         <source>Connect to the DogeCash network through a SOCKS5 proxy.</source>
@@ -1827,8 +1827,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Вид</translation>
     </message>
     <message>
-        <source>TRITTIUM Balances</source>
-        <translation>Баланс TRITTIUM</translation>
+        <source>DogeCash Balances</source>
+        <translation>Баланс DogeCash</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -1891,12 +1891,12 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Расходуемый:</translation>
     </message>
     <message>
-        <source>TRITTIUM:</source>
-        <translation>TRITTIUM:</translation>
+        <source>DogeCash:</source>
+        <translation>DogeCash:</translation>
     </message>
     <message>
-        <source>zTRITTIUM:</source>
-        <translation>zTRITTIUM:</translation>
+        <source>zDogeCash:</source>
+        <translation>zDogeCash:</translation>
     </message>
     <message>
         <source>0 %</source>
@@ -2020,8 +2020,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
 <context>
     <name>PrivacyDialog</name>
     <message>
-        <source>TRITTIUM which were anonymized via Zerocin Protocol</source>
-        <translation>TRITTIUM, который был анонимно использован через Zerocoin протокол</translation>
+        <source>DogeCash which were anonymized via Zerocin Protocol</source>
+        <translation>DogeCash, который был анонимно использован через Zerocoin протокол</translation>
     </message>
     <message>
         <source>Zerocoin Actions:</source>
@@ -2706,8 +2706,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Изменить:</translation>
     </message>
     <message>
-        <source>0 TRITTIUM</source>
-        <translation>0 TRITTIUM</translation>
+        <source>0 DogeCash</source>
+        <translation>0 DogeCash</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>

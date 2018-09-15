@@ -1,9 +1,9 @@
 /* src/config/dogecash-config.h.  Generated from dogecash-config.h.in by configure.  */
 /* src/config/dogecash-config.h.in.  Generated from configure.ac by autoheader.  */
 
-#ifndef TRITTIUM_CONFIG_H
+#ifndef DogeCash_CONFIG_H
 
-#define TRITTIUM_CONFIG_H
+#define DogeCash_CONFIG_H
 
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
@@ -340,4 +340,4 @@
 /* Define for large files, on AIX-style hosts. */
 /* #undef _LARGE_FILES */
 
-#endif //TRITTIUM_CONFIG_H
+#endif //DogeCash_CONFIG_H

@@ -176,16 +176,16 @@
         <translation>지갑 암호화 확인</translation>
     </message>
     <message>
-        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your TRITTIUMs from being stolen by malware infecting your computer.</source>
-        <translation>DogeCash는 이제 암호화 프로세스를 마치기 위해 닫힐것입니다. 지갑을 암호화하더라도 맬웨어로 인한 TRITTIUMs 의 도난당하는 것을 완벽하게 보호 할 수는 없습니다.</translation>
+        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DogeCashs from being stolen by malware infecting your computer.</source>
+        <translation>DogeCash는 이제 암호화 프로세스를 마치기 위해 닫힐것입니다. 지갑을 암호화하더라도 맬웨어로 인한 DogeCashs 의 도난당하는 것을 완벽하게 보호 할 수는 없습니다.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>지갑을 암호화 하시겠습니까?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR TRITTIUM&lt;/b&gt;!</source>
-        <translation>경고: 지갑 암호화 후 암호를 분실하게 되면 &lt;b&gt;모든 TRITTIUM를 잃게 됩니다&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DogeCash&lt;/b&gt;!</source>
+        <translation>경고: 지갑 암호화 후 암호를 분실하게 되면 &lt;b&gt;모든 DogeCash를 잃게 됩니다&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -618,8 +618,8 @@
         <translation>&amp;프라이버시</translation>
     </message>
     <message>
-        <source>Privacy Action for zTRITTIUM and Obfuscation</source>
-        <translation>zTRITTIUM와 난독화를 위한 프라이버스 작업</translation>
+        <source>Privacy Action for zDogeCash and Obfuscation</source>
+        <translation>zDogeCash와 난독화를 위한 프라이버스 작업</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -1548,32 +1548,32 @@ Please check the address and try again.</source>
         <translation>익명화 레벨을 선택해주세요.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 10000 TRITTIUM</source>
-        <translation>2개의 개별 마스터노드를 이용하여 최대 10000 TRITTIUM 를 섞을 수 있습니다.</translation>
+        <source>Use 2 separate masternodes to mix funds up to 10000 DogeCash</source>
+        <translation>2개의 개별 마스터노드를 이용하여 최대 10000 DogeCash 를 섞을 수 있습니다.</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 10000 TRITTIUM</source>
-        <translation>8개의 개별 마스터노드를 이용하여 최대 10000 TRITTIUM 를 섞을 수 있습니다.</translation>
+        <source>Use 8 separate masternodes to mix funds up to 10000 DogeCash</source>
+        <translation>8개의 개별 마스터노드를 이용하여 최대 10000 DogeCash 를 섞을 수 있습니다.</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>16개의 개별 마스터노드를 사용</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 TRITTIUM to anonymize 10000 TRITTIUM</source>
-        <translation>이 옵션은 가장 빠르게 전송되며 10000 TRITTIUM 익명화에 약 ~0.025 TRITTIUM의 비용이 들어갑니다.</translation>
+        <source>This option is the quickest and will cost about ~0.025 DogeCash to anonymize 10000 DogeCash</source>
+        <translation>이 옵션은 가장 빠르게 전송되며 10000 DogeCash 익명화에 약 ~0.025 DogeCash의 비용이 들어갑니다.</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 TRITTIUM to anonymize 10000 TRITTIUM</source>
-        <translation>이 옵션은 중간 정도의 속도로 전송되며 10000 TRITTIUM 익명화에 약 0.05 TRITTIUM의 비용이 들어갑니다.</translation>
+        <source>This option is moderately fast and will cost about 0.05 DogeCash to anonymize 10000 DogeCash</source>
+        <translation>이 옵션은 중간 정도의 속도로 전송되며 10000 DogeCash 익명화에 약 0.05 DogeCash의 비용이 들어갑니다.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>이것은 가장 느리고 안전한 옵션입니다. 최고 익명성을 사용하면 비용이 발생합니다.</translation>
     </message>
     <message>
-        <source>0.1 TRITTIUM per 10000 TRITTIUM you anonymize.</source>
-        <translation>10000 TRITTIUM 익명화에 0.1 TRITTIUM 가 듭니다.</translation>
+        <source>0.1 DogeCash per 10000 DogeCash you anonymize.</source>
+        <translation>10000 DogeCash 익명화에 0.1 DogeCash 가 듭니다.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
@@ -1716,20 +1716,20 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>&amp;UPnp를 사용하여 포트 매핑</translation>
     </message>
     <message>
-        <source>Percentage of incoming TRITTIUM which get automatically converted to zTRITTIUM via Zerocoin Protocol (min: 10%)</source>
-        <translation>TRITTIUM수신시 자동변환 zTRITTIUM 퍼센트 (최소값:10%)</translation>
+        <source>Percentage of incoming DogeCash which get automatically converted to zDogeCash via Zerocoin Protocol (min: 10%)</source>
+        <translation>DogeCash수신시 자동변환 zDogeCash 퍼센트 (최소값:10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zTRITTIUM</source>
-        <translation>자동 변환되는 zTRITTIUM 퍼센트</translation>
+        <source>Percentage of autominted zDogeCash</source>
+        <translation>자동 변환되는 zDogeCash 퍼센트</translation>
     </message>
     <message>
-        <source>Wait with automatic conversion to Zerocoin until enough TRITTIUM for this denomination is available</source>
-        <translation>이 디노미네이션의 TRITTIUM가 충분해질 때까지 Zerocoin으로 자동전환은 보류됩니다.</translation>
+        <source>Wait with automatic conversion to Zerocoin until enough DogeCash for this denomination is available</source>
+        <translation>이 디노미네이션의 DogeCash가 충분해질 때까지 Zerocoin으로 자동전환은 보류됩니다.</translation>
     </message>
     <message>
-        <source>Preferred Automint zTRITTIUM Denomination</source>
-        <translation>선호하는 자동생성 zTRITTIUM 디노미네이션 </translation>
+        <source>Preferred Automint zDogeCash Denomination</source>
+        <translation>선호하는 자동생성 zDogeCash 디노미네이션 </translation>
     </message>
     <message>
         <source>Connect to the DogeCash network through a SOCKS5 proxy.</source>
@@ -1863,8 +1863,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Form</translation>
     </message>
     <message>
-        <source>TRITTIUM Balances</source>
-        <translation>TRITTIUM 잔액</translation>
+        <source>DogeCash Balances</source>
+        <translation>DogeCash 잔액</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -1931,12 +1931,12 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>전체 잔액 (대기중 코인 포함)</translation>
     </message>
     <message>
-        <source>TRITTIUM:</source>
-        <translation>TRITTIUM:</translation>
+        <source>DogeCash:</source>
+        <translation>DogeCash:</translation>
     </message>
     <message>
-        <source>zTRITTIUM:</source>
-        <translation>zTRITTIUM:</translation>
+        <source>zDogeCash:</source>
+        <translation>zDogeCash:</translation>
     </message>
     <message>
         <source>0 %</source>
@@ -2064,12 +2064,12 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
 <context>
     <name>PrivacyDialog</name>
     <message>
-        <source>TRITTIUM which were anonymized via Zerocin Protocol</source>
-        <translation>제로코인 프로토콜을 통해 익명화된 TRITTIUM</translation>
+        <source>DogeCash which were anonymized via Zerocin Protocol</source>
+        <translation>제로코인 프로토콜을 통해 익명화된 DogeCash</translation>
     </message>
     <message>
-        <source>Zerocoin TRITTIUM (zTRITTIUM)</source>
-        <translation>제로코인 TRITTIUM (zTRITTIUM)</translation>
+        <source>Zerocoin DogeCash (zDogeCash)</source>
+        <translation>제로코인 DogeCash (zDogeCash)</translation>
     </message>
     <message>
         <source>Zerocoin Actions:</source>
@@ -2081,7 +2081,7 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
     </message>
     <message>
         <source>Enter an amount of Phr to convert to zPhr</source>
-        <translation>zTRITTIUM로 변환할 TRITTIUM 수량을 입력하세요.</translation>
+        <translation>zDogeCash로 변환할 DogeCash 수량을 입력하세요.</translation>
     </message>
     <message>
         <source>Mint Zerocoin</source>
@@ -2092,16 +2092,16 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>0</translation>
     </message>
     <message>
-        <source>zTRITTIUM</source>
-        <translation>zTRITTIUM</translation>
+        <source>zDogeCash</source>
+        <translation>zDogeCash</translation>
     </message>
     <message>
         <source>Available for Minting:</source>
         <translation>생성 가능한 수량 :</translation>
     </message>
     <message>
-        <source>0.000 000 00 TRITTIUM</source>
-        <translation>0.000 000 00 TRITTIUM</translation>
+        <source>0.000 000 00 DogeCash</source>
+        <translation>0.000 000 00 DogeCash</translation>
     </message>
     <message>
         <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
@@ -2137,11 +2137,11 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
     </message>
     <message>
         <source>zPhr Control</source>
-        <translation>zTRITTIUM 설정</translation>
+        <translation>zDogeCash 설정</translation>
     </message>
     <message>
         <source>zPhr Selected:</source>
-        <translation>선택한 zTRITTIUM : </translation>
+        <translation>선택한 zDogeCash : </translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2160,8 +2160,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>가능한 잔액:</translation>
     </message>
     <message>
-        <source>0 zTRITTIUM</source>
-        <translation>0 zTRITTIUM</translation>
+        <source>0 zDogeCash</source>
+        <translation>0 zDogeCash</translation>
     </message>
     <message>
         <source>Security Level for Zerocoin Transactions. More is better, but needs more time and resources.</source>
@@ -2181,7 +2181,7 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
     </message>
     <message>
         <source>The DogeCash address to send the payment to. Creates local payment to yourself when empty.</source>
-        <translation>TRITTIUM를 전송할 DogeCash 주소입니다. 비어있을 때 자신에게 지불할 주소를 생성합니다.</translation>
+        <translation>DogeCash를 전송할 DogeCash 주소입니다. 비어있을 때 자신에게 지불할 주소를 생성합니다.</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2400,8 +2400,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>성공적으로 발행됨</translation>
     </message>
     <message>
-        <source> zTRITTIUM in </source>
-        <translation> zTRITTIUM in </translation>
+        <source> zDogeCash in </source>
+        <translation> zDogeCash in </translation>
     </message>
     <message>
         <source> sec. Used denominations:
@@ -2503,7 +2503,7 @@ Please be patient...</source>
     </message>
     <message>
         <source>zPhr Mint</source>
-        <translation>zTRITTIUM 생성</translation>
+        <translation>zDogeCash 생성</translation>
     </message>
     <message>
         <source>Sending successful, return code: </source>
@@ -3132,8 +3132,8 @@ Please be patient...</source>
         <translation>UTXO 크기:</translation>
     </message>
     <message>
-        <source>0 TRITTIUM</source>
-        <translation>0 TRITTIUM</translation>
+        <source>0 DogeCash</source>
+        <translation>0 DogeCash</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -3184,12 +3184,12 @@ Please be patient...</source>
         <translation>코인 자동으로 선택됨</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uTRITTIUMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uTRITTIUMs in fee,&lt;br /&gt;while "at least" pays 1000 uTRITTIUMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>트랜잭션이 250바이트 인 경우 사용자 지정 수수료가 1000 uTRITTIUMs로 설정되고,&lt;br /&gt;1000 uTRITTIUMs 안에는 최소 "킬로바이트당" 250 uTRITTIUMs 만 지불합니다. 1 킬로바이트보다 큰 트랜잭션의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
+        <source>If the custom fee is set to 1000 uDogeCashs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDogeCashs in fee,&lt;br /&gt;while "at least" pays 1000 uDogeCashs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>트랜잭션이 250바이트 인 경우 사용자 지정 수수료가 1000 uDogeCashs로 설정되고,&lt;br /&gt;1000 uDogeCashs 안에는 최소 "킬로바이트당" 250 uDogeCashs 만 지불합니다. 1 킬로바이트보다 큰 트랜잭션의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uTRITTIUMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uTRITTIUMs in fee,&lt;br /&gt;while "total at least" pays 1000 uTRITTIUMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>트랜잭션이 250바이트 인 경우 사용자 지정 수수료가 1000 uTRITTIUMs로 설정되고,&lt;br /&gt;1000 uTRITTIUMs 안에는 전체에서 최소 "킬로바이트당" 250 uTRITTIUMs 만 지불합니다. 1 킬로바이트보다 큰 트랜잭션의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
+        <source>If the custom fee is set to 1000 uDogeCashs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDogeCashs in fee,&lt;br /&gt;while "total at least" pays 1000 uDogeCashs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>트랜잭션이 250바이트 인 경우 사용자 지정 수수료가 1000 uDogeCashs로 설정되고,&lt;br /&gt;1000 uDogeCashs 안에는 전체에서 최소 "킬로바이트당" 250 uDogeCashs 만 지불합니다. 1 킬로바이트보다 큰 트랜잭션의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DogeCash transactions than the network can process.</source>
@@ -3240,8 +3240,8 @@ Please be patient...</source>
         <translation>&amp;받는 사람 추가</translation>
     </message>
     <message>
-        <source>Anonymized TRITTIUM</source>
-        <translation>익명화 TRITTIUM</translation>
+        <source>Anonymized DogeCash</source>
+        <translation>익명화 DogeCash</translation>
     </message>
     <message>
         <source>SwiftTX</source>
@@ -3962,19 +3962,19 @@ Please be patient...</source>
     </message>
     <message>
         <source>Converted Phr to zPhr</source>
-        <translation>zTRITTIUM로 변환된 TRITTIUM</translation>
+        <translation>zDogeCash로 변환된 DogeCash</translation>
     </message>
     <message>
         <source>Spent zPhr</source>
-        <translation>전송된 zTRITTIUM</translation>
+        <translation>전송된 zDogeCash</translation>
     </message>
     <message>
         <source>Received Phr from zPhr</source>
-        <translation>zTRITTIUM로 전송받은 TRITTIUM</translation>
+        <translation>zDogeCash로 전송받은 DogeCash</translation>
     </message>
     <message>
         <source>Minted Change as zPhr from zPhr Spend</source>
-        <translation>zTRITTIUM 전송후 남은 잔돈 zTRITTIUM 생성됨</translation>
+        <translation>zDogeCash 전송후 남은 잔돈 zDogeCash 생성됨</translation>
     </message>
     <message>
         <source>Converted zPhr to Phr</source>
@@ -4097,7 +4097,7 @@ Please be patient...</source>
     </message>
     <message>
         <source>Received Phr from zPhr</source>
-        <translation>zTRITTIUM로 전송받은 TRITTIUM</translation>
+        <translation>zDogeCash로 전송받은 DogeCash</translation>
     </message>
     <message>
         <source>Zerocoin Mint</source>
@@ -4109,7 +4109,7 @@ Please be patient...</source>
     </message>
     <message>
         <source>Zerocoin Spend, Change in zPhr</source>
-        <translation>제로코인 전송, 잔돈은 zTRITTIUM</translation>
+        <translation>제로코인 전송, 잔돈은 zDogeCash</translation>
     </message>
     <message>
         <source>Zerocoin Spend to Self</source>
@@ -4233,8 +4233,8 @@ Please be patient...</source>
         <translation>코인 전송 </translation>
     </message>
     <message>
-        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 TRITTIUM.</source>
-        <translation>SwiftTX는 아직 높은 값을 전송하는 것을 지원하지 않습니다. 트랜잭션은 현재 %1 TRITTIUM로 제한됩니다.</translation>
+        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DogeCash.</source>
+        <translation>SwiftTX는 아직 높은 값을 전송하는 것을 지원하지 않습니다. 트랜잭션은 현재 %1 DogeCash로 제한됩니다.</translation>
     </message>
 </context>
 <context>
@@ -4280,7 +4280,7 @@ Please be patient...</source>
     <name>ZPhrControlDialog</name>
     <message>
         <source>Select zPhr to Spend</source>
-        <translation>전송할 zTRITTIUM 선택</translation>
+        <translation>전송할 zDogeCash 선택</translation>
     </message>
     <message>
         <source>Quantity</source>
@@ -4394,12 +4394,12 @@ Please be patient...</source>
         <translation>최고 블록이 변경될 경우 명령을 실행하십시오 (명령 내 %s 는 블록 해시로 대체 되었습니다)</translation>
     </message>
     <message>
-        <source>Fees (in TRITTIUM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>이것보다 작은 수수료 (TRITTIUM/Kb)는 중계 수수료가 없는 것으로 간주됩니다 (기본값: %s)</translation>
+        <source>Fees (in DogeCash/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>이것보다 작은 수수료 (DogeCash/Kb)는 중계 수수료가 없는 것으로 간주됩니다 (기본값: %s)</translation>
     </message>
     <message>
-        <source>Fees (in TRITTIUM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>이것보다 작은 수수료 (TRITTIUM/Kb)는 트랜잭션 생성 수수료가 없는 것으로 간주됩니다 (기본값: %s)</translation>
+        <source>Fees (in DogeCash/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>이것보다 작은 수수료 (DogeCash/Kb)는 트랜잭션 생성 수수료가 없는 것으로 간주됩니다 (기본값: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4526,12 +4526,12 @@ rpcpassword=%s
         <translation>이 트랜잭션를 위해 난독화 표기된 충분한 금액을 찾을 수 없습니다.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 TRITTIUM.</source>
-        <translation>이 트랜잭션를 위해 난독화 표기가 안된 충분한 금액을 찾을 수 없습니다. 10000 TRITTIUM과 일치하지 않음.</translation>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 DogeCash.</source>
+        <translation>이 트랜잭션를 위해 난독화 표기가 안된 충분한 금액을 찾을 수 없습니다. 10000 DogeCash과 일치하지 않음.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 10000 TRITTIUM.</source>
-        <translation>트랜잭션에 대한 충분한 금액을 찾을 수 없습니다. 10000 TRITTIUM와 같지 않음</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 10000 DogeCash.</source>
+        <translation>트랜잭션에 대한 충분한 금액을 찾을 수 없습니다. 10000 DogeCash와 같지 않음</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4834,8 +4834,8 @@ rpcpassword=%s
         <translation>블록을 받아오는데 실패했습니다.</translation>
     </message>
     <message>
-        <source>Fee (in TRITTIUM/kB) to add to transactions you send (default: %s)</source>
-        <translation>당신이 보내는 트랜잭션에 추가 할 수수료 (TRITTIUM/kB) (기본값: %s)</translation>
+        <source>Fee (in DogeCash/kB) to add to transactions you send (default: %s)</source>
+        <translation>당신이 보내는 트랜잭션에 추가 할 수수료 (DogeCash/kB) (기본값: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>

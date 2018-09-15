@@ -221,7 +221,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your TRITTIUMs from being stolen by malware infecting your computer.</source>
+        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DogeCashs from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -231,7 +231,7 @@
     </message>
     <message>
         <location line="+0"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR TRITTIUM&lt;/b&gt;!</source>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DogeCash&lt;/b&gt;!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -546,7 +546,7 @@
     </message>
     <message>
         <location line="+11"/>
-        <source>Privacy Actions for zTRITTIUM</source>
+        <source>Privacy Actions for zDogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1953,12 +1953,12 @@ Please check the address and try again.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 2 separate masternodes to mix funds up to 10000 TRITTIUM</source>
+        <source>Use 2 separate masternodes to mix funds up to 10000 DogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 8 separate masternodes to mix funds up to 10000 TRITTIUM</source>
+        <source>Use 8 separate masternodes to mix funds up to 10000 DogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1968,12 +1968,12 @@ Please check the address and try again.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>This option is the quickest and will cost about ~0.025 TRITTIUM to anonymize 10000 TRITTIUM</source>
+        <source>This option is the quickest and will cost about ~0.025 DogeCash to anonymize 10000 DogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>This option is moderately fast and will cost about 0.05 TRITTIUM to anonymize 10000 TRITTIUM</source>
+        <source>This option is moderately fast and will cost about 0.05 DogeCash to anonymize 10000 DogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1983,7 +1983,7 @@ Please check the address and try again.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>0.1 TRITTIUM per 10000 TRITTIUM you anonymize.</source>
+        <source>0.1 DogeCash per 10000 DogeCash you anonymize.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2162,23 +2162,23 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</source
     </message>
     <message>
         <location line="-133"/>
-        <source>Percentage of incoming TRITTIUM which get automatically converted to zTRITTIUM via Zerocoin Protocol (min: 10%)</source>
+        <source>Percentage of incoming DogeCash which get automatically converted to zDogeCash via Zerocoin Protocol (min: 10%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Percentage of autominted zTRITTIUM</source>
+        <source>Percentage of autominted zDogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+30"/>
         <location line="+16"/>
-        <source>Wait with automatic conversion to Zerocoin until enough TRITTIUM for this denomination is available</source>
+        <source>Wait with automatic conversion to Zerocoin until enough DogeCash for this denomination is available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-13"/>
-        <source>Preferred Automint zTRITTIUM Denomination</source>
+        <source>Preferred Automint zDogeCash Denomination</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2348,7 +2348,7 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</source
     </message>
     <message>
         <location line="+43"/>
-        <source>TRITTIUM Balances</source>
+        <source>DogeCash Balances</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2449,17 +2449,17 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</source
     </message>
     <message>
         <location line="+36"/>
-        <source>TRITTIUM:</source>
+        <source>DogeCash:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+35"/>
-        <source>zTRITTIUM:</source>
+        <source>zDogeCash:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Current percentage of zTRITTIUM.
+        <source>Current percentage of zDogeCash.
 If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2472,7 +2472,7 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
     <message>
         <location line="-46"/>
         <location line="+13"/>
-        <source>Locked TRITTIUM or Masternode collaterals. These are excluded from zTRITTIUM minting.</source>
+        <source>Locked DogeCash or Masternode collaterals. These are excluded from zDogeCash minting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2481,7 +2481,7 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
         <location line="+189"/>
         <location line="+31"/>
         <location line="+44"/>
-        <source>0.000 000 00 TRITTIUM</source>
+        <source>0.000 000 00 DogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2492,7 +2492,7 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
     <message>
         <location line="+7"/>
         <location line="+10"/>
-        <source>Unlocked TRITTIUMs. These can be used for zTRITTIUM minting.</source>
+        <source>Unlocked DogeCashs. These can be used for zDogeCash minting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2509,7 +2509,7 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
         <location line="+14"/>
         <location line="+104"/>
         <source>Mature: more than 20 confirmation and more than 3 mints of the same denomination after it was minted.
-These zTRITTIUM are spendable.</source>
+These zDogeCash are spendable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2520,7 +2520,7 @@ These zTRITTIUM are spendable.</source>
     <message>
         <location line="+23"/>
         <location line="+35"/>
-        <source>All available zTRITTIUM, unconfirmed and immature zTRITTIUM included.</source>
+        <source>All available zDogeCash, unconfirmed and immature zDogeCash included.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2550,7 +2550,7 @@ Immature: confirmed, but less than 3 mints of the same denomination after it was
     </message>
     <message>
         <location line="+93"/>
-        <source>Current percentage of zTRITTIUM.
+        <source>Current percentage of zDogeCash.
 If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
         <translation type="unfinished"></translation>
@@ -2716,12 +2716,12 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     <name>PrivacyDialog</name>
     <message>
         <location filename="../forms/privacydialog.ui" line="+55"/>
-        <source>TRITTIUM which were anonymized via Zerocin Protocol</source>
+        <source>DogeCash which were anonymized via Zerocin Protocol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Zerocoin TRITTIUM (zTRITTIUM)</source>
+        <source>Zerocoin DogeCash (zDogeCash)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2756,7 +2756,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     <message>
         <location line="-349"/>
         <location line="+629"/>
-        <source>zTRITTIUM</source>
+        <source>zDogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2771,7 +2771,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+13"/>
-        <source>0.000 000 00 TRITTIUM</source>
+        <source>0.000 000 00 DogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2847,7 +2847,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+7"/>
-        <source>Available (mature and spendable) zTRITTIUM for spending</source>
+        <source>Available (mature and spendable) zDogeCash for spending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2857,15 +2857,15 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+16"/>
-        <source>Available (mature and spendable) zTRITTIUM for spending
+        <source>Available (mature and spendable) zDogeCash for spending
 
-zTRITTIUM are mature when they have more than 20 confirmations AND more than 3 mints of the same denomination after them were minted</source>
+zDogeCash are mature when they have more than 20 confirmations AND more than 3 mints of the same denomination after them were minted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
         <location line="+417"/>
-        <source>0 zTRITTIUM</source>
+        <source>0 zDogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2956,7 +2956,7 @@ zTRITTIUM are mature when they have more than 20 confirmations AND more than 3 m
     <message>
         <location line="+62"/>
         <location line="+38"/>
-        <source>Total Balance including unconfirmed and immature zTRITTIUM</source>
+        <source>Total Balance including unconfirmed and immature zDogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3192,7 +3192,7 @@ Immature: confirmed, but less than 3 mints of the same denomination after it was
     </message>
     <message>
         <location line="+0"/>
-        <source> zTRITTIUM in </source>
+        <source> zDogeCash in </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4188,7 +4188,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+7"/>
-        <source>0 TRITTIUM</source>
+        <source>0 DogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4253,12 +4253,12 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+772"/>
-        <source>If the custom fee is set to 1000 uTRITTIUMs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uTRITTIUMs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uTRITTIUMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uDogeCashs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uDogeCashs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uDogeCashs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>If the custom fee is set to 1000 uTRITTIUMs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uTRITTIUMs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uTRITTIUMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uDogeCashs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uDogeCashs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uDogeCashs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4324,7 +4324,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+35"/>
-        <source>Anonymized TRITTIUM</source>
+        <source>Anonymized DogeCash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5611,7 +5611,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <message>
         <location line="-18"/>
         <location line="+9"/>
-        <source>SwiftTX doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 TRITTIUM.</source>
+        <source>SwiftTX doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DogeCash.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5811,12 +5811,12 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+3"/>
-        <source>Fees (in TRITTIUM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <source>Fees (in DogeCash/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Fees (in TRITTIUM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <source>Fees (in DogeCash/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5966,12 +5966,12 @@ for example: alertnotify=echo %%s | mail -s &quot;DogeCash Alert&quot; admin@foo
     </message>
     <message>
         <location line="+2"/>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 TRITTIUM.</source>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 DogeCash.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Unable to locate enough funds for this transaction that are not equal 10000 TRITTIUM.</source>
+        <source>Unable to locate enough funds for this transaction that are not equal 10000 DogeCash.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6351,7 +6351,7 @@ for example: alertnotify=echo %%s | mail -s &quot;DogeCash Alert&quot; admin@foo
     </message>
     <message>
         <location line="+2"/>
-        <source>Fee (in TRITTIUM/kB) to add to transactions you send (default: %s)</source>
+        <source>Fee (in DogeCash/kB) to add to transactions you send (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

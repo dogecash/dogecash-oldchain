@@ -89,7 +89,7 @@ use old versions of Upstart and do not supply the start-stop-daemon uitility.
 Copy trttiumd.init to /etc/init.d/trttiumd. Test by running "service trttiumd start".
 
 Using this script, you can adjust the path and flags to the trttiumd program by
-setting the TRITTIUMD and FLAGS environment variables in the file
+setting the DogeCashD and FLAGS environment variables in the file
 /etc/sysconfig/trttiumd. You can also use the DAEMONOPTS environment variable here.
 
 5. Auto-respawn

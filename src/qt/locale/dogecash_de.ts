@@ -176,16 +176,16 @@
         <translation>Wallet-Verschlüsselung bestätigen</translation>
     </message>
     <message>
-        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your TRITTIUMs from being stolen by malware infecting your computer.</source>
-        <translation>Die Anwendungs wird nun geschlossen um die Verschlüsselung abzuschließen. Bitte beachten Sie, dass auch Verschlüsselung nicht nicht vollständig vor Diebstahl ihrer TRITTIUMs durch Schadsoftware schützt, die ihren Computer befällt.</translation>
+        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DogeCashs from being stolen by malware infecting your computer.</source>
+        <translation>Die Anwendungs wird nun geschlossen um die Verschlüsselung abzuschließen. Bitte beachten Sie, dass auch Verschlüsselung nicht nicht vollständig vor Diebstahl ihrer DogeCashs durch Schadsoftware schützt, die ihren Computer befällt.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Sind Sie sich sicher, dass Sie ihre Wallet verschlüsseln möchten?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR TRITTIUM&lt;/b&gt;!</source>
-        <translation>Warnung: Wenn Sie ihre Wallet verschlüsseln und Ihre Passphrase verlieren werden Sie &lt;b&gt;alle ihre TRITTIUMs verlieren&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DogeCash&lt;/b&gt;!</source>
+        <translation>Warnung: Wenn Sie ihre Wallet verschlüsseln und Ihre Passphrase verlieren werden Sie &lt;b&gt;alle ihre DogeCashs verlieren&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -618,8 +618,8 @@
         <translation>&amp;Privatsphäre</translation>
     </message>
     <message>
-        <source>Privacy Action for zTRITTIUM and Obfuscation</source>
-        <translation>Privatsphäre Aktion für zTRITTIUM und Verschleierung</translation>
+        <source>Privacy Action for zDogeCash and Obfuscation</source>
+        <translation>Privatsphäre Aktion für zDogeCash und Verschleierung</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -1539,32 +1539,32 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Bitte den gewünschten Privatsphäre Level auswählen.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 10000 TRITTIUM</source>
-        <translation>2 separate Masternodes verwenden um bis zu 10000 TRITTIUM zu mixen</translation>
+        <source>Use 2 separate masternodes to mix funds up to 10000 DogeCash</source>
+        <translation>2 separate Masternodes verwenden um bis zu 10000 DogeCash zu mixen</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 10000 TRITTIUM</source>
-        <translation>8 separate Masternodes verwenden um bis zu 10000 TRITTIUM zu mixen</translation>
+        <source>Use 8 separate masternodes to mix funds up to 10000 DogeCash</source>
+        <translation>8 separate Masternodes verwenden um bis zu 10000 DogeCash zu mixen</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>16 separate Masternodes verwenden</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 TRITTIUM to anonymize 10000 TRITTIUM</source>
-        <translation>Diese Option ist die schnellst und kostet ungefähr ~0.025 TRITTIUM um 10000 TRITTIUM zu anonymisieren </translation>
+        <source>This option is the quickest and will cost about ~0.025 DogeCash to anonymize 10000 DogeCash</source>
+        <translation>Diese Option ist die schnellst und kostet ungefähr ~0.025 DogeCash um 10000 DogeCash zu anonymisieren </translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 TRITTIUM to anonymize 10000 TRITTIUM</source>
-        <translation>Diese Option ist angemessen schnell und kostet ungefähr  0.05 TRITTIUM um 10000 TRITTIUM zu anonymisieren</translation>
+        <source>This option is moderately fast and will cost about 0.05 DogeCash to anonymize 10000 DogeCash</source>
+        <translation>Diese Option ist angemessen schnell und kostet ungefähr  0.05 DogeCash um 10000 DogeCash zu anonymisieren</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>Diese Option ist die langsamste und sicherste Option. Die Verwendung maximaler Anonymisierung kostet</translation>
     </message>
     <message>
-        <source>0.1 TRITTIUM per 10000 TRITTIUM you anonymize.</source>
-        <translation>0.1 TRITTIUM per 10000 TRITTIUM die anonymisiert werden.</translation>
+        <source>0.1 DogeCash per 10000 DogeCash you anonymize.</source>
+        <translation>0.1 DogeCash per 10000 DogeCash die anonymisiert werden.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
@@ -1707,20 +1707,20 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Port mit &amp;UPnP mappen</translation>
     </message>
     <message>
-        <source>Percentage of incoming TRITTIUM which get automatically converted to zTRITTIUM via Zerocoin Protocol (min: 10%)</source>
-        <translation>Anteil des eingehenden TRITTIUM, welcher automatisch zu zTRITTIUM via Zerocoin Protokoll konvertiert wird (min: 10%)</translation>
+        <source>Percentage of incoming DogeCash which get automatically converted to zDogeCash via Zerocoin Protocol (min: 10%)</source>
+        <translation>Anteil des eingehenden DogeCash, welcher automatisch zu zDogeCash via Zerocoin Protokoll konvertiert wird (min: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zTRITTIUM</source>
-        <translation>Prozentsatz der automatisierten zTRITTIUM</translation>
+        <source>Percentage of autominted zDogeCash</source>
+        <translation>Prozentsatz der automatisierten zDogeCash</translation>
     </message>
     <message>
-        <source>Wait with automatic conversion to Zerocoin until enough TRITTIUM for this denomination is available</source>
-        <translation>Warte mit automatischer Konvertierung zu Zerocoin, bis genügend TRITTIUM für diese Stückelung verfügbar ist</translation>
+        <source>Wait with automatic conversion to Zerocoin until enough DogeCash for this denomination is available</source>
+        <translation>Warte mit automatischer Konvertierung zu Zerocoin, bis genügend DogeCash für diese Stückelung verfügbar ist</translation>
     </message>
     <message>
-        <source>Preferred Automint zTRITTIUM Denomination</source>
-        <translation>Bevorzugte automatisierte zTRITTIUM Stückelung </translation>
+        <source>Preferred Automint zDogeCash Denomination</source>
+        <translation>Bevorzugte automatisierte zDogeCash Stückelung </translation>
     </message>
     <message>
         <source>Connect to the DogeCash network through a SOCKS5 proxy.</source>
@@ -1854,8 +1854,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Formular</translation>
     </message>
     <message>
-        <source>TRITTIUM Balances</source>
-        <translation>TRITTIUM Bilanzen</translation>
+        <source>DogeCash Balances</source>
+        <translation>DogeCash Bilanzen</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -1922,12 +1922,12 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Kombinierte Bilanz (einschließlich unreifer Coins)</translation>
     </message>
     <message>
-        <source>TRITTIUM:</source>
-        <translation>TRITTIUM:</translation>
+        <source>DogeCash:</source>
+        <translation>DogeCash:</translation>
     </message>
     <message>
-        <source>zTRITTIUM:</source>
-        <translation>zTRITTIUM:</translation>
+        <source>zDogeCash:</source>
+        <translation>zDogeCash:</translation>
     </message>
     <message>
         <source>0 %</source>
@@ -2055,12 +2055,12 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
 <context>
     <name>PrivacyDialog</name>
     <message>
-        <source>TRITTIUM which were anonymized via Zerocin Protocol</source>
-        <translation>TRITTIUM, die über das Zerocoin-Protokoll anonymisiert wurden</translation>
+        <source>DogeCash which were anonymized via Zerocin Protocol</source>
+        <translation>DogeCash, die über das Zerocoin-Protokoll anonymisiert wurden</translation>
     </message>
     <message>
-        <source>Zerocoin TRITTIUM (zTRITTIUM)</source>
-        <translation>Zerocoin TRITTIUM (zTRITTIUM)</translation>
+        <source>Zerocoin DogeCash (zDogeCash)</source>
+        <translation>Zerocoin DogeCash (zDogeCash)</translation>
     </message>
     <message>
         <source>Zerocoin Actions:</source>
@@ -2083,16 +2083,16 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>0</translation>
     </message>
     <message>
-        <source>zTRITTIUM</source>
-        <translation>zTRITTIUM</translation>
+        <source>zDogeCash</source>
+        <translation>zDogeCash</translation>
     </message>
     <message>
         <source>Available for Minting:</source>
         <translation>Verfügbar für Prägung:</translation>
     </message>
     <message>
-        <source>0.000 000 00 TRITTIUM</source>
-        <translation>0.000 000 00 TRITTIUM</translation>
+        <source>0.000 000 00 DogeCash</source>
+        <translation>0.000 000 00 DogeCash</translation>
     </message>
     <message>
         <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
@@ -2151,8 +2151,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Verfügbare Bilanz:</translation>
     </message>
     <message>
-        <source>0 zTRITTIUM</source>
-        <translation>0 zTRITTIUM</translation>
+        <source>0 zDogeCash</source>
+        <translation>0 zDogeCash</translation>
     </message>
     <message>
         <source>Security Level for Zerocoin Transactions. More is better, but needs more time and resources.</source>
@@ -2391,8 +2391,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Erfolgreich geprägt</translation>
     </message>
     <message>
-        <source> zTRITTIUM in </source>
-        <translation> zTRITTIUM in </translation>
+        <source> zDogeCash in </source>
+        <translation> zDogeCash in </translation>
     </message>
     <message>
         <source> sec. Used denominations:
@@ -2470,7 +2470,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>zPhr Spend #: </source>
-        <translation>zTRITTIUM Ausgeben #:</translation>
+        <translation>zDogeCash Ausgeben #:</translation>
     </message>
     <message>
         <source>denomination: </source>
@@ -3051,7 +3051,7 @@ Bitte haben Sie Geduld...</translation>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>TRITTIUMs überweisen</translation>
+        <translation>DogeCashs überweisen</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
@@ -3122,8 +3122,8 @@ Bitte haben Sie Geduld...</translation>
         <translation>UTXO Größe:</translation>
     </message>
     <message>
-        <source>0 TRITTIUM</source>
-        <translation>0 TRITTIUM</translation>
+        <source>0 DogeCash</source>
+        <translation>0 DogeCash</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -3174,12 +3174,12 @@ Bitte haben Sie Geduld...</translation>
         <translation>Coins automatisch ausgewählt</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uTRITTIUMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uTRITTIUMs in fee,&lt;br /&gt;while "at least" pays 1000 uTRITTIUMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Wenn die kundenspezifische Gebühr auf 1000 uTRITTIUMs eingestellt ist und die Transaktion nur 250 Bytes beträgt, dann zahlt man "pro Kilobyte" nur 250 uTRITTIUMs an Gebühren,&lt;br /&gt;während man "mindestens" 1000 uTRITTIUMs bezahlt. Für Transaktionen, die größer sind als ein Kilobyte, bezahlen sie per Kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDogeCashs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDogeCashs in fee,&lt;br /&gt;while "at least" pays 1000 uDogeCashs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Wenn die kundenspezifische Gebühr auf 1000 uDogeCashs eingestellt ist und die Transaktion nur 250 Bytes beträgt, dann zahlt man "pro Kilobyte" nur 250 uDogeCashs an Gebühren,&lt;br /&gt;während man "mindestens" 1000 uDogeCashs bezahlt. Für Transaktionen, die größer sind als ein Kilobyte, bezahlen sie per Kilobyte.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uTRITTIUMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uTRITTIUMs in fee,&lt;br /&gt;while "total at least" pays 1000 uTRITTIUMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Wenn die kundenspezifische Gebühr auf 1000 uTRITTIUMs eingestellt ist und die Transaktion nur 250 Bytes beträgt, dann zahlt man "pro Kilobyte" nur 250 uTRITTIUMs an Gebühren,&lt;br /&gt;während man "insgesamt mindestens" 1000 uTRITTIUMs bezahlt. Für Transaktionen, die größer sind als ein Kilobyte, bezahlen sie per Kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDogeCashs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDogeCashs in fee,&lt;br /&gt;while "total at least" pays 1000 uDogeCashs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Wenn die kundenspezifische Gebühr auf 1000 uDogeCashs eingestellt ist und die Transaktion nur 250 Bytes beträgt, dann zahlt man "pro Kilobyte" nur 250 uDogeCashs an Gebühren,&lt;br /&gt;während man "insgesamt mindestens" 1000 uDogeCashs bezahlt. Für Transaktionen, die größer sind als ein Kilobyte, bezahlen sie per Kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DogeCash transactions than the network can process.</source>
@@ -3230,8 +3230,8 @@ Bitte haben Sie Geduld...</translation>
         <translation>Empfänge&amp;r hinzufügen</translation>
     </message>
     <message>
-        <source>Anonymized TRITTIUM</source>
-        <translation>Anonymisierte TRITTIUM</translation>
+        <source>Anonymized DogeCash</source>
+        <translation>Anonymisierte DogeCash</translation>
     </message>
     <message>
         <source>SwiftTX</source>
@@ -3805,7 +3805,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Erzeugte TRITTIUMs müssen %1 Blöcke lang reifen, bevor sie ausgegeben werden können. Als Sie diesen Block erzeugten, wurde er an das Netzwerk übertragen, um ihn der Blockkette hinzuzufügen. Falls dies fehlschlägt wird der Status in "nicht angenommen" geändert und Sie werden keine TRITTIUMs gutgeschrieben bekommen. Das kann gelegentlich passieren, wenn ein anderer Knoten einen Block fast zeitgleich erzeugt.</translation>
+        <translation>Erzeugte DogeCashs müssen %1 Blöcke lang reifen, bevor sie ausgegeben werden können. Als Sie diesen Block erzeugten, wurde er an das Netzwerk übertragen, um ihn der Blockkette hinzuzufügen. Falls dies fehlschlägt wird der Status in "nicht angenommen" geändert und Sie werden keine DogeCashs gutgeschrieben bekommen. Das kann gelegentlich passieren, wenn ein anderer Knoten einen Block fast zeitgleich erzeugt.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3951,23 +3951,23 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Converted Phr to zPhr</source>
-        <translation>Umgewandeltes TRITTIUM zu zTRITTIUM</translation>
+        <translation>Umgewandeltes DogeCash zu zDogeCash</translation>
     </message>
     <message>
         <source>Spent zPhr</source>
-        <translation>Ausgeben zTRITTIUM</translation>
+        <translation>Ausgeben zDogeCash</translation>
     </message>
     <message>
         <source>Received Phr from zPhr</source>
-        <translation>Empfangene TRITTIUM von zTRITTIUM</translation>
+        <translation>Empfangene DogeCash von zDogeCash</translation>
     </message>
     <message>
         <source>Minted Change as zPhr from zPhr Spend</source>
-        <translation>Geprägtes Wechselgeld als zTRITTIUM von zTRITTIUM Ausgabe</translation>
+        <translation>Geprägtes Wechselgeld als zDogeCash von zDogeCash Ausgabe</translation>
     </message>
     <message>
         <source>Converted zPhr to Phr</source>
-        <translation>Umgewandeltes zTRITTIUM zu TRITTIUM</translation>
+        <translation>Umgewandeltes zDogeCash zu DogeCash</translation>
     </message>
     <message>
         <source>watch-only</source>
@@ -3975,7 +3975,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>zPhr Accumulator</source>
-        <translation>zTRITTIUM Speicher</translation>
+        <translation>zDogeCash Speicher</translation>
     </message>
     <message>
         <source>(n/a)</source>
@@ -4086,7 +4086,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Received Phr from zPhr</source>
-        <translation>Empfangene TRITTIUM von zTRITTIUM</translation>
+        <translation>Empfangene DogeCash von zDogeCash</translation>
     </message>
     <message>
         <source>Zerocoin Mint</source>
@@ -4098,7 +4098,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Zerocoin Spend, Change in zPhr</source>
-        <translation>Zerocoin Ausgabe, Wechselgeld in zTRITTIUM</translation>
+        <translation>Zerocoin Ausgabe, Wechselgeld in zDogeCash</translation>
     </message>
     <message>
         <source>Zerocoin Spend to Self</source>
@@ -4219,11 +4219,11 @@ Bitte haben Sie Geduld...</translation>
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation>TRITTIUMs überweisen</translation>
+        <translation>DogeCashs überweisen</translation>
     </message>
     <message>
-        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 TRITTIUM.</source>
-        <translation>SwiftTX unterstützt das Versenden von Beträgen dieser Höhe noch nicht. Transaktionen sind zur Zeit auf maximal %1 TRITTIUM begrenzt.</translation>
+        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DogeCash.</source>
+        <translation>SwiftTX unterstützt das Versenden von Beträgen dieser Höhe noch nicht. Transaktionen sind zur Zeit auf maximal %1 DogeCash begrenzt.</translation>
     </message>
 </context>
 <context>
@@ -4269,7 +4269,7 @@ Bitte haben Sie Geduld...</translation>
     <name>ZPhrControlDialog</name>
     <message>
         <source>Select zPhr to Spend</source>
-        <translation>Auswahl zTRITTIUM als Ausgabe</translation>
+        <translation>Auswahl zDogeCash als Ausgabe</translation>
     </message>
     <message>
         <source>Quantity</source>
@@ -4281,7 +4281,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>zPhr</source>
-        <translation>zTRITTIUM</translation>
+        <translation>zDogeCash</translation>
     </message>
     <message>
         <source>Select/Deselect All</source>
@@ -4363,12 +4363,12 @@ Bitte haben Sie Geduld...</translation>
         <translation>Befehl ausführen, wenn sich der beste Block ändert (%s in cmd wird durch Blockhash ersetzt)</translation>
     </message>
     <message>
-        <source>Fees (in TRITTIUM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Gebühren (in TRITTIUM/kB) kleiner als diese gelten für die Weiterleitung als Null-Gebühr  (default: %s)</translation>
+        <source>Fees (in DogeCash/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Gebühren (in DogeCash/kB) kleiner als diese gelten für die Weiterleitung als Null-Gebühr  (default: %s)</translation>
     </message>
     <message>
-        <source>Fees (in TRITTIUM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Gebühren (in TRITTIUM/kB) kleiner als diese werden als Null-Gebühr für die Transaktionserstellung betrachtet (default: %s)</translation>
+        <source>Fees (in DogeCash/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Gebühren (in DogeCash/kB) kleiner als diese werden als Null-Gebühr für die Transaktionserstellung betrachtet (default: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4755,8 +4755,8 @@ Beispiel: alertnotify=echo %%s | mail -s "DogeCash Alert" admin@foo.com
         <translation>Block konnte nicht gelesen werden</translation>
     </message>
     <message>
-        <source>Fee (in TRITTIUM/kB) to add to transactions you send (default: %s)</source>
-        <translation>Gebühr (in TRITTIUM/kB) die den Transaktionen, die Sie überweisen, hinzugefügt wird (Standard: %s)</translation>
+        <source>Fee (in DogeCash/kB) to add to transactions you send (default: %s)</source>
+        <translation>Gebühr (in DogeCash/kB) die den Transaktionen, die Sie überweisen, hinzugefügt wird (Standard: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>

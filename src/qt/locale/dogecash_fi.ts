@@ -172,16 +172,16 @@
         <translation>Vahvista lompakon salaus</translation>
     </message>
     <message>
-        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your TRITTIUMs from being stolen by malware infecting your computer.</source>
-        <translation>DogeCash sulkeutuu salausprosessin ajaksi. Muista, että lompakon salaus ei voi täysin suojella TRITTIUMien varkaudelta, jos tietokoneesi sisältää haittaohjelmia.</translation>
+        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DogeCashs from being stolen by malware infecting your computer.</source>
+        <translation>DogeCash sulkeutuu salausprosessin ajaksi. Muista, että lompakon salaus ei voi täysin suojella DogeCashien varkaudelta, jos tietokoneesi sisältää haittaohjelmia.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Oletko varma että tahdot salata lompakkosi?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR TRITTIUM&lt;/b&gt;!</source>
-        <translation>Varoitus: Jos salaat lompakkosi ja unohdat salausavaimesi, &lt;b&gt;menetät kaikki TRITTIUMisi&lt;/b&gt;</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DogeCash&lt;/b&gt;!</source>
+        <translation>Varoitus: Jos salaat lompakkosi ja unohdat salausavaimesi, &lt;b&gt;menetät kaikki DogeCashisi&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -1135,11 +1135,11 @@ Please check the address and try again.</source>
         <translation>Valitse yksityisyyden taso.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 10000 TRITTIUM</source>
+        <source>Use 2 separate masternodes to mix funds up to 10000 DogeCash</source>
         <translation>Käytä 2 erillistä masternodea sekoittaaksesi enintään 10000 DogeCash</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 10000 TRITTIUM</source>
+        <source>Use 8 separate masternodes to mix funds up to 10000 DogeCash</source>
         <translation>Käytä 8 erillistä masternodea sekoittaaksesi enintään 10000 DogeCash</translation>
     </message>
     <message>
@@ -1147,11 +1147,11 @@ Please check the address and try again.</source>
         <translation>Käytä 16 erillistä masternodea</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 TRITTIUM to anonymize 10000 TRITTIUM</source>
-        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 TRITTIUM anonymoidaksesi 10000 DogeCash</translation>
+        <source>This option is the quickest and will cost about ~0.025 DogeCash to anonymize 10000 DogeCash</source>
+        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 DogeCash anonymoidaksesi 10000 DogeCash</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 TRITTIUM to anonymize 10000 TRITTIUM</source>
+        <source>This option is moderately fast and will cost about 0.05 DogeCash to anonymize 10000 DogeCash</source>
         <translation>Tämä vaihtoehto on suhteellisen nopea ja maksaa 0.05 DogeCash anonymoidaksesi 10000 DogeCash</translation>
     </message>
     <message>
@@ -1159,7 +1159,7 @@ Please check the address and try again.</source>
         <translation>Tämä on hitain ja turvallisin vaihtoehto. Täydesti anonymisoiminen ei maksa mitään.</translation>
     </message>
     <message>
-        <source>0.1 TRITTIUM per 10000 TRITTIUM you anonymize.</source>
+        <source>0.1 DogeCash per 10000 DogeCash you anonymize.</source>
         <translation>0.1 per 10000 DogeCash, jotka anonymisoit.</translation>
     </message>
     <message>
@@ -1898,8 +1898,8 @@ Please check the address and try again.</source>
         <translation>Muutos:</translation>
     </message>
     <message>
-        <source>0 TRITTIUM</source>
-        <translation>0 TRITTIUM</translation>
+        <source>0 DogeCash</source>
+        <translation>0 DogeCash</translation>
     </message>
     <message>
         <source>Choose...</source>

@@ -176,16 +176,16 @@
         <translation>Bevestig versleuteling van de portemonnee</translation>
     </message>
     <message>
-        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your TRITTIUMs from being stolen by malware infecting your computer.</source>
-        <translation>DogeCash zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw TRITTIUMs stelen.</translation>
+        <source>DogeCash will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DogeCashs from being stolen by malware infecting your computer.</source>
+        <translation>DogeCash zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw DogeCashs stelen.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Weet u zeker dat u uw portemonnee wilt versleutelen?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR TRITTIUM&lt;/b&gt;!</source>
-        <translation>Waarschuwing: Als u uw portemonnee versleutelt en uw wachtwoord vergeet, zult u &lt;b&gt;AL UW TRITTIUM VERLIEZEN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DogeCash&lt;/b&gt;!</source>
+        <translation>Waarschuwing: Als u uw portemonnee versleutelt en uw wachtwoord vergeet, zult u &lt;b&gt;AL UW DogeCash VERLIEZEN&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -618,8 +618,8 @@
         <translation>&amp;Privacy</translation>
     </message>
     <message>
-        <source>Privacy Action for zTRITTIUM and Obfuscation</source>
-        <translation>Privacy Actie voor zTRITTIUM en verduistering</translation>
+        <source>Privacy Action for zDogeCash and Obfuscation</source>
+        <translation>Privacy Actie voor zDogeCash en verduistering</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -1531,32 +1531,32 @@ Controleer het adres alsjeblieft en probeer het opnieuw.</translation>
         <translation>Selecteer de privacy level.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 10000 TRITTIUM</source>
-        <translation>Gebruik 2 aparte masternodes om fondsen te mixen tot 10000 TRITTIUM</translation>
+        <source>Use 2 separate masternodes to mix funds up to 10000 DogeCash</source>
+        <translation>Gebruik 2 aparte masternodes om fondsen te mixen tot 10000 DogeCash</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 10000 TRITTIUM</source>
-        <translation>Gebruik 8 aparte masternodes om fondsen te mixen tot 10000 TRITTIUM</translation>
+        <source>Use 8 separate masternodes to mix funds up to 10000 DogeCash</source>
+        <translation>Gebruik 8 aparte masternodes om fondsen te mixen tot 10000 DogeCash</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Gebruik 16 aparte masternodes</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 TRITTIUM to anonymize 10000 TRITTIUM</source>
-        <translation>Deze optie is het snelst en kost ongeveer ~0,025 TRITTIUM om 10000 TRITTIUM te anonimiseren</translation>
+        <source>This option is the quickest and will cost about ~0.025 DogeCash to anonymize 10000 DogeCash</source>
+        <translation>Deze optie is het snelst en kost ongeveer ~0,025 DogeCash om 10000 DogeCash te anonimiseren</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 TRITTIUM to anonymize 10000 TRITTIUM</source>
-        <translation>Deze optie is gematigd snel en kost ongeveer 0,05 TRITTIUM om 10000 TRITTIUM te anonimiseren</translation>
+        <source>This option is moderately fast and will cost about 0.05 DogeCash to anonymize 10000 DogeCash</source>
+        <translation>Deze optie is gematigd snel en kost ongeveer 0,05 DogeCash om 10000 DogeCash te anonimiseren</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>Dit is de langzaamste en veiligste optie. Het gebruik van maximale anonimiteit kost</translation>
     </message>
     <message>
-        <source>0.1 TRITTIUM per 10000 TRITTIUM you anonymize.</source>
-        <translation>je anonimiseert 0,1 TRITTIUM per 10000 TRITTIUM.</translation>
+        <source>0.1 DogeCash per 10000 DogeCash you anonymize.</source>
+        <translation>je anonimiseert 0,1 DogeCash per 10000 DogeCash.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
@@ -1699,20 +1699,20 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Map poort gebruikt &amp;UPnP</translation>
     </message>
     <message>
-        <source>Percentage of incoming TRITTIUM which get automatically converted to zTRITTIUM via Zerocoin Protocol (min: 10%)</source>
-        <translation>Percentage inkomende TRITTIUM die automatisch wordt omgezet naar zTRITTIUM via Zerocoin Protocol (min: 10%)</translation>
+        <source>Percentage of incoming DogeCash which get automatically converted to zDogeCash via Zerocoin Protocol (min: 10%)</source>
+        <translation>Percentage inkomende DogeCash die automatisch wordt omgezet naar zDogeCash via Zerocoin Protocol (min: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zTRITTIUM</source>
-        <translation>Percentage autominted zTRITTIUM</translation>
+        <source>Percentage of autominted zDogeCash</source>
+        <translation>Percentage autominted zDogeCash</translation>
     </message>
     <message>
-        <source>Wait with automatic conversion to Zerocoin until enough TRITTIUM for this denomination is available</source>
-        <translation>Wacht met automatische omzetting naar Zerocoin totdat er genoeg TRITTIUM voor deze denominatie beschikbaar is</translation>
+        <source>Wait with automatic conversion to Zerocoin until enough DogeCash for this denomination is available</source>
+        <translation>Wacht met automatische omzetting naar Zerocoin totdat er genoeg DogeCash voor deze denominatie beschikbaar is</translation>
     </message>
     <message>
-        <source>Preferred Automint zTRITTIUM Denomination</source>
-        <translation>Gewenste Automint zTRITTIUM denominatie</translation>
+        <source>Preferred Automint zDogeCash Denomination</source>
+        <translation>Gewenste Automint zDogeCash denominatie</translation>
     </message>
     <message>
         <source>Connect to the DogeCash network through a SOCKS5 proxy.</source>
@@ -1846,8 +1846,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Formulier</translation>
     </message>
     <message>
-        <source>TRITTIUM Balances</source>
-        <translation>TRITTIUM Saldi</translation>
+        <source>DogeCash Balances</source>
+        <translation>DogeCash Saldi</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -1914,12 +1914,12 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Gecombineerde Saldi (inclusief onvolwassen munten)</translation>
     </message>
     <message>
-        <source>TRITTIUM:</source>
-        <translation>TRITTIUM:</translation>
+        <source>DogeCash:</source>
+        <translation>DogeCash:</translation>
     </message>
     <message>
-        <source>zTRITTIUM:</source>
-        <translation>zTRITTIUM:</translation>
+        <source>zDogeCash:</source>
+        <translation>zDogeCash:</translation>
     </message>
     <message>
         <source>0 %</source>
@@ -2047,12 +2047,12 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
 <context>
     <name>PrivacyDialog</name>
     <message>
-        <source>TRITTIUM which were anonymized via Zerocin Protocol</source>
-        <translation>TRITTIUM die via het Zerocin Protocol geanonimiseerd werden</translation>
+        <source>DogeCash which were anonymized via Zerocin Protocol</source>
+        <translation>DogeCash die via het Zerocin Protocol geanonimiseerd werden</translation>
     </message>
     <message>
-        <source>Zerocoin TRITTIUM (zTRITTIUM)</source>
-        <translation>Zerocoin TRITTIUM (zTRITTIUM)</translation>
+        <source>Zerocoin DogeCash (zDogeCash)</source>
+        <translation>Zerocoin DogeCash (zDogeCash)</translation>
     </message>
     <message>
         <source>Zerocoin Actions:</source>
@@ -2075,16 +2075,16 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>0</translation>
     </message>
     <message>
-        <source>zTRITTIUM</source>
-        <translation>zTRITTIUM</translation>
+        <source>zDogeCash</source>
+        <translation>zDogeCash</translation>
     </message>
     <message>
         <source>Available for Minting:</source>
         <translation>Beschikbaar voor minting:</translation>
     </message>
     <message>
-        <source>0.000 000 00 TRITTIUM</source>
-        <translation>0.000 000 00 TRITTIUM</translation>
+        <source>0.000 000 00 DogeCash</source>
+        <translation>0.000 000 00 DogeCash</translation>
     </message>
     <message>
         <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
@@ -2143,8 +2143,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Beschikbaar saldo:</translation>
     </message>
     <message>
-        <source>0 zTRITTIUM</source>
-        <translation>0 zTRITTIUM</translation>
+        <source>0 zDogeCash</source>
+        <translation>0 zDogeCash</translation>
     </message>
     <message>
         <source>Security Level for Zerocoin Transactions. More is better, but needs more time and resources.</source>
@@ -2383,8 +2383,8 @@ https://www.transifex.com/dogecash-project/dogecash-project-translations</transl
         <translation>Succesvol gemint</translation>
     </message>
     <message>
-        <source> zTRITTIUM in </source>
-        <translation> zTRITTIUM in </translation>
+        <source> zDogeCash in </source>
+        <translation> zDogeCash in </translation>
     </message>
     <message>
         <source> sec. Used denominations:
@@ -3115,8 +3115,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>UTXO grootte:</translation>
     </message>
     <message>
-        <source>0 TRITTIUM</source>
-        <translation>0 TRITTIUM</translation>
+        <source>0 DogeCash</source>
+        <translation>0 DogeCash</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -3167,12 +3167,12 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Munten automatisch geselecteerd</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uTRITTIUMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uTRITTIUMs in fee,&lt;br /&gt;while "at least" pays 1000 uTRITTIUMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uTRITTIUMs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uTRITTIUM's in vergoeding,&lt;br /&gt;terwijl "minstens" 1000 uTRITTIUM's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDogeCashs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDogeCashs in fee,&lt;br /&gt;while "at least" pays 1000 uDogeCashs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uDogeCashs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uDogeCash's in vergoeding,&lt;br /&gt;terwijl "minstens" 1000 uDogeCash's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uTRITTIUMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uTRITTIUMs in fee,&lt;br /&gt;while "total at least" pays 1000 uTRITTIUMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uTRITTIUMs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uTRITTIUM's in vergoeding,&lt;br /&gt;terwijl "totaal minstens" 1000 uTRITTIUM's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDogeCashs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDogeCashs in fee,&lt;br /&gt;while "total at least" pays 1000 uDogeCashs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uDogeCashs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uDogeCash's in vergoeding,&lt;br /&gt;terwijl "totaal minstens" 1000 uDogeCash's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DogeCash transactions than the network can process.</source>
@@ -3223,8 +3223,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Voeg &amp;ontvanger toe</translation>
     </message>
     <message>
-        <source>Anonymized TRITTIUM</source>
-        <translation>Geanonimiseerde TRITTIUM</translation>
+        <source>Anonymized DogeCash</source>
+        <translation>Geanonimiseerde DogeCash</translation>
     </message>
     <message>
         <source>SwiftTX</source>
@@ -4211,8 +4211,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Verzend Munten</translation>
     </message>
     <message>
-        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 TRITTIUM.</source>
-        <translation>SwiftTX ondersteunt geen verzendwaarden die zo hoog zijn. Transacties zijn momenteel beperkt tot %1 TRITTIUM.</translation>
+        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DogeCash.</source>
+        <translation>SwiftTX ondersteunt geen verzendwaarden die zo hoog zijn. Transacties zijn momenteel beperkt tot %1 DogeCash.</translation>
     </message>
 </context>
 <context>
@@ -4372,12 +4372,12 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Uitvoeren commando wanneer het beste blok verandert (%s in cmd is vervangen door block hash)</translation>
     </message>
     <message>
-        <source>Fees (in TRITTIUM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Kosten (in TRITTIUM/Kb) kleiner dan dit worden beschouwd als zero fee voor heruitzending (standaard: %s)</translation>
+        <source>Fees (in DogeCash/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Kosten (in DogeCash/Kb) kleiner dan dit worden beschouwd als zero fee voor heruitzending (standaard: %s)</translation>
     </message>
     <message>
-        <source>Fees (in TRITTIUM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Kosten (in TRITTIUM/Kb) kleiner dan dit worden beschouwd als zero fee voor transactie verrichting (standaard: %s)</translation>
+        <source>Fees (in DogeCash/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Kosten (in DogeCash/Kb) kleiner dan dit worden beschouwd als zero fee voor transactie verrichting (standaard: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4508,12 +4508,12 @@ bijvoorbeeld: alertnotify = echo %%s | mail -s "DogeCash Alert" admin@foo.com
         <translation>Kan niet genoeg verduistering gedenomineerde fondsen voor deze transactie vinden.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 TRITTIUM.</source>
-        <translation>Kan niet genoeg verduistering niet gedenomineerde fondsen voor deze transactie vinden die niet gelijk zijn aan 10000 TRITTIUM.</translation>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 DogeCash.</source>
+        <translation>Kan niet genoeg verduistering niet gedenomineerde fondsen voor deze transactie vinden die niet gelijk zijn aan 10000 DogeCash.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 10000 TRITTIUM.</source>
-        <translation>Kan niet genoeg fondsen voor deze transactie vinden die niet gelijk zijn aan 10000 TRITTIUM.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 10000 DogeCash.</source>
+        <translation>Kan niet genoeg fondsen voor deze transactie vinden die niet gelijk zijn aan 10000 DogeCash.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4816,8 +4816,8 @@ bijvoorbeeld: alertnotify = echo %%s | mail -s "DogeCash Alert" admin@foo.com
         <translation>Mislukt om block te lezen</translation>
     </message>
     <message>
-        <source>Fee (in TRITTIUM/kB) to add to transactions you send (default: %s)</source>
-        <translation>Fee (in TRITTIUM/kB) om toe te voegen aan transacties die je verzendt (standaard: %s)</translation>
+        <source>Fee (in DogeCash/kB) to add to transactions you send (default: %s)</source>
+        <translation>Fee (in DogeCash/kB) om toe te voegen aan transacties die je verzendt (standaard: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>

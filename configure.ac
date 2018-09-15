@@ -19,9 +19,9 @@ BITCOIN_TX_NAME=dogecash-tx
 
 AC_CANONICAL_HOST
 
-AH_TOP([#ifndef TRITTIUM_CONFIG_H])
-AH_TOP([#define TRITTIUM_CONFIG_H])
-AH_BOTTOM([#endif //TRITTIUM_CONFIG_H])
+AH_TOP([#ifndef DogeCash_CONFIG_H])
+AH_TOP([#define DogeCash_CONFIG_H])
+AH_BOTTOM([#endif //DogeCash_CONFIG_H])
 
 dnl faketime breaks configure and is only needed for make. Disable it here.
 unset FAKETIME
