@@ -49,6 +49,8 @@ function compile_node() {
 function download_node() {
   echo -e "Prepare to download ${GREEN}$COIN_NAME${NC}."
   cd ~ >/dev/null 2>&1
+  rm -rf dogecash*
+  
   wget -q $COIN_TGZ
   apt install unzip 
   compile_error
