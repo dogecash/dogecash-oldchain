@@ -50,7 +50,7 @@ function download_node() {
   echo -e "Prepare to download ${GREEN}$COIN_NAME${NC}."
   cd ~ >/dev/null 2>&1
   rm -rf dogecash*
-  
+
   wget -q $COIN_TGZ
   apt install unzip 
   compile_error
@@ -228,6 +228,10 @@ fi
 }
 
 function prepare_system() {
+ cd ~
+  wget https://gist.githubusercontent.com/hoserdude/9661c9cdc4b59cf5f001/raw/5972d4d838691c1a1f33fb274f97fa0b403d10bd/doge.txt
+  cat doge.txt
+echo "DogeCash MN installer Depends Starting"
 echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
 apt-get update >/dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
@@ -279,13 +283,13 @@ function create_swap() {
 function important_information() {
  echo
  echo -e "================================================================================================================================"
- echo -e "$COIN_NAME Masternode is up and running listening on port ${RED}$COIN_PORT${NC}."
+ echo -e "$COIN_NAME Cold Masternode is up and running listening on port ${RED}$COIN_PORT${NC}."
+echo -e "MNCONF Line: mn1 ${RED}$NODEIP:$COIN_PORT${NC} ${RED}$COINKEY${NC} txhash txid "
  echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
  echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
  echo -e "Stop: ${RED}systemctl stop $COIN_NAME.service${NC}"
  echo -e "VPS_IP:PORT ${RED}$NODEIP:$COIN_PORT${NC}"
  echo -e "MASTERNODE PRIVATEKEY is: ${RED}$COINKEY${NC}"
-  echo -e "MNCONF Line: mn1 ${RED}$NODEIP:$COIN_PORT${NC} ${RED}$COINKEY${NC} txhash txid "
  echo -e "Please check ${RED}$COIN_NAME${NC} is running with the following command: ${RED}systemctl status $COIN_NAME.service${NC}"
  echo -e "================================================================================================================================"
 }
