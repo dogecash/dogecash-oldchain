@@ -82,9 +82,9 @@ bool fAlerts = DEFAULT_ALERTS;
 
 //unsigned int nStakeMinAge = 6 * 60 * 60; //6 hours
 
-static unsigned int nStakeMinAgeV1 = 6 * 60 * 60; // 6 hours
-static unsigned int nStakeMinAgeV2 = 12 * 60 * 60; // 12 hours after block 69,000
-const int targetReadjustment_forkBlockHeight = 69000; //retargeting since 69,000 block
+static unsigned int nStakeMinAgeV1 = 1 * 60 * 60; // 6 hours
+static unsigned int nStakeMinAgeV2 = nStakeMinAgeV1; //1 hr
+const int targetReadjustment_forkBlockHeight = 700; //retargeting since 700 block
 
 const int targetFork1 = 200790; //fork since block 200,790
 
@@ -105,10 +105,8 @@ unsigned int GetStakeMinAge(int nHeight)
 
 int GetMinPeerProtoVersion(int nHeight)
 {
-	if(nHeight >= targetFork1)
 		return PROTOCOL_VERSION; //2.2.0
-	else
-		return PROTOCOL_VERSION_BEFORE_FORK; //2.1.1 
+
 }
 
 
@@ -6338,10 +6336,9 @@ int ActiveProtocol()
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
     * */
     
-    if(chainActive.Tip()->nHeight >= targetFork1)
+
 		return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-	else
-		return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+
 		
 }
 
