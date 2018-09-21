@@ -55,6 +55,7 @@
 #include <QTimer>
 #include <QToolBar>
 #include <QVBoxLayout>
+#include <QFontDatabase>
 
 #if QT_VERSION < 0x050000
 #include <QTextDocument>
@@ -160,6 +161,13 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
         setCentralWidget(rpcConsole);
     }
 
+    int fontId = QFontDatabase::addApplicationFont(":/fonts/Chivo-Regular");
+    QString karlaFontName = QFontDatabase::applicationFontFamilies(fontId).at(0);
+    QFont font(karlaFontName, 12);
+    font.setStyleHint(QFont::Monospace);
+    QApplication::setFont(font);
+//    QApplication::setStyle(new Style_tweaks);
+
     // Accept D&D of URIs
     setAcceptDrops(true);
 
@@ -185,7 +193,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
     QHBoxLayout* frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3, 0, 3, 0);
-    frameBlocksLayout->setSpacing(3);
+    frameBlocksLayout->setSpacing(10);
     unitDisplayControl = new UnitDisplayStatusBarControl();
     labelStakingIcon = new QLabel();
     labelEncryptionIcon = new QPushButton();
@@ -227,6 +235,9 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
         progressBar->setStyleSheet("QProgressBar { background-color: #F8F8F8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #00CCFF, stop: 1 #33CCFF); border-radius: 7px; margin: 0px; }");
     }
 
+    QWidget * emptyWidget = new QWidget();
+    emptyWidget->setObjectName("EmptyWidget");
+    statusBar()->addWidget(emptyWidget);
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
@@ -287,7 +298,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 {
     QActionGroup* tabGroup = new QActionGroup(this);
 
-    overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Overview"), this);
+    overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Home"), this);
     overviewAction->setStatusTip(tr("Show general overview of wallet"));
     overviewAction->setToolTip(overviewAction->statusTip());
     overviewAction->setCheckable(true);
@@ -544,7 +555,19 @@ void BitcoinGUI::createToolBars()
 {
     if (walletFrame) {
         QToolBar* toolbar = new QToolBar(tr("Tabs toolbar"));
-        toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+        toolbar->setObjectName("MainToolbar");
+        addToolBar(Qt::LeftToolBarArea, toolbar);
+        toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+
+        toolbar->setOrientation(Qt::Vertical);
+        toolbar->setAllowedAreas(Qt::LeftToolBarArea);
+
+        auto dummy1 = new QWidget(this);
+        dummy1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        auto dummy2 = new QWidget(this);
+        dummy2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+        toolbar->addWidget(dummy1);
         toolbar->addAction(overviewAction);
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
@@ -555,6 +578,8 @@ void BitcoinGUI::createToolBars()
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
         }
+        toolbar->addWidget(dummy2);
+
         toolbar->setMovable(false); // remove unused icon in upper left corner
         overviewAction->setChecked(true);
 
@@ -562,7 +587,7 @@ void BitcoinGUI::createToolBars()
             This is a workaround mostly for toolbar styling on Mac OS but should work fine for every other OSes too.
         */
         QVBoxLayout* layout = new QVBoxLayout;
-        layout->addWidget(toolbar);
+//        layout->addWidget(toolbar);
         layout->addWidget(walletFrame);
         layout->setSpacing(0);
         layout->setContentsMargins(QMargins());

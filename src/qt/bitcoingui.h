@@ -18,6 +18,7 @@
 #include <QPoint>
 #include <QPushButton>
 #include <QSystemTrayIcon>
+#include <QProxyStyle>
 
 class ClientModel;
 class NetworkStyle;
@@ -38,6 +39,24 @@ class QAction;
 class QProgressBar;
 class QProgressDialog;
 QT_END_NAMESPACE
+
+class Style_tweaks : public QProxyStyle
+{
+    public:
+
+        void drawPrimitive(PrimitiveElement element, const QStyleOption *option,
+                           QPainter *painter, const QWidget *widget) const
+        {
+            /* do not draw focus rectangles - this permits modern styling */
+            if (element == QStyle::PE_FrameFocusRect
+                ||element == QStyle::PE_PanelItemViewItem
+                || element == QStyle::PE_PanelItemViewRow)
+
+                return;
+
+            QProxyStyle::drawPrimitive(element, option, painter, widget);
+        }
+};
 
 /**
   Bitcoin GUI main class. This class represents the main window of the Bitcoin UI. It communicates with both the client and

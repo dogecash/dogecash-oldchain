@@ -25,9 +25,9 @@
 #include <QSettings>
 #include <QTimer>
 
-#define DECORATION_SIZE 48
+#define DECORATION_SIZE 65
 #define ICON_OFFSET 16
-#define NUM_ITEMS 5
+#define NUM_ITEMS 8
 
 extern CWallet* pwalletMain;
 
@@ -44,14 +44,26 @@ public:
         painter->save();
 
         QIcon icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
+//        QIcon icon = qvariant_cast<QIcon>(index.data(TransactionTableModel::RawDecorationRole));
         QRect mainRect = option.rect;
-        mainRect.moveLeft(ICON_OFFSET);
-        QRect decorationRect(mainRect.topLeft(), QSize(DECORATION_SIZE, DECORATION_SIZE));
-        int xspace = DECORATION_SIZE + 8;
+//        mainRect.moveLeft(ICON_OFFSET);
+//        QRect decorationRect(mainRect.topLeft(), QSize(DECORATION_SIZE, DECORATION_SIZE));
+//        int xspace = DECORATION_SIZE + 8;
+        painter->setRenderHint(QPainter::Antialiasing);
+//        QPainterPath path;
+        QRect contentRect = QRect(mainRect.left() + 5, mainRect.top() + 10, mainRect.width() - 20, mainRect.height() - 20);
+//        path.addRoundedRect(contentRect, 5, 5);
+//        painter->fillPath(path, QBrush(QColor(37, 50, 82)));
+        QPoint iconTopleft = QPoint(contentRect.left(), contentRect.top() + (contentRect.height() - DECORATION_SIZE) / 2 - 15);
+        QRect decorationRect(iconTopleft, QSize(DECORATION_SIZE, DECORATION_SIZE));
+        int xspace = DECORATION_SIZE + 15;
+
         int ypad = 6;
         int halfheight = (mainRect.height() - 2 * ypad) / 2;
-        QRect amountRect(mainRect.left() + xspace, mainRect.top() + ypad, mainRect.width() - xspace - ICON_OFFSET, halfheight);
+//        QRect amountRect(mainRect.left() + xspace, mainRect.top() + ypad, mainRect.width() - xspace - ICON_OFFSET, halfheight);
+        QRect dateRect(mainRect.left() + xspace, mainRect.top()+ypad, mainRect.width() - xspace, halfheight);
         QRect addressRect(mainRect.left() + xspace, mainRect.top() + ypad + halfheight, mainRect.width() - xspace, halfheight);
+        icon = QIcon(icon);
         icon.paint(painter, decorationRect);
 
         QDateTime date = index.data(TransactionTableModel::DateRole).toDateTime();
@@ -65,7 +77,13 @@ public:
             foreground = brush.color();
         }
 
-        painter->setPen(foreground);
+//        painter->setPen(foreground);
+        painter->setPen(QColor(185, 185, 185));
+        QFont w_orgFont = painter->font();
+        QFont w_newFont = w_orgFont;
+        w_newFont.setPixelSize(13);
+        painter->setFont(w_newFont);
+
         QRect boundingRect;
         painter->drawText(addressRect, Qt::AlignLeft | Qt::AlignVCenter, address, &boundingRect);
 
@@ -76,21 +94,29 @@ public:
         }
 
         if (amount < 0) {
-            foreground = COLOR_NEGATIVE;
+            foreground = QColor(255, 85, 71);
         } else if (!confirmed) {
             foreground = COLOR_UNCONFIRMED;
         } else {
-            foreground = COLOR_BLACK;
+            foreground = QColor(86, 192, 49);
         }
         painter->setPen(foreground);
-        QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true, BitcoinUnits::separatorAlways);
+        QString amountText = BitcoinUnits::formatWithComma(unit, amount, true, BitcoinUnits::separatorAlways);
         if (!confirmed) {
             amountText = QString("[") + amountText + QString("]");
         }
-        painter->drawText(amountRect, Qt::AlignRight | Qt::AlignVCenter, amountText);
+        QRect amountRect1 = contentRect;
+        amountRect1.setWidth(contentRect.width() - 10);
+
+        w_newFont.setPixelSize(15);
+        painter->setFont(w_newFont);
+
+        painter->drawText(amountRect1, Qt::AlignRight | Qt::AlignVCenter, amountText);
 
         painter->setPen(COLOR_BLACK);
-        painter->drawText(amountRect, Qt::AlignLeft | Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
+        painter->drawText(dateRect, Qt::AlignLeft | Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
+
+        painter->setFont(w_orgFont);
 
         painter->restore();
     }
@@ -190,16 +216,16 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     currentWatchImmatureBalance = watchImmatureBalance;
 
     // DOGEC labels
-    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance - immatureBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, balance - immatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelzBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelImmature->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance + unconfirmedBalance, false, BitcoinUnits::separatorAlways));
 
     // Watchonly labels
-    ui->labelWatchAvailable->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelWatchPending->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelWatchImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchImmatureBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelWatchAvailable->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelWatchPending->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelWatchImmature->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, watchImmatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, BitcoinUnits::separatorAlways));
 
     // zDOGEC labels
@@ -209,22 +235,22 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     if (pwalletMain) {
         nLockedBalance = pwalletMain->GetLockedCoins();
     }
-    ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));
 
     CAmount nTotalBalance = balance + unconfirmedBalance;
     CAmount nUnlockedBalance = nTotalBalance - nLockedBalance;
     CAmount matureZerocoinBalance = zerocoinBalance - immatureZerocoinBalance;
     getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
 
-    ui->labelBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelzBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelzBalanceImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureZerocoinBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelzBalanceUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedZerocoinBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelzBalanceMature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, matureZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelBalancez->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, nTotalBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalancez->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceImmature->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, immatureZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceUnconfirmed->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, unconfirmedZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceMature->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, matureZerocoinBalance, false, BitcoinUnits::separatorAlways));
     ui->labelTotalz->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance + zerocoinBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelUnLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nUnlockedBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelDOGECPercent->setText(sPercentage);
-    ui->labelzDOGECPercent->setText(szPercentage);
+    ui->labelUnLockedBalance->setText(BitcoinUnits::floorHtmlWithoutUnit(nDisplayUnit, nUnlockedBalance, false, BitcoinUnits::separatorAlways));
+//    ui->labelDOGECPercent->setText(sPercentage);
+//    ui->labelzDOGECPercent->setText(szPercentage);
 
     // Adjust bubble-help according to AutoMint settings
     QString automintHelp = tr("Current percentage of zDOGEC.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
@@ -237,7 +263,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     else {
         automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint add 'enablezeromint=1' in dogecash2.conf");
     }
-    ui->labelzDOGECPercent->setToolTip(automintHelp);
+//    ui->labelzDOGECPercent->setToolTip(automintHelp);
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users
@@ -262,7 +288,7 @@ void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
 {
     ui->labelSpendable->setVisible(showWatchOnly);      // show spendable label (only when watch-only is active)
     ui->labelWatchonly->setVisible(showWatchOnly);      // show watch-only label
-    ui->lineWatchBalance->setVisible(showWatchOnly);    // show watch-only balance separator line
+//    ui->lineWatchBalance->setVisible(showWatchOnly);    // show watch-only balance separator line
     ui->labelWatchAvailable->setVisible(showWatchOnly); // show watch-only available balance
     ui->labelWatchPending->setVisible(showWatchOnly);   // show watch-only pending balance
     ui->labelWatchTotal->setVisible(showWatchOnly);     // show watch-only total balance
