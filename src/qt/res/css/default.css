@@ -67,20 +67,12 @@ QToolBar#MainToolbar > QToolButton
     padding: 5px;
     font-size: 12px;
 }
-
 QToolBar#MainToolbar > QToolButton:checked {
     background-color: #505050;
-    border: 2px solid #505050;
-    margin-left: 2px;
-    margin-right: 2px;
-    margin-bottom: 7px;
-    margin-top: 45px;
-    padding: 5px;
-    font-size: 12px;
 }
+
 QToolBar#MainToolbar > QToolButton:hover {
     background-color: #353535;
-    border: 2px solid #353535;
 }
 
 QMessageBox {
