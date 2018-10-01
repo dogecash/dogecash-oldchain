@@ -430,7 +430,7 @@ boost::filesystem::path GetDefaultDataDir()
 // Unix: ~/.dogecash
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "DogeCash2";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "DogeCashCore";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -442,10 +442,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "DogeCash2";
+    return pathRet / "DogeCashCore";
 #else
     // Unix
-    return pathRet / ".dogecash2";
+    return pathRet / ".dogecash";
 #endif
 #endif
 }
