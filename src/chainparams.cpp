@@ -118,7 +118,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // DogeCash: 1 day  
         nTargetSpacing = 15; //DogeCash: 15 seconds
-        nMaturity = 1;
+        nMaturity = 30;
         nMasternodeCountDrift = 20;
         nMasternodeCollateralLimit = 5000; //MN collateral
         nMaxMoneyOut = 21000000 * COIN; //21 mill
