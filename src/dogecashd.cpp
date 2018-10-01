@@ -65,7 +65,7 @@ bool AppInit(int argc, char* argv[])
     //
     // Parameters
     //
-    // If Qt is used, parameters/dogecash2.conf are parsed in qt/dogecash.cpp's main()
+    // If Qt is used, parameters/dogecash.conf are parsed in qt/dogecash.cpp's main()
     ParseParameters(argc, argv);
 
     // Process help and version before taking care about datadir
