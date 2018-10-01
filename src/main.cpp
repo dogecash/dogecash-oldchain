@@ -2112,33 +2112,33 @@ int64_t GetBlockValue(int nHeight)
     ///Pow Phase
 	bool phase1 = nHeight > 1 && nHeight <= Params().LAST_POW_BLOCK();
     //POS Starts here
-bool phase2 = nHeight > Params().LAST_POW_BLOCK() && nHeight <= 9999;
-bool phase3 = nHeight > 10000 && nHeight <= 100000;
-bool phase4 = nHeight > 100000 && nHeight <= 200000;
-bool phase5 = nHeight > 200000 && nHeight <= 525600;
-bool phase6 = nHeight > 525601 && nHeight <= 1051200;
-bool phase7 = nHeight > 1051200 && nHeight <= 1576801;
+bool phase2 = nHeight > Params().LAST_POW_BLOCK() && nHeight <= 11520;
+bool phase3 = nHeight >= 11521 && nHeight <= 97920;
+bool phase4 = nHeight >= 97921 && nHeight <= 184320;
+bool phase5 = nHeight >= 184321 && nHeight <= 525599;
+bool phase6 = nHeight >= 525600 && nHeight <= 1051200;
+bool phase7 = nHeight >= 1051201 && nHeight <= 1576801;
 
 
 		
 	int64_t nSubsidy = 1 * COIN;
-		if (nHeight == 1) return 630000 * COIN;
+		if (nHeight == 1) return 1050000 * COIN;
 	if(phase1) 
         nSubsidy = 1* COIN;
     else if (phase2)
         nSubsidy = 10* COIN;
-         else if (phase3)
+   else if (phase3)
         nSubsidy = 16* COIN;
-         else if (phase4)
+    else if (phase4)
         nSubsidy = 14* COIN;
-        else if (phase5)
+    else if (phase5)
         nSubsidy = 12* COIN;
-            else if (phase6)
+    else if (phase6)
         nSubsidy = 10* COIN;
-          else if (phase7)
+    else if (phase7)
         nSubsidy = 6* COIN;
-        else 
-                nSubsidy = 6* COIN;
+    else 
+        nSubsidy = 6* COIN;
 
 	return nSubsidy;
 }
@@ -2233,32 +2233,7 @@ int64_t GetTreasuryAward(int nHeight)
 }
 
 
-//TEST ONLY!!!
-/*
-bool IsTreasuryBlock(int nHeight)
-{
-	if(nHeight > targetFork1+20)
-		nTreasuryBlockStep = 10; //treasury each 10 blocks!
-	
-	if(nHeight < nStartTreasuryBlock)
-		return false;
-	else if( (nHeight-nStartTreasuryBlock) % nTreasuryBlockStep == 0)
-		return true;
-	else
-		return false;
-}
 
-int64_t GetTreasuryAward(int nHeight)
-{
-	if(IsTreasuryBlock(nHeight)) {
-		if(nHeight == nStartTreasuryBlock)
-			return 200010 * COIN; //200,000 for the first treasury block, 10 - reward to PoS
-		else
-			return 15010 * COIN; //15,000 for each next block
-	} else
-		return 0;
-}
-*/
 
 bool IsInitialBlockDownload()
 {

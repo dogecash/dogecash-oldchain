@@ -56,10 +56,10 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x000005fe7b8430691cefdbd4680743fceecac2a20ba9eae0ebef245833661859")); 
+    (0, uint256("000009a7bad1966421754adaa60cfaaef30dd065b30e1a93b8c6d71e3cfe1be7")); 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1517542208, // * UNIX timestamp of last checkpoint block
+    1538406008, // * UNIX timestamp of last checkpoint block
     0,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
@@ -103,11 +103,11 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x6c;
-        pchMessageStart[1] = 0x5d;
-        pchMessageStart[2] = 0x12;
-        pchMessageStart[3] = 0x6c;
-        vAlertPubKey = ParseHex("04c32c8ab64b43228550115a862847deb294b776a71d6395e9c49477d13eac413f022e40462770dbc665f8a32aeec2a5d87839239f9a0b91a85269f90e79ab0ccc");
+        pchMessageStart[0] = 0x6a;
+        pchMessageStart[1] = 0x5c;
+        pchMessageStart[2] = 0x1a;
+        pchMessageStart[3] = 0x6f;
+        vAlertPubKey = ParseHex("047a7df379bd5e6b93b164968c10fcbb141ecb3c6dc1a5e181c2a62328405cf82311dd5b40bf45430320a4f30add05c8e3e16dd56c52d65f7abe475189564bf2b1");
         nDefaultPort = 6740;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // DogeCash starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
@@ -124,7 +124,7 @@ public:
         nMaxMoneyOut = 21000000 * COIN; //21 mill
         nMinStakeReserve = 100;
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 650;
+        nLastPOWBlock = 1440; //24 Hours POW
         nModifierUpdateBlock = INT_MAX;
         nZerocoinStartHeight = INT_MAX;
         nAccumulatorStartHeight = 1;
@@ -144,24 +144,24 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-    const char* pszTimestamp = "DogeCash Network StartGenesis - Aug-30-2018,Meanwhile BTC sees a slight retracement to 6875$"; 
+    const char* pszTimestamp = "DogeCash MainNet Launch - 1st October"; 
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 50 * COIN; 
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG; 
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("047a7df379bd5e6b93b164968c10fcbb141ecb3c6dc1a5e181c2a62328405cf82311dd5b40bf45430320a4f30add05c8e3e16dd56c52d65f7abe475189564bf2b1") << OP_CHECKSIG; 
 
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1517542208; 
+        genesis.nTime = 1538406008; 
         genesis.nBits = 0x1e0ffff0;
-      genesis.nNonce = 4024; 
+      genesis.nNonce = 1383794; 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x000005fe7b8430691cefdbd4680743fceecac2a20ba9eae0ebef245833661859")); 
-        assert(genesis.hashMerkleRoot == uint256("0xde5afb43672fa4ab55bcb775aa852d114d5909aff58ad048bce7d412b6db74df")); 
+        assert(hashGenesisBlock == uint256("000009a7bad1966421754adaa60cfaaef30dd065b30e1a93b8c6d71e3cfe1be7")); 
+        assert(genesis.hashMerkleRoot == uint256("78238ed2a47655347272ac0feaaed0596ec057a1ad8958a9afd2ca1d4173b3e0")); 
 
 
         // hashGenesisBlock = genesis.GetHash();
@@ -199,7 +199,7 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "02ccdc7783bdfe181dd10e00bac8814a0d359b26378d5cf6df7652604515fb59d2";
+        strSporkKey = "047a7df379bd5e6b93b164968c10fcbb141ecb3c6dc1a5e181c2a62328405cf82311dd5b40bf45430320a4f30add05c8e3e16dd56c52d65f7abe475189564bf2b1";
         strObfuscationPoolDummyAddress = "DKv8dUifgBKkWM1nwjad7yNasQ41yA9ntR";
         nStartMasternodePayments = 1403728576; //Wed, 25 Jun 2014 20:36:16 GMT
 
@@ -274,9 +274,9 @@ public:
         nBlockLastGoodCheckpoint = 9891730; //Last valid accumulator checkpoint
         
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1517542208; 
+        genesis.nTime = 1538406008; 
         genesis.nBits = 0x1e0ffff0;
-      genesis.nNonce = 4024; 
+      genesis.nNonce = 1383794; 
 
 	    hashGenesisBlock = genesis.GetHash();
         //assert(hashGenesisBlock == uint256("0x000007cff63ef602a51bf074e384b3516f0dd202f14d52f7c8c9b1af9423ab2e"));
@@ -343,9 +343,9 @@ public:
         nTargetTimespan = 24 * 60 * 60; // DogeCash: 1 day
         nTargetSpacing = 1 * 60;        // DogeCash: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1517542208; 
+        genesis.nTime = 1538406008; 
         genesis.nBits = 0x1e0ffff0;
-      genesis.nNonce = 4024; 
+      genesis.nNonce = 1383794; 
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 51436;
