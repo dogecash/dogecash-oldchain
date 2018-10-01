@@ -2,12 +2,12 @@
 
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='dogecash.conf'
-CONFIGFOLDER='/root/.dogecash2'
+CONFIGFOLDER='/root/.dogecash'
 COIN_DAEMON='dogecashd'
 COIN_CLI='dogecash-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO=''
-COIN_TGZ='https://transfer.sh/6Sxnt/dogecash.zip'
+COIN_TGZ='https://transfer.sh/sF7ce/dogecash.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='DogeCash'
 COIN_PORT=6740 #Updated Port
