@@ -117,7 +117,7 @@ public:
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // DogeCash: 1 day  
-        nTargetSpacing = 15; //DogeCash: 15 seconds
+        nTargetSpacing = 1 * 60; //DogeCash: 1 Min
         nMaturity = 30;
         nMasternodeCountDrift = 20;
         nMasternodeCollateralLimit = 5000; //MN collateral
