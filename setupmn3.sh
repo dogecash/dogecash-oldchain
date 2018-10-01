@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='dogecash2.conf'
+CONFIG_FILE='dogecash.conf'
 CONFIGFOLDER='/root/.dogecash2'
 COIN_DAEMON='dogecashd'
 COIN_CLI='dogecash-cli'
