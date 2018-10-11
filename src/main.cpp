@@ -4085,7 +4085,7 @@ bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
             LogPrintf("WARNING: ProcessBlock(): check proof-of-stake failed for block %s\n", hash.ToString().c_str());
             // peershares adapted: ask for missing blocks
              if (pfrom)
-                 pfrom->PushGetBlocks(pindexBest, pblock->GetHash());
+                 pfrom->PushGetBlocks(pindexPrev,hash);
 
 
             return false;
@@ -5304,7 +5304,7 @@ void static ProcessGetData(CNode* pfrom)
                          // proof-of-stake block from being rejected by stake connection
                          // check
                         vector<CInv> vInv;
-                        vInv.push_back(CInv(MSG_BLOCK, hashBestChain));
+                        vInv.push_back(CInv(MSG_BLOCK, chainActive.Tip()->GetBlockHash()));
                         pfrom->PushMessage("inv", vInv);
                         pfrom->hashContinue = 0;
                     }
