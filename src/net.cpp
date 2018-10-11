@@ -117,7 +117,16 @@ void AddOneShot(string strDest)
     LOCK(cs_vOneShots);
     vOneShots.push_back(strDest);
 }
+void CNode::PushGetBlocks(CBlockIndex* pindexBegin, uint256 hashEnd)
+{
+    // Filter out duplicate requests
+    if (pindexBegin == pindexLastGetBlocksBegin && hashEnd == hashLastGetBlocksEnd)
+        return;
+    pindexLastGetBlocksBegin = pindexBegin;
+    hashLastGetBlocksEnd = hashEnd;
 
+    PushMessage("getblocks", CBlockLocator(pindexBegin), hashEnd);
+}
 unsigned short GetListenPort()
 {
     return (unsigned short)(GetArg("-port", Params().GetDefaultPort()));
@@ -2001,7 +2010,7 @@ void CNode::AskFor(const CInv& inv)
              nRequestTime = nNow;
          else
              nRequestTime = std::max(nRequestTime + 2 * 60 * 1000000, nNow);
-             
+
     if (it != mapAlreadyAskedFor.end())
         mapAlreadyAskedFor.update(it, nRequestTime);
     else
