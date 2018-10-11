@@ -4083,6 +4083,11 @@ bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
 
         if(!CheckProofOfStake(block, hashProofOfStake)) {
             LogPrintf("WARNING: ProcessBlock(): check proof-of-stake failed for block %s\n", hash.ToString().c_str());
+            // peershares adapted: ask for missing blocks
+             if (pfrom)
+                 pfrom->PushGetBlocks(pindexBest, pblock->GetHash());
+
+
             return false;
         }
         if(!mapProofOfStake.count(hash)) // add to mapProofOfStake
@@ -5295,8 +5300,11 @@ void static ProcessGetData(CNode* pfrom)
                         // Bypass PushInventory, this must send even if redundant,
                         // and we want it right after the last block so they don't
                         // wait for other stuff first.
+                         // peershares adapted: best block is always the reference block to prevent
+                         // proof-of-stake block from being rejected by stake connection
+                         // check
                         vector<CInv> vInv;
-                        vInv.push_back(CInv(MSG_BLOCK, chainActive.Tip()->GetBlockHash()));
+                        vInv.push_back(CInv(MSG_BLOCK, hashBestChain));
                         pfrom->PushMessage("inv", vInv);
                         pfrom->hashContinue = 0;
                     }
@@ -5688,8 +5696,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             LogPrint("net", "got inv: %s  %s peer=%d\n", inv.ToString(), fAlreadyHave ? "have" : "new", pfrom->id);
 
             if (!fAlreadyHave && !fImporting && !fReindex && inv.type != MSG_BLOCK)
-                pfrom->AskFor(inv);
-
+   pfrom->AskFor(inv, IsInitialBlockDownload());
 
             if (inv.type == MSG_BLOCK) {
                 UpdateBlockAvailability(pfrom->GetId(), inv.hash);
