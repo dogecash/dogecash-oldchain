@@ -4083,10 +4083,10 @@ bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
 
         if(!CheckProofOfStake(block, hashProofOfStake)) {
             LogPrintf("WARNING: ProcessBlock(): check proof-of-stake failed for block %s\n", hash.ToString().c_str());
-            // peershares adapted: ask for missing blocks
-             if (pnode)
+            // // peershares adapted: ask for missing blocks
+            //  if (chainActive.Height <= )
              
-                 pnode->PushGetBlocks(pindexPrev,hash);
+            //      pnode->PushGetBlocks(pindexPrev,hash);
 
 
             return false;
