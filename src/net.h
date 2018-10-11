@@ -611,7 +611,6 @@ public:
         if (HasFulfilledRequest(strRequest)) return;
         vecRequestsFulfilled.push_back(strRequest);
     }
-    void PushGetBlocks(CBlockIndex* pindexBegin, uint256 hashEnd);
 
     bool IsSubscribed(unsigned int nChannel);
     void Subscribe(unsigned int nChannel, unsigned int nHops = 0);
