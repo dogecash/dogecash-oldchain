@@ -1974,7 +1974,7 @@ CNode::~CNode()
     GetNodeSignals().FinalizeNode(GetId());
 }
 
-void CNode::AskFor(const CInv& inv)
+void CNode::AskFor(const CInv& inv, bool fImmediateRetry)
 {
     if (mapAskFor.size() > MAPASKFOR_MAX_SZ)
         return;
