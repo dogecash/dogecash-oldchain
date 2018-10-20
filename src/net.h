@@ -405,7 +405,7 @@ public:
         }
     }
 
-  void AskFor(const CInv& inv, bool fImmediateRetry = false);
+    void AskFor(const CInv& inv, bool fImmediateRetry = false);
 
     // TODO: Document the postcondition of this function.  Is cs_vSend locked?
     void BeginMessage(const char* pszCommand) EXCLUSIVE_LOCK_FUNCTION(cs_vSend);
