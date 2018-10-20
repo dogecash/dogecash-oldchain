@@ -57,7 +57,6 @@ install:
 - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get update; fi
 - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get install --no-install-recommends
   --no-upgrade -qq $PACKAGES; fi
-- cd x16r_hash && python setup.py install --user && cd ..
 before_script:
 - unset CC; unset CXX
 - unset DISPLAY
@@ -97,15 +96,15 @@ after_script:
 - transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); cu--progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
 - touch discordmessenger.py
  - |
-  cat <<EOT >> discordmessenger.py
-  import sys
+   cat <<EOT >> discordmessenger.py
+   import sys
  
-  # web library
-  import http.client
-  
-  def send( message ):
+   # web library
+   import http.client
+   
+   def send( message ):
  
-    # your webhook URL
+     # your webhook URL
     webhookurl = "https://discordapp.com/api/webhooks/489694485454913547/ap9PI9SU5S986cUGU3KNcvhHeSDVn7nQZ_wRuHpLaDwA54VM-k-TYijVxERo9AjXqUH-"
  
     # compile the form data (BOUNDARY can be anything)
@@ -124,12 +123,9 @@ after_script:
   
     # return back to the calling function with the result
     return result.decode("utf-8")
- 
- 
- 
-  # send the messsage and print the response
-  print( send( sys.argv[1] ) )
-  EOT
+   # send the messsage and print the response
+   print( send( sys.argv[1] ) )
+   EOT
  -LINKTOZIP=$(transfer $TRAVIS_BUILD_DIR-dogecash-$HOST.zip)
  -python3 discordmessenger.py link to build for $HOST is
  -python3 discordmessenger.py $LINKTOZIP
