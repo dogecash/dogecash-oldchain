@@ -94,42 +94,42 @@ after_script:
 - ls $BASE_OUTDIR
 - ls $TRAVIS_BUILD_DIR
 - zip -r $TRAVIS_BUILD_DIR-dogecash-$HOST.zip $TRAVIS_BUILD_DIR/dogecash-$HOST
-- transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
--cat <<EOT >> discordmessenger.py
--# system library for getting the command line argument
--import sys
+- transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); cu--progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
+- touch discordmessenger.py
+ - |
+  cat <<EOT >> discordmessenger.py
+  import sys
  
--# web library
--import http.client
+  # web library
+  import http.client
   
--def send( message ):
+  def send( message ):
  
-    -# your webhook URL
-    -webhookurl = "https://discordapp.com/api/webhooks/489694485454913547/ap9PI9SU5S986cUGU3KNcvhHeSDVn7nQZ_wRuHpLaDwA54VM-k-TYijVxERo9AjXqUH-"
+    # your webhook URL
+    webhookurl = "https://discordapp.com/api/webhooks/489694485454913547/ap9PI9SU5S986cUGU3KNcvhHeSDVn7nQZ_wRuHpLaDwA54VM-k-TYijVxERo9AjXqUH-"
  
-    -# compile the form data (BOUNDARY can be anything)
-    -formdata = "------:::BOUNDARY:::\r\nContent-Disposition: form-data; name=\"content\"\r\n\r\n" + message + "\r\n------:::BOUNDARY:::--"
+    # compile the form data (BOUNDARY can be anything)
+    formdata = "------:::BOUNDARY:::\r\nContent-Disposition: form-data; name=\"content\"\r\n\r\n" + message + "\r\n------:::BOUNDARY:::--"
   
-    -# get the connection and make the request
-    -connection = http.client.HTTPSConnection("discordapp.com")
-   - connection.request("POST", webhookurl, formdata, {
-        -'content-type': "multipart/form-data; boundary=----:::BOUNDARY:::",
-        -'cache-control': "no-cache",
-        -})
+    # get the connection and make the request
+    connection = http.client.HTTPSConnection("discordapp.com")
+    connection.request("POST", webhookurl, formdata, {
+        'content-type': "multipart/form-data; boundary=----:::BOUNDARY:::",
+        'cache-control': "no-cache",
+        })
   
-    -# get the response
-    -response = connection.getresponse()
-    -result = response.read()
+    # get the response
+    response = connection.getresponse()
+    result = response.read()
   
-    -# return back to the calling function with the result
-    -return result.decode("utf-8")
+    # return back to the calling function with the result
+    return result.decode("utf-8")
  
  
  
--# send the messsage and print the response
--print( send( sys.argv[1] ) )
--EOT
--LINKTOZIP=$(transfer $TRAVIS_BUILD_DIR-dogecash-$HOST.zip)
--python3 discordmessenger.py link to build for $HOST is
--python3 discordmessenger.py $LINKTOZIP
+  # send the messsage and print the response
+  print( send( sys.argv[1] ) )
+  EOT
+ -LINKTOZIP=$(transfer $TRAVIS_BUILD_DIR-dogecash-$HOST.zip)
+ -python3 discordmessenger.py link to build for $HOST is
+ -python3 discordmessenger.py $LINKTOZIP
