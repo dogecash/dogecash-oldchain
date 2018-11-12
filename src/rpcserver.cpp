@@ -275,6 +275,7 @@ static const CRPCCommand vRPCCommands[] =
         {"blockchain", "getblockheader", &getblockheader, false, false, false},
         {"blockchain", "getchaintips", &getchaintips, true, false, false},
         {"blockchain", "getdifficulty", &getdifficulty, true, false, false},
+        { "blockchain", "getblockstats",&getblockstats,{"hash_or_height", "stats"} },
         {"blockchain", "getmempoolinfo", &getmempoolinfo, true, true, false},
         {"blockchain", "getrawmempool", &getrawmempool, true, false, false},
         {"blockchain", "gettxout", &gettxout, true, false, false},

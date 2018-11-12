@@ -15,13 +15,16 @@
 #include <map>
 #include <stdint.h>
 #include <string>
-
+#include <vector>
+ #include <amount.h>
 #include "json/json_spirit_reader_template.h"
 #include "json/json_spirit_utils.h"
 #include "json/json_spirit_writer_template.h"
-
+/** Used by getblockstats to get feerates at different percentiles by weight  */
+ void CalculatePercentilesByWeight(CAmount result[NUM_GETBLOCKSTATS_PERCENTILES], std::vector<std::pair<CAmount, int64_t>>& scores, int64_t total_weight);
 class CBlockIndex;
 class CNetAddr;
+static constexpr int NUM_GETBLOCKSTATS_PERCENTILES = 5;
 
 class AcceptedConnection
 {

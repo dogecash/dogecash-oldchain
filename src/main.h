@@ -56,7 +56,17 @@ class CValidationState;
 
 struct CBlockTemplate;
 struct CNodeStateStats;
-
+inline CBlockIndex* LookupBlockIndex(const uint256& hash)
+ {
+     AssertLockHeld(cs_main);
+     BlockMap::const_iterator it = mapBlockIndex.find(hash);
+     return it == mapBlockIndex.end() ? nullptr : it->second;
+ }
+ //! Check whether the block associated with this index entry is pruned or not.
+ inline bool IsBlockPruned(const CBlockIndex* pblockindex)
+ {
+     return (fHavePruned && !(pblockindex->nStatus & BLOCK_HAVE_DATA) && pblockindex->nTx > 0);
+ }
 /** Default for -blockmaxsize and -blockminsize, which control the range of sizes the mining code will create **/
 static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 750000;
 static const unsigned int DEFAULT_BLOCK_MIN_SIZE = 0;
