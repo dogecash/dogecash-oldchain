@@ -224,7 +224,7 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->lang, OptionsModel::Language);
     mapper->addMapping(ui->unit, OptionsModel::DisplayUnit);
     mapper->addMapping(ui->thirdPartyTxUrls, OptionsModel::ThirdPartyTxUrls);
-    mapper->addMapping(ui->checkBoxHideOrphans, OptionsModel::HideOrphans);
+    // mapper->addMapping(ui->checkBoxHideOrphans, OptionsModel::HideOrphans);
 
     /* Masternode Tab */
     mapper->addMapping(ui->showMasternodesTab, OptionsModel::ShowMasternodesTab);
@@ -314,11 +314,11 @@ void OptionsDialog::doProxyIpChecks(QValidatedLineEdit* pUiProxyIp, int nProxyPo
         ui->statusLabel->clear();
     }
 }
-void OptionsDialog::updateHideOrphans(bool fHide)
-{
-    if(ui->checkBoxHideOrphans->isChecked() != fHide)
-        ui->checkBoxHideOrphans->setChecked(fHide);
-}
+// void OptionsDialog::updateHideOrphans(bool fHide)
+// {
+//     if(ui->checkBoxHideOrphans->isChecked() != fHide)
+//         ui->checkBoxHideOrphans->setChecked(fHide);
+// }
 bool OptionsDialog::eventFilter(QObject* object, QEvent* event)
 {
     if (event->type() == QEvent::FocusOut) {

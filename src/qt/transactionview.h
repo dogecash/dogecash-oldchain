@@ -67,7 +67,7 @@ private:
     QComboBox* watchOnlyWidget;
     QLineEdit* addressWidget;
     QLineEdit* amountWidget;
-    QAction* hideOrphansAction;
+    //QAction* hideOrphansAction;
 
     QMenu* contextMenu;
     QSignalMapper* mapperThirdPartyTxUrls;
@@ -108,8 +108,8 @@ signals:
 public slots:
     void chooseDate(int idx);
     void chooseType(int idx);
-        void hideOrphans(bool fHide);
-    void updateHideOrphans(bool fHide);
+     //   void hideOrphans(bool fHide);
+  //  void updateHideOrphans(bool fHide);
     void chooseWatchonly(int idx);
     void changedPrefix(const QString& prefix);
     void changedAmount(const QString& amount);
