@@ -237,9 +237,6 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
             return QVariant(nZeromintPercentage);
         case ZeromintPrefDenom:
             return QVariant(nPreferredDenom);
-              case HideOrphans:
-            return settings.value("fHideOrphans");
-
         case AnonymizeDogeCashAmount:
             return QVariant(nAnonymizeDogeCashAmount);
         case Listen:
