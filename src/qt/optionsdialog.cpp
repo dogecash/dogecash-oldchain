@@ -313,7 +313,11 @@ void OptionsDialog::doProxyIpChecks(QValidatedLineEdit* pUiProxyIp, int nProxyPo
         ui->statusLabel->clear();
     }
 }
-
+void OptionsDialog::updateHideOrphans(bool fHide)
+{
+    if(ui->checkBoxHideOrphans->isChecked() != fHide)
+        ui->checkBoxHideOrphans->setChecked(fHide);
+}
 bool OptionsDialog::eventFilter(QObject* object, QEvent* event)
 {
     if (event->type() == QEvent::FocusOut) {
