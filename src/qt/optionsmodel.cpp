@@ -71,6 +71,9 @@ void OptionsModel::Init()
     if (!settings.contains("fCoinControlFeatures"))
         settings.setValue("fCoinControlFeatures", false);
     fCoinControlFeatures = settings.value("fCoinControlFeatures", false).toBool();
+    if (!settings.contains("fHideOrphans"))
+        settings.setValue("fHideOrphans", false);
+    fHideOrphans = settings.value("fHideOrphans").toBool();
 
     if (!settings.contains("nPreferredDenom"))
         settings.setValue("nPreferredDenom", 0);
