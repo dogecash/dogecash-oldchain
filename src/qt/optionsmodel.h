@@ -39,6 +39,7 @@ public:
         Digits,              // QString
         Theme,               // QString
         Language,            // QString
+        HideOrphans,
         CoinControlFeatures, // bool
         ThreadsScriptVerif,  // int
         DatabaseCache,       // int
@@ -84,6 +85,7 @@ private:
     bool fCoinControlFeatures;
     /* settings that were overriden by command-line */
     QString strOverriddenByCommandLine;
+    bool fHideOrphans;
 
     /// Add option to list of GUI options overridden through command line/config file
     void addOverriddenOption(const std::string& option);
@@ -94,6 +96,8 @@ signals:
     void preferredDenomChanged(int);
     void anonymizeDogeCashAmountChanged(int);
     void coinControlFeaturesChanged(bool);
+        void hideOrphansChanged(bool);
+
 };
 
 #endif // BITCOIN_QT_OPTIONSMODEL_H
