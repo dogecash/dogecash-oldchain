@@ -59,7 +59,7 @@ MasternodeList::MasternodeList(QWidget* parent) : QWidget(parent),
      contextMenu->addAction(deleteAliasAction);	
     connect(ui->tableWidgetMyMasternodes, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
     connect(startAliasAction, SIGNAL(triggered()), this, SLOT(on_startButton_clicked()));
-nnect(startAliasAction, SIGNAL(triggered()), this, SLOT(on_startButton_clicked()));	
+connect(startAliasAction, SIGNAL(triggered()), this, SLOT(on_startButton_clicked()));	
 		     connect(copyAliasAction, SIGNAL(triggered()), this, SLOT(copyAlias()));	
      connect(editAliasAction, SIGNAL(triggered()), this, SLOT(on_editConfigureMasternode_clicked()));	
      connect(deleteAliasAction, SIGNAL(triggered()), this, SLOT(deleteAlias()));
