@@ -7,3 +7,4 @@ settings.json
 *.json.h
 *.raw.h
 *.Plo
+Makefile
