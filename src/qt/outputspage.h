@@ -14,7 +14,7 @@
  #include <QPoint>
  #include <QString>
  #include <QTreeWidgetItem>
- #include <univalue.h>
+ #include "src/univalue/univalue.h"
 
  class WalletModel;
 

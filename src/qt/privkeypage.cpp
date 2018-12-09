@@ -19,7 +19,7 @@
  #include "masternodeconfig.h"
  #include "masternodeman.h"
 
- #include <univalue.h>
+ #include "src/univalue/univalue.h"
  #include <QIcon>
  #include <QMenu>
  #include <QString>
