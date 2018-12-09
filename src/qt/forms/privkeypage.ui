@@ -35,7 +35,7 @@
          <string>&amp;Copy</string>
         </property>
         <property name="icon">
-         <iconset resource="../phore.qrc">
+         <iconset resource="../dogecash.qrc">
           <normaloff>:/icons/editcopy</normaloff>:/icons/editcopy</iconset>
         </property>
         <property name="autoDefault">
@@ -60,7 +60,7 @@
    </layout>
   </widget>
   <resources>
-   <include location="../phore.qrc"/>
+   <include location="../dogecash.qrc"/>
   </resources>
   <connections/>
  </ui>
