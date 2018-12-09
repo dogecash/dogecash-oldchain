@@ -28,7 +28,15 @@
  #include <QSortFilterProxyModel>
  #include <boost/tokenizer.hpp>
  #include <fstream>
+#include <stdint.h>
+#include <string.h>
 
+#include <string>
+#include <vector>
+#include <map>
+#include <cassert>
+
+#include <sstream>        // .get_int64()
  OutPutsPage::OutPutsPage(QWidget* parent) : QDialog(parent),
                                              ui(new Ui::OutPutsPage)
  {
