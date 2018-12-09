@@ -36,9 +36,6 @@ QT_FORMS_UI = \
   qt/forms/bip38tooldialog.ui \
   qt/forms/coincontroldialog.ui \
   qt/forms/blockexplorer.ui \
-   qt/forms/privkeypage.ui \
-   qt/forms/outputspage.ui \
-   qt/forms/configuremasternodepage.ui \
   qt/forms/obfuscationconfig.ui \
   qt/forms/editaddressdialog.ui \
   qt/forms/helpmessagedialog.ui \
@@ -70,9 +67,6 @@ QT_MOC_CPP = \
   qt/moc_bitcoinunits.cpp \
   qt/moc_blockexplorer.cpp \
   qt/moc_clientmodel.cpp \
-    qt/moc_privkeypage.cpp \
-   qt/moc_outputspage.cpp \
-   qt/moc_configuremasternodepage.cpp \
   qt/moc_coincontroldialog.cpp \
   qt/moc_coincontroltreewidget.cpp \
   qt/moc_csvmodelwriter.cpp \
@@ -151,9 +145,6 @@ BITCOIN_QT_H = \
   qt/csvmodelwriter.h \
   qt/obfuscationconfig.h \
   qt/editaddressdialog.h \
-   qt/privkeypage.h \
-   qt/outputspage.h \
-   qt/configuremasternodepage.h \
   qt/guiconstants.h \
   qt/guiutil.h \
   qt/intro.h \
@@ -302,9 +293,6 @@ BITCOIN_QT_CPP += \
   qt/paymentserver.cpp \
   qt/receivecoinsdialog.cpp \
   qt/privacydialog.cpp \
-    qt/privkeypage.cpp \
-   qt/outputspage.cpp \
-   qt/configuremasternodepage.cpp \
   qt/receiverequestdialog.cpp \
   qt/recentrequeststablemodel.cpp \
   qt/sendcoinsdialog.cpp \
