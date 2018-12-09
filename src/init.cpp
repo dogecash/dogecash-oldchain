@@ -163,7 +163,7 @@ public:
 static CCoinsViewDB* pcoinsdbview = NULL;
 static CCoinsViewErrorCatcher* pcoinscatcher = NULL;
 static boost::thread_group threadGroup;
-static CScheduler scheduler;
+// static CScheduler scheduler;
 
 /** Preparing steps before shutting down or restarting the wallet */
 void PrepareShutdown()
