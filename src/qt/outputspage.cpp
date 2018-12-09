@@ -20,7 +20,7 @@
  #include "masternodeconfig.h"
  #include "masternodeman.h"
 #include "json/json_spirit_value.h"
- #include "univalue/univalue.h"
+ #include <univalue/univalue.h">
  #include <QIcon>
  #include <QMenu>
  #include <QString>
