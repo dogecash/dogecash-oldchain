@@ -188,7 +188,7 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
     connect(copyTxIDAction, SIGNAL(triggered()), this, SLOT(copyTxID()));
     connect(editLabelAction, SIGNAL(triggered()), this, SLOT(editLabel()));
     connect(showDetailsAction, SIGNAL(triggered()), this, SLOT(showDetails()));
-        connect(hideOrphansAction, SIGNAL(toggled(bool)), this, SLOT(updateHideOrphans(bool)));
+     //   connect(hideOrphansAction, SIGNAL(toggled(bool)), this, SLOT(updateHideOrphans(bool)));
 
 }
 
