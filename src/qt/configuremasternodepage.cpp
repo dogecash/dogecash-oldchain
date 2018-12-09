@@ -22,7 +22,7 @@
  #include "masternodelist.h"
  #include "wallet.h"
 
- #include <univalue.h>
+ #include "univalue/univalue.h"
  #include <QIcon>
  #include <QMenu>
  #include <QString>
