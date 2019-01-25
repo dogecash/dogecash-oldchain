@@ -173,19 +173,19 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 
     // Create actions for the toolbar, menu bar and tray/dock icon
     // Needs walletFrame to be initialized
-    createActions(networkStyle);
+//    createActions(networkStyle);
 
     // Create application menu bar
-    createMenuBar();
+//    createMenuBar();
 
     // Create the toolbars
-    createToolBars();
+//    createToolBars();
 
     // Create system tray icon and notification
-    createTrayIcon(networkStyle);
+//    createTrayIcon(networkStyle);
 
     // Create status bar
-    statusBar();
+//    statusBar();
 
     // Status bar notification icons
     QFrame* frameBlocks = new QFrame();
