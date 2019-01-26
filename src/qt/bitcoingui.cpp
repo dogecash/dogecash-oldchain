@@ -176,10 +176,10 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     createActions(networkStyle);
 
     // Create application menu bar
-//    createMenuBar();
+    createMenuBar();
 
     // Create the toolbars
-//    createToolBars();
+    createToolBars();
 
     // Create system tray icon and notification
     createTrayIcon(networkStyle);
@@ -495,11 +495,9 @@ void BitcoinGUI::createMenuBar()
 #ifdef Q_OS_MAC
     // Create a decoupled menu bar on Mac which stays even if the window is closed
     appMenuBar = new QMenuBar();
-    appMenuBar->hide();
 #else
     // Get the main window's menu bar on other platforms
     appMenuBar = menuBar();
-    appMenuBar->hide();
 #endif
 
     // Configure the menus
@@ -551,6 +549,7 @@ void BitcoinGUI::createMenuBar()
     help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
+    appMenuBar->hide();
 }
 
 void BitcoinGUI::createToolBars()
