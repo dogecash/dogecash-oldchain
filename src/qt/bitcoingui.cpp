@@ -113,8 +113,8 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             spinnerFrame(0)
 {
     /* Open CSS when configured */
-//    this->setStyleSheet(GUIUtil::loadStyleSheet());
-    this->setStyleSheet("background-color: blue");
+    this->setStyleSheet(GUIUtil::loadStyleSheet());
+//    this->setStyleSheet("background-color: blue");
     GUIUtil::restoreWindowGeometry("nWindow", QSize(1178, 848), this);
 
     QString windowTitle = tr("DogeCash Core") + " - ";
@@ -357,7 +357,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
-        masternodeAction = new QAction(QIcon(":/icons/masternodes"), tr("&Masternodes"), this);
+        masternodeAction = new QAction(QIcon(":/icons/masternodes"), tr("&Masternodes"), his);
         masternodeAction->setStatusTip(tr("Browse masternodes"));
         masternodeAction->setToolTip(masternodeAction->statusTip());
         masternodeAction->setCheckable(true);
