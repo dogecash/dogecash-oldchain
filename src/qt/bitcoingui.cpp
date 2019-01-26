@@ -374,15 +374,15 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
     // can be triggered from the tray menu, and need to show the GUI to be useful.
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
+//    connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsPage()));
+//    connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsPage()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
+//    connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(privacyAction, SIGNAL(triggered()), this, SLOT(gotoPrivacyPage()));
+//    connect(privacyAction, SIGNAL(triggered()), this, SLOT(gotoPrivacyPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
+//    connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
@@ -495,9 +495,11 @@ void BitcoinGUI::createMenuBar()
 #ifdef Q_OS_MAC
     // Create a decoupled menu bar on Mac which stays even if the window is closed
     appMenuBar = new QMenuBar();
+    appMenuBar->hide();
 #else
     // Get the main window's menu bar on other platforms
     appMenuBar = menuBar();
+    appMenuBar->hide();
 #endif
 
     // Configure the menus
@@ -560,6 +562,8 @@ void BitcoinGUI::createToolBars()
         toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
         toolbar->setOrientation(Qt::Vertical);
+        toolbar->hide();
+//        toobar->setVisible(false);
         toolbar->setAllowedAreas(Qt::LeftToolBarArea);
 
         auto dummy1 = new QWidget(this);
@@ -582,10 +586,10 @@ void BitcoinGUI::createToolBars()
 
         toolbar->setMovable(false); // remove unused icon in upper left corner
         overviewAction->setChecked(true);
+        toolbar->hide();
 
 
         //***********************************************************************************************
-        toolbar->setVisible(false);
 //********************************************************************************************************
 
 
