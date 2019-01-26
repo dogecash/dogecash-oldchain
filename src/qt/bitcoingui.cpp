@@ -549,7 +549,6 @@ void BitcoinGUI::createMenuBar()
     help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
-    appMenuBar->setVisible(false);
 }
 
 void BitcoinGUI::createToolBars()
@@ -584,6 +583,12 @@ void BitcoinGUI::createToolBars()
         toolbar->setMovable(false); // remove unused icon in upper left corner
         overviewAction->setChecked(true);
 
+
+        //***********************************************************************************************
+        toolbar->setVisible(false);
+//********************************************************************************************************
+
+
         /** Create additional container for toolbar and walletFrame and make it the central widget.
             This is a workaround mostly for toolbar styling on Mac OS but should work fine for every other OSes too.
         */
@@ -595,6 +600,7 @@ void BitcoinGUI::createToolBars()
         QWidget* containerWidget = new QWidget();
         containerWidget->setLayout(layout);
         setCentralWidget(containerWidget);
+
     }
 }
 
