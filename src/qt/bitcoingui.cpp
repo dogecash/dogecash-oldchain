@@ -560,10 +560,11 @@ void BitcoinGUI::createToolBars()
         addToolBar(Qt::LeftToolBarArea, toolbar);
         toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
-        toolbar->setOrientation(Qt::Vertical);
+//        toolbar->setOrientation(Qt::Vertical);
+        toolbar->setOrientation(Qt::Horizontal);
         toolbar->hide();
-//        toobar->setVisible(false);
-        toolbar->setAllowedAreas(Qt::LeftToolBarArea);
+//        toolbar->setAllowedAreas(Qt::LeftToolBarArea);
+        toolbar->setAllowedAreas(Qt::BottomToolBarArea);
 
         auto dummy1 = new QWidget(this);
         dummy1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -585,7 +586,7 @@ void BitcoinGUI::createToolBars()
 
         toolbar->setMovable(false); // remove unused icon in upper left corner
         overviewAction->setChecked(true);
-        toolbar->hide();
+//        toolbar->hide();
 
 
         //***********************************************************************************************
