@@ -116,6 +116,8 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     this->setStyleSheet(GUIUtil::loadStyleSheet());
 //    this->setStyleSheet("background-color: blue");
     GUIUtil::restoreWindowGeometry("nWindow", QSize(1178, 848), this);
+    
+    
 
     QString windowTitle = tr("DogeCash Core") + " - ";
 #ifdef ENABLE_WALLET
@@ -696,7 +698,8 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     openAction->setEnabled(enabled);
 }
 
-void BitcoinGUI::createTrayIcon(const NetworkStyle* networkStyle)
+void BitcoinGU
+I::createTrayIcon(const NetworkStyle* networkStyle)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
@@ -704,6 +707,7 @@ void BitcoinGUI::createTrayIcon(const NetworkStyle* networkStyle)
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->show();
+    trayIcon->hide();
 #endif
 
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
