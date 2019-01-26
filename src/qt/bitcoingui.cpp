@@ -315,7 +315,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     sendCoinsAction->setStatusTip(tr("Send coins to a DogeCash address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
-#ifdef Q_OS_MACgit pull
+#ifdef Q_OS_MACgit
     sendCoinsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_2));
 #else
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
