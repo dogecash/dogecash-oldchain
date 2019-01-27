@@ -216,6 +216,10 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     labelConnectionsIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
     labelConnectionsIcon->setMaximumSize(35,35);
     labelConnectionsIcon->setMinimumSize(35,35);
+    lockButton = new QPushButton();
+    lockButton->setIcon(QPixmap(":/icons/res/icons/lock.svg"));
+    networkButtion = new QPushButtion();
+    networkButtion->setIcon(QPixmap(":/icons/res/icons/network.svg"));
 //    labelConnectionsIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelBlocksIcon = new QLabel();
 
@@ -226,6 +230,8 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
         frameBlocksLayout->addWidget(labelEncryptionIcon);
     }
     frameBlocksLayout->addStretch();
+    frameBlocksLayout->addWidget(lockButton);
+    frameBlocksLayout->addWidget(networkButtion);
     frameBlocksLayout->addWidget(labelStakingIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelEncryptionIcon);
