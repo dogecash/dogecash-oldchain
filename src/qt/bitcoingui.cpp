@@ -245,7 +245,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addStretch();
-    frameBlocks->setVisible(false);
+    frameBlocks->setVisible(true);
 
     // Progress bar and label for blocks download
     progressBarLabel = new QLabel();
@@ -275,7 +275,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     emptyWidget->layout()->setContentsMargins(0,0,0,0);
     emptyWidget->layout()->addWidget(progressBar);
     emptyWidget->layout()->addWidget(networkButtion);
-    emptyWidget->layout()->addItem(frameBlocksLayout);
+    emptyWidget->layout()->addItem(frameBlocksLayout);s
 //    statusBar()->addWidget(progressBarLabel);
 //    statusBar()->addWidget(progressBar);
 //    progressBar->setVisible(false);
