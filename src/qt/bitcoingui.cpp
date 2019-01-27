@@ -203,9 +203,10 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     unitDisplayControl = new UnitDisplayStatusBarControl();
     labelStakingIcon = new QLabel();
     labelEncryptionIcon = new QPushButton();
-    labelEncryptionIcon->setIcon(QPixmap(":/res/icons/lock.svg"));
+    labelEncryptionIcon->setIcon(QPixmap(":/icons/res/icons/lock.svg"));
+    labelEncryptionIcon->setIconSize(QSize(35,35));
     labelEncryptionIcon->setFlat(true); // Make the button look like a label, but clickable
-    labelEncryptionIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
+    labelEncryptionIcon->setStyleSheet("{ background-color: transparent;}");
 //    labelEncryptionIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelEncryptionIcon->setMaximumSize(35,35);
     labelEncryptionIcon->setMinimumSize(35,35);
@@ -344,7 +345,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     overviewButton = new QPushButton();
 //    pixmap_overview = new QPixmap(":/icons/res/icons/home.png");
 //    icon_overview = new QIcon(*pixmap_overview);
-    overviewButton->setIcon(QPixmap(":/res/icons/home.png"));
+    overviewButton->setIcon(QPixmap(":/res/icons/home_active.png"));
     overviewButton->setIconSize(QSize(60,112));
     overviewButton->setStyleSheet("background-color: transparent");
     overviewButton->setFlat(true);

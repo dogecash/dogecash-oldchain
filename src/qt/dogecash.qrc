@@ -60,6 +60,10 @@
         <file>res/icons/mns_active.png</file>
         <file>res/icons/receive_active.png</file>
         <file>res/icons/send_active.png</file>
+        <file>res/icons/lock.svg</file>
+        <file>res/icons/network.svg</file>
+        <file>res/icons/refresh.svg</file>
+        <file>res/icons/up.svg</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>
