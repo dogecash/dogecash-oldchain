@@ -117,9 +117,9 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 //    this->setStyleSheet(GUIUtil::loadStyleSheet());
 //    this->setStyleSheet("background-color: blue");
     this->setStyleSheet("background-color: qradialgradient(spread:pad, cx:0.29, cy:0.23, radius:1, fx:0.29, fy:0.23,  stop:0 #44505e, stop:1#262d35);");
-    GUIUtil::restoreWindowGeometry("nWindow", QSize(1178, 760), this);
+    GUIUtil::restoreWindowGeometry("nWindow", QSize(1178, 830), this);
     this->setMinimumWidth(1178);
-    this->setMinimumHeight(760);
+    this->setMinimumHeight(830);
     
     
 
@@ -307,7 +307,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
     overviewButton = new QPushButton();
     overviewButton->setIcon(QPixmap(":/icons/res/icons/home.png"));
-    overviewButton->setIconSize(QSize(60,110));
+    overviewButton->setIconSize(QSize(60,112));
     overviewButton->setStyleSheet("background-color: transparent");
     tabButtonGroup->addButton(overviewButton);
     connect(overviewButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
@@ -326,7 +326,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
     sendCoinsButton = new QPushButton();
     sendCoinsButton->setIcon(QPixmap(":/icons/res/icons/send.png"));
-    sendCoinsButton->setIconSize(QSize(60,110));
+    sendCoinsButton->setIconSize(QSize(60,112));
     sendCoinsButton->setStyleSheet("background-color: transparent");
     tabButtonGroup->addButton(sendCoinsButton);
     connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
