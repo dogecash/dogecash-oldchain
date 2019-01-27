@@ -273,6 +273,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 
     emptyWidget->setObjectName("EmptyWidget");
     emptyWidget->setStyleSheet("background-color: yellow");
+    emptyWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     emptyWidget->setLayout(new QHBoxLayout());
     statusBar()->setStyleSheet("margin-left: 18px; margin-right: 10px; margin-bottom: 10px; margin-top: 0px; background-color: transparent;");
     statusBar()->addWidget(emptyWidget);
