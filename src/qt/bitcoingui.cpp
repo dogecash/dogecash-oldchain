@@ -208,13 +208,13 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     labelEncryptionIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
 //    labelEncryptionIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelEncryptionIcon->setMaximumSize(35,35);
-    labelEncryptionIcon->setMininumSize(35,35);
+    labelEncryptionIcon->setMinimumSize(35,35);
     labelConnectionsIcon = new QPushButton();
     labelConnectionsIcon->setIcon(QPixmap(":/res/icons/network.svg"));
     labelConnectionsIcon->setFlat(true); // Make the button look like a label, but clickable
     labelConnectionsIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
     labelConnectionsIcon->setMaximumSize(35,35);
-    labelConnectionsIcon->setMininumSize(35,35);
+    labelConnectionsIcon->setMinimumSize(35,35);
 //    labelConnectionsIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelBlocksIcon = new QLabel();
 
