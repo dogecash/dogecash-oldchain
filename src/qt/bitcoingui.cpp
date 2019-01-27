@@ -206,39 +206,45 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     labelEncryptionIcon->setIcon(QPixmap(":/icons/res/icons/lock.png"));
     labelEncryptionIcon->setIconSize(QSize(35,35));
     labelEncryptionIcon->setFlat(true); // Make the button look like a label, but clickable
-    labelEncryptionIcon->setStyleSheet("{ background-color: transparent;}");
+    labelEncryptionIcon->setStyleSheet("{ background-color: blue;}");
 //    labelEncryptionIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
-    labelEncryptionIcon->setMaximumSize(35,35);
-    labelEncryptionIcon->setMinimumSize(35,35);
+
     labelConnectionsIcon = new QPushButton();
     labelConnectionsIcon->setIcon(QPixmap(":/res/icons/network.svg"));
+    labelEncryptionIcon->setMaximumSize(35,35);
+    labelEncryptionIcon->setMinimumSize(35,35);
     labelConnectionsIcon->setFlat(true); // Make the button look like a label, but clickable
     labelConnectionsIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
-    labelConnectionsIcon->setMaximumSize(35,35);
-    labelConnectionsIcon->setMinimumSize(35,35);
+
     lockButton = new QPushButton();
     lockButton->setIcon(QPixmap(":/icons/res/icons/lock.svg"));
+    lockButton->setIconSize(QSize(17,22));
+    lockButton->setMaximumSize(35,35);
+    lockButton->setMinimumSize(35,35);
     networkButtion = new QPushButton();
     networkButtion->setIcon(QPixmap(":/icons/res/icons/network.svg"));
+    networkButtion->setIconSize(QSize(26,14));
+    networkButtion->setMaximumSize(35,35);
+    networkButtion->setMinimumSize(35,35);
 //    labelConnectionsIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelBlocksIcon = new QLabel();
 
-    if (enableWallet) {
-        frameBlocksLayout->addStretch();
-        frameBlocksLayout->addWidget(unitDisplayControl);
-        frameBlocksLayout->addStretch();
-        frameBlocksLayout->addWidget(labelEncryptionIcon);
-    }
-    frameBlocksLayout->addStretch();
+//    if (enableWallet) {
+//        frameBlocksLayout->addStretch();
+//        frameBlocksLayout->addWidget(unitDisplayControl);
+//        frameBlocksLayout->addStretch();
+//        frameBlocksLayout->addWidget(labelEncryptionIcon);
+//    }
+//    frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(lockButton);
     frameBlocksLayout->addWidget(networkButtion);
-    frameBlocksLayout->addWidget(labelStakingIcon);
+//    frameBlocksLayout->addWidget(labelStakingIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelEncryptionIcon);
-    frameBlocksLayout->addWidget(labelConnectionsIcon);
+//    frameBlocksLayout->addWidget(labelConnectionsIcon);
     frameBlocksLayout->addStretch();
 //    frameBlocksLayout->addWidget(labelBlocksIcon);
-    frameBlocksLayout->addStretch();
+//    frameBlocksLayout->addStretch();
 
     // Progress bar and label for blocks download
     progressBarLabel = new QLabel();
