@@ -575,10 +575,11 @@ void BitcoinGUI::createToolBars()
         QPushButton *overviewbutton = new QPushButton();
         QPixmap pixmap_overview(":/icons/edit");
         QIcon ButtonIcon_overview(pixmap_overview);
+        *overviewbutton->setFlat(true);
         overviewbutton->setIcon(ButtonIcon_overview);
         overviewbutton->setStyleSheet("background-color: transparent");
-        connect(overviewbutton, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-        connect(overviewbutton, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
+        connect(overviewbutton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
+        connect(overviewbutton, SIGNAL(clicked ()), this, SLOT(gotoOverviewPage()));
 //        overviewbutton->setIconSize(pixmap.rect().size());
 //        overviewbutton->setPixmap
 
