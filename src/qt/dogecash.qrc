@@ -64,6 +64,10 @@
         <file>res/icons/network.svg</file>
         <file>res/icons/refresh.svg</file>
         <file>res/icons/up.svg</file>
+        <file>res/icons/lock.png</file>
+        <file>res/icons/network.png</file>
+        <file>res/icons/refresh.png</file>
+        <file>res/icons/up.png</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>

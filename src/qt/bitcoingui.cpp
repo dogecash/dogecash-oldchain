@@ -203,7 +203,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     unitDisplayControl = new UnitDisplayStatusBarControl();
     labelStakingIcon = new QLabel();
     labelEncryptionIcon = new QPushButton();
-    labelEncryptionIcon->setIcon(QPixmap(":/icons/res/icons/lock.svg"));
+    labelEncryptionIcon->setIcon(QPixmap(":/icons/res/icons/lock.png"));
     labelEncryptionIcon->setIconSize(QSize(35,35));
     labelEncryptionIcon->setFlat(true); // Make the button look like a label, but clickable
     labelEncryptionIcon->setStyleSheet("{ background-color: transparent;}");
