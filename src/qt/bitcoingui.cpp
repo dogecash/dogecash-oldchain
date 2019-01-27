@@ -310,6 +310,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     overviewButton->setIconSize(QSize(60,112));
     overviewButton->setStyleSheet("background-color: transparent");
     tabButtonGroup->addButton(overviewButton);
+            connect(overviewButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
+            connect(overviewButton, SIGNAL(clicked ()), this, SLOT(gotoOverviewPage()));
 
 
     overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Home"), this);
