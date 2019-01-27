@@ -903,7 +903,7 @@ void BitcoinGUI::gotoOverviewPage()
 
 void BitcoinGUI::gotoHistoryPage()
 {
-    historyButton->setIcon(":/res/icons/history_active.png");
+    historyButton->setIcon(QPixmap(":/res/icons/history_active.png"));
     historyAction->setChecked(true);
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
