@@ -9,6 +9,8 @@ border-image: url(':/images/walletFrame_bg') 0 0 0 0 stretch stretch;
 margin:0;
 padding:0;
 }
+QMainWindow {
+background-color:  qradialgradient(spread:pad, cx:0.29, cy:0.23, radius:1, fx:0.29, fy:0.23,  stop:0 #44505e, stop:1#262d35);
 
 .QFrame {
 background-color:transparent;

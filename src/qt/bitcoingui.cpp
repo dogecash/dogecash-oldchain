@@ -114,9 +114,9 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             spinnerFrame(0)
 {
     /* Open CSS when configured */
-//    this->setStyleSheet(GUIUtil::loadStyleSheet());
+    this->setStyleSheet(GUIUtil::loadStyleSheet());
 //    this->setStyleSheet("background-color: blue");
-    this->setStyleSheet("background-color: qradialgradient(spread:pad, cx:0.29, cy:0.23, radius:1, fx:0.29, fy:0.23,  stop:0 #44505e, stop:1#262d35);");
+//    this->setStyleSheet("background-color: qradialgradient(spread:pad, cx:0.29, cy:0.23, radius:1, fx:0.29, fy:0.23,  stop:0 #44505e, stop:1#262d35);");
     GUIUtil::restoreWindowGeometry("nWindow", QSize(1178, 830), this);
     this->setMinimumWidth(1178);
     this->setMinimumHeight(830);
@@ -305,15 +305,6 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     QActionGroup* tabGroup = new QActionGroup(this);
     QButtonGroup *tabButtonGroup = new QButtonGroup(this);
 
-    overviewButton = new QPushButton();
-    overviewButton->setIcon(QPixmap(":/icons/res/icons/home.png"));
-    overviewButton->setIconSize(QSize(60,112));
-    overviewButton->setStyleSheet("background-color: transparent");
-    tabButtonGroup->addButton(overviewButton);
-    connect(overviewButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
-    connect(overviewButton, SIGNAL(clicked ()), this, SLOT(gotoOverviewPage()));
-
-
     overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Home"), this);
     overviewAction->setStatusTip(tr("Show general overview of wallet"));
     overviewAction->setToolTip(overviewAction->statusTip());
@@ -324,13 +315,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
 #endif
 
-    sendCoinsButton = new QPushButton();
-    sendCoinsButton->setIcon(QPixmap(":/icons/res/icons/send.png"));
-    sendCoinsButton->setIconSize(QSize(60,112));
-    sendCoinsButton->setStyleSheet("background-color: transparent");
-    tabButtonGroup->addButton(sendCoinsButton);
-    connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
-    connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(gotoSendCoinsPage()));
+
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
     sendCoinsAction->setStatusTip(tr("Send coins to a DogeCash address"));
@@ -343,9 +328,48 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(sendCoinsAction);
 
-//    receiveButton = new QPushButton();
-//    receiveButton.setIcon(QPixmap(":/icons/res/icons/receive.png"));
-//    receiveButton.setIconSize(QSize(60, 98));
+
+
+    overviewButton = new QPushButton();
+    overviewButton->setIcon(QPixmap(":/icons/res/icons/home.png"));
+    overviewButton->setIconSize(QSize(65,112));
+    overviewButton->setStyleSheet("background-color: transparent");
+    tabButtonGroup->addButton(overviewButton);
+    connect(overviewButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
+    connect(overviewButton, SIGNAL(clicked ()), this, SLOT(gotoOverviewPage()));
+
+    sendCoinsButton = new QPushButton();
+    sendCoinsButton->setIcon(QPixmap(":/icons/res/icons/send.png"));
+    sendCoinsButton->setIconSize(QSize(65,112));
+    sendCoinsButton->setStyleSheet("background-color: transparent");
+    tabButtonGroup->addButton(sendCoinsButton);
+    connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
+    connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(gotoSendCoinsPage()));
+
+    receiveButton = new QPushButton();
+    receiveButton.setIcon(QPixmap(":/icons/res/icons/receive.png"));
+    receiveButton.setIconSize(QSize(65, 112));
+    receiveButton->setStyleSheet("background-color: transparent");
+    tabButtonGroup->addButton(receiveButton);
+    connect(receiveButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
+    connect(receiveButton, SIGNAL(clicked ()), this, SLOT(gotoReceiveCoinsPage()));
+
+    mnsButton = new QPushButton();
+    mnsButton->setIcon(QPixmap(":/icons/res/icons/mns.png"));
+    mnsButton->setIconSize(QSize(65, 112));
+    mnsButton->setStyleSheet("background-color: transparent");
+    tabButtonGroup->addButton(mnsButton);
+    connect(mnsButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
+    connect(mnsButton, SIGNAL(clicked ()), this, SLOT(gotoPrivacyPage()));
+
+    historyButton = new QPushButton();
+    historyButton->setIcon(QPixmap(":/icons/res/icons/history.png"));
+    historyButton->setIconSize(QSize(65, 112));
+    historyButton->setStyleSheet("background-color: transparent");
+    tabButtonGroup->addButton(historyButton);
+    connect(historyButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
+    connect(historyButton, SIGNAL(clicked ()), this, SLOT(gotoHistoryPage()));
+
 
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
     receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and dogecash: URIs)"));
@@ -594,21 +618,12 @@ void BitcoinGUI::createToolBars()
 //        toolbar->setAllowedAreas(Qt::LeftToolBarArea);
         toolbar->setAllowedAreas(Qt::BottomToolBarArea);
 
-//        QPushButton *overviewbutton = new QPushButton();
-//        QPixmap *pixmap_overview(":/icons/edit");
-//        QIcon ButtonIcon_overview(pixmap_overview);
-//        *overviewbutton->setFlat(true);
-//        overviewbutton->setIcon(ButtonIcon_overview);
-//        connect(overviewbutton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
-//        connect(overviewbutton, SIGNAL(clicked ()), this, SLOT(gotoOverviewPage()));
-//        overviewbutton->setIconSize(pixmap.rect().size());
-//        overviewbutton->setPixmap
 
         auto dummy1 = new QWidget(this);
-        dummy1->setStyleSheet("background-color: transparent");
+//        dummy1->setStyleSheet("background-color: transparent");
         dummy1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         auto dummy2 = new QWidget(this);
-        dummy2->setStyleSheet("background-color: transparent");
+//        dummy2->setStyleSheet("background-color: transparent");
         dummy2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
         toolbar->addWidget(dummy1);
@@ -618,9 +633,12 @@ void BitcoinGUI::createToolBars()
 //        toolbar->addAction(overviewAction);
         toolbar->addWidget(overviewButton);
         toolbar->addWidget(sendCoinsButton);
-        toolbar->addAction(receiveCoinsAction);
+        toolbar->addWidget(receiveButton);
+        toolbar->addWidget(mnsButton);
+        toolbar->addWidget(historyButton);
+//        toolbar->addAction(receiveCoinsAction);
         // toolbar->addAction(privacyAction);
-        toolbar->addAction(historyAction);
+//        toolbar->addAction(historyAction);
         // toolbar->addAction(privacyAction);
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
@@ -629,7 +647,8 @@ void BitcoinGUI::createToolBars()
         toolbar->addWidget(dummy2);
 
         toolbar->setMovable(false); // remove unused icon in upper left corner
-        overviewAction->setChecked(true);
+//        overviewAction->setChecked(true);
+        overviewButton->setChecked(true);
 //        toolbar->hide();
 
 
