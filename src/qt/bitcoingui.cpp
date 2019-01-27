@@ -614,7 +614,7 @@ void BitcoinGUI::createToolBars()
 
 //        toolbar->addAction(overviewAction);
         toolbar->addWidget(overviewButton);
-        toolbar->addAction(sendCoinsButton);
+        toolbar->addWidget(sendCoinsButton);
         toolbar->addAction(receiveCoinsAction);
         // toolbar->addAction(privacyAction);
         toolbar->addAction(historyAction);
