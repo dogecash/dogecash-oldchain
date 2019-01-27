@@ -272,7 +272,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     QWidget * emptyWidget = new QWidget();
 
     emptyWidget->setObjectName("EmptyWidget");
-    emptyWidget->setStyleSheet("background-color: transparent");
+    emptyWidget->setStyleSheet("background-color: yellow");
     emptyWidget->setLayout(new QHBoxLayout());
     statusBar()->setStyleSheet("margin-left: 18px; margin-right: 10px; margin-bottom: 10px; margin-top: 0px; background-color: transparent;");
     statusBar()->addWidget(emptyWidget);
@@ -280,7 +280,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     emptyWidget->layout()->setContentsMargins(0,0,0,0);
     emptyWidget->layout()->addWidget(progressBar);
     emptyWidget->layout()->addWidget(networkButtion);
-    emptyWidget->layout()->addWidget(frameBlocks);
+//    emptyWidget->layout()->addWidget(frameBlocks);
 //    statusBar()->addWidget(progressBarLabel);
 //    statusBar()->addWidget(progressBar);
 //    progressBar->setVisible(false);
