@@ -225,11 +225,11 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
         frameBlocksLayout->addWidget(labelEncryptionIcon);
     }
     frameBlocksLayout->addStretch();
-    frameBlocksLayout->addWidget(labelStakingIcon);
+//    frameBlocksLayout->addWidget(labelStakingIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelConnectionsIcon);
     frameBlocksLayout->addStretch();
-    frameBlocksLayout->addWidget(labelBlocksIcon);
+//    frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addStretch();
 
     // Progress bar and label for blocks download
@@ -896,12 +896,14 @@ void BitcoinGUI::openClicked()
 
 void BitcoinGUI::gotoOverviewPage()
 {
+    overviewButton->setIcon(QPixmap(":/res/icons/home_active.png"));
     overviewAction->setChecked(true);
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
 void BitcoinGUI::gotoHistoryPage()
 {
+    historyButton->setIcon(":/res/icons/history_active.png");
     historyAction->setChecked(true);
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
@@ -917,18 +919,21 @@ void BitcoinGUI::gotoMasternodePage()
 
 void BitcoinGUI::gotoReceiveCoinsPage()
 {
+    receiveButton->setIcon(QPixmap(":/res/icons/receive_active.png"));
     receiveCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
 }
 
 void BitcoinGUI::gotoPrivacyPage()
 {
+    mnsButton->setIcon(QPixmap(":/res/icons/mns_active.png"));
     privacyAction->setChecked(true);
     if (walletFrame) walletFrame->gotoPrivacyPage();
 }
 
 void BitcoinGUI::gotoSendCoinsPage(QString addr)
 {
+    sendCoinsButton->setIcon(QPixmap(":/res/icons/send_active.png"));
     sendCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoSendCoinsPage(addr);
 }
@@ -1341,6 +1346,11 @@ void BitcoinGUI::setEncryptionStatus(int status)
 
 void BitcoinGUI::showNormalIfMinimized(bool fToggleHidden)
 {
+    overviewButton->setIcon(QPixmap(":/res/icons/home.png"));
+    sendCoinsButton->setIcon(QPixmap(":/res/icons/send.png"));
+    receiveButton->setIcon(QPixmap(":/res/icons/receive.png"));
+    mnsButton->setIcon(QPixmap(":/res/icons/mns.png"));
+    historyButton->setIcon(QPixmap(":/res/icons/history.png"));
     if (!clientModel)
         return;
 
