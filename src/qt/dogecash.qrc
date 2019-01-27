@@ -71,6 +71,7 @@
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>
+        <file>res/css/dogecash.css</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>
