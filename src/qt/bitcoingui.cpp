@@ -304,7 +304,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     QButtonGroup *tabButtonGroup = new QButtonGroup(this);
 
     overviewButton = new QPushButton();
-    pixmap_overview = new QPixmap(":/icons/overview");
+    pixmap_overview = new QPixmap(":/icons/res/icons/home.png");
     icon_overview = new QIcon(*pixmap_overview);
     overviewButton->setIcon(*icon_overview);
     overviewButton->setIconSize(QSize(60,98));
@@ -610,6 +610,7 @@ void BitcoinGUI::createToolBars()
         dummy2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
         toolbar->addWidget(dummy1);
+        .......
 
 
 //        toolbar->addAction(overviewAction);
