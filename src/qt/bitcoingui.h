@@ -114,7 +114,7 @@ private:
     QMenuBar* appMenuBar;
     QAction* overviewAction;
     QPushButton *overviewButton, *historyButton, *sendCoinsButton, *receiveButton, *mnsButton;
-    QPixmap *pixmap_overview, pixmap_history, *pixmap_sendcoin, *pixmap_receive, *pixmap_mns;
+    QPixmap *pixmap_overview, *pixmap_history, *pixmap_sendcoin, *pixmap_receive, *pixmap_mns;
     QIcon *icon_overview, *icon_history, *icon_sendcoin, *icon_receive, *icon_mns;
     QAction* historyAction;
     QAction* masternodeAction;
