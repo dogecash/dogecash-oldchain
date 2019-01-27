@@ -118,8 +118,8 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 //    this->setStyleSheet("background-color: blue");
     this->setStyleSheet("background-color: qradialgradient(spread:pad, cx:0.29, cy:0.23, radius:1, fx:0.29, fy:0.23,  stop:0 #44505e, stop:1#262d35);");
     GUIUtil::restoreWindowGeometry("nWindow", QSize(1178, 760), this);
-    this->setMinimumHeight(1178);
-    this->setMinimumWidth(760);
+    this->setMinimumWidth(1178);
+    this->setMinimumHeight(760);
     
     
 
@@ -306,10 +306,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     QButtonGroup *tabButtonGroup = new QButtonGroup(this);
 
     overviewButton = new QPushButton();
-    pixmap_overview = new QPixmap(":/icons/res/icons/home.png");
-    icon_overview = new QIcon(*pixmap_overview);
-    overviewButton->setIcon(*icon_overview);
-    overviewButton->setIconSize(QSize(60,98));
+    overviewButton->setIcon(QPixmap(":/icons/res/icons/home.png"));
+    overviewButton->setIconSize(QSize(60,110));
     overviewButton->setStyleSheet("background-color: transparent");
     tabButtonGroup->addButton(overviewButton);
     connect(overviewButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
@@ -327,10 +325,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
 
     sendCoinsButton = new QPushButton();
-    pixmap_sendcoin = new QPixmap(":/icons/send");
-    icon_sendcoin = new QIcon(*pixmap_sendcoin);
-    sendCoinsButton->setIcon(*icon_sendcoin);
-    sendCoinsButton->setIconSize(QSize(60,98));
+    sendCoinsButton->setIcon(QPixmap(":/icons/res/icons/send.png"));
+    sendCoinsButton->setIconSize(QSize(60,110));
     sendCoinsButton->setStyleSheet("background-color: transparent");
     tabButtonGroup->addButton(sendCoinsButton);
     connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
@@ -346,6 +342,10 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
 #endif
     tabGroup->addAction(sendCoinsAction);
+
+//    receiveButton = new QPushButton();
+//    receiveButton.setIcon(QPixmap(":/icons/res/icons/receive.png"));
+//    receiveButton.setIconSize(QSize(60, 98));
 
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
     receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and dogecash: URIs)"));
@@ -583,7 +583,7 @@ void BitcoinGUI::createToolBars()
 {
     if (walletFrame) {
         QToolBar* toolbar = new QToolBar(tr("Tabs toolbar"));
-//        toolbar->setContentsMargins(0);
+        toolbar->setContentsMargins(1);
         toolbar->setObjectName("MainToolbar");
         addToolBar(Qt::BottomToolBarArea, toolbar);
         toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
