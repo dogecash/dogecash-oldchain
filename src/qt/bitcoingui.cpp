@@ -198,7 +198,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     frameBlocks->setContentsMargins(0, 0, 0, 0);
     frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
     QHBoxLayout* frameBlocksLayout = new QHBoxLayout(frameBlocks);
-    frameBlocksLayout->setContentsMargins(3, 0, 3, 0);
+    frameBlocksLayout->setContentsMargins(0, 0, 0, 0);
     frameBlocksLayout->setSpacing(2);
     unitDisplayControl = new UnitDisplayStatusBarControl();
     labelStakingIcon = new QLabel();
@@ -206,12 +206,16 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     labelEncryptionIcon->setIcon(QPixmap(":/res/icons/lock.svg"));
     labelEncryptionIcon->setFlat(true); // Make the button look like a label, but clickable
     labelEncryptionIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
-    labelEncryptionIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
+//    labelEncryptionIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
+    labelEncryptionIcon->setMaximumSize(35,35);
+    labelEncryptionIcon->setMininumSize(35,35);
     labelConnectionsIcon = new QPushButton();
     labelConnectionsIcon->setIcon(QPixmap(":/res/icons/network.svg"));
     labelConnectionsIcon->setFlat(true); // Make the button look like a label, but clickable
     labelConnectionsIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
-    labelConnectionsIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
+    labelConnectionsIcon->setMaximumSize(35,35);
+    labelConnectionsIcon->setMininumSize(35,35);
+//    labelConnectionsIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelBlocksIcon = new QLabel();
 
     if (enableWallet) {
@@ -231,11 +235,11 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     // Progress bar and label for blocks download
     progressBarLabel = new QLabel();
     progressBarLabel->setVisible(true);
-    progressBarLabel->setStyleSheet("background-color: transparent; color; #5e6972");
+    progressBarLabel->setStyleSheet("background-color: transparent; color: #5e6972");
     progressBar = new GUIUtil::ProgressBar();
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(true);
-    progressBar->setStyleSheet("background-color: transparent");
+    progressBar->setStyleSheet("background-color: transparent; color: #5e6972");
 
     // Override style sheet for progress bar for styles that have a segmented progress bar,
     // as they make the text unreadable (workaround for issue #1071)
@@ -343,6 +347,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     overviewButton->setIcon(QPixmap(":/res/icons/home.png"));
     overviewButton->setIconSize(QSize(60,112));
     overviewButton->setStyleSheet("background-color: transparent");
+    overviewButton->setFlat(true);
 //    tabButtonGroup->addButton(overviewButton);
     connect(overviewButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
     connect(overviewButton, SIGNAL(clicked ()), this, SLOT(gotoOverviewPage()));
@@ -353,6 +358,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     sendCoinsButton->setIcon(QPixmap(":/res/icons/send.png"));
     sendCoinsButton->setIconSize(QSize(60,112));
     sendCoinsButton->setStyleSheet("background-color: transparent");
+    sendCoinsButton->setFlat(true);
 //    tabButtonGroup->addButton(sendCoinsButton);
     connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
     connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(gotoSendCoinsPage()));
@@ -363,6 +369,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     receiveButton->setIcon(QPixmap(":/res/icons/receive.png"));
     receiveButton->setIconSize(QSize(60, 112));
     receiveButton->setStyleSheet("background-color: transparent");
+    receiveButton->setFlat(true);
 //    tabButtonGroup->addButton(receiveButton);
     connect(receiveButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
     connect(receiveButton, SIGNAL(clicked ()), this, SLOT(gotoReceiveCoinsPage()));
@@ -373,6 +380,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     mnsButton->setIcon(QPixmap(":/res/icons/mns.png"));
     mnsButton->setIconSize(QSize(60, 112));
     mnsButton->setStyleSheet("background-color: transparent");
+    mnsButton->setFlat(true);
 //    tabButtonGroup->addButton(mnsButton);
     connect(mnsButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
     connect(mnsButton, SIGNAL(clicked ()), this, SLOT(gotoPrivacyPage()));
@@ -380,9 +388,10 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     historyButton = new QPushButton();
 //    pixmap_history = new QPixmap(":/icons/res/icons/history.png");
 //    icon_history = new QIcon(*pixmap_history);
-    mnsButton->setIcon(QPixmap(":/res/icons/history.png"));
+    historyButton->setIcon(QPixmap(":/res/icons/history.png"));
     historyButton->setIconSize(QSize(60, 112));
     historyButton->setStyleSheet("background-color: transparent");
+    historyButton->setFlat(true);
 //    tabButtonGroup->addButton(historyButton);
     connect(historyButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
     connect(historyButton, SIGNAL(clicked ()), this, SLOT(gotoHistoryPage()));
