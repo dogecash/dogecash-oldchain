@@ -264,16 +264,21 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 //        progressBar->setStyleSheet("QProgressBar { background-color: #F8F8F8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #00CCFF, stop: 1 #33CCFF); border-radius: 7px; margin: 0px; }");
 //    }
 
-//    QWidget * emptyWidget = new QWidget();
+    QWidget * emptyWidget = new QWidget();
 
-//    emptyWidget->setObjectName("EmptyWidget");
-//    emptyWidget->setStyleSheet("background-color: transparent");
+    emptyWidget->setObjectName("EmptyWidget");
+    emptyWidget->setStyleSheet("background-color: transparent");
+    emptyWidget->setLayout(new QHBoxLayout());
     statusBar()->setStyleSheet("margin-left: 18px; margin-right: 10px; margin-bottom: 10px; margin-top: 0px; background-color: transparent;");
-//    statusBar()->addWidget(emptyWidget);
-    statusBar()->addWidget(progressBarLabel);
-    statusBar()->addWidget(progressBar);
-    progressBar->setVisible(false);
-    statusBar()->addWidget(networkButtion);
+    statusBar()->addWidget(emptyWidget);
+    emptyWidget->layout()->addWidget(progressBarLabel);
+    emptyWidget->layout()->setContentMargin(0,0,0,0);
+    emptyWidget->layout()->addWidget(progressBar);
+    emptyWidget->layout()->addWidget(networkButtion);
+//    statusBar()->addWidget(progressBarLabel);
+//    statusBar()->addWidget(progressBar);
+//    progressBar->setVisible(false);
+//    statusBar()->addWidget(networkButtion);
 
 //    statusBar()->addPermanentWidget(frameBlocks);
 
