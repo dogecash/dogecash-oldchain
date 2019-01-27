@@ -229,22 +229,23 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 //    labelConnectionsIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelBlocksIcon = new QLabel();
 
-//    if (enableWallet) {
-//        frameBlocksLayout->addStretch();
-//        frameBlocksLayout->addWidget(unitDisplayControl);
-//        frameBlocksLayout->addStretch();
-//        frameBlocksLayout->addWidget(labelEncryptionIcon);
-//    }
-//    frameBlocksLayout->addStretch();
-    frameBlocksLayout->addWidget(lockButton);
-    frameBlocksLayout->addWidget(networkButtion);
-//    frameBlocksLayout->addWidget(labelStakingIcon);
+    if (enableWallet) {
+        frameBlocksLayout->addStretch();
+        frameBlocksLayout->addWidget(unitDisplayControl);
+        frameBlocksLayout->addStretch();
+        frameBlocksLayout->addWidget(labelEncryptionIcon);
+    }
+    frameBlocksLayout->addStretch();
+//    frameBlocksLayout->addWidget(lockButton);
+//    frameBlocksLayout->addWidget(networkButtion);
+    frameBlocksLayout->addWidget(labelStakingIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelEncryptionIcon);
-//    frameBlocksLayout->addWidget(labelConnectionsIcon);
+    frameBlocksLayout->addWidget(labelConnectionsIcon);
     frameBlocksLayout->addStretch();
-//    frameBlocksLayout->addWidget(labelBlocksIcon);
-//    frameBlocksLayout->addStretch();
+    frameBlocksLayout->addWidget(labelBlocksIcon);
+    frameBlocksLayout->addStretch();
+    frameBlocks->setVisible(false);
 
     // Progress bar and label for blocks download
     progressBarLabel = new QLabel();
@@ -252,16 +253,16 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     progressBarLabel->setStyleSheet("background-color: transparent; color: #5e6972");
     progressBar = new GUIUtil::ProgressBar();
     progressBar->setAlignment(Qt::AlignCenter);
-    progressBar->setVisible(true);
+//    progressBar->setVisible(true);
     progressBar->setStyleSheet("background-color: transparent; color: #5e6972");
 
     // Override style sheet for progress bar for styles that have a segmented progress bar,
     // as they make the text unreadable (workaround for issue #1071)
     // See https://qt-project.org/doc/qt-4.8/gallery.html
     QString curStyle = QApplication::style()->metaObject()->className();
-    if (curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle") {
-        progressBar->setStyleSheet("QProgressBar { background-color: #F8F8F8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #00CCFF, stop: 1 #33CCFF); border-radius: 7px; margin: 0px; }");
-    }
+//    if (curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle") {
+//        progressBar->setStyleSheet("QProgressBar { background-color: #F8F8F8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #00CCFF, stop: 1 #33CCFF); border-radius: 7px; margin: 0px; }");
+//    }
 
 //    QWidget * emptyWidget = new QWidget();
 
@@ -271,7 +272,10 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 //    statusBar()->addWidget(emptyWidget);
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
-    statusBar()->addPermanentWidget(frameBlocks);
+    progressBar->setVisible(false);
+    statusBar()->addWidget(networkButtion);
+
+//    statusBar()->addPermanentWidget(frameBlocks);
 
     // Jump directly to tabs in RPC-console
     connect(openInfoAction, SIGNAL(triggered()), rpcConsole, SLOT(showInfo()));
