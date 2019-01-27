@@ -56,9 +56,7 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 #include <QFontDatabase>
-#include <QPushButton>
-#include <QPixmap>
-#include <QIcon>
+#include <QButtonGroup>
 
 #if QT_VERSION < 0x050000
 #include <QTextDocument>
@@ -303,6 +301,16 @@ BitcoinGUI::~BitcoinGUI()
 void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 {
     QActionGroup* tabGroup = new QActionGroup(this);
+    QButtonGroup *tabButtonGroup = new QButtonGroup(this);
+
+    overviewButton = new QPushButton();
+    pixmap_overview = new QPixmap(":/icons/overview");
+    icon_overview = new QIcon(*pixmap_overview);
+    overviewButton->setIcon(*icon_overview);
+    overviewButton->setIconSize(QSize(60,112));
+    overviewButton->setStyleSheet("background-color: transparent");
+    tabButtonGroup->addButton(overviewButton);
+
 
     overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Home"), this);
     overviewAction->setStatusTip(tr("Show general overview of wallet"));
@@ -572,14 +580,13 @@ void BitcoinGUI::createToolBars()
 //        toolbar->setAllowedAreas(Qt::LeftToolBarArea);
         toolbar->setAllowedAreas(Qt::BottomToolBarArea);
 
-        QPushButton *overviewbutton = new QPushButton();
-        QPixmap pixmap_overview(":/icons/edit");
-        QIcon ButtonIcon_overview(pixmap_overview);
+//        QPushButton *overviewbutton = new QPushButton();
+//        QPixmap *pixmap_overview(":/icons/edit");
+//        QIcon ButtonIcon_overview(pixmap_overview);
 //        *overviewbutton->setFlat(true);
-        overviewbutton->setIcon(ButtonIcon_overview);
-        overviewbutton->setStyleSheet("background-color: transparent");
-        connect(overviewbutton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
-        connect(overviewbutton, SIGNAL(clicked ()), this, SLOT(gotoOverviewPage()));
+//        overviewbutton->setIcon(ButtonIcon_overview);
+//        connect(overviewbutton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
+//        connect(overviewbutton, SIGNAL(clicked ()), this, SLOT(gotoOverviewPage()));
 //        overviewbutton->setIconSize(pixmap.rect().size());
 //        overviewbutton->setPixmap
 
@@ -592,7 +599,7 @@ void BitcoinGUI::createToolBars()
 
 
 //        toolbar->addAction(overviewAction);
-        toolbar->addWidget(overviewbutton);
+        toolbar->addWidget(overviewButton);
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         // toolbar->addAction(privacyAction);
