@@ -560,7 +560,7 @@ void BitcoinGUI::createToolBars()
     if (walletFrame) {
         QToolBar* toolbar = new QToolBar(tr("Tabs toolbar"));
         toolbar->setObjectName("MainToolbar");
-        addToolBar(Qt::LeftToolBarArea, toolbar);
+        addToolBar(Qt::BottomToolBarArea, toolbar);
         toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
 //        toolbar->setOrientation(Qt::Vertical);
@@ -707,7 +707,7 @@ void BitcoinGUI::createTrayIcon(const NetworkStyle* networkStyle)
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->show();
-    trayIcon->hide();
+//    trayIcon->hide();
 #endif
 
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
