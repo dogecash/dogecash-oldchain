@@ -272,7 +272,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     statusBar()->setStyleSheet("margin-left: 18px; margin-right: 10px; margin-bottom: 10px; margin-top: 0px; background-color: transparent;");
     statusBar()->addWidget(emptyWidget);
     emptyWidget->layout()->addWidget(progressBarLabel);
-    emptyWidget->layout()->setContentMargin(0,0,0,0);
+    emptyWidget->layout()->setContentsMargins(0,0,0,0);
     emptyWidget->layout()->addWidget(progressBar);
     emptyWidget->layout()->addWidget(networkButtion);
 //    statusBar()->addWidget(progressBarLabel);
