@@ -56,6 +56,9 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 #include <QFontDatabase>
+#include <QPushButton>
+#include <QPixmap>
+#include <QIcon>
 
 #if QT_VERSION < 0x050000
 #include <QTextDocument>
@@ -569,13 +572,26 @@ void BitcoinGUI::createToolBars()
 //        toolbar->setAllowedAreas(Qt::LeftToolBarArea);
         toolbar->setAllowedAreas(Qt::BottomToolBarArea);
 
+        QPushButton *overviewbutton = new QPushButton();
+        QPixmap pixmap_overview(":/icons/edit");
+        QIcon ButtonIcon_overview(pixmap_overview);
+        overviewbutton->setIcon(ButtonIcon_overview);
+        overviewbutton->setStyleSheet("background-color: transparent");
+        connect(overviewbutton, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+        connect(overviewbutton, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
+//        overviewbutton->setIconSize(pixmap.rect().size());
+//        overviewbutton->setPixmap
+
         auto dummy1 = new QWidget(this);
         dummy1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         auto dummy2 = new QWidget(this);
         dummy2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
         toolbar->addWidget(dummy1);
-        toolbar->addAction(overviewAction);
+
+
+//        toolbar->addAction(overviewAction);
+        toolbar->addWidget(overviewbutton);
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         // toolbar->addAction(privacyAction);
