@@ -226,7 +226,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
         frameBlocksLayout->addWidget(labelEncryptionIcon);
     }
     frameBlocksLayout->addStretch();
-//    frameBlocksLayout->addWidget(labelStakingIcon);
+    frameBlocksLayout->addWidget(labelStakingIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelEncryptionIcon);
     frameBlocksLayout->addWidget(labelConnectionsIcon);
