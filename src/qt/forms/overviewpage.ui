@@ -20,7 +20,9 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #ececec;</string>
+   <string notr="true">background-color: #ececec;
+background-color: qradialgradient(spread:pad, cx:0.29, cy:0.23, radius:1, fx:0.29, fy:0.23,  stop:0 #44505e, stop:1#262d35);
+</string>
   </property>
   <layout class="QVBoxLayout" name="topLayout">
    <property name="leftMargin">
@@ -746,7 +748,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
            </widget>
           </item>
           <item>
-           <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0,0,0" rowminimumheight="0,0,0,0,0,0,0,0" columnminimumwidth="0,0">
+           <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0" rowminimumheight="0,0,0,0,0,0" columnminimumwidth="0,0">
             <property name="sizeConstraint">
              <enum>QLayout::SetMinimumSize</enum>
             </property>
