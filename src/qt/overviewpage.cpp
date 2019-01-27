@@ -148,6 +148,7 @@ OverviewPage::OverviewPage(QWidget* parent) : QWidget(parent),
 {
     nDisplayUnit = 0; // just make sure it's not unitialized
     ui->setupUi(this);
+    this->setStyleSheet("background-color: transparent;");
 
     // Recent transactions
     ui->listTransactions->setItemDelegate(txdelegate);

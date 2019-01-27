@@ -336,40 +336,50 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
 
     overviewButton = new QPushButton();
-    overviewButton->setIcon(QPixmap(":/icons/res/icons/home.png"));
-    overviewButton->setIconSize(QSize(65,112));
+    pixmap_overview = new QPixmap(":/icons/res/icons/home.png");
+    icon_overview = new QIcon(*pixmap_overview);
+    overviewButton->setIcon(*icon_overview);
+    overviewButton->setIconSize(QSize(60,112));
     overviewButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(overviewButton);
     connect(overviewButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
     connect(overviewButton, SIGNAL(clicked ()), this, SLOT(gotoOverviewPage()));
 
     sendCoinsButton = new QPushButton();
-    sendCoinsButton->setIcon(QPixmap(":/icons/res/icons/send.png"));
-    sendCoinsButton->setIconSize(QSize(65,112));
+    pixmap_sendcoin = new QPixmap(":/icons/res/icons/send.png");
+    icon_sendcoin = new QIcon(*pixmap_sendcoin);
+    sendCoinsButton->setIcon(*icon_sendcoin);
+    sendCoinsButton->setIconSize(QSize(60,112));
     sendCoinsButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(sendCoinsButton);
     connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
     connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(gotoSendCoinsPage()));
 
     receiveButton = new QPushButton();
-    receiveButton->setIcon(QPixmap(":/icons/res/icons/receive.png"));
-    receiveButton->setIconSize(QSize(65, 112));
+    pixmap_receive = new QPixmap(":/icons/res/icons/receive.png");
+    icon_receive = new QIcon(*pixmap_receive);
+    sendCoinsButton->setIcon(*icon_receive);
+    receiveButton->setIconSize(QSize(60, 112));
     receiveButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(receiveButton);
     connect(receiveButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
     connect(receiveButton, SIGNAL(clicked ()), this, SLOT(gotoReceiveCoinsPage()));
 
     mnsButton = new QPushButton();
-    mnsButton->setIcon(QPixmap(":/icons/res/icons/mns.png"));
-    mnsButton->setIconSize(QSize(65, 112));
+    pixmap_mns = new QPixmap(":/icons/res/icons/mns.png");
+    icon_mns = new QIcon(*pixmap_mns);
+    sendCoinsButton->setIcon(*icon_mns);
+    mnsButton->setIconSize(QSize(60, 112));
     mnsButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(mnsButton);
     connect(mnsButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
     connect(mnsButton, SIGNAL(clicked ()), this, SLOT(gotoPrivacyPage()));
 
     historyButton = new QPushButton();
-    historyButton->setIcon(QPixmap(":/icons/res/icons/history.png"));
-    historyButton->setIconSize(QSize(65, 112));
+    pixmap_history = new QPixmap(":/icons/res/icons/history.png");
+    icon_history = new QIcon(*pixmap_history);
+    sendCoinsButton->setIcon(*icon_history);
+    historyButton->setIconSize(QSize(60, 112));
     historyButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(historyButton);
     connect(historyButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
