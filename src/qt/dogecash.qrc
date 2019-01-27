@@ -55,6 +55,11 @@
         <file alias="staking_inactive">res/icons/staking_inactive.png</file>
         <file>res/icons/home.png</file>
         <file>res/icons/home_active.png</file>
+        <file>res/icons/history_active.png</file>
+        <file>res/icons/mns.png</file>
+        <file>res/icons/mns_active.png</file>
+        <file>res/icons/receive_active.png</file>
+        <file>res/icons/send_active.png</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>
@@ -116,13 +121,13 @@
     <qresource prefix="/">
         <file>res/icons/history.png</file>
         <file>res/icons/history_active.png</file>
+        <file>res/icons/home.png</file>
+        <file>res/icons/home_active.png</file>
         <file>res/icons/mns.png</file>
         <file>res/icons/mns_active.png</file>
         <file>res/icons/receive.png</file>
         <file>res/icons/receive_active.png</file>
         <file>res/icons/send.png</file>
         <file>res/icons/send_active.png</file>
-        <file>res/icons/home.png</file>
-        <file>res/icons/home_active.png</file>
     </qresource>
 </RCC>

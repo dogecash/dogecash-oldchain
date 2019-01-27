@@ -358,7 +358,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     receiveButton = new QPushButton();
 //    pixmap_receive = new QPixmap(":/icons/res/icons/receive.png");
 //    icon_receive = new QIcon(QPixmap(":res/icons/receive.png"));
-    sendCoinsButton->setIcon(*icon_receive);
+    sendCoinsButton->setIcon(QPixmap(":/res/icons/receive.png"));
     receiveButton->setIconSize(QSize(60, 112));
     receiveButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(receiveButton);
