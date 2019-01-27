@@ -307,7 +307,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     pixmap_overview = new QPixmap(":/icons/overview");
     icon_overview = new QIcon(*pixmap_overview);
     overviewButton->setIcon(*icon_overview);
-    overviewButton->setIconSize(QSize(60,112));
+    overviewButton->setIconSize(QSize(60,98));
     overviewButton->setStyleSheet("background-color: transparent");
     tabButtonGroup->addButton(overviewButton);
     connect(overviewButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
@@ -323,7 +323,16 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #else
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
 #endif
-    tabGroup->addAction(overviewAction);
+
+    sendCoinsButton = new QPushButton();
+    pixmap_sendcoin = new QPixmap(":/icons/send");
+    icon_sendcoin = new QIcon(*pixmap_sendcoin);
+    sendCoinsButton->setIcon(*icon_sendcoin);
+    sendCoinsButton->setIconSize(QSize(60,98));
+    sendCoinsButton->setStyleSheet("background-color: transparent");
+    tabButtonGroup->addButton(sendCoinsButton);
+    connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(showNormalIfMinimized()));
+    connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(gotoSendCoinsPage()));
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
     sendCoinsAction->setStatusTip(tr("Send coins to a DogeCash address"));
@@ -572,6 +581,7 @@ void BitcoinGUI::createToolBars()
 {
     if (walletFrame) {
         QToolBar* toolbar = new QToolBar(tr("Tabs toolbar"));
+//        toolbar->setContentsMargins(0);
         toolbar->setObjectName("MainToolbar");
         addToolBar(Qt::BottomToolBarArea, toolbar);
         toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
@@ -593,8 +603,10 @@ void BitcoinGUI::createToolBars()
 //        overviewbutton->setPixmap
 
         auto dummy1 = new QWidget(this);
+        dummy1->setStyleSheet("background-color: transparent");
         dummy1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         auto dummy2 = new QWidget(this);
+        dummy2->setStyleSheet("background-color: transparent");
         dummy2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
         toolbar->addWidget(dummy1);
@@ -602,7 +614,7 @@ void BitcoinGUI::createToolBars()
 
 //        toolbar->addAction(overviewAction);
         toolbar->addWidget(overviewButton);
-        toolbar->addAction(sendCoinsAction);
+        toolbar->addAction(sendCoinsButton);
         toolbar->addAction(receiveCoinsAction);
         // toolbar->addAction(privacyAction);
         toolbar->addAction(historyAction);
