@@ -203,10 +203,12 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     unitDisplayControl = new UnitDisplayStatusBarControl();
     labelStakingIcon = new QLabel();
     labelEncryptionIcon = new QPushButton();
+    labelEncryptionIcon->setIcon(QPixmap(":/res/icons/lock.svg"));
     labelEncryptionIcon->setFlat(true); // Make the button look like a label, but clickable
     labelEncryptionIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
     labelEncryptionIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelConnectionsIcon = new QPushButton();
+    labelConnectionsIcon->setIcon(QPixmap(":/res/icons/network.svg"));
     labelConnectionsIcon->setFlat(true); // Make the button look like a label, but clickable
     labelConnectionsIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
     labelConnectionsIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
@@ -247,7 +249,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 
 //    emptyWidget->setObjectName("EmptyWidget");
 //    emptyWidget->setStyleSheet("background-color: transparent");
-    statusBar()->setStyleSheet("margin-left: 18px; margin-right: 10px; margin-bottom: 10px; margin-top: 0px");
+    statusBar()->setStyleSheet("margin-left: 18px; margin-right: 10px; margin-bottom: 10px; margin-top: 0px; background-color: transparent;");
 //    statusBar()->addWidget(emptyWidget);
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
@@ -348,7 +350,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     sendCoinsButton = new QPushButton();
 //    pixmap_sendcoin = new QPixmap(":/icons/res/icons/send.png");
 //    icon_sendcoin = new QIcon(*pixmap_sendcoin);
-    overviewButton->setIcon(QPixmap(":/res/icons/send.png"));
+    sendCoinsButton->setIcon(QPixmap(":/res/icons/send.png"));
     sendCoinsButton->setIconSize(QSize(60,112));
     sendCoinsButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(sendCoinsButton);
@@ -358,7 +360,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     receiveButton = new QPushButton();
 //    pixmap_receive = new QPixmap(":/icons/res/icons/receive.png");
 //    icon_receive = new QIcon(QPixmap(":res/icons/receive.png"));
-    sendCoinsButton->setIcon(QPixmap(":/res/icons/receive.png"));
+    receiveButton->setIcon(QPixmap(":/res/icons/receive.png"));
     receiveButton->setIconSize(QSize(60, 112));
     receiveButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(receiveButton);
@@ -368,7 +370,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     mnsButton = new QPushButton();
 //    pixmap_mns = new QPixmap(":/icons/res/icons/mns.png");
 //    icon_mns = new QIcon(*pixmap_mns);
-    sendCoinsButton->setIcon(QPixmap(":/res/icons/mns.png"));
+    mnsButton->setIcon(QPixmap(":/res/icons/mns.png"));
     mnsButton->setIconSize(QSize(60, 112));
     mnsButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(mnsButton);
@@ -378,7 +380,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     historyButton = new QPushButton();
 //    pixmap_history = new QPixmap(":/icons/res/icons/history.png");
 //    icon_history = new QIcon(*pixmap_history);
-    sendCoinsButton->setIcon(QPixmap(":/res/icons/history.png"));
+    mnsButton->setIcon(QPixmap(":/res/icons/history.png"));
     historyButton->setIconSize(QSize(60, 112));
     historyButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(historyButton);
@@ -623,6 +625,7 @@ void BitcoinGUI::createToolBars()
     if (walletFrame) {
         QToolBar* toolbar = new QToolBar(tr("Tabs toolbar"));
         toolbar->setContentsMargins(0,0,0,0);
+        toolbar->setStyleSheet("QToolBar{spacing:0px;}");
         toolbar->setObjectName("MainToolbar");
         addToolBar(Qt::BottomToolBarArea, toolbar);
         toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
