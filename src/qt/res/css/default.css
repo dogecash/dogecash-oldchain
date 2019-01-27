@@ -11,7 +11,7 @@ padding:0;
 }
 QMainWindow {
 background-color:  qradialgradient(spread:pad, cx:0.29, cy:0.23, radius:1, fx:0.29, fy:0.23,  stop:0 #44505e, stop:1#262d35);
-
+}
 .QFrame {
 background-color:transparent;
 border:0px solid #fff;
@@ -131,6 +131,10 @@ color:#333;
 QLabel { /* Base Text Size & Color */
 font-size:12px;
 color:#333333;
+}
+QLabel::progressBarLabel {
+    font-size: 13px;
+    color: #5e6972;
 }
 
 .QRadioButton { /* Radio Button Labels */
