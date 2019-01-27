@@ -22,6 +22,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: #ececec;
 background-color: qradialgradient(spread:pad, cx:0.29, cy:0.23, radius:1, fx:0.29, fy:0.23,  stop:0 #44505e, stop:1#262d35);
+background-color: transparent;
 </string>
   </property>
   <layout class="QVBoxLayout" name="topLayout">
