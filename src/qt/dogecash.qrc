@@ -122,5 +122,7 @@
         <file>res/icons/receive_active.png</file>
         <file>res/icons/send.png</file>
         <file>res/icons/send_active.png</file>
+        <file>res/icons/home.png</file>
+        <file>res/icons/home_active.png</file>
     </qresource>
 </RCC>

@@ -336,9 +336,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
 
     overviewButton = new QPushButton();
-    pixmap_overview = new QPixmap(":/icons/res/icons/home.png");
-    icon_overview = new QIcon(*pixmap_overview);
-    overviewButton->setIcon(*icon_overview);
+//    pixmap_overview = new QPixmap(":/icons/res/icons/home.png");
+//    icon_overview = new QIcon(*pixmap_overview);
+    overviewButton->setIcon(QPixmap(":/res/icons/home.png"));
     overviewButton->setIconSize(QSize(60,112));
     overviewButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(overviewButton);
@@ -346,9 +346,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(overviewButton, SIGNAL(clicked ()), this, SLOT(gotoOverviewPage()));
 
     sendCoinsButton = new QPushButton();
-    pixmap_sendcoin = new QPixmap(":/icons/res/icons/send.png");
-    icon_sendcoin = new QIcon(*pixmap_sendcoin);
-    sendCoinsButton->setIcon(*icon_sendcoin);
+//    pixmap_sendcoin = new QPixmap(":/icons/res/icons/send.png");
+//    icon_sendcoin = new QIcon(*pixmap_sendcoin);
+    overviewButton->setIcon(QPixmap(":/res/icons/send.png"));
     sendCoinsButton->setIconSize(QSize(60,112));
     sendCoinsButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(sendCoinsButton);
@@ -356,8 +356,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(sendCoinsButton, SIGNAL(clicked ()), this, SLOT(gotoSendCoinsPage()));
 
     receiveButton = new QPushButton();
-    pixmap_receive = new QPixmap(":/icons/res/icons/receive.png");
-    icon_receive = new QIcon(*pixmap_receive);
+//    pixmap_receive = new QPixmap(":/icons/res/icons/receive.png");
+//    icon_receive = new QIcon(QPixmap(":res/icons/receive.png"));
     sendCoinsButton->setIcon(*icon_receive);
     receiveButton->setIconSize(QSize(60, 112));
     receiveButton->setStyleSheet("background-color: transparent");
@@ -366,9 +366,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(receiveButton, SIGNAL(clicked ()), this, SLOT(gotoReceiveCoinsPage()));
 
     mnsButton = new QPushButton();
-    pixmap_mns = new QPixmap(":/icons/res/icons/mns.png");
-    icon_mns = new QIcon(*pixmap_mns);
-    sendCoinsButton->setIcon(*icon_mns);
+//    pixmap_mns = new QPixmap(":/icons/res/icons/mns.png");
+//    icon_mns = new QIcon(*pixmap_mns);
+    sendCoinsButton->setIcon(QPixmap(":/res/icons/mns.png"));
     mnsButton->setIconSize(QSize(60, 112));
     mnsButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(mnsButton);
@@ -376,9 +376,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(mnsButton, SIGNAL(clicked ()), this, SLOT(gotoPrivacyPage()));
 
     historyButton = new QPushButton();
-    pixmap_history = new QPixmap(":/icons/res/icons/history.png");
-    icon_history = new QIcon(*pixmap_history);
-    sendCoinsButton->setIcon(*icon_history);
+//    pixmap_history = new QPixmap(":/icons/res/icons/history.png");
+//    icon_history = new QIcon(*pixmap_history);
+    sendCoinsButton->setIcon(QPixmap(":/res/icons/history.png"));
     historyButton->setIconSize(QSize(60, 112));
     historyButton->setStyleSheet("background-color: transparent");
 //    tabButtonGroup->addButton(historyButton);
@@ -626,6 +626,7 @@ void BitcoinGUI::createToolBars()
         toolbar->setObjectName("MainToolbar");
         addToolBar(Qt::BottomToolBarArea, toolbar);
         toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        toolbar->setStyleSheet("background-color: transparent");
 
 //        toolbar->setOrientation(Qt::Vertical);
         toolbar->setOrientation(Qt::Horizontal);
