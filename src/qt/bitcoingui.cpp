@@ -118,7 +118,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             spinnerFrame(0)
 {
     this->hide();
-    guiWidget = new Widget();
+    guiWidget = new Widget(this);
     guiWidget->show();
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
