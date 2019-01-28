@@ -337,7 +337,8 @@ HEADERS += src/activemasternode.h \
            src/qt/intro.moc \
            src/qt/overviewpage.moc \
            src/qt/rpcconsole.moc \
-           src/secp256k1/src/secp256k1.c
+           src/secp256k1/src/secp256k1.c \
+           src/qt/labelbutton.h
 FORMS += src/qt/forms/addressbookpage.ui \
          src/qt/forms/askpassphrasedialog.ui \
          src/qt/forms/coincontroldialog.ui \
@@ -354,7 +355,8 @@ FORMS += src/qt/forms/addressbookpage.ui \
          src/qt/forms/sendcoinsdialog.ui \
          src/qt/forms/sendcoinsentry.ui \
          src/qt/forms/signverifymessagedialog.ui \
-         src/qt/forms/transactiondescdialog.ui
+         src/qt/forms/transactiondescdialog.ui 
+         
 SOURCES += src/activemasternode.cpp \
            src/addrman.cpp \
            src/alert.cpp \
@@ -640,7 +642,8 @@ SOURCES += src/activemasternode.cpp \
            src/leveldb/doc/bench/db_bench_tree_db.cc \
            src/leveldb/helpers/memenv/memenv.cc \
            src/leveldb/helpers/memenv/memenv_test.cc \
-           src/secp256k1/src/java/org_bitcoin_NativeSecp256k1.c
+           src/secp256k1/src/java/org_bitcoin_NativeSecp256k1.c \
+           src/qt/labelbutton.cpp
 RESOURCES += src/qt/dogecash.qrc src/qt/dogecash_locale.qrc
 
 TRANSLATIONS += src/qt/locale/dogecash_bg.ts \
