@@ -115,6 +115,7 @@ private:
     QAction* overviewAction;
     QPushButton *overviewButton, *historyButton, *sendCoinsButton, *receiveButton, *mnsButton;
     QPushButton *lockButton, *upButton, *networkButtion, *refreshButton;
+    QLabel *lockLabel, *upLabel, *networkLabel, *refreshLabel;
     QPixmap *pixmap_overview, *pixmap_history, *pixmap_sendcoin, *pixmap_receive, *pixmap_mns;
     QIcon *icon_overview, *icon_history, *icon_sendcoin, *icon_receive, *icon_mns;
     QAction* historyAction;
