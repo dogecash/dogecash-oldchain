@@ -23,6 +23,7 @@
 #include "blockexplorer.h"
 #include "walletframe.h"
 #include "walletmodel.h"
+#include "labelbutton.h"
 #endif // ENABLE_WALLET
 
 #ifdef Q_OS_MAC
@@ -207,6 +208,11 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     labelEncryptionIcon->setIconSize(QSize(35,35));
     labelEncryptionIcon->setFlat(true); // Make the button look like a label, but clickable
     labelEncryptionIcon->setStyleSheet("{ background-color: blue;}");
+
+    lockLabel = new LabelButtion(this);
+    lockLabel->setPixmap(QPixmap(":/icons/res/icons/lock.png"));
+    lockLabel->setMinimumSize(35,35);
+    lockLabel->setMaximumSize(35,35);
 //    labelEncryptionIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
 
     labelConnectionsIcon = new QPushButton();
@@ -252,6 +258,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addWidget(lockButton);
+    frameBlocksLayout->addWidget(lockLabel);
     frameBlocksLayout->addStretch();
     frameBlocks->setVisible(true);
 
@@ -284,13 +291,6 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     emptyWidget->layout()->setSpacing(0);
     emptyWidget->layout()->setMargin(0);
     emptyWidget->layout()->addWidget(progressBarLabel);
-//    QFrame *buttonFame = new QFrame();
-//    buttonFame->setContentsMargins(0, 0, 0, 0);
-//    buttonFame->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
-//    QHBoxLayout* buttonFameLayout = new QHBoxLayout(buttonFame);
-//    buttonFameLayout->setContentsMargins(0, 0, 0, 0);
-//    buttonFameLayout->setSpacing(2);
-//    buttonFameLayout->addWidget(lockButton);
     lockButton->setGeometry(0,0,35,35);
     networkButtion->setGeometry(0,0,35,35);
 
