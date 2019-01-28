@@ -210,10 +210,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     labelEncryptionIcon->setFlat(true); // Make the button look like a label, but clickable
     labelEncryptionIcon->setStyleSheet("{ background-color: blue;}");
 
-    lockLabel = new LabelButton(this);
-    lockLabel->setPixmap(QPixmap(":/icons/res/icons/lock.png"));
-    lockLabel->setMinimumSize(35,35);
-    lockLabel->setMaximumSize(35,35);
+
 //    labelEncryptionIcon->setMaximumSize(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
 
     labelConnectionsIcon = new QPushButton();
@@ -223,6 +220,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     labelConnectionsIcon->setFlat(true); // Make the button look like a label, but clickable
     labelConnectionsIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
 
+    seticonButtions();
     lockButton = new QPushButton("lock", this);
     lockButton->setIcon(QPixmap(":/icons/res/icons/lock.svg"));
     lockButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -811,6 +809,14 @@ void BitcoinGUI::removeAllWallets()
         return;
     setWalletActionsEnabled(false);
     walletFrame->removeAllWallets();
+}
+
+void BitcoinGUI::seticonButtions()
+{
+    lockLabel = new LabelButton(this);
+    lockLabel->setPixmap(QPixmap(":/icons/res/icons/lock.png"));
+    lockLabel->setMinimumSize(35,35);
+    lockLabel->setMaximumSize(35,35);
 }
 #endif // ENABLE_WALLET
 
