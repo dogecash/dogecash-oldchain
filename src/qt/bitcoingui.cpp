@@ -210,7 +210,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     labelEncryptionIcon->setFlat(true); // Make the button look like a label, but clickable
     labelEncryptionIcon->setStyleSheet("{ background-color: blue;}");
 
-    lockLabel = new LabelButton(this);
+    LabelButton* lockLabel = new LabelButton(this);
     lockLabel->setPixmap(QPixmap(":/icons/res/icons/lock.png"));
     lockLabel->setMinimumSize(35,35);
     lockLabel->setMaximumSize(35,35);
