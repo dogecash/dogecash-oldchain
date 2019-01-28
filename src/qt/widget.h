@@ -31,7 +31,7 @@ class Widget : public QWidget
 
 public:
     explicit Widget(QWidget *parent = nullptr);
-    virtual ~Widget();
+    ~Widget();
 
     QPixmap *pixmap_home, *pixmap_send, *pixmap_receive, *pixmap_mns, *pixmap_history;
     QIcon *homeIcon, *sendIcon, *receiveIcon, *mnsIcon, *historyIcon ;

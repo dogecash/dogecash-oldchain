@@ -51,7 +51,7 @@ void Widget::resizeEvent(QResizeEvent *event){
     linelabel->setGeometry(0,68, this->geometry().width(), 411);
 }
 
-Widget::~Widget()
+virtual void Widget::~Widget()
 {
     delete ui;
 }
