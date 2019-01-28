@@ -118,7 +118,7 @@ private:
     QAction* overviewAction;
     QPushButton *overviewButton, *historyButton, *sendCoinsButton, *receiveButton, *mnsButton;
     QPushButton *lockButton, *upButton, *networkButtion, *refreshButton;
-    QLabel* lockLabel;
+    LabelButton* lockLabel;
     QLabel* upLabel;
     QLabel* networkLabel;
     QLabel* refreshLabel;
