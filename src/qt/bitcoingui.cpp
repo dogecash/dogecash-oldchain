@@ -34,6 +34,7 @@
 #include "masternodelist.h"
 #include "ui_interface.h"
 #include "util.h"
+#include <widget.h>
 
 
 #include <iostream>

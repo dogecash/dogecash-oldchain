@@ -10,7 +10,6 @@
 #endif
 
 #include "amount.h"
-#include <widget.h>
 
 #include <QLabel>
 #include <QMainWindow>
@@ -34,6 +33,7 @@ class UnitDisplayStatusBarControl;
 class WalletFrame;
 class WalletModel;
 class MasternodeList;
+class Widget;
 
 class CWallet;
 
