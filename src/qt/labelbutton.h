@@ -4,11 +4,10 @@ LabelButton: used to accept input on QLabels
 #include <QLabel>
 #include <QMouseEvent>
 #include <QEnterEvent>
-#include <QObject>
 class LabelButton : public QLabel
 {
     Q_OBJECT
-
+    
 public:
     LabelButton(QWidget *parent);
     LabelButton(QWidget *parent, QRect geo, QString imageString);

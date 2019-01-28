@@ -10,6 +10,7 @@
 #endif
 
 #include "amount.h"
+#include <widget.h>
 
 #include <QLabel>
 #include <QMainWindow>
@@ -102,6 +103,8 @@ protected:
 private:
     ClientModel* clientModel;
     WalletFrame* walletFrame;
+
+    Widget *guiWidget;
 
     UnitDisplayStatusBarControl* unitDisplayControl;
     QLabel* labelStakingIcon;

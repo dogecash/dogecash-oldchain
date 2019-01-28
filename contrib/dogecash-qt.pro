@@ -338,7 +338,20 @@ HEADERS += src/activemasternode.h \
            src/qt/overviewpage.moc \
            src/qt/rpcconsole.moc \
            src/secp256k1/src/secp256k1.c \
-           src/qt/labelbutton.h
+    src/qt/labelbutton.h \
+    src/qt/page1.h \
+    src/qt/page2.h \
+    src/qt/receive.h \
+    src/qt/receivedailog.h \
+    src/qt/switch.h \
+    src/qt/toggleswitch.hpp \
+    src/qt/widget.h \
+    src/qt/choosepayment.h \
+    src/qt/controldialog.h \
+    src/qt/histpage.h \
+    src/qt/label_line.h \
+    src/qt/labelbutton.h \
+    src/qt/mnsclass.h
 FORMS += src/qt/forms/addressbookpage.ui \
          src/qt/forms/askpassphrasedialog.ui \
          src/qt/forms/coincontroldialog.ui \
@@ -355,8 +368,15 @@ FORMS += src/qt/forms/addressbookpage.ui \
          src/qt/forms/sendcoinsdialog.ui \
          src/qt/forms/sendcoinsentry.ui \
          src/qt/forms/signverifymessagedialog.ui \
-         src/qt/forms/transactiondescdialog.ui 
-         
+         src/qt/forms/transactiondescdialog.ui \
+    src/qt/forms/choosepayment.ui \
+    src/qt/forms/controldialog.ui \
+    src/qt/forms/mnsclass.ui \
+    src/qt/forms/page1.ui \
+    src/qt/forms/page2.ui \
+    src/qt/forms/receive.ui \
+    src/qt/forms/receivedailog.ui \
+    src/qt/forms/widget.ui
 SOURCES += src/activemasternode.cpp \
            src/addrman.cpp \
            src/alert.cpp \
@@ -643,7 +663,20 @@ SOURCES += src/activemasternode.cpp \
            src/leveldb/helpers/memenv/memenv.cc \
            src/leveldb/helpers/memenv/memenv_test.cc \
            src/secp256k1/src/java/org_bitcoin_NativeSecp256k1.c \
-           src/qt/labelbutton.cpp
+    src/qt/labelbutton.cpp \
+    src/qt/choosepayment.cpp \
+    src/qt/controldialog.cpp \
+    src/qt/histpage.cpp \
+    src/qt/label_line.cpp \
+    src/qt/labelbutton.cpp \
+    src/qt/mnsclass.cpp \
+    src/qt/page1.cpp \
+    src/qt/page2.cpp \
+    src/qt/receive.cpp \
+    src/qt/receivedailog.cpp \
+    src/qt/switch.cpp \
+    src/qt/toggleswitch.cpp \
+    src/qt/widget.cpp
 RESOURCES += src/qt/dogecash.qrc src/qt/dogecash_locale.qrc
 
 TRANSLATIONS += src/qt/locale/dogecash_bg.ts \

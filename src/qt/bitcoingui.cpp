@@ -115,6 +115,9 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             prevBlocks(0),
                                                                             spinnerFrame(0)
 {
+    this->hide();
+    guiWidget = new Widget();
+    guiWidget->show();
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
 //    this->setStyleSheet("background-color: blue");
@@ -726,14 +729,14 @@ void BitcoinGUI::createToolBars()
 //        overviewAction->setChecked(true);
         overviewButton->setChecked(true);
 //        toolbar->hide();
-        QToolbar *toolbar2 = new QToolbar(tr("Tabs toolbar2"));
-        toolbar2->setContentsMargins(0,0,0,0);
-        toolbar2->setStyleSheet("QToolBar{spacing:0px;}");
-        toolbar2->setObjectName("MainToolbar2");
-        addToolBar(Qt::BottomToolBarArea, toolbar2);
-        toolbar2->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-        toolbar2->setStyleSheet("background-color: blue");
-        toolbar2->addAction(overviewAction);
+//        QToolbar *toolbar2 = new QToolbar(tr("Tabs toolbar2"));
+//        toolbar2->setContentsMargins(0,0,0,0);
+//        toolbar2->setStyleSheet("QToolBar{spacing:0px;}");
+//        toolbar2->setObjectName("MainToolbar2");
+//        addToolBar(Qt::BottomToolBarArea, toolbar2);
+//        toolbar2->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+//        toolbar2->setStyleSheet("background-color: blue");
+//        toolbar2->addAction(overviewAction);
 
 
         //***********************************************************************************************
