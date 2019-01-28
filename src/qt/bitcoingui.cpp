@@ -18,7 +18,7 @@
 #include "optionsmodel.h"
 #include "rpcconsole.h"
 #include "utilitydialog.h"
-#include <labelbutton.h>
+//#include <labelbutton.h>
 
 #ifdef ENABLE_WALLET
 #include "blockexplorer.h"
@@ -813,7 +813,7 @@ void BitcoinGUI::removeAllWallets()
 
 void BitcoinGUI::seticonButtions()
 {
-    lockLabel = new LabelButton(this);
+    lockLabel = new LabelButton();
     lockLabel->setPixmap(QPixmap(":/icons/res/icons/lock.png"));
     lockLabel->setMinimumSize(35,35);
     lockLabel->setMaximumSize(35,35);
