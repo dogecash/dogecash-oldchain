@@ -281,15 +281,18 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     statusBar()->setStyleSheet("margin-left: 18px; margin-right: 10px; margin-bottom: 10px; margin-top: 0px; background-color: transparent;");
     statusBar()->addWidget(emptyWidget);
     emptyWidget->layout()->setContentsMargins(0,0,0,0);
+    emptyWidget->layout()->setSpacing(0);
+    emptyWidget->layout()->setMargin(0);
     emptyWidget->layout()->addWidget(progressBarLabel);
-    QFrame *buttonFame = new QFrame();
-    buttonFame->setContentsMargins(0, 0, 0, 0);
-    buttonFame->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
-    QHBoxLayout* buttonFameLayout = new QHBoxLayout(buttonFame);
-    buttonFameLayout->setContentsMargins(0, 0, 0, 0);
-    buttonFameLayout->setSpacing(2);
+//    QFrame *buttonFame = new QFrame();
+//    buttonFame->setContentsMargins(0, 0, 0, 0);
+//    buttonFame->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
+//    QHBoxLayout* buttonFameLayout = new QHBoxLayout(buttonFame);
+//    buttonFameLayout->setContentsMargins(0, 0, 0, 0);
+//    buttonFameLayout->setSpacing(2);
 //    buttonFameLayout->addWidget(lockButton);
     lockButton->setGeometry(0,0,35,35);
+    networkButtion->setGeometry(0,0,35,35);
 
 //    buttonFame->setGeometry(0,0,35,35);
     QLabel *textlabel = new QLabel();
