@@ -30,7 +30,7 @@ class Widget : public QWidget
     Q_OBJECT
 
 public:
-    explicit Widget(QWidget *parent = nullptr);
+    explicit Widget(QWidget *parent = 0);
     ~Widget();
 
     QPixmap *pixmap_home, *pixmap_send, *pixmap_receive, *pixmap_mns, *pixmap_history;
