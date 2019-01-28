@@ -18,6 +18,7 @@
 #include "optionsmodel.h"
 #include "rpcconsole.h"
 #include "utilitydialog.h"
+#include "labelbutton.h"
 
 #ifdef ENABLE_WALLET
 #include "blockexplorer.h"
@@ -33,7 +34,7 @@
 #include "masternodelist.h"
 #include "ui_interface.h"
 #include "util.h"
-#include "labelbutton.h"
+
 
 #include <iostream>
 
@@ -75,6 +76,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             labelStakingIcon(0),
                                                                             labelEncryptionIcon(0),
                                                                             labelConnectionsIcon(0),
+                                                                            lockLabel(0),
                                                                             labelBlocksIcon(0),
                                                                             progressBarLabel(0),
                                                                             progressBar(0),
