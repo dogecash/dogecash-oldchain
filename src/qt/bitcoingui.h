@@ -10,7 +10,6 @@
 #endif
 
 #include "amount.h"
-#include "labelbutton.h"
 
 #include <QLabel>
 #include <QMainWindow>
@@ -116,7 +115,10 @@ private:
     QAction* overviewAction;
     QPushButton *overviewButton, *historyButton, *sendCoinsButton, *receiveButton, *mnsButton;
     QPushButton *lockButton, *upButton, *networkButtion, *refreshButton;
-    LabelButton *lockLabel, *upLabel, *networkLabel, *refreshLabel;
+    QLabel* lockLabel;
+    QLabel* upLabel;
+    QLabel* networkLabel;
+    QLabel* refreshLabel;
     QPixmap *pixmap_overview, *pixmap_history, *pixmap_sendcoin, *pixmap_receive, *pixmap_mns;
     QIcon *icon_overview, *icon_history, *icon_sendcoin, *icon_receive, *icon_mns;
     QAction* historyAction;
