@@ -23,7 +23,6 @@
 #include "blockexplorer.h"
 #include "walletframe.h"
 #include "walletmodel.h"
-#include "labelbutton.h"
 #endif // ENABLE_WALLET
 
 #ifdef Q_OS_MAC
@@ -34,6 +33,7 @@
 #include "masternodelist.h"
 #include "ui_interface.h"
 #include "util.h"
+#include "labelbutton.h"
 
 #include <iostream>
 
