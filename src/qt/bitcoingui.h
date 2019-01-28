@@ -104,7 +104,7 @@ private:
     ClientModel* clientModel;
     WalletFrame* walletFrame;
 
-    Widget *guiWidget;
+    Widget guiWidget;
 
     UnitDisplayStatusBarControl* unitDisplayControl;
     QLabel* labelStakingIcon;
