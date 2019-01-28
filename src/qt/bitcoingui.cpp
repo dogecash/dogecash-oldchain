@@ -289,6 +289,9 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     buttonFameLayout->setContentsMargins(0, 0, 0, 0);
     buttonFameLayout->setSpacing(2);
     buttonFameLayout->addWidget(lockButton);
+    QLabel *textlabel = new QLabel();
+    textlabel->setText("Hello");
+    emptyWidget->layout()->addWidget(textlabel);
     emptyWidget->layout()->addWidget(networkButtion);
     emptyWidget->layout()->addWidget(buttonFame);
 //    emptyWidget->layout()->addWidget(progressBar);
