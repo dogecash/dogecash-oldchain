@@ -9,7 +9,7 @@ class LabelButton : public QLabel
     Q_OBJECT
     
 public:
-    LabelButton(QWidget *parent);
+    explicit LabelButton(QWidget* parent = 0);
     LabelButton(QWidget *parent, QRect geo, QString imageString);
     LabelButton(QWidget *parent, int i);
 
