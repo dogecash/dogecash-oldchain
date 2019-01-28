@@ -251,7 +251,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     frameBlocksLayout->addWidget(labelConnectionsIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelBlocksIcon);
-    frameBlocksLayout->addWidget(lockButton);
+//    frameBlocksLayout->addWidget(lockButton);
     frameBlocksLayout->addStretch();
     frameBlocks->setVisible(true);
 
@@ -282,10 +282,18 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     statusBar()->addWidget(emptyWidget);
     emptyWidget->layout()->setContentsMargins(0,0,0,0);
     emptyWidget->layout()->addWidget(progressBarLabel);
+    QFrame *buttonFame = new QFrame();
+    buttonFame->setContentsMargins(0, 0, 0, 0);
+    buttonFame->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
+    QHBoxLayout* buttonFameLayout = new QHBoxLayout(buttonFame);
+    buttonFameLayout->setContentsMargins(0, 0, 0, 0);
+    buttonFameLayout->setSpacing(2);
+    buttonFameLayout->addWidget(lockButton);
     emptyWidget->layout()->addWidget(networkButtion);
-    emptyWidget->layout()->addWidget(progressBar);
+    emptyWidget->layout()->addWidget(buttonFame);
+//    emptyWidget->layout()->addWidget(progressBar);
 
-    emptyWidget->layout()->addWidget(frameBlocks);
+//    emptyWidget->layout()->addWidget(frameBlocks);
 //    statusBar()->addWidget(progressBarLabel);
 //    statusBar()->addWidget(progressBar);
 //    progressBar->setVisible(false);
