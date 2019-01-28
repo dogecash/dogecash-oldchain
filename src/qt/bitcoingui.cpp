@@ -117,9 +117,9 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             prevBlocks(0),
                                                                             spinnerFrame(0)
 {
-    this->hide();
-    guiWidget = new Widget(this);
-    guiWidget->show();
+//    this->hide();
+//    guiWidget = new Widget(this);
+//    guiWidget->show();
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
 //    this->setStyleSheet("background-color: blue");
