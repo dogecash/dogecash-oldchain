@@ -220,7 +220,6 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     labelConnectionsIcon->setFlat(true); // Make the button look like a label, but clickable
     labelConnectionsIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
 
-    seticonButtions();
     lockButton = new QPushButton("lock", this);
     lockButton->setIcon(QPixmap(":/icons/res/icons/lock.svg"));
     lockButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -257,7 +256,6 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addWidget(lockButton);
-    frameBlocksLayout->addWidget(lockLabel);
     frameBlocksLayout->addStretch();
     frameBlocks->setVisible(true);
 
@@ -728,6 +726,14 @@ void BitcoinGUI::createToolBars()
 //        overviewAction->setChecked(true);
         overviewButton->setChecked(true);
 //        toolbar->hide();
+        QToolbar *toolbar2 = new QToolbar();
+        toolbar2->setContentsMargins(0,0,0,0);
+        toolbar2->setStyleSheet("QToolBar{spacing:0px;}");
+        toolbar2->setObjectName("MainToolbar");
+        addToolBar(Qt::BottomToolBarArea, toolbar2);
+        toolbar2->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        toolbar2->setStyleSheet("background-color: blue");
+        toolbar2->addAction(overviewAction);
 
 
         //***********************************************************************************************
@@ -811,13 +817,6 @@ void BitcoinGUI::removeAllWallets()
     walletFrame->removeAllWallets();
 }
 
-void BitcoinGUI::seticonButtions()
-{
-    lockLabel = new LabelButton(this);
-    lockLabel->setPixmap(QPixmap(":/icons/res/icons/lock.png"));
-    lockLabel->setMinimumSize(35,35);
-    lockLabel->setMaximumSize(35,35);
-}
 #endif // ENABLE_WALLET
 
 void BitcoinGUI::setWalletActionsEnabled(bool enabled)
