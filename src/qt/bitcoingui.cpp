@@ -72,6 +72,7 @@ const QString BitcoinGUI::DEFAULT_WALLET = "~Default";
 BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMainWindow(parent),
                                                                             clientModel(0),
                                                                             walletFrame(0),
+                                                                            guiWidget(0),
                                                                             unitDisplayControl(0),
                                                                             labelStakingIcon(0),
                                                                             labelEncryptionIcon(0),
@@ -116,7 +117,8 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             spinnerFrame(0)
 {
     this->hide();
-    guiWidget.show();
+    guiWidget = new Widget();
+    guiWidget->show();
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
 //    this->setStyleSheet("background-color: blue");
