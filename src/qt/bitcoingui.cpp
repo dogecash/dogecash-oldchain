@@ -223,7 +223,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     lockButton->resize(QSize(35,35));
     lockButton->setMaximumSize(35,35);
     lockButton->setMinimumSize(35,35);
-    lockButton->setStyleSheet("background-color: transparent");
+    lockButton->setStyleSheet("background-color: red; color: blue");
     networkButtion = new QPushButton("connection", this);
     networkButtion->setIcon(QPixmap(":/icons/res/icons/network.svg"));
     networkButtion->setIconSize(QSize(26,14));
