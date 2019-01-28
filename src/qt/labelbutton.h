@@ -5,7 +5,6 @@ LabelButton: used to accept input on QLabels
 #include <QMouseEvent>
 #include <QEnterEvent>
 #include <QObject>
-#include <QtWidgets/
 class LabelButton : public QLabel
 {
     Q_OBJECT
