@@ -813,7 +813,7 @@ void BitcoinGUI::removeAllWallets()
 
 void BitcoinGUI::seticonButtions()
 {
-    lockLabel = new LabelButton();
+    lockLabel = new LabelButton(this);
     lockLabel->setPixmap(QPixmap(":/icons/res/icons/lock.png"));
     lockLabel->setMinimumSize(35,35);
     lockLabel->setMaximumSize(35,35);
