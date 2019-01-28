@@ -216,7 +216,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     labelConnectionsIcon->setFlat(true); // Make the button look like a label, but clickable
     labelConnectionsIcon->setStyleSheet(".QPushButton { background-color: rgba(255, 255, 255, 0);}");
 
-    lockButton = new QPushButton();
+    lockButton = new QPushButton("lock", this);
     lockButton->setIcon(QPixmap(":/icons/res/icons/lock.svg"));
     lockButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     lockButton->setIconSize(QSize(17,22));
@@ -224,7 +224,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     lockButton->setMaximumSize(35,35);
     lockButton->setMinimumSize(35,35);
     lockButton->setStyleSheet("background-color: transparent");
-    networkButtion = new QPushButton();
+    networkButtion = new QPushButton("connection", this);
     networkButtion->setIcon(QPixmap(":/icons/res/icons/network.svg"));
     networkButtion->setIconSize(QSize(26,14));
     networkButtion->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
