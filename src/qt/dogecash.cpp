@@ -581,7 +581,7 @@ int main(int argc, char* argv[])
     }
 #endif
 #endif
-    
+
     // Show help message immediately after parsing command-line options (for "-lang") and setting locale,
     // but before showing splash screen.
     if (mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-version")) {

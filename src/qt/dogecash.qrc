@@ -1,4 +1,4 @@
-<!DOCTYPE RCC><RCC version="1.0">
+<RCC>
     <qresource prefix="/icons">
         <file alias="bitcoin">res/icons/bitcoin.png</file>
         <file alias="address-book">res/icons/address-book.png</file>
@@ -53,9 +53,25 @@
         <file alias="browse">res/icons/browse.png</file>
         <file alias="staking_active">res/icons/staking_active.png</file>
         <file alias="staking_inactive">res/icons/staking_inactive.png</file>
+        <file>res/icons/home.png</file>
+        <file>res/icons/home_active.png</file>
+        <file>res/icons/history_active.png</file>
+        <file>res/icons/mns.png</file>
+        <file>res/icons/mns_active.png</file>
+        <file>res/icons/receive_active.png</file>
+        <file>res/icons/send_active.png</file>
+        <file>res/icons/lock.svg</file>
+        <file>res/icons/network.svg</file>
+        <file>res/icons/refresh.svg</file>
+        <file>res/icons/up.svg</file>
+        <file>res/icons/lock.png</file>
+        <file>res/icons/network.png</file>
+        <file>res/icons/refresh.png</file>
+        <file>res/icons/up.png</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>
+        <file>res/css/dogecash.css</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>
@@ -110,5 +126,21 @@
     </qresource>
     <qresource prefix="/fonts">
         <file alias="Chivo-Regular">res/fonts/Chivo-Regular.ttf</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>res/icons/history.png</file>
+        <file>res/icons/history_active.png</file>
+        <file>res/icons/home.png</file>
+        <file>res/icons/home_active.png</file>
+        <file>res/icons/mns.png</file>
+        <file>res/icons/mns_active.png</file>
+        <file>res/icons/receive.png</file>
+        <file>res/icons/receive_active.png</file>
+        <file>res/icons/send.png</file>
+        <file>res/icons/send_active.png</file>
+        <file>res/icons/lock.svg</file>
+        <file>res/icons/network.svg</file>
+        <file>res/icons/refresh.svg</file>
+        <file>res/icons/up.svg</file>
     </qresource>
 </RCC>

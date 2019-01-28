@@ -19,6 +19,8 @@
 #include <QPushButton>
 #include <QSystemTrayIcon>
 #include <QProxyStyle>
+#include <QPixmap>
+#include <QIcon>
 
 class ClientModel;
 class NetworkStyle;
@@ -31,6 +33,7 @@ class UnitDisplayStatusBarControl;
 class WalletFrame;
 class WalletModel;
 class MasternodeList;
+class Widget;
 
 class CWallet;
 
@@ -85,6 +88,7 @@ public:
     bool addWallet(const QString& name, WalletModel* walletModel);
     bool setCurrentWallet(const QString& name);
     void removeAllWallets();
+
 #endif // ENABLE_WALLET
     bool enableWallet;
     bool fMultiSend = false;
@@ -100,6 +104,8 @@ private:
     ClientModel* clientModel;
     WalletFrame* walletFrame;
 
+    Widget *guiWidget;
+
     UnitDisplayStatusBarControl* unitDisplayControl;
     QLabel* labelStakingIcon;
     QPushButton* labelEncryptionIcon;
@@ -111,6 +117,14 @@ private:
 
     QMenuBar* appMenuBar;
     QAction* overviewAction;
+    QPushButton *overviewButton, *historyButton, *sendCoinsButton, *receiveButton, *mnsButton;
+    QPushButton *lockButton, *upButton, *networkButtion, *refreshButton;
+//    LabelButton* lockLabel;
+//    QLabel* upLabel;
+//    QLabel* networkLabel;
+//    QLabel* refreshLabel;
+    QPixmap *pixmap_overview, *pixmap_history, *pixmap_sendcoin, *pixmap_receive, *pixmap_mns;
+    QIcon *icon_overview, *icon_history, *icon_sendcoin, *icon_receive, *icon_mns;
     QAction* historyAction;
     QAction* masternodeAction;
     QAction* quitAction;
