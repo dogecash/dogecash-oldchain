@@ -251,7 +251,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     frameBlocksLayout->addWidget(labelConnectionsIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelBlocksIcon);
-//    frameBlocksLayout->addWidget(lockButton);
+    frameBlocksLayout->addWidget(lockButton);
     frameBlocksLayout->addStretch();
     frameBlocks->setVisible(true);
 
@@ -299,7 +299,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     textlabel->setText("Hello");
     emptyWidget->layout()->addWidget(textlabel);
     emptyWidget->layout()->addWidget(networkButtion);
-    emptyWidget->layout()->addWidget(lockButton);
+//    emptyWidget->layout()->addWidget(lockButton);
     emptyWidget->layout()->addWidget(progressBar);
 
 //    emptyWidget->layout()->addWidget(frameBlocks);
@@ -308,7 +308,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 //    progressBar->setVisible(false);
 //    statusBar()->addWidget(networkButtion);
 
-//    statusBar()->addPermanentWidget(frameBlocks);
+    statusBar()->addPermanentWidget(frameBlocks);
 
     // Jump directly to tabs in RPC-console
     connect(openInfoAction, SIGNAL(triggered()), rpcConsole, SLOT(showInfo()));
