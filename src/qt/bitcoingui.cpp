@@ -726,10 +726,10 @@ void BitcoinGUI::createToolBars()
 //        overviewAction->setChecked(true);
         overviewButton->setChecked(true);
 //        toolbar->hide();
-        QToolbar *toolbar2 = new QToolbar();
+        QToolbar *toolbar2 = new QToolbar(tr("Tabs toolbar2"));
         toolbar2->setContentsMargins(0,0,0,0);
         toolbar2->setStyleSheet("QToolBar{spacing:0px;}");
-        toolbar2->setObjectName("MainToolbar");
+        toolbar2->setObjectName("MainToolbar2");
         addToolBar(Qt::BottomToolBarArea, toolbar2);
         toolbar2->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
         toolbar2->setStyleSheet("background-color: blue");
