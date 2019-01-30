@@ -1,2 +1,2 @@
 Update coming soon!
-DOGEC
+DogeCash
