@@ -45,8 +45,6 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) 
 
     // load the bitmap for writing some text over it
     pixmap = networkStyle->getSplashImage();
-pixmap.width = 800;
-pixmap.height = 600;
     QPainter pixPaint(&pixmap);
     pixPaint.setPen(QColor(0, 0, 0));
 
