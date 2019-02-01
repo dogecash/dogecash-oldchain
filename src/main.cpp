@@ -6414,7 +6414,7 @@ int ActiveProtocol()
     
     
 
-		return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+		//return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 
 		
 }
