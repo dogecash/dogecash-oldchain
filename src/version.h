@@ -12,7 +12,7 @@
  * network protocol versioning
  */
 
-static const int PROTOCOL_VERSION = 72018;
+static const int PROTOCOL_VERSION = 72019;
 static const int PROTOCOL_VERSION_BEFORE_FORK = 71110; //new version with dev fee and new PoS maturity time 2.1.x
 //static const int PROTOCOL_VERSION = 71002; //release 2.0.x
 
@@ -24,7 +24,7 @@ static const int GETHEADERS_VERSION = 70000;
 
 //! disconnect from peers older than this proto version
 static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 72018;
-static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT = 72018;
+static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT = 72019;
 
 //! nTime field added to CAddress, starting with this version;
 //! if possible, avoid requesting addresses nodes older than this
