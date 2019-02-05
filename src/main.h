@@ -207,7 +207,7 @@ bool LoadExternalBlockFile(FILE* fileIn, CDiskBlockPos* dbp = NULL);
 /** Initialize a new block tree database + block data on disk */
 bool InitBlockIndex();
 /** Load the block tree and coins database from disk */
-bool LoadBlockIndex();
+bool LoadBlockIndex(std::string& strError);
 /** Unload database information */
 void UnloadBlockIndex();
 /** See whether the protocol update is enforced for connected nodes */
@@ -376,6 +376,7 @@ bool IsBlockHashInChain(const uint256& hashBlock);
 void RecalculateZDOGECSpent();
 void RecalculateZDOGECMinted();
 bool RecalculateDOGECSupply(int nHeightStart);
+bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError);
 
 
 /**
