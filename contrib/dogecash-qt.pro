@@ -3,7 +3,7 @@
 ######################################################################
 
 DEFINES += ENABLE_WALLET
-
+QT += widgets
 TEMPLATE = app
 TARGET = 
 DEPENDPATH += . \
