@@ -378,7 +378,7 @@ void RecalculateZDOGECMinted();
 bool RecalculateDOGECSupply(int nHeightStart);
 bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError);
 void PopulateInvalidOutPointMap();
-
+void AddInvalidSpendsToMap(const CBlock& block);
 
 /**
  * Check if transaction will be final in the next block to be created.
