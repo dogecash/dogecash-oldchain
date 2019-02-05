@@ -56,7 +56,10 @@ class CValidationState;
 
 struct CBlockTemplate;
 struct CNodeStateStats;
-
+/** Default for -blockspamfilter, use header spam filter */
+ static const bool DEFAULT_BLOCK_SPAM_FILTER = true;
+ /** Default for -blockspamfiltermaxavg, maximum average size of an index occurrence in the block spam filter */
+ static const unsigned int DEFAULT_BLOCK_SPAM_FILTER_MAX_AVG = 10;
 /** Default for -blockmaxsize and -blockminsize, which control the range of sizes the mining code will create **/
 static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 750000;
 static const unsigned int DEFAULT_BLOCK_MIN_SIZE = 0;
@@ -204,7 +207,7 @@ bool LoadExternalBlockFile(FILE* fileIn, CDiskBlockPos* dbp = NULL);
 /** Initialize a new block tree database + block data on disk */
 bool InitBlockIndex();
 /** Load the block tree and coins database from disk */
-bool LoadBlockIndex();
+bool LoadBlockIndex(std::string& strError);
 /** Unload database information */
 void UnloadBlockIndex();
 /** See whether the protocol update is enforced for connected nodes */
@@ -373,6 +376,8 @@ bool IsBlockHashInChain(const uint256& hashBlock);
 void RecalculateZDOGECSpent();
 void RecalculateZDOGECMinted();
 bool RecalculateDOGECSupply(int nHeightStart);
+bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError);
+void PopulateInvalidOutPointMap();
 
 
 /**

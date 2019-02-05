@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2015-2017 The DOGEC developers
 // Copyright (c) 2018 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -291,6 +291,78 @@ struct CBlockReject {
     string strRejectReason;
     uint256 hashBlock;
 };
+class CNodeBlocks
+ {
+ public:
+     CNodeBlocks():
+             maxSize(0),
+             maxAvg(0)
+     {
+         maxSize = GetArg("-blockspamfiltermaxsize", 100);
+         maxAvg = GetArg("-blockspamfiltermaxavg", DEFAULT_BLOCK_SPAM_FILTER_MAX_AVG);
+     }
+
+      bool onBlockReceived(int nHeight) {
+         if(nHeight > 0 && maxSize && maxAvg) {
+             addPoint(nHeight);
+             return true;
+         }
+         return false;
+     }
+
+      bool updateState(CValidationState& state, bool ret)
+     {
+         // No Blocks
+         size_t size = points.size();
+         if(size == 0)
+             return ret;
+
+          // Compute the number of the received blocks
+         size_t nBlocks = 0;
+         for (auto point : points) {
+             nBlocks += point.second;
+         }
+
+          // Compute the average value per height
+         double nAvgValue = (double)nBlocks / size;
+
+          // Ban the node if try to spam
+         bool banNode = (nAvgValue >= 1.5 * maxAvg && size >= maxAvg) ||
+                        (nAvgValue >= maxAvg && nBlocks >= maxSize) ||
+                        (nBlocks >= maxSize * 3);
+
+          if (banNode) {
+             // Clear the points and ban the node
+             points.clear();
+             return state.DoS(100, error("block-spam ban node for sending spam"));
+         }
+
+          return ret;
+     }
+
+  private:
+     void addPoint(int height)
+     {
+         // Remove the last element in the list
+         if(points.size() == maxSize)
+         {
+             points.erase(points.begin());
+         }
+
+          // Add the point to the list
+         int occurrence = 0;
+         auto mi = points.find(height);
+         if (mi != points.end())
+             occurrence = (*mi).second;
+         occurrence++;
+         points[height] = occurrence;
+     }
+
+  private:
+     std::map<int,int> points;
+     size_t maxSize;
+     size_t maxAvg;
+ };
 
 /**
  * Maintain validation-specific state about nodes, protected by cs_main, instead
@@ -325,6 +397,7 @@ struct CNodeState {
     int nBlocksInFlight;
     //! Whether we consider this a preferred download peer.
     bool fPreferredDownload;
+    CNodeBlocks nodeBlocks;
 
     CNodeState()
     {
@@ -2238,7 +2311,7 @@ int64_t GetTreasuryAward(int nHeight)
 bool IsInitialBlockDownload()
 {
     LOCK(cs_main);
-    if (fImporting || fReindex || chainActive.Height() < Checkpoints::GetTotalBlocksEstimate())
+    if (fImporting || fReindex || fVerifyingBlocks || chainActive.Height() < Checkpoints::GetTotalBlocksEstimate())
         return true;
     static bool lockIBDState = false;
     if (lockIBDState)
@@ -2504,6 +2577,8 @@ bool CheckInputs(const CTransaction& tx, CValidationState& state, const CCoinsVi
 
 bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, CCoinsViewCache& view, bool* pfClean)
 {
+    if (pindex->GetBlockHash() != view.GetBestBlock())
+         LogPrintf("%s : pindex=%s view=%s\n", __func__, pindex->GetBlockHash().GetHex(), view.GetBestBlock().GetHex());
     assert(pindex->GetBlockHash() == view.GetBestBlock());
 
     if (pfClean)
@@ -2629,7 +2704,58 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
         return fClean;
     }
 }
+bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError)
+ {
+     // DOGEC: recalculate Accumulator Checkpoints that failed to database properly
+     if (!listMissingCheckpoints.empty() && chainActive.Height() >= Params().Zerocoin_StartHeight()) {
+         //uiInterface.InitMessage(_("Calculating missing accumulators..."));
+         LogPrintf("%s : finding missing checkpoints\n", __func__);
 
+          //search the chain to see when zerocoin started
+         int nZerocoinStart = Params().Zerocoin_StartHeight();
+
+          // find each checkpoint that is missing
+         CBlockIndex* pindex = chainActive[nZerocoinStart];
+         while (!listMissingCheckpoints.empty()) {
+             if (ShutdownRequested())
+                 return false;
+
+              // find checkpoints by iterating through the blockchain beginning with the first zerocoin block
+             if (pindex->nAccumulatorCheckpoint != pindex->pprev->nAccumulatorCheckpoint) {
+
+                  //double dPercent = (pindex->nHeight - nZerocoinStart) / (double) (chainActive.Height() - nZerocoinStart);
+                 //uiInterface.ShowProgress(_("Calculating missing accumulators..."), (int) (dPercent * 100));
+                 if (find(listMissingCheckpoints.begin(), listMissingCheckpoints.end(), pindex->nAccumulatorCheckpoint) != listMissingCheckpoints.end()) {
+                     uint256 nCheckpointCalculated = 0;
+                     if (!CalculateAccumulatorCheckpoint(pindex->nHeight, nCheckpointCalculated)) {
+                         // GetCheckpoint could have terminated due to a shutdown request. Check this here.
+                         if (ShutdownRequested())
+                             break;
+                         strError = _("Failed to calculate accumulator checkpoint");
+                         return false;
+                     }
+
+                      //check that the calculated checkpoint is what is in the index.
+                     if (nCheckpointCalculated != pindex->nAccumulatorCheckpoint) {
+                         LogPrintf("%s : height=%d calculated_checkpoint=%s actual=%s\n", __func__, pindex->nHeight, nCheckpointCalculated.GetHex(), pindex->nAccumulatorCheckpoint.GetHex());
+                         strError = _("Calculated accumulator checkpoint is not what is recorded by block index");
+                         return false;
+                     }
+
+                      auto it = find(listMissingCheckpoints.begin(), listMissingCheckpoints.end(), pindex->nAccumulatorCheckpoint);
+                     listMissingCheckpoints.erase(it);
+                 }
+             }
+
+              // if we have iterated to the end of the blockchain, then checkpoints should be in sync
+             if (pindex->nHeight + 1 <= chainActive.Height())
+                 pindex = chainActive.Next(pindex);
+             else
+                 break;
+         }
+     }
+     return true;
+ }
 void static FlushBlockFile(bool fFinalize = false)
 {
     LOCK(cs_LastBlockFile);
@@ -2794,6 +2920,97 @@ static int64_t nTimeIndex = 0;
 static int64_t nTimeCallbacks = 0;
 static int64_t nTimeTotal = 0;
 
+void PopulateInvalidOutPointMap()
+{
+    if (fListPopulatedAfterLock)
+        return;
+    nFilteredThroughBittrex = 0;
+
+    //Calculate over the entire period between the first bad tx and the tip of the chain - or the point at which this becomes enforced
+    int nHeightLast = min(Params().Zerocoin_Block_RecalculateAccumulators() + 1, chainActive.Height());
+
+    map<COutPoint, int> mapValidMixed;
+    for (int i = Params().Zerocoin_Block_FirstFraudulent(); i < nHeightLast; i++) {
+        CBlockIndex* pindex = chainActive[i];
+        CBlock block;
+        if (!ReadBlockFromDisk(block, pindex))
+            continue;
+
+        //Find all the invalid spends for this block and record them
+        AddInvalidSpendsToMap(block);
+
+        //Any tx's that use a bad TxOut as an input is marked as invalid
+        for (CTransaction tx : block.vtx) {
+            for (CTxIn txIn : tx.vin) {
+                if (mapInvalidOutPoints.count(txIn.prevout)) {
+
+                    //If this is a stake transaction, masternode payments should not be considered fraudulent
+                    std::list<COutPoint> listOutPoints;
+                    if (tx.IsCoinStake()) {
+                        CTxDestination dest;
+                        if (!ExtractDestination(tx.vout[1].scriptPubKey, dest))
+                            continue;
+
+                        CBitcoinAddress addressKernel(dest);
+                        for (unsigned int j = 1 ; j < tx.vout.size(); j++) { //1 because first is blank for coinstake
+
+                            //If a payment goes to a different address, then count it as a masternode payment
+                            CTxDestination destOut;
+                            if (!ExtractDestination(tx.vout[j].scriptPubKey, destOut)) {
+                                listOutPoints.emplace_back(COutPoint(tx.GetHash(), j));
+                                continue;
+                            }
+                            CBitcoinAddress addressOut(destOut);
+                            if (addressOut == addressKernel) {
+
+                                //Anything past these two addresses is only guilty by association/washed funds
+                                if (addressOut == addressExp1 || addressOut == addressExp2) {
+                                    nFilteredThroughBittrex += tx.vout[j].nValue;
+                                    continue;
+                                }
+
+                                //Mark this outpoint as invalid
+                                listOutPoints.emplace_back(COutPoint(tx.GetHash(), j));
+                            }
+                        }
+                    } else {
+                        // Mark all outpoints invalid because they descend from exploited spends
+                        for (COutPoint p : tx.GetOutPoints()) {
+                            if (tx.vout[p.n].scriptPubKey.IsZerocoinMint()) {
+                                listOutPoints.emplace_back(p);
+                            } else {
+                                //Anything past these two addresses is only guilty by association/washed funds
+                                CTxDestination dest;
+                                if (!ExtractDestination(tx.vout[p.n].scriptPubKey, dest)) {
+                                    listOutPoints.emplace_back(p);
+                                    continue;
+                                }
+
+                                CBitcoinAddress address(dest);
+                                if (address == addressExp1 || address == addressExp2) {
+                                    nFilteredThroughBittrex += tx.vout[p.n].nValue;
+                                    continue;
+                                }
+                                //record this outpoint as invalid
+                                listOutPoints.emplace_back(p);
+                            }
+                        }
+                    }
+
+                    //Record each fraudulent outpoint and its cause.
+                    for (COutPoint o : listOutPoints)
+                        mapInvalidOutPoints[o] = txIn.prevout;
+
+                    //The entire tx set of outpoints are added, break here
+                    break;
+                }
+            }
+        }
+
+        if (pindex->nHeight > Params().Zerocoin_Block_RecalculateAccumulators())
+            fListPopulatedAfterLock = true;
+    }
+}
 bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pindex, CCoinsViewCache& view, bool fJustCheck, bool fAlreadyChecked)
 {
     AssertLockHeld(cs_main);
@@ -3042,17 +3259,42 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     // zerocoin accumulator: if a new accumulator checkpoint was generated, check that it is the correct value
     if (!fVerifyingBlocks && pindex->nHeight >= Params().Zerocoin_StartHeight() && pindex->nHeight % 10 == 0) {
         uint256 nCheckpointCalculated = 0;
-        if (!CalculateAccumulatorCheckpoint(pindex->nHeight, nCheckpointCalculated))
-            return state.DoS(100, error("ConnectBlock() : failed to calculate accumulator checkpoint"));
+       // if IDB, invalid outpoints must be calculated or else acc checkpoint will be incorrect
+         if (pindex->nHeight == Params().Zerocoin_Block_RecalculateAccumulators())
+             PopulateInvalidOutPointMap();
+
+          if (!CalculateAccumulatorCheckpoint(pindex->nHeight, nCheckpointCalculated)) {
+             //Calculate list of checkpoints that may be missing due to deletion on block 809000, and rewinding back before 809000
+             int nStop = Params().Zerocoin_Block_RecalculateAccumulators() + 20;
+             if (pindex->nHeight < nStop && pindex->nHeight > Params().Zerocoin_Block_LastGoodCheckpoint()) {
+                 LogPrintf("%s : Checkpoint not found for block %d, recalculating accumulators\n", __func__, pindex->nHeight);
+                 CBlockIndex* pindexCheckpoint = chainActive[Params().Zerocoin_Block_LastGoodCheckpoint()];
+                 list<uint256> listCheckpoints;
+                 while (pindexCheckpoint->nHeight <= nStop) {
+                     if (!count(listCheckpoints.begin(), listCheckpoints.end(), pindexCheckpoint->nAccumulatorCheckpoint))
+                         listCheckpoints.emplace_back(pindexCheckpoint->nAccumulatorCheckpoint);
+
+                      pindexCheckpoint = chainActive.Next(pindexCheckpoint);
+                     if (!pindexCheckpoint)
+                         break;
+                 }
+
+                  string strError;
+                 if (!ReindexAccumulators(listCheckpoints, strError) || !CalculateAccumulatorCheckpoint(pindex->nHeight, nCheckpointCalculated))
+                             return state.DoS(100, error("ConnectBlock() : failed to recalculate accumulator checkpoint"));
+             } else {
+                 return state.DoS(100, error("ConnectBlock() : failed to calculate accumulator checkpoint"));
+             }
+         }
 
         if (nCheckpointCalculated != block.nAccumulatorCheckpoint) {
             LogPrintf("%s: block=%d calculated: %s\n block: %s\n", __func__, pindex->nHeight, nCheckpointCalculated.GetHex(), block.nAccumulatorCheckpoint.GetHex());
             return state.DoS(100, error("ConnectBlock() : accumulator does not match calculated value"));
         }
     } else if (!fVerifyingBlocks) {
-        if (block.nAccumulatorCheckpoint != pindex->pprev->nAccumulatorCheckpoint) {
+        if (block.nAccumulatorCheckpoint != pindex->pprev->nAccumulatorCheckpoint)
             return state.DoS(100, error("ConnectBlock() : new accumulator checkpoint generated on a block that is not multiple of 10"));
-        }
+        
     }
 
     if (!control.Wait())
@@ -4201,9 +4443,20 @@ bool AcceptBlockHeader(const CBlock& block, CValidationState& state, CBlockIndex
         if (mi == mapBlockIndex.end())
             return state.DoS(0, error("%s : prev block %s not found", __func__, block.hashPrevBlock.ToString().c_str()), 0, "bad-prevblk");
         pindexPrev = (*mi).second;
-        if (pindexPrev->nStatus & BLOCK_FAILED_MASK)
-            return state.DoS(100, error("%s : prev block %s is invalid, unable to add block %s", __func__, block.hashPrevBlock.GetHex(), block.GetHash().GetHex()),
-                             REJECT_INVALID, "bad-prevblk");
+ if (pindexPrev->nStatus & BLOCK_FAILED_MASK) {
+                          //If this "invalid" block is an exact match from the checkpoints, then reconsider it
+if (pindex && Checkpoints::CheckBlock(pindex->nHeight - 1, block.hashPrevBlock, true)) {
+                 LogPrintf("%s : Reconsidering block %s height %d\n", __func__, pindexPrev->GetBlockHash().GetHex(), pindexPrev->nHeight);
+                 CValidationState statePrev;
+                 ReconsiderBlock(statePrev, pindexPrev);
+                 if (statePrev.IsValid()) {
+                     ActivateBestChain(statePrev);
+                     return true;
+                 }
+             }
+
+              return state.DoS(100, error("%s : prev block height=%d hash=%s is invalid, unable to add block %s", __func__, pindexPrev->nHeight, block.hashPrevBlock.GetHex(), block.GetHash().GetHex()),REJECT_INVALID, "bad-prevblk");
+ }
     }
 
     if (!ContextualCheckBlockHeader(block, state, pindexPrev))
@@ -4231,9 +4484,20 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         if (mi == mapBlockIndex.end())
             return state.DoS(0, error("%s : prev block %s not found", __func__, block.hashPrevBlock.ToString().c_str()), 0, "bad-prevblk");
         pindexPrev = (*mi).second;
-        if (pindexPrev->nStatus & BLOCK_FAILED_MASK)
-            return state.DoS(100, error("%s : prev block %s is invalid, unable to add block %s", __func__, block.hashPrevBlock.GetHex(), block.GetHash().GetHex()),
-                             REJECT_INVALID, "bad-prevblk");
+        if (pindexPrev->nStatus & BLOCK_FAILED_MASK) {
+              //If this "invalid" block is an exact match from the checkpoints, then reconsider it
+             if (Checkpoints::CheckBlock(pindexPrev->nHeight, block.hashPrevBlock, true)) {
+                 LogPrintf("%s : Reconsidering block %s height %d\n", __func__, pindexPrev->GetBlockHash().GetHex(), pindexPrev->nHeight);
+                 CValidationState statePrev;
+                 ReconsiderBlock(statePrev, pindexPrev);
+                 if (statePrev.IsValid()) {
+                     ActivateBestChain(statePrev);
+                     return true;
+                 }
+             }   return state.DoS(100, error("%s : prev block %s is invalid, unable to add block %s", __func__, block.hashPrevBlock.GetHex(), block.GetHash().GetHex()),
+                              REJECT_INVALID, "bad-prevblk");		                             
+            }
+
     }
 
     if (block.GetHash() != Params().HashGenesisBlock() && !CheckWork(block, pindexPrev))
@@ -4388,6 +4652,23 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
         if (!checked) {
             return error ("%s : CheckBlock FAILED for block %s", __func__, pblock->GetHash().GetHex());
         }
+       if (pfrom && GetBoolArg("-blockspamfilter", DEFAULT_BLOCK_SPAM_FILTER)) {
+             CNodeState *nodestate = State(pfrom->GetId());
+             BlockMap::iterator mi = mapBlockIndex.find(pblock->hashPrevBlock);
+             // we already checked this isn't the end
+             nodestate->nodeBlocks.onBlockReceived(mi->second->nHeight);
+             bool nodeStatus = true;
+             // UpdateState will return false if the node is attacking us or update the score and return true.
+             nodeStatus = nodestate->nodeBlocks.updateState(state, nodeStatus);
+             int nDoS = 0;
+             if (state.IsInvalid(nDoS)) {
+                 if (nDoS > 0)
+                     Misbehaving(pfrom->GetId(), nDoS);
+                 nodeStatus = false;
+             }
+             if(!nodeStatus)
+                 return error("%s : AcceptBlock FAILED - block spam protection", __func__);
+         }
 
         // Store to disk
         CBlockIndex* pindex = NULL;
@@ -4395,7 +4676,7 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
         if (pindex && pfrom) {
             mapBlockSource[pindex->GetBlockHash ()] = pfrom->GetId ();
         }
-        CheckBlockIndex ();
+        CheckBlockIndex();
         if (!ret)
             return error ("%s : AcceptBlock FAILED", __func__);
     }
@@ -4537,7 +4818,7 @@ CBlockIndex* InsertBlockIndex(uint256 hash)
     return pindexNew;
 }
 
-bool static LoadBlockIndexDB()
+bool static LoadBlockIndexDB(string& strError)
 {
     if (!pblocktree->LoadBlockIndexGuts())
         return false;
@@ -4547,12 +4828,12 @@ bool static LoadBlockIndexDB()
     // Calculate nChainWork
     vector<pair<int, CBlockIndex*> > vSortedByHeight;
     vSortedByHeight.reserve(mapBlockIndex.size());
-    BOOST_FOREACH (const PAIRTYPE(uint256, CBlockIndex*) & item, mapBlockIndex) {
+    for (const PAIRTYPE(uint256, CBlockIndex*) & item : mapBlockIndex) {
         CBlockIndex* pindex = item.second;
         vSortedByHeight.push_back(make_pair(pindex->nHeight, pindex));
     }
     sort(vSortedByHeight.begin(), vSortedByHeight.end());
-    BOOST_FOREACH (const PAIRTYPE(int, CBlockIndex*) & item, vSortedByHeight) {
+    for (const PAIRTYPE(int, CBlockIndex*) & item : vSortedByHeight) {
         CBlockIndex* pindex = item.second;
         pindex->nChainWork = (pindex->pprev ? pindex->pprev->nChainWork : 0) + GetBlockProof(*pindex);
         if (pindex->nStatus & BLOCK_HAVE_DATA) {
@@ -4616,83 +4897,68 @@ bool static LoadBlockIndexDB()
     LogPrintf("%s: Last shutdown was prepared: %s\n", __func__, fLastShutdownWasPrepared);
 
     //Check for inconsistency with block file info and internal state
-    if (!fLastShutdownWasPrepared && !GetBoolArg("-forcestart", false) && !GetBoolArg("-reindex", false) && (vSortedByHeight.size() != vinfoBlockFile[nLastBlockFile].nHeightLast + 1) && (vinfoBlockFile[nLastBlockFile].nHeightLast != 0)) {
-        //The database is in a state where a block has been accepted and written to disk, but not
-        //all of the block has perculated through the code. The block and the index should both be
-        //intact (although assertions are added if they are not), and the block will be reprocessed
-        //to ensure all data will be accounted for.
-        LogPrintf("%s: Inconsistent State Detected mapBlockIndex.size()=%d blockFileBlocks=%d\n", __func__, vSortedByHeight.size(), vinfoBlockFile[nLastBlockFile].nHeightLast + 1);
-        LogPrintf("%s: lastIndexPos=%d blockFileSize=%d\n", __func__, vSortedByHeight[vSortedByHeight.size() - 1].second->GetBlockPos().nPos,
-            vinfoBlockFile[nLastBlockFile].nSize);
+   if (!fLastShutdownWasPrepared && !GetBoolArg("-forcestart", false) && !GetBoolArg("-reindex", false) && pcoinsTip->GetBestBlock() != vSortedByHeight[vinfoBlockFile[nLastBlockFile].nHeightLast + 1].second->GetBlockHash()) {
+    //The database is in a state where a block has been accepted and written to disk, but the
+    //transaction database (pcoinsTip) was not flushed to disk, and is therefore not in sync with
+     //the block index database.
+ 
+           if (!mapBlockIndex.count(pcoinsTip->GetBestBlock())) {
+strError = "The wallet has been not been closed properly, causing the transaction database to be out of sync with the block database";
+            return false;
+           }
+                   LogPrintf("%s : pcoinstip synced to block height %d, block index height %d\n", __func__, mapBlockIndex[pcoinsTip->GetBestBlock()]->nHeight, vSortedByHeight.size());
+        //get the index associated with the point in the chain that pcoinsTip is synced to
 
-        //try reading the block from the last index we have
-        bool isFixed = true;
-        string strError = "";
-        LogPrintf("%s: Attempting to re-add last block that was recorded to disk\n", __func__);
 
-        //get the last block that was properly recorded to the block info file
         CBlockIndex* pindexLastMeta = vSortedByHeight[vinfoBlockFile[nLastBlockFile].nHeightLast + 1].second;
-
-        //fix Assertion `hashPrevBlock == view.GetBestBlock()' failed. By adjusting height to the last recorded by coinsview
-        CBlockIndex* pindexCoinsView = mapBlockIndex[pcoinsTip->GetBestBlock()];
-        for(unsigned int i = vinfoBlockFile[nLastBlockFile].nHeightLast + 1; i < vSortedByHeight.size(); i++)
-        {
-            pindexLastMeta = vSortedByHeight[i].second;
-            if(pindexLastMeta->nHeight > pindexCoinsView->nHeight)
-                break;
+        CBlockIndex* pindex = vSortedByHeight[0].second;
+        unsigned int nSortedPos = 0;
+        for (unsigned int i = 0; i < vSortedByHeight.size(); i++) {
+   nSortedPos = i;
+             if (vSortedByHeight[i].first == mapBlockIndex[pcoinsTip->GetBestBlock()]->nHeight +1) {
+                 pindex = vSortedByHeight[i].second;
+                 break;
+             }
         }
+
 
         LogPrintf("%s: Last block properly recorded: #%d %s\n", __func__, pindexLastMeta->nHeight, pindexLastMeta->GetBlockHash().ToString().c_str());
 
-        CBlock lastMetaBlock;
-        if (!ReadBlockFromDisk(lastMetaBlock, pindexLastMeta)) {
-            isFixed = false;
-            strError = strprintf("failed to read block %d from disk", pindexLastMeta->nHeight);
-        }
+     
 
-        //set the chain to the block before lastMeta so that the meta block will be seen as new
-        chainActive.SetTip(pindexLastMeta->pprev);
+        // Start at the last block that was successfully added to the txdb (pcoinsTip) and manually add all transactions that occurred for each block up until
+                // the best known block from the block index db.
 
-        //Process the lastMetaBlock again, using the known location on disk
-        CDiskBlockPos blockPos = pindexLastMeta->GetBlockPos();
-        CValidationState state;
-        ProcessNewBlock(state, NULL, &lastMetaBlock, &blockPos);
+    CCoinsViewCache view(pcoinsTip);
+         while (nSortedPos < vSortedByHeight.size()) {
+             CBlock block;
+             if (!ReadBlockFromDisk(block, pindex)) {
+                 strError = "The wallet has been not been closed gracefully and has caused corruption of blocks stored to disk. Data directory is in an unusable state";
+                 return false;
+             }
+            
+            vector<CTxUndo> vtxundo;
+            vtxundo.reserve(block.vtx.size() - 1);
+            uint256 hashBlock = block.GetHash();
+                    for (unsigned int i = 0; i < block.vtx.size(); i++) {
+                 CValidationState state;
+                 CTxUndo undoDummy;
+                 if (i > 0)
+                     vtxundo.push_back(CTxUndo());
+                 UpdateCoins(block.vtx[i], state, view, i == 0 ? undoDummy : vtxundo.back(), pindex->nHeight);
+                 view.SetBestBlock(hashBlock);
+             }
+            if (pindex->nHeight >= pindexLastMeta->nHeight)
+                break;
+            pindex = vSortedByHeight[++nSortedPos].second;
+         }
 
-        //ensure that everything is as it should be
-        if (pcoinsTip->GetBestBlock() != vSortedByHeight[vSortedByHeight.size() - 1].second->GetBlockHash()) {
-            isFixed = false;
-            strError = "pcoinsTip best block is not correct";
-        }
 
-        //properly account for all of the blocks that were not in the meta data. If this is not done the file
-        //positioning will be wrong and blocks will be overwritten and later cause serialization errors
-        CBlockIndex *pindexLast = vSortedByHeight[vSortedByHeight.size() - 1].second;
-        CBlock lastBlock;
-        if (!ReadBlockFromDisk(lastBlock, pindexLast)) {
-            isFixed = false;
-            strError = strprintf("failed to read block %d from disk", pindexLast->nHeight);
-        }
-        vinfoBlockFile[nLastBlockFile].nHeightLast = pindexLast->nHeight;
-        vinfoBlockFile[nLastBlockFile].nSize = pindexLast->GetBlockPos().nPos + ::GetSerializeSize(lastBlock, SER_DISK, CLIENT_VERSION);;
-        setDirtyFileInfo.insert(nLastBlockFile);
-        FlushStateToDisk(state, FLUSH_STATE_ALWAYS);
-
-        //Print out file info again
-        pblocktree->ReadLastBlockFile(nLastBlockFile);
-        vinfoBlockFile.resize(nLastBlockFile + 1);
-        LogPrintf("%s: last block file = %i\n", __func__, nLastBlockFile);
-        for (int nFile = 0; nFile <= nLastBlockFile; nFile++) {
-            pblocktree->ReadBlockFileInfo(nFile, vinfoBlockFile[nFile]);
-        }
-        LogPrintf("%s: last block file info: %s\n", __func__, vinfoBlockFile[nLastBlockFile].ToString());
-
-        if (!isFixed) {
-            strError = "Failed reading from database. " + strError + ". The block database is in an inconsistent state and may cause issues in the future."
-                                                                     "To force start use -forcestart";
-            uiInterface.ThreadSafeMessageBox(strError, "", CClientUIInterface::MSG_ERROR);
-            abort();
-        }
-        LogPrintf("Passed corruption fix\n");
+             // Save the updates to disk
+        if (!view.Flush() || !pcoinsTip->Flush())
+            LogPrintf("%s : failed to flush view\n", __func__);
+        LogPrintf("%s: Last block properly recorded: #%d %s\n", __func__, pindexLastMeta->nHeight, pindexLastMeta->GetBlockHash().ToString().c_str());
+        LogPrintf("%s : pcoinstip=%d %s\n", __func__, mapBlockIndex[pcoinsTip->GetBestBlock()]->nHeight, pcoinsTip->GetBestBlock().GetHex());
     }
 
     // Check whether we need to continue reindexing
@@ -4818,10 +5084,10 @@ void UnloadBlockIndex()
     pindexBestInvalid = NULL;
 }
 
-bool LoadBlockIndex()
+bool LoadBlockIndex(string& strError)
 {
     // Load block index from databases
-    if (!fReindex && !LoadBlockIndexDB())
+    if (!fReindex && !LoadBlockIndexDB(strError))
         return false;
     return true;
 }
@@ -6307,20 +6573,7 @@ int ActiveProtocol()
     // SPORK_14 was used for 70910. Leave it 'ON' so they don't see > 70910 nodes. They won't react to SPORK_15
     // messages because it's not in their code
 
-/*    if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
-            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-*/
-
-    // SPORK_15 is used for 70911. Nodes < 70911 don't see it and still get their protocol version via SPORK_14 and their
-    // own ModifierUpgradeBlock()
-	/*
-    if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
-            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
-    * */
-    
-
-		return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+ return PROTOCOL_VERSION;
 
 		
 }
