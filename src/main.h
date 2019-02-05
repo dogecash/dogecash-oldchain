@@ -377,6 +377,7 @@ void RecalculateZDOGECSpent();
 void RecalculateZDOGECMinted();
 bool RecalculateDOGECSupply(int nHeightStart);
 bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError);
+void PopulateInvalidOutPointMap();
 
 
 /**
