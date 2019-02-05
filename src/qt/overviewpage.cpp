@@ -19,7 +19,7 @@
 #include "transactionfilterproxy.h"
 #include "transactiontablemodel.h"
 #include "walletmodel.h"
-#include <widget.h>
+#include "widget.h"
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
