@@ -2919,6 +2919,52 @@ static int64_t nTimeConnect = 0;
 static int64_t nTimeIndex = 0;
 static int64_t nTimeCallbacks = 0;
 static int64_t nTimeTotal = 0;
+CBitcoinAddress addressExp1("DQZzqnSR6PXxagep1byLiRg9ZurCZ5KieQ");
+CBitcoinAddress addressExp2("DTQYdnNqKuEHXyNeeYhPQGGGdqHbXYwjpj");
+void AddInvalidSpendsToMap(const CBlock& block)
+{
+    for (const CTransaction tx : block.vtx) {
+        if (!tx.ContainsZerocoins())
+            continue;
+
+        //Check all zerocoinspends for bad serials
+        for (const CTxIn in : tx.vin) {
+            if (in.scriptSig.IsZerocoinSpend()) {
+                CoinSpend spend = TxInToZerocoinSpend(in);
+
+                //If serial is not valid, mark all outputs as bad
+                if (!spend.HasValidSerial(Params().Zerocoin_Params())) {
+                    mapInvalidSerials[spend.getCoinSerialNumber()] = spend.getDenomination() * COIN;
+
+                    // Derive the actual valid serial from the invalid serial if possible
+                    CBigNum bnActualSerial = spend.CalculateValidSerial(Params().Zerocoin_Params());
+                    uint256 txHash;
+
+                    if (zerocoinDB->ReadCoinSpend(bnActualSerial, txHash)) {
+                        mapInvalidSerials[bnActualSerial] = spend.getDenomination() * COIN;
+
+                        CTransaction txPrev;
+                        uint256 hashBlock;
+                        if (!GetTransaction(txHash, txPrev, hashBlock, true))
+                            continue;
+
+                        //Record all txouts from txPrev as invalid
+                        for (unsigned int i = 0; i < txPrev.vout.size(); i++) {
+                            //map to an empty outpoint to represent that this is the first in the chain of bad outs
+                            mapInvalidOutPoints[COutPoint(txPrev.GetHash(), i)] = COutPoint();
+                        }
+                    }
+
+                    //Record all txouts from this invalid zerocoin spend tx as invalid
+                    for (unsigned int i = 0; i < tx.vout.size(); i++) {
+                        //map to an empty outpoint to represent that this is the first in the chain of bad outs
+                        mapInvalidOutPoints[COutPoint(tx.GetHash(), i)] = COutPoint();
+                    }
+                }
+            }
+        }
+    }
+}
 bool fListPopulatedAfterLock = false;
 
 void PopulateInvalidOutPointMap()
