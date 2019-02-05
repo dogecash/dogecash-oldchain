@@ -421,11 +421,11 @@ void OptionsModel::setRestartRequired(bool fRequired)
     QSettings settings;
     return settings.setValue("fRestartRequired", fRequired);
 }
-void OverviewPage::hideOrphans(bool fHide)
-{	
-if(filter)
-        filter->setHideOrphans(fHide);
-}	
+// void OverviewPage::hideOrphans(bool fHide)
+// {	
+// if(filter)
+//         filter->setHideOrphans(fHide);
+// }	
 bool OptionsModel::isRestartRequired()
 {
     QSettings settings;

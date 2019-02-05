@@ -39,6 +39,9 @@ public:
         Digits,              // QString
         Theme,               // QString
         Language,            // QString
+
+     //   HideOrphans, //bool
+
         CoinControlFeatures, // bool
         ThreadsScriptVerif,  // int
         DatabaseCache,       // int
