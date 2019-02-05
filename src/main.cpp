@@ -2968,6 +2968,7 @@ void AddInvalidSpendsToMap(const CBlock& block)
     }
 }
 bool fListPopulatedAfterLock = false;
+CAmount nFilteredThroughBittrex = 0;
 
 void PopulateInvalidOutPointMap()
 {
