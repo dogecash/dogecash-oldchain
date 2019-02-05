@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2015-2017 The DOGEC developers
 // Copyright (c) 2018 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -2706,7 +2706,7 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
 }
 bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError)
  {
-     // PIVX: recalculate Accumulator Checkpoints that failed to database properly
+     // DOGEC: recalculate Accumulator Checkpoints that failed to database properly
      if (!listMissingCheckpoints.empty() && chainActive.Height() >= Params().Zerocoin_StartHeight()) {
          //uiInterface.InitMessage(_("Calculating missing accumulators..."));
          LogPrintf("%s : finding missing checkpoints\n", __func__);
@@ -4812,7 +4812,7 @@ bool static LoadBlockIndexDB(string& strError)
      //the block index database.
  
            if (!mapBlockIndex.count(pcoinsTip->GetBestBlock())) {
-            strError = "The wallet has been not been closed gracefully, causing the transaction database to be out of sync with the block database";
+strError = "The wallet has been not been closed properly, causing the transaction database to be out of sync with the block database";
             return false;
            }
                    LogPrintf("%s : pcoinstip synced to block height %d, block index height %d\n", __func__, mapBlockIndex[pcoinsTip->GetBestBlock()]->nHeight, vSortedByHeight.size());
