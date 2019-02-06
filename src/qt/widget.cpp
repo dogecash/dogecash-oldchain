@@ -261,7 +261,7 @@ void Widget::on_button_control_clicked()
     connect(controlDialogPage, SIGNAL(button_ok_click()), SLOT(close_control_dialog()));
 }
 
-void Widget:: close_control_dialog() {
+void Widget::close_control_dialog() {
     controlDialogPage->hide();
     this->unsetBlur();
     this->unsetOpacity();
