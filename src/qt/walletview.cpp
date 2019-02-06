@@ -26,6 +26,8 @@
 
 #include "ui_interface.h"
 
+#include "walletview.moc"
+
 #include <QAction>
 #include <QActionGroup>
 #include <QFileDialog>
