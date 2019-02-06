@@ -21,7 +21,7 @@
 #include "walletmodel.h"
 #include "widget.h"
 
-#include "walletview.moc"
+
 //#include "overviewpage.moc"
 
 #include <QAbstractItemDelegate>
