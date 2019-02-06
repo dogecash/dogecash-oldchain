@@ -21,6 +21,9 @@
 #include "walletmodel.h"
 #include "widget.h"
 
+#include "walletview.moc"
+//#include "overviewpage.moc"
+
 #include <QAbstractItemDelegate>
 #include <QPainter>
 #include <QSettings>
@@ -129,9 +132,11 @@ public:
 
     int unit;
 };
-#include "overviewpage.moc"
 
-OverviewPage::OverviewPage(QWidget* parent) : QWidget(parent),
+#include "overviewpage.moc"
+#include "widget.moc"
+
+OverviewPage::OverviewPage(QWidget* parent = 0) : QWidget(parent),
                                               ui(new Ui::OverviewPage),
                                               clientModel(0),
                                               walletModel(0),
