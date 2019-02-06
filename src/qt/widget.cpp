@@ -10,7 +10,7 @@
 #include "QGradient"
 #include "QRect"
 
-Widget::Widget(QWidget *parent) :
+Widget::Widget(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
