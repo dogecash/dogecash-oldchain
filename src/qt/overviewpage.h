@@ -30,7 +30,9 @@ class OverviewPage : public QWidget
 
 public:
     explicit OverviewPage(QWidget* parent);
+    
     OverviewPage();
+    ~OverviewPage();
 
     void setClientModel(ClientModel* clientModel);
     void setWalletModel(WalletModel* walletModel);
