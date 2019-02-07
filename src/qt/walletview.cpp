@@ -24,7 +24,8 @@
 #include "transactionview.h"
 #include "walletmodel.h"
 
-#include "ui_interface.h"
+#include "ui_overviewpage.h"
+//#include "ui_interface.h"
 
 #include "overviewpage.moc"
 
@@ -37,6 +38,7 @@
 #include <QPushButton>
 #include <QSettings>
 #include <QVBoxLayout>
+#include <QWidget>
 
 WalletView::WalletView(QWidget *parent) : QStackedWidget(parent),
                                           clientModel(0),
