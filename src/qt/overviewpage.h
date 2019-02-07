@@ -6,7 +6,7 @@
 #define BITCOIN_QT_OVERVIEWPAGE_H
 
 #include "amount.h"
-
+#include "overviewpage.moc"
 #include <QWidget>
 
 class ClientModel;
