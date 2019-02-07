@@ -37,7 +37,7 @@ extern CWallet* pwalletMain;
 
 class TxViewDelegate : public QAbstractItemDelegate
 {
-    Q_OBJECT
+  //  Q_OBJECT
 public:
     TxViewDelegate() : QAbstractItemDelegate(), unit(BitcoinUnits::DOGEC)
     {
@@ -134,7 +134,6 @@ public:
 };
 
 #include "overviewpage.moc"
-#include "widget.moc"
 
 OverviewPage::OverviewPage(QWidget* parent = 0) : QWidget(parent),
                                               ui(new Ui::OverviewPage),
