@@ -10,6 +10,7 @@
 #include "QGradient"
 #include "QRect"
 
+#include "overview.moc"
 #include "widget.moc"
 
 Widget::Widget(QWidget* parent) :
