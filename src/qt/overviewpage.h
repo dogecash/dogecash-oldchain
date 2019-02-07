@@ -29,9 +29,9 @@ class OverviewPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit OverviewPage(QWidget* parent);
+    explicit OverviewPage(QWidget* parent = 0);
     
-    OverviewPage();
+   // OverviewPage();
     ~OverviewPage();
 
     void setClientModel(ClientModel* clientModel);
