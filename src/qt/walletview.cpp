@@ -26,7 +26,7 @@
 
 #include "ui_interface.h"
 
-#include "walletview.moc"
+#include "overviewpage.moc"
 
 #include <QAction>
 #include <QActionGroup>
