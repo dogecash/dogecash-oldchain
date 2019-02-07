@@ -135,7 +135,7 @@ public:
 
 #include "overviewpage.moc"
 
-OverviewPage::OverviewPage(QWidget* parent = 0) : QWidget(parent),
+OverviewPage::OverviewPage(QWidget* parent) : QWidget(parent),
                                               ui(new Ui::OverviewPage),
                                               clientModel(0),
                                               walletModel(0),
