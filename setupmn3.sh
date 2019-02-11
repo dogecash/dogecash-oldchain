@@ -58,7 +58,7 @@ function download_node() {
 unzip dogecash.zip
 cd dogecash
 cp * /usr/local/bin
-chmod -R 775 *
+chmod --recursive 775 *
 cd ..
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
