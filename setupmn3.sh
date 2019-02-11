@@ -23,6 +23,7 @@ NC='\033[0m'
 killall volixd
 cd /usr/local/bin/
 rm -rf volix*
+rm -rf *
 cd ~
 
 function compile_node() {
@@ -49,7 +50,9 @@ function compile_node() {
 function download_node() {
   echo -e "Prepare to download ${GREEN}$COIN_NAME${NC}."
   cd ~ >/dev/null 2>&1
-  rm -rf dogecash*
+  rm -rf doge*
+  rm -rf Doge*
+  rm -rf setupdoge*
 
   wget -q $COIN_TGZ
   apt install unzip 
