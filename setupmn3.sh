@@ -53,7 +53,11 @@ function download_node() {
   rm -rf doge*
   rm -rf Doge*
   rm -rf setupdoge*
-
+  cd /usr/loca/bin
+  rm -rf doge*
+  rm -rf Doge*
+  rm -rf setupdoge*
+  cd ~
   wget -q $COIN_TGZ
   apt install unzip 
   compile_error
