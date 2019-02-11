@@ -55,8 +55,8 @@ function download_node() {
   apt install unzip 
   compile_error
 #   tar xvzf $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
-unzip dogecash.zip 
-cd dogecash
+unzip DogeCash-Linux-Ubuntu.zip 
+cd DogeCash-Linux-Ubuntu
 cp * /usr/local/bin
 chmod -R 775 *
 cd ..
