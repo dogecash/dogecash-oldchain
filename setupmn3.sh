@@ -7,7 +7,7 @@ COIN_DAEMON='dogecashd'
 COIN_CLI='dogecash-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO=''
-COIN_TGZ='https://github.com/dogecash/dogecash/releases/download/2.4.0/DogeCash-Linux-Ubuntu.zip'
+COIN_TGZ='https://github.com/dogecash/dogecash/releases/download/2.4.0/dogecash.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='DogeCash'
 COIN_PORT=6740 #Updated Port
@@ -55,8 +55,8 @@ function download_node() {
   apt install unzip 
   compile_error
 #   tar xvzf $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
-unzip DogeCash-Linux-Ubuntu.zip 
-cd DogeCash-Linux-Ubuntu
+unzip dogecash.zip
+cd dogecash
 cp * /usr/local/bin
 chmod -R 775 *
 cd ..
