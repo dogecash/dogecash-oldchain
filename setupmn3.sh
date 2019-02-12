@@ -50,25 +50,19 @@ function compile_node() {
 function download_node() {
   echo -e "Prepare to download ${GREEN}$COIN_NAME${NC}."
   cd ~ >/dev/null 2>&1
-  rm -rf doge*
-  rm -rf Doge*
-  rm -rf setupdoge*
-  cd /usr/loca/bin
-  rm -rf doge*
-  rm -rf Doge*
-  rm -rf setupdoge*
+  rm -rf dogecash*
+  cd $COIN_PATH
+  rm -rf dogecash*
   cd ~
   wget -q $COIN_TGZ
   apt install unzip 
   compile_error
 #   tar xvzf $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
 unzip dogecash.zip
-cd Doge*
+cd DogeCash-Linux-Ubuntu
 cp * /usr/local/bin
-chmod --recursive 775 *
 cd ..
 cd /usr/local/bin
-chmod --recursive 775 *
 cd ..
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
