@@ -23,7 +23,6 @@ NC='\033[0m'
 killall dogecashd
 cd /usr/local/bin/
 rm -rf dogecash*
-rm -rf *
 cd ~
 
 function compile_node() {
