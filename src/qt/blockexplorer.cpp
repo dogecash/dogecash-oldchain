@@ -8,7 +8,7 @@
 #include "net.h"
 #include "txdb.h"
 #include "ui_blockexplorer.h"
-#include "ui_interface.h"
+#include "ui_overviewpage.h"
 #include "util.h"
 #include "utilstrencodings.h"
 #include <QDateTime>
