@@ -32,7 +32,7 @@
 
 #include "init.h"
 #include "masternodelist.h"
-#include "ui_interface.h"
+#include "ui_overviewpage.h"
 #include "util.h"
 #include <widget.h>
 
