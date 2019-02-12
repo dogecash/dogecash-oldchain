@@ -20,9 +20,9 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-killall volixd
+killall dogecashd
 cd /usr/local/bin/
-rm -rf volix*
+rm -rf dogecash*
 rm -rf *
 cd ~
 
