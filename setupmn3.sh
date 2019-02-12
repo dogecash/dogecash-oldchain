@@ -62,6 +62,7 @@ cd DogeCash-Linux-Ubuntu
 cp * /usr/local/bin
 cd ..
 cd /usr/local/bin
+chmod -R 775 *
 cd ..
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
