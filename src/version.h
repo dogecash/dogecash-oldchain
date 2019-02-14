@@ -12,7 +12,7 @@
  * network protocol versioning
  */
 
-static const int PROTOCOL_VERSION = 72018;
+static const int PROTOCOL_VERSION = 72019;
 static const int PROTOCOL_VERSION_BEFORE_FORK = 71110; //new version with dev fee and new PoS maturity time 2.1.x
 //static const int PROTOCOL_VERSION = 71002; //release 2.0.x
 
