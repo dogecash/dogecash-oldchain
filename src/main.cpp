@@ -58,7 +58,7 @@ using namespace libzerocoin;
 /**
  * Global state
  */
-#define DOUBLE_STAKE_FIX_HARDFORK_BLOCK 195762
+#define DOUBLE_STAKE_FIX_HARDFORK_BLOCK 196153
 CCriticalSection cs_main;
 
 BlockMap mapBlockIndex;
