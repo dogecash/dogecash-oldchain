@@ -105,7 +105,12 @@ unsigned int GetStakeMinAge(int nHeight)
 
 int GetMinPeerProtoVersion(int nHeight)
 {
-		return PROTOCOL_VERSION; //2.2.0
+	if(IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT)){
+    return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+}
+else {
+    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+}	
 
 }
 
