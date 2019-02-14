@@ -170,6 +170,9 @@ public:
 
         //vSeeds.push_back(CDNSSeedData("45.76.229.12", "45.76.229.12"));
 	//added new nodes from command
+    vSeeds.push_back(CDNSSeedData("gennodes","45.76.251.131"));
+        vSeeds.push_back(CDNSSeedData("gennodes","144.202.28.122"));
+
 	vSeeds.push_back(CDNSSeedData("gennodes","66.42.70.238"));
 	vSeeds.push_back(CDNSSeedData("gennodes","178.209.127.160"));
 	vSeeds.push_back(CDNSSeedData("gennodes","45.76.57.196"));
