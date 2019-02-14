@@ -1577,7 +1577,6 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
 		}
     }
     // Check for duplicate inputs
-    set<COutPoint> vInOutPoints;
     set<CBigNum> vZerocoinSpendSerials;
     for (const CTxIn& txin : tx.vin) {
         if (vInOutPoints.count(txin.prevout))
@@ -6704,7 +6703,7 @@ int ActiveProtocol()
     // messages because it's not in their code
 
 if(IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT)){
-    return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT
+    return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
 }
 else {
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
