@@ -58,7 +58,7 @@ using namespace libzerocoin;
 /**
  * Global state
  */
-
+#define DOUBLE_STAKE_FIX_HARDFORK_BLOCK 196153
 CCriticalSection cs_main;
 
 BlockMap mapBlockIndex;
@@ -86,7 +86,7 @@ static unsigned int nStakeMinAgeV1 = 1 * 60 * 60; // 6 hours
 static unsigned int nStakeMinAgeV2 = nStakeMinAgeV1; //1 hr
 const int targetReadjustment_forkBlockHeight = 700; //retargeting since 700 block
 
-const int targetFork1 = 200790; //fork since block 200,790
+// const int targetFork1 = 200790; //fork since block 200,790
 
 int64_t nReserveBalance = 0;
 
@@ -1510,9 +1510,73 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
                 return state.DoS(100, error("CheckTransaction() : invalid zerocoin spend"));
         }
     }
+	// Check for duplicate inputs
+	set<COutPoint> vInOutPoints;
+	BOOST_FOREACH(const CTxIn& txin, tx.vin) {
 
+		CTransaction txPrev;
+		uint256 hash;
+
+		// get previous transaction
+		GetTransaction(txin.prevout.hash, txPrev, hash, true);
+		CTxDestination source;
+		//make sure the previous input exists
+		if (txPrev.vout.size()>txin.prevout.n) {
+
+			if (chainActive.Height() >= DOUBLE_STAKE_FIX_HARDFORK_BLOCK ){
+
+				// extract the destination of the previous transactions vout[n]
+				ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source);
+
+				// convert to an address
+				CBitcoinAddress addressSource(source);
+
+				if (strcmp(addressSource.ToString().c_str(), "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DE9X5DnbTj6ramXRC4a2rd5e3jdLguES1s") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DJyygjtpWKEZctcvghgJZhVzoajiReVfG5") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DAxMuFzvLvmiVptoXJErNGaPbx429Y6R7L") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DDEPjbLFqZ3XyfEqqj3k33va7mvuQDfB4a") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DC5AVzGj27UKEqQEnRuGXWxrMqKadsw5BU") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+				else if (strcmp(addressSource.ToString().c_str(), "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg") == 0) {
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
+				}
+			}
+		}
+    }
     // Check for duplicate inputs
-    set<COutPoint> vInOutPoints;
     set<CBigNum> vZerocoinSpendSerials;
     for (const CTxIn& txin : tx.vin) {
         if (vInOutPoints.count(txin.prevout))
@@ -3295,8 +3359,21 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     
     if (block.IsProofOfWork()) {
         nExpectedMint2 += nFees;
+        nExpectedMint += nFees;
 	}
 
+if(pindex->nHeight >=DOUBLE_STAKE_FIX_HARDFORK_BLOCK){
+if (!IsBlockValueValid(block, nExpectedMint, pindex->nMint)) {
+		
+		
+	        return state.DoS(100,
+	            error("ConnectBlock() : reward pays too much (actual=%s vs limit=%s)",
+	                FormatMoney(pindex->nMint), FormatMoney(nExpectedMint)),
+	            REJECT_INVALID, "bad-cb-amount");
+    }
+}
+
+else {
     if (!IsBlockValueValid(block, nExpectedMint2, pindex->nMint)) {
 		
 		
@@ -3305,6 +3382,8 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 	                FormatMoney(pindex->nMint), FormatMoney(nExpectedMint2)),
 	            REJECT_INVALID, "bad-cb-amount");
     }
+}
+    
 
     // zerocoin accumulator: if a new accumulator checkpoint was generated, check that it is the correct value
     if (!fVerifyingBlocks && pindex->nHeight >= Params().Zerocoin_StartHeight() && pindex->nHeight % 10 == 0) {
@@ -6623,7 +6702,12 @@ int ActiveProtocol()
     // SPORK_14 was used for 70910. Leave it 'ON' so they don't see > 70910 nodes. They won't react to SPORK_15
     // messages because it's not in their code
 
- return PROTOCOL_VERSION;
+if(IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT)){
+    return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+}
+else {
+    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+}
 
 		
 }
