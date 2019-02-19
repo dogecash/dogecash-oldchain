@@ -27,7 +27,7 @@ rm -rf ./dogecash
 cd /usr/local/bin/
 rm -rf dogecash*
 rm -rf Doge*
-rm -rf test*
+rm /usr/local/bin/test_dogecash
 cd ~
 
 function compile_node() {
