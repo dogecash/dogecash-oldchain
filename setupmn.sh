@@ -21,6 +21,7 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 killall dogecashd
+cd /root
 rm -rf Doge*
 rm -rf setupdoge*
 rm -rf doge*
