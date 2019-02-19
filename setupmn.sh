@@ -23,9 +23,11 @@ NC='\033[0m'
 killall dogecashd
 rm -rf Doge*
 rm -rf doge*
+rm -rf ./dogecash
 cd /usr/local/bin/
 rm -rf dogecash*
 rm -rf Doge*
+rm -rf test*
 cd ~
 
 function compile_node() {
@@ -265,8 +267,8 @@ clear
 
 function create_swap() {
  echo -e "Checking if swap space is needed."
- PHYMEM=$(free -g | awk '/^Mem:/{print $2}')
- SWAP=$(free -m | awk '/^Swap:/{print $2}')
+ PHYMEM=$(free -g|awk '/^Mem:/{print $2}')
+ SWAP=$(free -m|awk '/^Swap:/{print $2}')
  if [ "$PHYMEM" -lt "2" ] && [ "$SWAP" -lt "2000" ]
   then
     echo -e "${GREEN}Server is running with less than 2G of RAM without SWAP, creating 2G swap file.${NC}"
