@@ -111,7 +111,7 @@ WantedBy=multi-user.target
 EOF
 
   systemctl daemon-reload
-  sleep 10
+  sleep 5
   systemctl start $COIN_NAME.service
 #  systemctl enable $COIN_NAME.service >/dev/null 2>&1
 
