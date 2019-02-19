@@ -22,13 +22,13 @@ NC='\033[0m'
 
 killall dogecashd
 cd /root
-rm -rf Doge*
+rm -rf /DogeC*
 rm -rf setupdoge*
 rm -rf doge*
 rm -rf ./dogecash
 cd /usr/local/bin/
 rm -rf dogecash*
-rm -rf Doge*
+rm -rf /DogeC*
 rm -rf test_dogecash
 cd ~
 rm -rf setupdoge*
