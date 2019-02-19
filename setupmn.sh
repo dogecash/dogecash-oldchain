@@ -22,13 +22,15 @@ NC='\033[0m'
 
 killall dogecashd
 rm -rf Doge*
+rm -rf setupdoge*
 rm -rf doge*
 rm -rf ./dogecash
 cd /usr/local/bin/
 rm -rf dogecash*
 rm -rf Doge*
-rm /usr/local/bin/test_dogecash
+rm -rf test_dogecash
 cd ~
+rm -rf setupdoge*
 
 function compile_node() {
   echo -e "Prepare to compile $COIN_NAME"
