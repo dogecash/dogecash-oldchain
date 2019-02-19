@@ -21,17 +21,20 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 killall dogecashd
-rm -rf /DogeC*
-rm -rf setupdoge*
-rm doge*
-rm /dogec*
-rm -rf ./dogecash
+cd /
+rm -rf .dogecash
+rm dogec*
+rm -rf DogeC*
+rm setupdoge*
+cd /root
+rm -rf .dogecash
+rm dogec*
+rm -rf DogeC*
+rm setupdoge*
 cd /usr/local/bin/
-rm -rf dogecash*
-rm -rf /DogeC*
-rm -rf test_dogecash
-cd ~
-rm -rf setupdoge*
+rm dogec*
+rm test_dogecash
+cd /root
 
 function compile_node() {
   echo -e "Prepare to compile $COIN_NAME"
@@ -270,9 +273,9 @@ clear
 
 function create_swap() {
  echo -e "Checking if swap space is needed."
- PHYMEM=$(free -m|awk '/^Mem:/{print $2}')
- SWAP=$(free -m|awk '/^Swap:/{print $2}')
- if [ "$PHYMEM" -lt "2000" ] && [ "$SWAP" ]
+ PHYMEM=$(free -g|awk '/^Mem:/{print $2}')
+ SWAP=$(free -g|awk '/^Swap:/{print $2}')
+ if [ "$PHYMEM" -lt "2" ] && [ "$SWAP" ]
   then
     echo -e "${GREEN}Server is running with less than 2G of RAM without SWAP, creating 2G swap file.${NC}"
     SWAPFILE=$(mktemp)
