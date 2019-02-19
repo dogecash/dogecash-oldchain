@@ -244,7 +244,7 @@ function prepare_system() {
  cd ~
   wget https://gist.githubusercontent.com/hoserdude/9661c9cdc4b59cf5f001/raw/5972d4d838691c1a1f33fb274f97fa0b403d10bd/doge.txt
   cat doge.txt
-echo "DogeCash MN installer Depends Starting"
+echo "\nDogeCash MN installer Depends Starting"
 echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
 apt-get update >/dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
