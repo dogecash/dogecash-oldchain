@@ -27,11 +27,13 @@ rm -rf .dogecash
 rm dogec*
 rm -rf DogeC*
 rm setupdoge*
+rm doge.txt*
 cd /root
 rm -rf .dogecash
 rm dogec*
 rm -rf DogeC*
 rm setupdoge*
+rm doge.txt*
 cd /usr/local/bin/
 rm dogec*
 rm test_dogecash
