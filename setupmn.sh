@@ -24,7 +24,7 @@ killall dogecashd
 cd /root
 rm -rf /DogeC*
 rm -rf setupdoge*
-rm -rf doge*
+rm doge*
 rm -rf ./dogecash
 cd /usr/local/bin/
 rm -rf dogecash*
