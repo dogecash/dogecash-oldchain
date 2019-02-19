@@ -25,6 +25,7 @@ cd /root
 rm -rf /DogeC*
 rm -rf setupdoge*
 rm doge*
+rm /dogec*
 rm -rf ./dogecash
 cd /usr/local/bin/
 rm -rf dogecash*
