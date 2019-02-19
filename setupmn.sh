@@ -21,7 +21,7 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 killall dogecashd
-sleep 5
+systemctl stop $COIN_NAME.service
 cd /
 rm -rf .dogecash
 rm dogec*
