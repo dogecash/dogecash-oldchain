@@ -21,6 +21,7 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 killall dogecashd
+sleep 2
 systemctl stop $COIN_NAME.service
 cd /
 rm -rf .dogecash
@@ -113,7 +114,7 @@ WantedBy=multi-user.target
 EOF
 
   systemctl daemon-reload
-  sleep 5
+  sleep 10
   systemctl start $COIN_NAME.service
 #  systemctl enable $COIN_NAME.service >/dev/null 2>&1
 
