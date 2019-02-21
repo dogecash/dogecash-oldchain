@@ -243,7 +243,7 @@ fi
 
 function prepare_system() {
  cd ~
-   wget https://raw.githubusercontent.com/dogecash/dogecash/master/dogec.txt
+   wget https://gist.githubusercontent.com/Liquid369/eca7f89b6c4e63f9b328d92a4f508626/raw/ba14590e3f600acdf8683eeb16cc8b2f9c8fb23e/dogec.txt
 #  wget https://gist.githubusercontent.com/hoserdude/9661c9cdc4b59cf5f001/raw/5972d4d838691c1a1f33fb274f97fa0b403d10bd/doge.txt
   cat dogec.txt
 printf "%s\n"
