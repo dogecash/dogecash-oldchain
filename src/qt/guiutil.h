@@ -112,6 +112,8 @@ void openMNConfigfile();
 // Browse backup folder
 void showBackups();
 
+// Browse date folder
+void showDataFolder();
 // Replace invalid default fonts with known good ones
 void SubstituteFonts(const QString& language);
 
