@@ -20,6 +20,12 @@ OpenURIDialog::OpenURIDialog(QWidget* parent) : QDialog(parent),
 #if QT_VERSION >= 0x040700
     ui->uriEdit->setPlaceholderText("dogecash:");
 #endif
+
+    QPushButton * okButton = ui->buttonBox->button(QDialogButtonBox::Ok);
+    okButton->setIcon(QIcon());
+
+    QPushButton * cancelButton = ui->buttonBox->button(QDialogButtonBox::Cancel);
+    cancelButton->setIcon(QIcon());
 }
 
 OpenURIDialog::~OpenURIDialog()

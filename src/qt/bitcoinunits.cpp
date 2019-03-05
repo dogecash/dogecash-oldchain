@@ -150,7 +150,8 @@ QString BitcoinUnits::format(int unit, const CAmount& nIn, bool fPlus, Separator
 
     // Use SI-style thin space separators as these are locale independent and can't be
     // confused with the decimal marker.
-    QChar thin_sp(THIN_SP_CP);
+//    QChar thin_sp(THIN_SP_CP);
+    QChar thin_sp(',');
     int q_size = quotient_str.size();
     if (separators == separatorAlways || (separators == separatorStandard && q_size > 4))
         for (int i = 3; i < q_size; i += 3)
@@ -231,7 +232,7 @@ QString BitcoinUnits::floorWithUnit(int unit, const CAmount& amount, bool plussi
 {
     QSettings settings;
     int digits = settings.value("digits").toInt();
-
+    digits = 2;
     QString result = format(unit, amount, plussign, separators);
     if (decimals(unit) > digits) result.chop(decimals(unit) - digits);
 
@@ -249,11 +250,12 @@ QString BitcoinUnits::floorWithoutUnit(int unit, const CAmount& amount, bool plu
 {
     QSettings settings;
     int digits = settings.value("digits").toInt();
-
+    digits = 2;
     QString result = format(unit, amount, plussign, separators);
     if (decimals(unit) > digits) result.chop(decimals(unit) - digits);
 
-    return result + QString(" ");
+//    return result + QString(" ");
+    return result;
 }
 
 QString BitcoinUnits::floorHtmlWithoutUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
@@ -299,7 +301,7 @@ bool BitcoinUnits::parse(int unit, const QString& value, CAmount* val_out)
 
 QString BitcoinUnits::getAmountColumnTitle(int unit)
 {
-    QString amountTitle = QObject::tr("Amount");
+    QString amountTitle = QObject::tr("AMOUNT");
     if (BitcoinUnits::valid(unit)) {
         amountTitle += " (" + BitcoinUnits::name(unit) + ")";
     }

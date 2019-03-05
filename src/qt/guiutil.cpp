@@ -91,6 +91,16 @@ QString dateTimeStr(qint64 nTime)
     return dateTimeStr(QDateTime::fromTime_t((qint32)nTime));
 }
 
+QString dateTimeLongStr(const QDateTime& date)
+{
+    return date.toString("dd/MM/yyyy hh:mmAP");
+}
+
+QString dateTimeLongStr(qint64 nTime)
+{
+    return dateTimeLongStr(QDateTime::fromTime_t((qint32)nTime));
+}
+
 QFont bitcoinAddressFont()
 {
     QFont font("Monospace");
@@ -110,7 +120,8 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a DogeCash address (e.g. %1)").arg("TTh3VPSJA1zsit4sHqVVn92ARKDuM3xjTC"));
+//    widget->setPlaceholderText(QObject::tr("Enter A DogeCash address (e.g. %1)").arg("TTh3VPSJA1zsit4sHqVVn92ARKDuM3xjTC"));
+    widget->setPlaceholderText(QObject::tr("ENTER A DOGECASH CHANGE ADDRESS"));
 #endif
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
     widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
@@ -385,7 +396,8 @@ void showDataFolder()
 {
     boost::filesystem::path pathData = GetDataDir() ;
 
-    /* Open folder with default browser */
+
+     /* Open folder with default browser */
     if (boost::filesystem::exists(pathData))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathData)));
 }

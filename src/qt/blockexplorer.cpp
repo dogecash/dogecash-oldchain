@@ -548,7 +548,7 @@ void BlockExplorer::setBlock(CBlockIndex* pBlock)
 
 void BlockExplorer::setContent(const std::string& Content)
 {
-    QString CSS = "body {font-size:12px; color:#f8f6f6; bgcolor:#F38F10;}\n a, span { font-family: monospace; }\n span.addr {color:#F38F10; font-weight: bold;}\n table tr td {padding: 3px; border: 1px solid black; background-color: #F38F10;}\n td.d0 {font-weight: bold; color:#f8f6f6;}\n h2, h3 { white-space:nowrap; color:#F38F10;}\n a { color:#FFFC00; text-decoration:none; }\n a.nav {color:#F38F10;}\n";
+    QString CSS = "body {font-size:14px; color:#f2f2f2; bgcolor:transparent; font-family: Chivo;}\n a, span { font-family: Chivo; }\n span.addr {color:#f2f2f2; font-weight: bold; font-family: Chivo;}\n table tr td {padding: 3px; border: 1px solid black; background-color: transparent; font-family: Chivo;}\n td.d0 {font-weight: bold; color:#f2f2f2; font-family: Chivo;}\n h2, h3 { white-space:nowrap; color:#f2f2f2; font-family: Chivo;}\n a { color:#b99d7c; text-decoration:none; font-family: Chivo;}\n a.nav {color:#f2f2f2; font-family: Chivo;}\n";
     QString FullContent = "<html><head><style type=\"text/css\">" + CSS + "</style></head>" + "<body>" + Content.c_str() + "</body></html>";
     // printf(FullContent.toUtf8());
 

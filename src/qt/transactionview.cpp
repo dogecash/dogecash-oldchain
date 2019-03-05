@@ -57,6 +57,8 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
     watchOnlyWidget->addItem("", TransactionFilterProxy::WatchOnlyFilter_All);
     watchOnlyWidget->addItem(QIcon(":/icons/eye_plus"), "", TransactionFilterProxy::WatchOnlyFilter_Yes);
     watchOnlyWidget->addItem(QIcon(":/icons/eye_minus"), "", TransactionFilterProxy::WatchOnlyFilter_No);
+    watchOnlyWidget->setMaximumSize(0, 0);
+    watchOnlyWidget->setVisible(false);
     hlayout->addWidget(watchOnlyWidget);
 
     dateWidget = new QComboBox(this);
@@ -73,6 +75,8 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
     dateWidget->addItem(tr("This year"), ThisYear);
     dateWidget->addItem(tr("Range..."), Range);
     dateWidget->setCurrentIndex(settings.value("transactionDate").toInt());
+    dateWidget->setMaximumSize(0, 0);
+    dateWidget->setVisible(false);
     hlayout->addWidget(dateWidget);
 
     typeWidget = new QComboBox(this);
@@ -102,6 +106,8 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
     typeWidget->addItem(tr("Zerocoin Spend to Self"), TransactionFilterProxy::TYPE(TransactionRecord::ZerocoinSpend_FromMe));
     typeWidget->addItem(tr("Other"), TransactionFilterProxy::TYPE(TransactionRecord::Other));
     typeWidget->setCurrentIndex(settings.value("transactionType").toInt());
+    typeWidget->setMaximumSize(0, 0);
+    typeWidget->setVisible(false);
 
     hlayout->addWidget(typeWidget);
 
@@ -109,6 +115,8 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
 #if QT_VERSION >= 0x040700
     addressWidget->setPlaceholderText(tr("Enter address or label to search"));
 #endif
+    addressWidget->setMaximumSize(0, 0);
+    addressWidget->setVisible(false);
     hlayout->addWidget(addressWidget);
 
     amountWidget = new QLineEdit(this);
@@ -121,15 +129,23 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
     amountWidget->setFixedWidth(100);
 #endif
     amountWidget->setValidator(new QDoubleValidator(0, 1e20, 8, this));
+    amountWidget->setMaximumSize(0, 0);
+    amountWidget->setVisible(false);
     hlayout->addWidget(amountWidget);
 
     QVBoxLayout* vlayout = new QVBoxLayout(this);
     vlayout->setContentsMargins(0, 0, 0, 0);
     vlayout->setSpacing(0);
 
+    QLabel * logoLabel = new QLabel(this);
+    logoLabel->setObjectName("logoLabel");
+    logoLabel->setPixmap(QIcon(":/images/dogecash_logo_horizontal").pixmap(73, 76));
+    logoLabel->setMargin(35);
+    logoLabel->setAlignment(Qt::AlignCenter);
     QTableView* view = new QTableView(this);
     vlayout->addLayout(hlayout);
     vlayout->addWidget(createDateRangeWidget());
+    vlayout->addWidget(logoLabel);
     vlayout->addWidget(view);
     vlayout->setSpacing(0);
     int width = view->verticalScrollBar()->sizeHint().width();
@@ -147,6 +163,7 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
     view->installEventFilter(this);
 
     transactionView = view;
+    transactionView->setObjectName("transactionTable");
 
     // Actions
     QAction* copyAddressAction = new QAction(tr("Copy address"), this);
@@ -206,6 +223,7 @@ void TransactionView::setModel(WalletModel* model)
         transactionProxyModel->setSortRole(Qt::EditRole);
 
         transactionView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        transactionView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         transactionView->setModel(transactionProxyModel);
         transactionView->setAlternatingRowColors(true);
         transactionView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -220,6 +238,22 @@ void TransactionView::setModel(WalletModel* model)
         transactionView->setColumnWidth(TransactionTableModel::Type, TYPE_COLUMN_WIDTH);
         transactionView->setColumnWidth(TransactionTableModel::Amount, AMOUNT_MINIMUM_COLUMN_WIDTH);
 
+        transactionView->setGridStyle(Qt::NoPen);
+        transactionView->setShowGrid(false);
+        transactionView->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+
+        QHeaderView * verticalHeader = transactionView->verticalHeader();
+        verticalHeader->setDefaultSectionSize(28);
+
+        QPalette palette;
+        QBrush brush(QColor(51, 51, 51, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush1(QColor(85, 85, 85, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush1);
+        transactionView->setPalette(palette);
         // Note: it's a good idea to connect this signal AFTER the model is set
         connect(transactionView->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this, SLOT(computeSum()));
 

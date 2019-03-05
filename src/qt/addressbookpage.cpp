@@ -42,7 +42,8 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget* parent) : QDialog
     case ForSelection:
         switch (tab) {
         case SendingTab:
-            setWindowTitle(tr("Choose the address to send coins to"));
+//            setWindowTitle(tr("Choose the address to send coins to"));
+            setWindowTitle(tr("CHOOSE THE ADDRESS TO SEND COINS TO"));
             break;
         case ReceivingTab:
             setWindowTitle(tr("Choose the address to receive coins with"));
@@ -51,7 +52,8 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget* parent) : QDialog
         connect(ui->tableView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(accept()));
         ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         ui->tableView->setFocus();
-        ui->closeButton->setText(tr("C&hoose"));
+//        ui->closeButton->setText(tr("C&hoose"));
+        ui->closeButton->setText(tr("OK"));
         ui->exportButton->hide();
         break;
     case ForEditing:
@@ -100,6 +102,19 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget* parent) : QDialog
     connect(ui->tableView, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextualMenu(QPoint)));
 
     connect(ui->closeButton, SIGNAL(clicked()), this, SLOT(accept()));
+
+    ui->tableView->verticalHeader()->hide();
+    ui->tableView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tableView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tableView->setAlternatingRowColors(true);
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableView->setSelectionMode(QAbstractItemView::ContiguousSelection);
+    ui->tableView->setGridStyle(Qt::NoPen);
+    ui->tableView->setShowGrid(false);
+    ui->tableView->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+
+    QHeaderView * verticalHeader = ui->tableView->verticalHeader();
+    verticalHeader->setDefaultSectionSize(28);
 }
 
 AddressBookPage::~AddressBookPage()
@@ -135,12 +150,13 @@ void AddressBookPage::setModel(AddressTableModel* model)
 
 // Set column widths
 #if QT_VERSION < 0x050000
-    ui->tableView->horizontalHeader()->setResizeMode(AddressTableModel::Label, QHeaderView::Stretch);
-    ui->tableView->horizontalHeader()->setResizeMode(AddressTableModel::Address, QHeaderView::ResizeToContents);
+    ui->tableView->horizontalHeader()->setResizeMode(AddressTableModel::Label, QHeaderView::Fixed);
+    ui->tableView->horizontalHeader()->setResizeMode(AddressTableModel::Address, QHeaderView::Stretch);
 #else
-    ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::Stretch);
-    ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::ResizeToContents);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::Fixed);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::Stretch);
 #endif
+    ui->tableView->setColumnWidth(0, 250);
 
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
         this, SLOT(selectionChanged()));

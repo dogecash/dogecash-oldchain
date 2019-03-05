@@ -31,7 +31,7 @@ static int column_alignments[] = {
     Qt::AlignLeft | Qt::AlignVCenter, /* date */
     Qt::AlignLeft | Qt::AlignVCenter, /* type */
     Qt::AlignLeft | Qt::AlignVCenter, /* address */
-    Qt::AlignRight | Qt::AlignVCenter /* amount */
+    Qt::AlignLeft | Qt::AlignVCenter /* amount */
 };
 
 // Comparison operator for sort/binary search of model tx list
@@ -209,7 +209,8 @@ TransactionTableModel::TransactionTableModel(CWallet* wallet, WalletModel* paren
                                                                                      priv(new TransactionTablePriv(wallet, this)),
                                                                                      fProcessingQueuedTransactions(false)
 {
-    columns << QString() << QString() << tr("Date") << tr("Type") << tr("Address") << BitcoinUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
+//    columns << QString() << QString() << tr("Date") << tr("Type") << tr("Address") << BitcoinUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
+    columns << QString() << QString() << tr("                    DATE") << tr("TYPE") << tr("ADDRESS") << BitcoinUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
     priv->refreshWallet();
 
     connect(walletModel->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
@@ -303,7 +304,8 @@ QString TransactionTableModel::formatTxStatus(const TransactionRecord* wtx) cons
 QString TransactionTableModel::formatTxDate(const TransactionRecord* wtx) const
 {
     if (wtx->time) {
-        return GUIUtil::dateTimeStr(wtx->time);
+//        return GUIUtil::dateTimeStr(wtx->time);
+        return "                    " + GUIUtil::dateTimeLongStr(wtx->time);
     }
     return QString();
 }
@@ -372,23 +374,24 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
 
 QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord* wtx) const
 {
-    switch (wtx->type) {
-    case TransactionRecord::Generated:
-    case TransactionRecord::StakeMint:
-    case TransactionRecord::MNReward:
-        return QIcon(":/icons/tx_mined");
-    case TransactionRecord::RecvWithObfuscation:
-    case TransactionRecord::RecvWithAddress:
-    case TransactionRecord::RecvFromOther:
-    case TransactionRecord::RecvFromZerocoinSpend:
-        return QIcon(":/icons/tx_input");
-    case TransactionRecord::SendToAddress:
-    case TransactionRecord::SendToOther:
-    case TransactionRecord::ZerocoinSpend:
-        return QIcon(":/icons/tx_output");
-    default:
-        return QIcon(":/icons/tx_inout");
-    }
+//    switch (wtx->type) {
+//    case TransactionRecord::Generated:
+//    case TransactionRecord::StakeMint:
+//    case TransactionRecord::MNReward:
+//        return QIcon(":/icons/tx_mined");
+//    case TransactionRecord::RecvWithObfuscation:
+//    case TransactionRecord::RecvWithAddress:
+//    case TransactionRecord::RecvFromOther:
+//    case TransactionRecord::RecvFromZerocoinSpend:
+//        return QIcon(":/icons/tx_input");
+//    case TransactionRecord::SendToAddress:
+//    case TransactionRecord::SendToOther:
+//    case TransactionRecord::ZerocoinSpend:
+//        return QIcon(":/icons/tx_output");
+//    default:
+//        return QIcon(":/icons/tx_inout");
+//    }
+    return QIcon();
 }
 
 QString TransactionTableModel::formatTxToAddress(const TransactionRecord* wtx, bool tooltip) const

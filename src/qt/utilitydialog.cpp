@@ -28,7 +28,7 @@
 #include <QVBoxLayout>
 
 /** "Help message" or "About" dialog box */
-HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(parent),
+HelpMessageDialog::HelpMessageDialog(QWidget* parent, int type) : QDialog(parent),
                                                                     ui(new Ui::HelpMessageDialog)
 {
     ui->setupUi(this);
@@ -44,7 +44,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
     version += " " + tr("(%1-bit)").arg(32);
 #endif
 
-    if (about) {
+    if (type == 1) {
         setWindowTitle(tr("About DogeCash Core"));
 
         /// HTML-format the license message from the core
@@ -64,7 +64,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
         ui->aboutMessage->setText(version + "<br><br>" + licenseInfoHTML);
         ui->aboutMessage->setWordWrap(true);
         ui->helpMessage->setVisible(false);
-    } else {
+    } else if (type == 0){
         setWindowTitle(tr("Command-line options"));
         QString header = tr("Usage:") + "\n" +
                          "  dogecash-qt [" + tr("command-line options") + "]                     " + "\n";
@@ -118,6 +118,39 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
         ui->helpMessage->moveCursor(QTextCursor::Start);
         ui->scrollArea->setVisible(false);
     }
+    else{
+        setWindowTitle(tr("About Qt"));
+        ui->graphic->setPixmap(QIcon(":/icons/aboutqt").pixmap(100,100));
+
+        /// HTML-format the license message from the core
+        QString aboutQtInfo = tr("<strong>About Qt</strong><br><br>") +
+                tr("This program uses Qt version 5.7.1.<br><br>") +
+                tr("Qt is a C++ toolkit for cross-platform application development.<br><br>") +
+                tr("Qt provides single-source portability across all major desktop operating systems. It is also available for embedded Linux and other embedded and mobile operating systems.<br><br>") +
+                tr("Qt is available under three different licensing options designed to accommodate the needs of our various users.<br><br>") +
+                tr("Qt licensed under our commercial license agreement is appropriate for development of proprietary/commercial software where you do not want to share any source code with third parties or otherwise cannot comply with the terms of the GNU LGPL version 3.<br><br>") +
+                tr("Qt licensed under the GNU LGPL version 3 is appropriate for the development of Qt applications provided you can comply with the terms and conditions of the GNU LGPL version 3.<br><br>") +
+                tr("Please see <a style = 'color:#acb6cd' href='https://www1.qt.io/licensing/'>qt.io/licensing</a> for an overview of Qt licensing.<br><br>") +
+                tr("Copyright (C) 2016 The Qt Company Ltd and other contributors.<br><br>") +
+                tr("Qt and the Qt logo are trademarks of The Qt Company Ltd.<br><br>") +
+                tr("Qt is The Qt Company Ltd product developed as an open source project. See <a style = 'color:#acb6cd' href='https://www.qt.io/'>qt.io</a> for more information.");
+
+        QString aboutQtHTML = aboutQtInfo;
+        // Make URLs clickable
+//        QRegExp uri("<(.*)>", Qt::CaseSensitive, QRegExp::RegExp2);
+//        uri.setMinimal(true); // use non-greedy matching
+//        aboutQtHTML.replace(uri, "<a style = 'color:#acb6cd' href=\"\\1\">\\1</a>");
+        // Replace newlines with HTML breaks
+//        aboutQtHTML.replace("\n", "<br>");
+
+        ui->aboutMessage->setTextFormat(Qt::RichText);
+        ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        ui->aboutMessage->setText(aboutQtHTML);
+        ui->aboutMessage->setWordWrap(true);
+        ui->helpMessage->setVisible(false);
+    }
+    QPushButton * okButton_ = ui->okButton->button(QDialogButtonBox::Ok);
+    okButton_->setIcon(QIcon());
 }
 
 HelpMessageDialog::~HelpMessageDialog()

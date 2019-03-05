@@ -26,9 +26,10 @@ public:
                                               currentUnit(BitcoinUnits::DOGEC),
                                               singleStep(100000) // satoshis
     {
-        setAlignment(Qt::AlignRight);
+//        setAlignment(Qt::AlignRight);
 
         connect(lineEdit(), SIGNAL(textEdited(QString)), this, SIGNAL(valueChanged()));
+        setButtonSymbols(QAbstractSpinBox::NoButtons);
     }
 
     QValidator::State validate(QString& text, int& pos) const
@@ -185,14 +186,13 @@ BitcoinAmountField::BitcoinAmountField(QWidget* parent) : QWidget(parent),
     amount = new AmountSpinBox(this);
     amount->setLocale(QLocale::c());
     amount->installEventFilter(this);
-    amount->setMaximumWidth(170);
 
     QHBoxLayout* layout = new QHBoxLayout(this);
     layout->addWidget(amount);
     unit = new QValueComboBox(this);
     unit->setModel(new BitcoinUnits(this));
     layout->addWidget(unit);
-    layout->addStretch(1);
+//    layout->addStretch(1);
     layout->setContentsMargins(0, 0, 0, 0);
 
     setLayout(layout);

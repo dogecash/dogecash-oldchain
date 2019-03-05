@@ -816,6 +816,7 @@ void MultisigDialog::on_addAddressButton_clicked()
     QLabel* addressLabel = new QLabel(addressFrame);
     addressLabel->setObjectName(QStringLiteral("addressLabel"));
     addressLabel->setText(QApplication::translate("MultisigDialog", strprintf("Address / Key %i:", ui->addressList->count()+1).c_str() , 0));
+    addressLabel->setStyleSheet("color: white;font-size: 14px;font-weight: bold;");
     addressLayout->addWidget(addressLabel);
 
     QValidatedLineEdit* address = new QValidatedLineEdit(addressFrame);
@@ -825,7 +826,7 @@ void MultisigDialog::on_addAddressButton_clicked()
     QPushButton* addressBookButton = new QPushButton(addressFrame);
     addressBookButton->setObjectName(QStringLiteral("addressBookButton"));
     QIcon icon3;
-    icon3.addFile(QStringLiteral(":/icons/address-book"), QSize(), QIcon::Normal, QIcon::Off);
+    icon3.addFile(QStringLiteral(":/icons/search"), QSize(), QIcon::Normal, QIcon::Off);
     addressBookButton->setIcon(icon3);
     addressBookButton->setAutoDefault(false);
     connect(addressBookButton, SIGNAL(clicked()), this, SLOT(addressBookButtonReceiving()));
@@ -838,6 +839,7 @@ void MultisigDialog::on_addAddressButton_clicked()
     icon4.addFile(QStringLiteral(":/icons/editpaste"), QSize(), QIcon::Normal, QIcon::Off);
     addressPasteButton->setIcon(icon4);
     addressPasteButton->setAutoDefault(false);
+    addressPasteButton->setMaximumSize(0, 0);
     connect(addressPasteButton, SIGNAL(clicked()), this, SLOT(pasteText()));
 
     addressLayout->addWidget(addressPasteButton);
@@ -848,6 +850,7 @@ void MultisigDialog::on_addAddressButton_clicked()
     icon5.addFile(QStringLiteral(":/icons/remove"), QSize(), QIcon::Normal, QIcon::Off);
     addressDeleteButton->setIcon(icon5);
     addressDeleteButton->setAutoDefault(false);
+    addressDeleteButton->setMaximumSize(0, 0);
     connect(addressDeleteButton, SIGNAL(clicked()), this, SLOT(deleteFrame()));
 
     addressLayout->addWidget(addressDeleteButton);
@@ -966,6 +969,7 @@ void MultisigDialog::on_addDestinationButton_clicked()
 
     QPushButton* destinationDeleteButton = new QPushButton(destinationFrame);
     destinationDeleteButton->setObjectName(QStringLiteral("destinationDeleteButton"));
+    destinationDeleteButton->setMaximumSize(0, 0);
     QIcon icon;
     icon.addFile(QStringLiteral(":/icons/remove"), QSize(), QIcon::Normal, QIcon::Off);
     destinationDeleteButton->setIcon(icon);

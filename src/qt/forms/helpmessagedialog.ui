@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>585</width>
-    <height>225</height>
+    <height>254</height>
    </rect>
   </property>
   <property name="font">
@@ -27,13 +27,25 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="text">
+      <string/>
+     </property>
      <property name="pixmap">
       <pixmap resource="../dogecash.qrc">:/images/about</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>10</number>
+     </property>
      <item>
       <widget class="QTextEdit" name="helpMessage">
        <property name="readOnly">
@@ -54,7 +66,7 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>447</width>
+          <width>479</width>
           <height>68</height>
          </rect>
         </property>
