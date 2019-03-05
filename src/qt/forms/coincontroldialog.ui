@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>954</width>
+    <width>911</width>
     <height>500</height>
    </rect>
   </property>
@@ -14,8 +14,23 @@
    <string>Coin Selection</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>20</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayoutTop" stretch="0,0,0,0">
+    <layout class="QHBoxLayout" name="horizontalLayoutTop" stretch="0,0,0,0,0">
+     <property name="spacing">
+      <number>25</number>
+     </property>
+     <property name="leftMargin">
+      <number>25</number>
+     </property>
      <property name="topMargin">
       <number>0</number>
      </property>
@@ -23,18 +38,15 @@
       <number>10</number>
      </property>
      <item>
-      <layout class="QFormLayout" name="formLayoutCoinControl1">
-       <property name="horizontalSpacing">
-        <number>10</number>
-       </property>
-       <property name="verticalSpacing">
-        <number>10</number>
-       </property>
+      <layout class="QGridLayout" name="gridLayout_4">
        <property name="leftMargin">
-        <number>6</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
         <number>6</number>
+       </property>
+       <property name="spacing">
+        <number>10</number>
        </property>
        <item row="0" column="0">
         <widget class="QLabel" name="labelCoinControlQuantityText">
@@ -45,7 +57,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Quantity:</string>
+          <string>QUANTITY</string>
          </property>
         </widget>
        </item>
@@ -74,7 +86,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Bytes:</string>
+          <string>BYTES</string>
          </property>
         </widget>
        </item>
@@ -97,18 +109,15 @@
       </layout>
      </item>
      <item>
-      <layout class="QFormLayout" name="formLayoutCoinControl2">
-       <property name="horizontalSpacing">
-        <number>10</number>
-       </property>
-       <property name="verticalSpacing">
-        <number>10</number>
-       </property>
+      <layout class="QGridLayout" name="gridLayout_3">
        <property name="leftMargin">
-        <number>6</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
         <number>6</number>
+       </property>
+       <property name="spacing">
+        <number>10</number>
        </property>
        <item row="0" column="0">
         <widget class="QLabel" name="labelCoinControlAmountText">
@@ -119,7 +128,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Amount:</string>
+          <string>AMOUNT</string>
          </property>
         </widget>
        </item>
@@ -148,7 +157,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Priority:</string>
+          <string>PRIORITY</string>
          </property>
         </widget>
        </item>
@@ -171,21 +180,21 @@
       </layout>
      </item>
      <item>
-      <layout class="QFormLayout" name="formLayoutCoinControl3">
-       <property name="horizontalSpacing">
-        <number>10</number>
-       </property>
-       <property name="verticalSpacing">
-        <number>10</number>
-       </property>
+      <layout class="QGridLayout" name="gridLayout_2">
        <property name="leftMargin">
-        <number>6</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
         <number>6</number>
        </property>
+       <property name="spacing">
+        <number>10</number>
+       </property>
        <item row="0" column="0">
-        <widget class="QLabel" name="labelCoinControlFeeText">
+        <widget class="QLabel" name="labelCoinControlChangeText">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="font">
           <font>
            <weight>75</weight>
@@ -193,12 +202,15 @@
           </font>
          </property>
          <property name="text">
-          <string>Fee:</string>
+          <string>CHANGE</string>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QLabel" name="labelCoinControlFee">
+        <widget class="QLabel" name="labelCoinControlChange">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -225,7 +237,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Dust:</string>
+          <string>DUST</string>
          </property>
         </widget>
        </item>
@@ -251,21 +263,24 @@
       </layout>
      </item>
      <item>
-      <layout class="QFormLayout" name="formLayoutCoinControl4">
-       <property name="horizontalSpacing">
-        <number>10</number>
-       </property>
-       <property name="verticalSpacing">
-        <number>10</number>
-       </property>
+      <layout class="QGridLayout" name="gridLayout">
        <property name="leftMargin">
-        <number>6</number>
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
        </property>
        <property name="rightMargin">
         <number>6</number>
        </property>
+       <property name="bottomMargin">
+        <number>2</number>
+       </property>
+       <property name="spacing">
+        <number>10</number>
+       </property>
        <item row="0" column="0">
-        <widget class="QLabel" name="labelCoinControlAfterFeeText">
+        <widget class="QLabel" name="labelCoinControlFeeText">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -273,12 +288,12 @@
           </font>
          </property>
          <property name="text">
-          <string>After Fee:</string>
+          <string>FEE</string>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QLabel" name="labelCoinControlAfterFee">
+        <widget class="QLabel" name="labelCoinControlFee">
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -294,10 +309,7 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="labelCoinControlChangeText">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
+        <widget class="QLabel" name="labelCoinControlAfterFeeText">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -305,15 +317,12 @@
           </font>
          </property>
          <property name="text">
-          <string>Change:</string>
+          <string>AFTER FEE</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLabel" name="labelCoinControlChange">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
+        <widget class="QLabel" name="labelCoinControlAfterFee">
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -329,6 +338,19 @@
         </widget>
        </item>
       </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>
@@ -347,8 +369,11 @@
       <enum>QFrame::Sunken</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>30</number>
+      </property>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayoutPanel" stretch="0,0,0,0,0,0">
+       <layout class="QHBoxLayout" name="horizontalLayoutPanel" stretch="0,0,0,0,0,0,0,0,0,0,0">
         <property name="spacing">
          <number>14</number>
         </property>
@@ -360,13 +385,41 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>135</width>
+            <height>45</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>45</height>
+           </size>
+          </property>
           <property name="text">
-           <string>(un)select all</string>
+           <string>SELECT ALL</string>
           </property>
           <property name="autoDefault">
            <bool>false</bool>
           </property>
          </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>5</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonToggleLock">
@@ -376,11 +429,60 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>190</width>
+            <height>45</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>45</height>
+           </size>
+          </property>
           <property name="text">
-           <string>toggle lock state</string>
+           <string>TOGGLE LOCK STATE</string>
           </property>
           <property name="autoDefault">
            <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelTreeCC">
+          <property name="text">
+           <string>TREE MODE</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chkTreeList">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelListCC">
+          <property name="text">
+           <string>LIST MODE</string>
           </property>
          </widget>
         </item>
@@ -391,6 +493,12 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>0</width>
+            <height>16777215</height>
+           </size>
           </property>
           <property name="text">
            <string>Tree mode</string>
@@ -405,6 +513,12 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="maximumSize">
+           <size>
+            <width>0</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
            <string>List mode</string>
           </property>
@@ -416,7 +530,7 @@
         <item>
          <widget class="QLabel" name="labelLocked">
           <property name="text">
-           <string>(1 locked)</string>
+           <string>(1 LOCKED)</string>
           </property>
          </widget>
         </item>
@@ -434,6 +548,28 @@
          </spacer>
         </item>
        </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_3">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <property name="leftMargin">
+       <number>32</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="labelReqPayHis">
+        <property name="text">
+         <string>REQUESTED PAYMENTS HISTORY</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -462,32 +598,32 @@
      </column>
      <column>
       <property name="text">
-       <string>Amount</string>
+       <string>AMOUNT</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Received with label</string>
+       <string>LABEL</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Received with address</string>
+       <string>ADDRESS</string>
       </property>
      </column>
      <column>
       <property name="text">
-	<string>Type</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">	 
-       <string>Date</string>
+       <string>TYPE</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Confirmations</string>
+       <string>DATE</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>CONFIRMATIONS</string>
       </property>
       <property name="toolTip">
        <string>Confirmed</string>
@@ -495,7 +631,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Priority</string>
+       <string>PRIORITY</string>
       </property>
      </column>
      <column>
@@ -526,19 +662,75 @@
     </widget>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+    <widget class="QFrame" name="frame_2">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Ok</set>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
      </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>30</number>
+      </property>
+      <item>
+       <widget class="QDialogButtonBox" name="buttonBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>0</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="standardButtons">
+         <set>QDialogButtonBox::Ok</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnOkCC">
+        <property name="minimumSize">
+         <size>
+          <width>135</width>
+          <height>45</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>OK</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

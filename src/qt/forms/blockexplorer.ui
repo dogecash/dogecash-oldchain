@@ -28,6 +28,12 @@
       </property>
       <item>
        <widget class="QPushButton" name="back">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>42</height>
+         </size>
+        </property>
         <property name="text">
          <string>Back</string>
         </property>
@@ -42,6 +48,12 @@
       </item>
       <item>
        <widget class="QPushButton" name="forward">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>42</height>
+         </size>
+        </property>
         <property name="text">
          <string>Forward</string>
         </property>
@@ -86,8 +98,8 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
-          <height>0</height>
+          <width>120</width>
+          <height>42</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -123,7 +135,7 @@
          <x>0</x>
          <y>0</y>
          <width>780</width>
-         <height>489</height>
+         <height>486</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -161,14 +173,12 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>27</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="../dogecash.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

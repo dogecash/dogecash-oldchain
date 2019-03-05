@@ -146,6 +146,8 @@ void ReceiveRequestDialog::update()
     if (!info.message.isEmpty())
         html += "<b>" + tr("Message") + "</b>: " + GUIUtil::HtmlEscape(info.message) + "<br>";
     ui->outUri->setText(html);
+    ui->labelPIURIValue->setText(GUIUtil::HtmlEscape(uri));
+    ui->labelPIAddressValue->setText(GUIUtil::HtmlEscape(info.address));
 
 #ifdef USE_QRCODE
     ui->lblQRCode->setText("");

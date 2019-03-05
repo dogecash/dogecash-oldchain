@@ -26,12 +26,12 @@ MasternodeList::MasternodeList(QWidget* parent) : QWidget(parent),
 
     ui->startButton->setEnabled(false);
 
-    int columnAliasWidth = 100;
+    int columnAliasWidth = 90;
     int columnAddressWidth = 200;
-    int columnProtocolWidth = 60;
+    int columnProtocolWidth = 120;
     int columnStatusWidth = 80;
     int columnActiveWidth = 130;
-    int columnLastSeenWidth = 130;
+    int columnLastSeenWidth = 150;
 
     ui->tableWidgetMyMasternodes->setColumnWidth(0, columnAliasWidth);
     ui->tableWidgetMyMasternodes->setColumnWidth(1, columnAddressWidth);
@@ -41,6 +41,9 @@ MasternodeList::MasternodeList(QWidget* parent) : QWidget(parent),
     ui->tableWidgetMyMasternodes->setColumnWidth(5, columnLastSeenWidth);
 
     ui->tableWidgetMyMasternodes->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    QHeaderView * verticalHeader = ui->tableWidgetMyMasternodes->verticalHeader();
+    verticalHeader->setDefaultSectionSize(28);
 
     QAction* startAliasAction = new QAction(tr("Start alias"), this);
     contextMenu = new QMenu();

@@ -44,12 +44,15 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     overviewPage = new OverviewPage();
     explorerWindow = new BlockExplorer(this);
     transactionsPage = new QWidget(this);
+    transactionsPage->setObjectName("transactionsPage");
     QVBoxLayout* vbox = new QVBoxLayout();
     QHBoxLayout* hbox_buttons = new QHBoxLayout();
     transactionView = new TransactionView(this);
     vbox->addWidget(transactionView);
+    vbox->setContentsMargins(0, 0, 0, 0);
     QPushButton* exportButton = new QPushButton(tr("&Export"), this);
     exportButton->setToolTip(tr("Export the data in the current tab to a file"));
+    exportButton->setMaximumSize(0, 0);
 #ifndef Q_OS_MAC // Icons on push buttons are very uncommon on Mac
     exportButton->setIcon(QIcon(":/icons/export"));
 #endif
@@ -59,11 +62,13 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     QLabel* transactionSumLabel = new QLabel();                // Label
     transactionSumLabel->setObjectName("transactionSumLabel"); // Label ID as CSS-reference
     transactionSumLabel->setText(tr("Selected amount:"));
+    transactionSumLabel->setMaximumSize(0, 0);
     hbox_buttons->addWidget(transactionSumLabel);
 
     transactionSum = new QLabel();                   // Amount
     transactionSum->setObjectName("transactionSum"); // Label ID as CSS-reference
-    transactionSum->setMinimumSize(200, 8);
+//    transactionSum->setMinimumSize(200, 8);
+    transactionSum->setMaximumSize(0, 0);
     transactionSum->setTextInteractionFlags(Qt::TextSelectableByMouse);
     hbox_buttons->addWidget(transactionSum);
 

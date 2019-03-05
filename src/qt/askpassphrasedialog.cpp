@@ -73,6 +73,12 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget* parent, WalletModel
 
     ui->anonymizationCheckBox->setChecked(model->isAnonymizeOnlyUnlocked());
 
+    QPushButton * okButton = ui->buttonBox->button(QDialogButtonBox::Ok);
+    okButton->setIcon(QIcon());
+
+    QPushButton * cancelButton = ui->buttonBox->button(QDialogButtonBox::Cancel);
+    cancelButton->setIcon(QIcon());
+
     textChanged();
     connect(ui->passEdit1, SIGNAL(textChanged(QString)), this, SLOT(textChanged()));
     connect(ui->passEdit2, SIGNAL(textChanged(QString)), this, SLOT(textChanged()));
