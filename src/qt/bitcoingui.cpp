@@ -496,7 +496,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 //    showBackupsAction = new QAction(QIcon(":/icons/browse"), tr("Show Automatic &Backups"), this);
     showBackupsAction = new QAction(tr("Show Automatic &Backups"), this);
     showBackupsAction->setStatusTip(tr("Show automatically created wallet backups"));
-     showDataFolderAction = new QAction(tr("Show Data Folder"),, this);
+     showDataFolderAction = new QAction(tr("Show Data Folder"), this);
     showDataFolderAction->setStatusTip(tr("Show Data Folder"));
 
 //    usedSendingAddressesAction = new QAction(QIcon(":/icons/address-book"), tr("&Sending addresses..."), this);
