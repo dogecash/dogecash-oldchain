@@ -38,16 +38,24 @@ background-color:#f8f6f6;
 }
 
 QMenu {
-background-color:#f8f6f6;
+    background-color:#1f272e;
 }
 
 QMenu::item {
-color:#333;
+    background-color:#1f272e;
+    color:#f2f2f2;
 }
 
-QMenu::item:selected {
-background-color:#f2f0f0;
-color:#333;
+QMenu::item:disabled {
+    color:#55f2f2f2;
+    background-color:#551f272e;
+}
+
+QMenu::item:selected,
+QMenu::item:hover
+{
+    background-color:#b99d7c;
+    color:#1f272e;
 }
 
 /* Toolbar Styling */
@@ -79,7 +87,8 @@ QToolBar#MainToolbar > QToolButton
 }
 
 QMessageBox {
-    background-color:#F8F6F6;
+    background-color:#343e48;
+    color: #f2f2f2;
 }
 
 /*QProgressBar {
@@ -1463,7 +1472,8 @@ QDialog#SendCoinsDialog .QLabel#labelBalance
 QLineEdit#payTo,
 QLineEdit#addAsLabel,
 QLineEdit#reqLabel,
-QLineEdit#reqMessage
+QLineEdit#reqMessage,
+QValidatedLineEdit#payTo
 {
     font-size: 15px;
     font-weight: bold;
@@ -1471,6 +1481,7 @@ QLineEdit#reqMessage
     background-color: #29333d;
     min-height:49px;
     border:0px solid #fff;
+    font-family: "Chivo";
 }
 QValidatedLineEdit#proxyIp,
 QLineEdit#proxyPort,
@@ -1558,14 +1569,7 @@ QValidatedLineEdit#uriEdit
     min-height:40px;
     border:0px solid #fff;
 }
-QToolButton#addressBookButton
-{
-    background-color: #29333d;
-    min-height:49px;
-    border:0px solid #fff;
-    border: 0;
-    padding: 2px;
-}
+
 QPushButton#addressBookButton_SM,
 QPushButton#addressBookButton_VM,
 QPushButton#addressBookButton_ENC,
@@ -1573,6 +1577,14 @@ QPushButton#addressBookButton
 {
     background-color: #29333d;
     min-height:47px;
+    border:0px solid #fff;
+    border-radius: 0;
+    padding: 2px;
+}
+QToolButton#addressBookButton
+{
+    background-color: #29333d;
+    min-height:49px;
     border:0px solid #fff;
     border-radius: 0;
     padding: 2px;
@@ -1957,10 +1969,11 @@ QTabWidget::pane
 }
 QTabBar::tab{ /* The tab widget frame */
     background: transparent;
-    padding: 7px;
+    padding: 1px;
     border: 2px solid;
     margin-right: 10px;
     font-size: 14px;
+    width: auto;
 }
 QTabBar::tab:selected {
     border-color: transparent;

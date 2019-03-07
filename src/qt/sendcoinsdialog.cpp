@@ -173,6 +173,12 @@ void SendCoinsDialog::setModel(WalletModel* model)
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(coinControlUpdateLabels()));
         connect(model->getOptionsModel(), SIGNAL(coinControlFeaturesChanged(bool)), this, SLOT(coinControlFeatureChanged(bool)));
         ui->frameCoinControl->setVisible(model->getOptionsModel()->getCoinControlFeatures() && !fFeeMinimized);
+
+        if (ui->frameCoinControl->isVisible())
+            ui->frameCoinControl->setMaximumHeight(16777215);
+        else
+            ui->frameCoinControl->setMaximumHeight(0);
+
         coinControlUpdateLabels();
 
         // fee section
@@ -669,7 +675,13 @@ void SendCoinsDialog::minimizeFeeSection(bool fMinimize)
     ui->frameFee->setVisible(!fMinimize);
     ui->scrollArea->setVisible(fMinimize);
     if (model && model->getOptionsModel())
+    {
         ui->frameCoinControl->setVisible(model->getOptionsModel()->getCoinControlFeatures() && !fMinimize);
+        if (ui->frameCoinControl->isVisible())
+            ui->frameCoinControl->setMaximumHeight(16777215);
+        else
+            ui->frameCoinControl->setMaximumHeight(0);
+    }
     ui->horizontalLayoutSmartFee->setContentsMargins(0, (fMinimize ? 0 : 6), 0, 0);
     fFeeMinimized = fMinimize;
 }
@@ -856,6 +868,12 @@ void SendCoinsDialog::coinControlClipboardChange()
 void SendCoinsDialog::coinControlFeatureChanged(bool checked)
 {
     ui->frameCoinControl->setVisible(checked && !fFeeMinimized);
+
+    if (ui->frameCoinControl->isVisible())
+        ui->frameCoinControl->setMaximumHeight(16777215);
+    else
+        ui->frameCoinControl->setMaximumHeight(0);
+
 
     if (!checked && model) // coin control features disabled
         CoinControlDialog::coinControl->SetNull();

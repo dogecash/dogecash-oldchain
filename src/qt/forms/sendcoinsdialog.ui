@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>980</width>
-    <height>861</height>
+    <height>948</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -1054,8 +1054,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>964</width>
-        <height>251</height>
+        <width>963</width>
+        <height>261</height>
        </rect>
       </property>
       <property name="styleSheet">
