@@ -752,7 +752,7 @@ Value movecmd(const Array& params, bool fHelp)
         strComment = params[4].get_str();
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    CWalletDB *pwalletdb = walletdb;
+//    CWalletDB *pwalletdb = walletdb;
     if (!walletdb.TxnBegin())
         throw JSONRPCError(RPC_DATABASE_ERROR, "database error");
 
