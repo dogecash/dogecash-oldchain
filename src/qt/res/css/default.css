@@ -1344,7 +1344,8 @@ QCheckBox#connectSocks,
 QCheckBox#minimizeToTray,
 QCheckBox#minimizeOnClose,
 QCheckBox#multiSendStakeCheckBox,
-QCheckBox#multiSendMasternodeCheckBox
+QCheckBox#multiSendMasternodeCheckBox,
+QCheckBox#anonymizationCheckBox
 {
     spacing: 10px;
     color: #f2f2f2;
@@ -1362,7 +1363,8 @@ QCheckBox#connectSocks::indicator,
 QCheckBox#minimizeToTray::indicator,
 QCheckBox#minimizeOnClose::indicator,
 QCheckBox#multiSendStakeCheckBox::indicator,
-QCheckBox#multiSendMasternodeCheckBox::indicator
+QCheckBox#multiSendMasternodeCheckBox::indicator,
+QCheckBox#anonymizationCheckBox::indicator
 {
     width: 20px;
     height: 20px;
@@ -1380,7 +1382,8 @@ QCheckBox#connectSocks::indicator::unchecked,
 QCheckBox#minimizeToTray::indicator::unchecked,
 QCheckBox#minimizeOnClose::indicator::unchecked,
 QCheckBox#multiSendStakeCheckBox::indicator::unchecked,
-QCheckBox#multiSendMasternodeCheckBox::indicator::unchecked
+QCheckBox#multiSendMasternodeCheckBox::indicator::unchecked,
+QCheckBox#anonymizationCheckBox::indicator::unchecked
 {
     image: url(:/icons/check_uncheck);
 }
@@ -1416,7 +1419,7 @@ QCheckBox#chkTreeList::indicator::unchecked,
 QCheckBox#checkBoxCoinControlChange::indicator::unchecked,
 QCheckBox#splitBlockCheckBox::indicator::unchecked
 {
-    image: url(:/icons/check_yes);
+    image: url(:/icons/check_no);
 }
 QCheckBox#checkSwiftTX::indicator::checked,
 QCheckBox#chkPerTotal::indicator::checked,
@@ -1424,7 +1427,7 @@ QCheckBox#chkTreeList::indicator::checked,
 QCheckBox#checkBoxCoinControlChange::indicator::checked,
 QCheckBox#splitBlockCheckBox::indicator::checked
 {
-    image: url(:/icons/check_no);
+    image: url(:/icons/check_yes);
 }
 /**************************** RECEIVE COINS *********************************************/
 
@@ -1469,8 +1472,6 @@ QLineEdit#reqMessage
     min-height:49px;
     border:0px solid #fff;
 }
-QValidatedLineEdit#lineEditCoinControlChange,
-QLineEdit#splitBlockLineEdit,
 QValidatedLineEdit#proxyIp,
 QLineEdit#proxyPort,
 QLineEdit#thirdPartyTxUrls,
@@ -1501,6 +1502,24 @@ QDialog#RPCConsole QLineEdit#lineEdit
     min-height:45px;
     border:0px solid #fff;
 }
+QValidatedLineEdit#lineEditCoinControlChange,
+QLineEdit#splitBlockLineEdit
+{
+    font-size: 13px;
+    font-weight: normal;
+    color: #959595;
+    background-color: #29333d;
+    min-height:45px;
+    border:0px solid #29333d;
+}
+QValidatedLineEdit#lineEditCoinControlChange::disabled,
+QLineEdit#splitBlockLineEdit::disabled
+{
+    color: #55959595;
+    background-color: #5529333d;
+    min-height:45px;
+    border:0px solid #5529333d;
+}
 
 QLineEdit#passEdit1,
 QLineEdit#passEdit2,
@@ -1521,7 +1540,8 @@ QTextEdit#addMultisigStatus,
 QTextEdit#createButtonStatus,
 QTextEdit#signButtonStatus,
 QTextEdit#messagesWidget,
-QTextEdit#helpMessage
+QTextEdit#helpMessage,
+QTextEdit#detailText
 {
     font-size: 14px;
     font-weight: bold;
@@ -1690,6 +1710,12 @@ QLabel#labelBlockSize
 {
     color: #f2f2f2;
     font-size: 13px;
+    font-weight: normal;
+}
+QLabel#labelBlockSizeText::disabled,
+QLabel#labelBlockSize::disabled
+{
+    color: #55f2f2f2;
 }
 QLabel#labelSmartFeeNormal,
 QLabel#labelSmartFeeFast,
@@ -1726,7 +1752,7 @@ QWidget#transactionsPage
     background-repeat: none;
 }
 
-ReceiveRequestDialog,
+QDialog#ReceiveRequestDialog,
 QDialog#CoinControlDialog,
 QDialog#OptionsDialog,
 QDialog#OpenURIDialog,
@@ -1736,7 +1762,8 @@ QDialog#HelpMessageDialog,
 QDialog#MultisigDialog,
 QDialog#AskPassphraseDialog,
 QDialog#Bip38ToolDialog,
-QDialog#MultiSendDialog
+QDialog#MultiSendDialog,
+QDialog#TransactionDescDialog
 {
     background-color: #343e48;
 }
@@ -2091,3 +2118,25 @@ QScrollBar::handle:horizontal { min-width: 20px; }
 QScrollBar::add-line:horizontal { background: none; border: none;}
 QScrollBar::sub-line:horizontal { background: none; border: none;}
 QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal { background: none; border: none;}
+
+QFrame#frameFee
+{
+    background-color: #1f272e;
+}
+
+QTreeView::indicator:unchecked {
+    image: url(:/icons/check_uncheck);
+}
+QTreeView::indicator:checked
+{
+    image: url(:/icons/check_check);
+}
+
+QValueComboBox
+{
+    min-width: 0px;
+    max-width: 0px;
+    min-height: 0px;
+    max-height: 0px;
+    width: 0px;
+}
