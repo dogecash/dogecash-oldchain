@@ -752,6 +752,7 @@ Value movecmd(const Array& params, bool fHelp)
         strComment = params[4].get_str();
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
+    CWalletDB *pwalletdb = walletdb;
     if (!walletdb.TxnBegin())
         throw JSONRPCError(RPC_DATABASE_ERROR, "database error");
 
@@ -775,7 +776,7 @@ Value movecmd(const Array& params, bool fHelp)
     credit.nTime = nNow;
     credit.strOtherAccount = strFrom;
     credit.strComment = strComment;
-    pwalletdb.WriteAccountingEntry(credit, walletdb);
+    pwalletMain->AddAccountingEntry(credit, walletdb);
 
     if (!walletdb.TxnCommit())
         throw JSONRPCError(RPC_DATABASE_ERROR, "database error");
