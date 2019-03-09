@@ -24,39 +24,6 @@ QWidget#OverviewPage .QFrame#frame_9
 {
     background-color: #343e48;
 }
-QMenuBar {
-background-color:#fff;
-}
-
-QMenuBar::item {
-background-color:#fff;
-color:#333;
-}
-
-QMenuBar::item:selected {
-background-color:#f8f6f6;
-}
-
-QMenu {
-    background-color:#1f272e;
-}
-
-QMenu::item {
-    background-color:#1f272e;
-    color:#f2f2f2;
-}
-
-QMenu::item:disabled {
-    color:#55f2f2f2;
-    background-color:#551f272e;
-}
-
-QMenu::item:selected,
-QMenu::item:hover
-{
-    background-color:#b99d7c;
-    color:#1f272e;
-}
 
 /* Toolbar Styling */
 QToolButton
@@ -1941,6 +1908,7 @@ QMenu::item {
     padding: 7px 30px 7px 20px;
     border: 0px solid transparent;
     margin-left: 17px;
+    font-family: Chivo;
 }
 
 QMenu::item:selected {
@@ -1949,6 +1917,10 @@ QMenu::item:selected {
 }
 QMenu::item:hover {
     background-color:#37404d;
+}
+
+QMenu::item:disabled {
+    color:#55f2f2f2;
 }
 QMenu::separator {
     height: 2px;
@@ -1973,7 +1945,10 @@ QTabBar::tab{ /* The tab widget frame */
     border: 2px solid;
     margin-right: 10px;
     font-size: 14px;
-    width: auto;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom:5px;
 }
 QTabBar::tab:selected {
     border-color: transparent;
