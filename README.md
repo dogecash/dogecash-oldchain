@@ -1,6 +1,7 @@
 DogeCash Core integration/staging repository
 =====================================
 
+![DogeCash Logo](https://dogec.io/assets/images/logo.svg)
 
 DogeCash (DOGEC) is a transparent, community-governed cryptocurrency aimed at preserving what makes DogeCoin unique while offering an alternative way for the average investor to get involved. This is done through the creation of DogeNodes, utilization of Proof of Stake, and active governance.
 
