@@ -720,12 +720,13 @@ padding-right:5px;
 
 /**************************** SEND DIALOG ***********************************************/
 
-QDialog#SendCoinsDialog {
+/*QDialog#SendCoinsDialog {
 background-color:#fff;
 }
 
-QDialog#SendCoinsDialog .QFrame#frameCoinControl { /* Coin Control Section */
-}
+QDialog#SendCoinsDialog .QFrame#frameCoinControl {
+
+}*/
 
 /*QDialog#SendCoinsDialog .QFrame#frameCoinControl > .QLabel {
 font-weight:normal;
@@ -1493,6 +1494,7 @@ QLineEdit#splitBlockLineEdit
     background-color: #29333d;
     min-height:45px;
     border:0px solid #29333d;
+    font-family: Chivo;
 }
 QValidatedLineEdit#lineEditCoinControlChange::disabled,
 QLineEdit#splitBlockLineEdit::disabled
