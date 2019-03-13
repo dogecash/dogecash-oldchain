@@ -181,7 +181,7 @@
          <pixmap resource="../dogecash.qrc">:/images/dogecash_logo_horizontal</pixmap>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignHCenter|Qt::AlignTop</set>
         </property>
         <property name="margin">
          <number>0</number>
@@ -1070,8 +1070,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>963</width>
-        <height>111</height>
+        <width>978</width>
+        <height>117</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -2421,7 +2421,7 @@ background-repeat: none;
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="groupFee"/>
   <buttongroup name="groupCustomFee"/>
+  <buttongroup name="groupFee"/>
  </buttongroups>
 </ui>
