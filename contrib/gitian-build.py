@@ -28,7 +28,7 @@ def setup():
         subprocess.check_call(['git', 'clone', 'https://github.com/PIVX/PIVX-detached-sigs.git'])
     if not os.path.isdir('gitian-builder'):
         subprocess.check_call(['git', 'clone', 'https://github.com/devrandom/gitian-builder.git'])
-    if not os.path.isdir('PIVX'):
+    if not os.path.isdir('dogecash'):
         subprocess.check_call(['git', 'clone', 'https://github.com/dogecash/dogecash.git'])
     os.chdir('gitian-builder')
     make_image_prog = ['bin/make-base-vm', '--suite', 'bionic', '--arch', 'amd64']
@@ -46,7 +46,7 @@ def setup():
 def build():
     global args, workdir
 
-    os.makedirs('PIVX-binaries/' + args.version, exist_ok=True)
+    os.makedirs('dogecash-binaries/' + args.version, exist_ok=True)
     print('\nBuilding Dependencies\n')
     os.chdir('gitian-builder')
     os.makedirs('inputs', exist_ok=True)
@@ -57,21 +57,21 @@ def build():
 
     if args.linux:
         print('\nCompiling ' + args.version + ' Linux')
-        subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'pivx='+args.commit, '--url', 'pivx='+args.url, '../PIVX/contrib/gitian-descriptors/gitian-linux.yml'])
-        subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-linux', '--destination', '../gitian.sigs/', '../PIVX/contrib/gitian-descriptors/gitian-linux.yml'])
+        subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'pivx='+args.commit, '--url', 'pivx='+args.url, '../dogecash/contrib/gitian-descriptors/gitian-linux.yml'])
+        subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-linux', '--destination', '../gitian.sigs/', '../dogecash/contrib/gitian-descriptors/gitian-linux.yml'])
         subprocess.check_call('mv build/out/pivx-*.tar.gz build/out/src/pivx-*.tar.gz ../dogecash-binaries/'+args.version, shell=True)
 
     if args.windows:
         print('\nCompiling ' + args.version + ' Windows')
-        subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'pivx='+args.commit, '--url', 'pivx='+args.url, '../PIVX/contrib/gitian-descriptors/gitian-win.yml'])
-        subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-unsigned', '--destination', '../gitian.sigs/', '../PIVX/contrib/gitian-descriptors/gitian-win.yml'])
+        subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'pivx='+args.commit, '--url', 'pivx='+args.url, '../dogecash/contrib/gitian-descriptors/gitian-win.yml'])
+        subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-unsigned', '--destination', '../gitian.sigs/', '../dogecash/contrib/gitian-descriptors/gitian-win.yml'])
         subprocess.check_call('mv build/out/pivx-*-win-unsigned.tar.gz inputs/', shell=True)
         subprocess.check_call('mv build/out/pivx-*.zip build/out/pivx-*.exe ../dogecash-binaries/'+args.version, shell=True)
 
     if args.macos:
         print('\nCompiling ' + args.version + ' MacOS')
-        subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'pivx='+args.commit, '--url', 'pivx='+args.url, '../PIVX/contrib/gitian-descriptors/gitian-osx.yml'])
-        subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-unsigned', '--destination', '../gitian.sigs/', '../PIVX/contrib/gitian-descriptors/gitian-osx.yml'])
+        subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'pivx='+args.commit, '--url', 'pivx='+args.url, '../dogecash/contrib/gitian-descriptors/gitian-osx.yml'])
+        subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-unsigned', '--destination', '../gitian.sigs/', '../dogecash/contrib/gitian-descriptors/gitian-osx.yml'])
         subprocess.check_call('mv build/out/pivx-*-osx-unsigned.tar.gz inputs/', shell=True)
         subprocess.check_call('mv build/out/pivx-*.tar.gz build/out/pivx-*.dmg ../dogecash-binaries/'+args.version, shell=True)
 
@@ -96,8 +96,8 @@ def sign():
 
     if args.windows:
         print('\nSigning ' + args.version + ' Windows')
-        subprocess.check_call('cp inputs/dogecash-' + args.version + '-win-unsigned.tar.gz inputs/PIVX-win-unsigned.tar.gz', shell=True)
-        subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../PIVX/contrib/gitian-descriptors/gitian-win-signer.yml'])
+        subprocess.check_call('cp inputs/dogecash-' + args.version + '-win-unsigned.tar.gz inputs/dogecash-win-unsigned.tar.gz', shell=True)
+        subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../dogecash/contrib/gitian-descriptors/gitian-win-signer.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-signed', '--destination', '../gitian.sigs/', '../dogecash/contrib/gitian-descriptors/gitian-win-signer.yml'])
         subprocess.check_call('mv build/out/pivx-*win64-setup.exe ../dogecash-binaries/'+args.version, shell=True)
         subprocess.check_call('mv build/out/pivx-*win32-setup.exe ../dogecash-binaries/'+args.version, shell=True)
