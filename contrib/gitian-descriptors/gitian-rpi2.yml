@@ -2,7 +2,7 @@
 name: "dogecash-rpi2-2.1.7"
 enable_cache: true
 suites:
-- "bionic"
+- "trusty"
 architectures:
 - "amd64"
 packages:
