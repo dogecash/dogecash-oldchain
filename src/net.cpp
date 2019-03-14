@@ -451,10 +451,6 @@ void CNode::CloseSocketDisconnect()
         CloseSocket(hSocket);
     }
 
-    // in case this fails, we'll empty the recv buffer when the CNode is deleted
-    TRY_LOCK(cs_vRecvMsg, lockRecv);
-    if (lockRecv)
-        vRecvMsg.clear();
 }
 
 bool CNode::DisconnectOldProtocol(int nVersionRequired, string strLastCommand)
@@ -582,11 +578,15 @@ void CNode::copyStats(CNodeStats& stats)
 // requires LOCK(cs_vRecvMsg)
 bool CNode::ReceiveMsgBytes(const char* pch, unsigned int nBytes)
 {
+    
+    int64_t nTimeMicros = GetTimeMicros();
+    nLastRecv = nTimeMicros / 1000000;
+    nRecvBytes += nBytes;
     while (nBytes > 0) {
         // get current incomplete message, or create a new one
         if (vRecvMsg.empty() ||
             vRecvMsg.back().complete())
-            vRecvMsg.push_back(CNetMessage(SER_NETWORK, nRecvVersion));
+            vRecvMsg.push_back(CNetMessage(SER_NETWORK, INIT_PROTO_VERSION));
 
         CNetMessage& msg = vRecvMsg.back();
 
@@ -609,7 +609,7 @@ bool CNode::ReceiveMsgBytes(const char* pch, unsigned int nBytes)
         nBytes -= handled;
 
         if (msg.complete()) {
-            msg.nTime = GetTimeMicros();
+            msg.nTime = nTimeMicros;
             messageHandlerCondition.notify_one();
         }
     }
@@ -664,7 +664,6 @@ int CNetMessage::readData(const char* pch, unsigned int nBytes)
 }
 
 
-// requires LOCK(cs_vSend)
 void SocketSendData(CNode* pnode)
 {
     std::deque<CSerializeData>::iterator it = pnode->vSendMsg.begin();
@@ -681,6 +680,7 @@ void SocketSendData(CNode* pnode)
             if (pnode->nSendOffset == data.size()) {
                 pnode->nSendOffset = 0;
                 pnode->nSendSize -= data.size();
+                pnode->fPauseSend = pnode->nSendSize > nSendBufferMaxSize;
                 it++;
             } else {
                 // could not send full message; stop sending more
@@ -721,8 +721,7 @@ void ThreadSocketHandler()
             // Disconnect unused nodes
             vector<CNode*> vNodesCopy = vNodes;
             BOOST_FOREACH (CNode* pnode, vNodesCopy) {
-                if (pnode->fDisconnect ||
-                    (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0 && pnode->ssSend.empty())) {
+                if (pnode->fDisconnect) {
                     // remove from vNodes
                     vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
 
@@ -749,12 +748,9 @@ void ThreadSocketHandler()
                     {
                         TRY_LOCK(pnode->cs_vSend, lockSend);
                         if (lockSend) {
-                            TRY_LOCK(pnode->cs_vRecvMsg, lockRecv);
-                            if (lockRecv) {
                                 TRY_LOCK(pnode->cs_inventory, lockInv);
                                 if (lockInv)
                                     fDelete = true;
-                            }
                         }
                     }
                     if (fDelete) {
@@ -805,21 +801,10 @@ void ThreadSocketHandler()
                 hSocketMax = max(hSocketMax, pnode->hSocket);
                 have_fds = true;
 
-                // Implement the following logic:
-                // * If there is data to send, select() for sending data. As this only
-                //   happens when optimistic write failed, we choose to first drain the
-                //   write buffer in this case before receiving more. This avoids
-                //   needlessly queueing received data, if the remote peer is not themselves
-                //   receiving data. This means properly utilizing TCP flow control signalling.
-                // * Otherwise, if there is no (complete) message in the receive buffer,
-                //   or there is space left in the buffer, select() for receiving data.
-                // * (if neither of the above applies, there is certainly one message
-                //   in the receiver buffer ready to be processed).
-                // Together, that means that at least one of the following is always possible,
-                // so we don't deadlock:
-                // * We send some data.
-                // * We wait for data to be received (and disconnect after timeout).
-                // * We process a message in the buffer (message handler thread).
+                // * Otherwise, if there is space left in the receive buffer, select() for
+                //   receiving data.
+                // * Hand off all complete messages to the processor, to be handled without
+                //   blocking here.
                 {
                     TRY_LOCK(pnode->cs_vSend, lockSend);
                     if (lockSend && !pnode->vSendMsg.empty()) {
@@ -828,9 +813,7 @@ void ThreadSocketHandler()
                     }
                 }
                 {
-                    TRY_LOCK(pnode->cs_vRecvMsg, lockRecv);
-                    if (lockRecv && (pnode->vRecvMsg.empty() || !pnode->vRecvMsg.front().complete() ||
-                                        pnode->GetTotalRecvSize() <= ReceiveFloodSize()))
+                    if (!pnode->fPauseRecv)
                         FD_SET(pnode->hSocket, &fdsetRecv);
                 }
             }
@@ -920,18 +903,32 @@ void ThreadSocketHandler()
             if (pnode->hSocket == INVALID_SOCKET)
                 continue;
             if (FD_ISSET(pnode->hSocket, &fdsetRecv) || FD_ISSET(pnode->hSocket, &fdsetError)) {
-                TRY_LOCK(pnode->cs_vRecvMsg, lockRecv);
-                if (lockRecv) {
+                 {
                     {
                         // typical socket buffer is 8K-64K
                         char pchBuf[0x10000];
                         int nBytes = recv(pnode->hSocket, pchBuf, sizeof(pchBuf), MSG_DONTWAIT);
                         if (nBytes > 0) {
+                            bool notify = false;
                             if (!pnode->ReceiveMsgBytes(pchBuf, nBytes))
                                 pnode->CloseSocketDisconnect();
-                            pnode->nLastRecv = GetTime();
-                            pnode->nRecvBytes += nBytes;
-                            pnode->RecordBytesRecv(nBytes);
+                                pnode->RecordBytesRecv(nBytes);
+                                if (notify) {
+                                size_t nSizeAdded = 0;
+                                auto it(pnode->vRecvMsg.begin());
+                                for (; it != pnode->vRecvMsg.end(); ++it) {
+                                    if (!it->complete())
+                                        break;
+                                    nSizeAdded += it->vRecv.size() + CMessageHeader::HEADER_SIZE;
+                                }
+                                {
+                                    LOCK(pnode->cs_vProcessMsg);
+                                    pnode->vProcessMsg.splice(pnode->vProcessMsg.end(), pnode->vRecvMsg, pnode->vRecvMsg.begin(), it);
+                                    pnode->nProcessQueueSize += nSizeAdded;
+                                    pnode->fPauseRecv = pnode->nProcessQueueSize > nReceiveFloodSize;
+                                }
+                                WakeMessageHandler();
+                            }
                         } else if (nBytes == 0) {
                             // socket closed gracefully
                             if (!pnode->fDisconnect)
@@ -959,6 +956,9 @@ void ThreadSocketHandler()
                 TRY_LOCK(pnode->cs_vSend, lockSend);
                 if (lockSend)
                     SocketSendData(pnode);
+                        if (nBytes) {
+                        RecordBytesSent(nBytes);
+                    }
             }
 
             //
@@ -988,7 +988,14 @@ void ThreadSocketHandler()
         }
     }
 }
-
+void WakeMessageHandler()
+{
+    {
+        std::lock_guard<std::mutex> lock(mutexMsgProc);
+        fMsgProcWake = true;
+    }
+    condMsgProc.notify_one();
+}
 
 #ifdef USE_UPNP
 void ThreadMapPort()
@@ -1388,26 +1395,16 @@ void ThreadMessageHandler()
         if (!vNodesCopy.empty())
             pnodeTrickle = vNodesCopy[GetRand(vNodesCopy.size())];
 
-        bool fSleep = true;
+        bool fMoreWork = false;
 
         BOOST_FOREACH (CNode* pnode, vNodesCopy) {
             if (pnode->fDisconnect)
                 continue;
 
             // Receive messages
-            {
-                TRY_LOCK(pnode->cs_vRecvMsg, lockRecv);
-                if (lockRecv) {
-                    if (!g_signals.ProcessMessages(pnode))
-                        pnode->CloseSocketDisconnect();
-
-                    if (pnode->nSendSize < SendBufferSize()) {
-                        if (!pnode->vRecvGetData.empty() || (!pnode->vRecvMsg.empty() && pnode->vRecvMsg[0].complete())) {
-                            fSleep = false;
-                        }
-                    }
-                }
-            }
+            bool fMoreNodeWork = GetNodeSignals().ProcessMessages(pnode, *this, flagInterruptMsgProc);
+            fMoreWork |= (fMoreNodeWork && !pnode->fPauseSend);
+            
             boost::this_thread::interruption_point();
 
             // Send messages
@@ -1426,8 +1423,11 @@ void ThreadMessageHandler()
                 pnode->Release();
         }
 
-        if (fSleep)
-            messageHandlerCondition.timed_wait(lock, boost::posix_time::microsec_clock::universal_time() + boost::posix_time::milliseconds(100));
+                std::unique_lock<std::mutex> lock(mutexMsgProc);
+        if (!fMoreWork) {
+            condMsgProc.wait_until(lock, std::chrono::steady_clock::now() + std::chrono::milliseconds(100), [this] { return fMsgProcWake; });
+        }
+        fMsgProcWake = false;
     }
 }
 
@@ -1946,6 +1946,9 @@ CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fIn
     nPingUsecTime = 0;
     fPingQueued = false;
     fObfuScationMaster = false;
+    fPauseRecv = false;
+    fPauseSend = false;
+    nProcessQueueSize = 0;
 
     {
         LOCK(cs_nLastNodeId);
