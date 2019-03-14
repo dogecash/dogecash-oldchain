@@ -2,7 +2,7 @@
 name: "dogecash-osx-1.2"
 enable_cache: true
 suites:
-- "trusty"
+- "bionic"
 architectures:
 - "amd64"
 packages: 

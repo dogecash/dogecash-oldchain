@@ -2,7 +2,7 @@
 name: "dogecash-win-1.2"
 enable_cache: true
 suites:
-- "trusty"
+- "bionic"
 architectures:
 - "amd64"
 packages:
@@ -71,7 +71,7 @@ script: |
   }
 
   function create_per-host_linker_wrapper {
-  # This is only needed for trusty, as the mingw linker leaks a few bytes of
+  # This is only needed for bionic, as the mingw linker leaks a few bytes of
   # heap, causing non-determinism. See discussion in https://github.com/bitcoin/bitcoin/pull/6900
   for i in $HOSTS; do
     mkdir -p ${WRAP_DIR}/${i}
