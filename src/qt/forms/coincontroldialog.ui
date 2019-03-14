@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>929</width>
-    <height>601</height>
+    <width>911</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,9 +33,6 @@
      </property>
      <property name="topMargin">
       <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>25</number>
      </property>
      <property name="bottomMargin">
       <number>10</number>
@@ -374,9 +371,6 @@
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="leftMargin">
        <number>30</number>
-      </property>
-      <property name="rightMargin">
-       <number>25</number>
       </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayoutPanel" stretch="0,0,0,0,0,0,0,0,0,0,0">

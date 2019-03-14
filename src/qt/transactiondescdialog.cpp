@@ -11,7 +11,6 @@
 #include <QModelIndex>
 #include <QSettings>
 #include <QString>
-#include <QPushButton>
 
 TransactionDescDialog::TransactionDescDialog(const QModelIndex& idx, QWidget* parent) : QDialog(parent),
                                                                                         ui(new Ui::TransactionDescDialog)
@@ -23,9 +22,6 @@ TransactionDescDialog::TransactionDescDialog(const QModelIndex& idx, QWidget* pa
 
     QString desc = idx.data(TransactionTableModel::LongDescriptionRole).toString();
     ui->detailText->setHtml(desc);
-
-    QPushButton * cancelButton = ui->buttonBox->button(QDialogButtonBox::Cancel);
-    cancelButton->setIcon(QIcon());
 }
 
 TransactionDescDialog::~TransactionDescDialog()

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>720</width>
-    <height>539</height>
+    <width>708</width>
+    <height>462</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabMain">
       <attribute name="title">
@@ -247,7 +247,10 @@
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">QGroupBox{
+	border:0px;
+	margin-top: 42px;
+}</string>
          </property>
          <property name="title">
           <string>Expert</string>

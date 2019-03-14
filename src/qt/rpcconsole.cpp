@@ -227,9 +227,9 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent),
     ui->setupUi(this);
     GUIUtil::restoreWindowGeometry("nRPCConsoleWindow", this->size(), this);
 
-//#ifndef Q_OS_MAC
-//    ui->openDebugLogfileButton->setIcon(QIcon(":/icons/export"));
-//#endif
+#ifndef Q_OS_MAC
+    ui->openDebugLogfileButton->setIcon(QIcon(":/icons/export"));
+#endif
 
     // Install event filter for up and down arrow
     ui->lineEdit->installEventFilter(this);
@@ -371,7 +371,6 @@ void RPCConsole::setClientModel(ClientModel* model)
         }
 
         autoCompleter = new QCompleter(wordList, this);
-        autoCompleter->popup()->setStyleSheet("background-color:#29333d;border-style: none;color: #f2f2f2;font-size: 14px;");
         ui->lineEdit->setCompleter(autoCompleter);
 
         // clear the lineEdit after activating from QCompleter

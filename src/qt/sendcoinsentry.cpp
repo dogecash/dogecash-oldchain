@@ -26,7 +26,7 @@ SendCoinsEntry::SendCoinsEntry(QWidget* parent) : QStackedWidget(parent),
     setCurrentWidget(ui->SendCoins);
 
 #ifdef Q_OS_MAC
-    ui->payToLayout->setSpacing(0);
+    ui->payToLayout->setSpacing(4);
 #endif
 #if QT_VERSION >= 0x040700
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
@@ -164,9 +164,8 @@ QWidget* SendCoinsEntry::setupTabChain(QWidget* prev)
 {
     QWidget::setTabOrder(prev, ui->payTo);
     QWidget::setTabOrder(ui->payTo, ui->addAsLabel);
-//    QWidget* w = ui->payAmount->setupTabChain(ui->addAsLabel);
-//    QWidget::setTabOrder(w, ui->addressBookButton);
-    QWidget::setTabOrder(ui->addAsLabel, ui->addressBookButton);
+    QWidget* w = ui->payAmount->setupTabChain(ui->addAsLabel);
+    QWidget::setTabOrder(w, ui->addressBookButton);
     QWidget::setTabOrder(ui->addressBookButton, ui->pasteButton);
     QWidget::setTabOrder(ui->pasteButton, ui->deleteButton);
     return ui->deleteButton;

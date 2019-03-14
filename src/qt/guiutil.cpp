@@ -121,7 +121,7 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
 //    widget->setPlaceholderText(QObject::tr("Enter A DogeCash address (e.g. %1)").arg("TTh3VPSJA1zsit4sHqVVn92ARKDuM3xjTC"));
-    widget->setPlaceholderText(QObject::tr("Enter a Dogecash change address"));
+    widget->setPlaceholderText(QObject::tr("ENTER A DOGECASH CHANGE ADDRESS"));
 #endif
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
     widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
@@ -392,7 +392,15 @@ void showBackups()
     if (boost::filesystem::exists(pathBackups))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
 }
+void showDataFolder()
+{
+    boost::filesystem::path pathData = GetDataDir() ;
 
+
+     /* Open folder with default browser */
+    if (boost::filesystem::exists(pathData))
+        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathData)));
+}
 void SubstituteFonts(const QString& language)
 {
 #if defined(Q_OS_MAC)

@@ -3,8 +3,7 @@
 ######################################################################
 
 DEFINES += ENABLE_WALLET
-QT += xml svg
-QTPLUGIN += qsvg qsvgiconsss
+
 TEMPLATE = app
 TARGET = 
 DEPENDPATH += . \
