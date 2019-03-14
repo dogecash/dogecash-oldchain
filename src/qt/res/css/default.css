@@ -1948,23 +1948,23 @@ QTabWidget::pane
 }
 QTabBar::tab{ /* The tab widget frame */
     background: transparent;
-    padding: 1px;
+/*    padding: 1px;
     border: 2px solid;
-    margin-right: 10px;
+    margin-right: 10px;*/
     font-size: 14px;
-    padding-left:10px;
+/*    padding-left:10px;
     padding-right:10px;
     padding-top:5px;
-    padding-bottom:5px;
+    padding-bottom:5px;*/
 }
 QTabBar::tab:selected {
-    border-color: transparent;
-    border-bottom-color: #f2f2f2; /* same as pane color */
+/*    border-color: transparent;
+    border-bottom-color: #f2f2f2; */
     color: #f2f2f2;
 }
 QTabBar::tab:!selected {
-    border-color: transparent;
-    color: #d2d2d2;
+/*    border-color: transparent;*/
+    color: #b2b2b2;
 }
 
 QSpinBox#databaseCache,
