@@ -14,7 +14,7 @@ The implementation is dependent on the following:
 What's new
 ----------------
 
-The following new options are available for trttiumd and trttium-qt:
+The following new options are available for dogecashd and dogecash-qt:
  - _-keepass_ Use KeePass 2 integration using KeePassHttp plugin (default: 0)
  - _-keepassport=_ Connect to KeePassHttp on port (default: 19455)
  - _-keepasskey=_ KeePassHttp key for AES encrypted communication with KeePass
@@ -24,28 +24,28 @@ The following new options are available for trttiumd and trttium-qt:
 The following rpc commands are available:
 
  - _keepass genkey_: generates a base64 encoded 256 bit AES key that can be used for the communication with KeePassHttp. Only necessary for manual configuration. Use init for automatic configuration.
- - _keepass init_: sets up the association between trttiumd and keepass by generating an AES key and sending an association message to KeePassHttp. This will trigger KeePass to ask for an Id for the association. Returns the association and the base64 encoded string for the AES key.
+ - _keepass init_: sets up the association between dogecashd and keepass by generating an AES key and sending an association message to KeePassHttp. This will trigger KeePass to ask for an Id for the association. Returns the association and the base64 encoded string for the AES key.
  - _keepass setpassphrase_: updates the passphrase in KeePassHttp to a new value. This should match the passphrase you intend to use for the wallet. Please note that the standard RPC commands _walletpassphrasechange_ and the wallet encrption from the QT GUI already send the updates to KeePassHttp, so this is only necessary for manual manipulation of the password.
 
 How to setup
 ----------------
 
-Sample initialization flow from _trttium-qt_ console (this needs to be done only once to set up the association):
+Sample initialization flow from _dogecash-qt_ console (this needs to be done only once to set up the association):
 
  - Have KeePass running with an open database
- - Start _trttium-qt_
+ - Start _dogecash-qt_
  - Open console
- - Type "_keepass init_" in trttium-qt console
+ - Type "_keepass init_" in dogecash-qt console
  - Keepass pops up and asks for an association id, fill that in, for example, "_mydrkwallet_"
- - You should get a response like this "_Association successful. Id: mydrkwallettrttium - Key: AgQkcs6cI7v9tlSYKjG/+s8wJrGALHl3jLosJpPLzUE=_"
- - Edit _trttium.conf_ and fill in these values
+ - You should get a response like this "_Association successful. Id: mydrkwalletdogecash - Key: AgQkcs6cI7v9tlSYKjG/+s8wJrGALHl3jLosJpPLzUE=_"
+ - Edit _dogecash.conf_ and fill in these values
 ```
 keepass=1
 keepasskey=AgQkcs6cI7v9tlSYKjG/+s8wJrGALHl3jLosJpPLzUE=
 keepassid=mydrkwallet
 keepassname=testwallet
 ```
- - Restart _trttium-qt_
+ - Restart _dogecash-qt_
 
 At this point, the association is made. The next action depends on your particular situation:
 
