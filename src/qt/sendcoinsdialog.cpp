@@ -66,7 +66,8 @@ SendCoinsDialog::SendCoinsDialog(QWidget* parent) : QDialog(parent),
     if (!settings.contains("bUseSwiftTX"))
         settings.setValue("bUseSwiftTX", false);
 
-    bool useSwiftTX = settings.value("bUseSwiftTX").toBool();
+//    bool useSwiftTX = settings.value("bUseSwiftTX").toBool();
+    bool useSwiftTX = false;
     if (fLiteMode) {
         ui->checkSwiftTX->setVisible(false);
         CoinControlDialog::coinControl->useObfuScation = false;
@@ -171,7 +172,13 @@ void SendCoinsDialog::setModel(WalletModel* model)
         // Coin Control
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(coinControlUpdateLabels()));
         connect(model->getOptionsModel(), SIGNAL(coinControlFeaturesChanged(bool)), this, SLOT(coinControlFeatureChanged(bool)));
-        ui->frameCoinControl->setVisible(model->getOptionsModel()->getCoinControlFeatures());
+        ui->frameCoinControl->setVisible(model->getOptionsModel()->getCoinControlFeatures() && !fFeeMinimized);
+
+        if (ui->frameCoinControl->isVisible())
+            ui->frameCoinControl->setMaximumHeight(16777215);
+        else
+            ui->frameCoinControl->setMaximumHeight(0);
+
         coinControlUpdateLabels();
 
         // fee section
@@ -667,6 +674,14 @@ void SendCoinsDialog::minimizeFeeSection(bool fMinimize)
 //    ui->frameFeeSelection->setVisible(!fMinimize);
     ui->frameFee->setVisible(!fMinimize);
     ui->scrollArea->setVisible(fMinimize);
+    if (model && model->getOptionsModel())
+    {
+        ui->frameCoinControl->setVisible(model->getOptionsModel()->getCoinControlFeatures() && !fMinimize);
+        if (ui->frameCoinControl->isVisible())
+            ui->frameCoinControl->setMaximumHeight(16777215);
+        else
+            ui->frameCoinControl->setMaximumHeight(0);
+    }
     ui->horizontalLayoutSmartFee->setContentsMargins(0, (fMinimize ? 0 : 6), 0, 0);
     fFeeMinimized = fMinimize;
 }
@@ -852,7 +867,13 @@ void SendCoinsDialog::coinControlClipboardChange()
 // Coin Control: settings menu - coin control enabled/disabled by user
 void SendCoinsDialog::coinControlFeatureChanged(bool checked)
 {
-    ui->frameCoinControl->setVisible(checked);
+    ui->frameCoinControl->setVisible(checked && !fFeeMinimized);
+
+    if (ui->frameCoinControl->isVisible())
+        ui->frameCoinControl->setMaximumHeight(16777215);
+    else
+        ui->frameCoinControl->setMaximumHeight(0);
+
 
     if (!checked && model) // coin control features disabled
         CoinControlDialog::coinControl->SetNull();
