@@ -64,4 +64,4 @@ script:
     - if [ "$RUN_TESTS" = "true" ]; then travis_wait 30 make $MAKEJOBS check VERBOSE=1; fi
 after_script:
     - echo $TRAVIS_COMMIT_RANGE
-- echo $TRAVIS_COMMIT_LOG
+    - echo $TRAVIS_COMMIT_LOG
