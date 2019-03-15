@@ -24,11 +24,11 @@ TransactionDescDialog::TransactionDescDialog(const QModelIndex& idx, QWidget* pa
     QString desc = idx.data(TransactionTableModel::LongDescriptionRole).toString();
     ui->detailText->setHtml(desc);
 
-    QPushButton * cancelButton = ui->buttonBox->button(QDialogButtonBox::Cancel);
-    cancelButton->setIcon(QIcon());
+   // QPushButton * cancelButton = ui->buttonBox->button(QDialogButtonBox::Cancel);
+   // cancelButton->setIcon(QIcon());
 }
 
 TransactionDescDialog::~TransactionDescDialog()
 {
-    delete ui;
+    ui->deleteLater();
 }
