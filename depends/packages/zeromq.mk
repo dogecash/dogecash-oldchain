@@ -1,6 +1,6 @@
 package=zeromq
 $(package)_version=4.3.1
-$(package)_download_path=https://github.com/zeromq/zeromq4-1/releases/download/v$($(package)_version)/
+$(package)_download_path=https://github.com/zeromq/libzmq/releases/download/v$($(package)_version)/
 $(package)_file_name=$(package)-$($(package)_version).tar.gz
 $(package)_sha256_hash=bcbabe1e2c7d0eec4ed612e10b94b112dd5f06fcefa994a0c79a45d835cd21eb
 $(package)_patches=9114d3957725acd34aa8b8d011585812f3369411.patch 9e6745c12e0b100cd38acecc16ce7db02905e27c.patch
