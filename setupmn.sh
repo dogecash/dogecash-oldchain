@@ -116,6 +116,7 @@ EOF
   systemctl daemon-reload
   sleep 10
   systemctl start $COIN_NAME.service
+  sleep 5
   systemctl enable $COIN_NAME.service
 
   if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
