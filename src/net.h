@@ -346,6 +346,7 @@ public:
     int GetRecvVersion()
     {
         return nRecvVersion;
+    }
     // requires LOCK(cs_vRecvMsg)
     bool ReceiveMsgBytes(const char* pch, unsigned int nBytes);
 
