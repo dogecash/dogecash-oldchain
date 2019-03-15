@@ -2,6 +2,8 @@ DogeCash Core integration/staging repository
 =====================================
 [![GitHub license](https://img.shields.io/github/license/dogecash/dogecash.svg)](https://github.com/dogecash/dogecash-explorer/blob/master/COPYING) [![Build Status](https://travis-ci.com/dogecash/dogecash.svg?branch=master)](https://travis-ci.com/dogecash-crypto/dogecash-explorer) [![Discord](https://img.shields.io/discord/479050479330918410.svg)](http://discord.dogec.io/) [![GitHub version](https://badge.fury.io/gh/dogecash%2Fdogecash.svg)](https://badge.fury.io/gh/dogecash%2Fdogecash)
 &nbsp;
+&nbsp;
+&nbsp;&nbsp;
 DogeCash (DOGEC) is a transparent, community-governed cryptocurrency aimed at preserving what makes DogeCoin unique while offering an alternative way for the average investor to get involved. This is done through the creation of DogeNodes, utilization of Proof of Stake, and active governance.
 
 
