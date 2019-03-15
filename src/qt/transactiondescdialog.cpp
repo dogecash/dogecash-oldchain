@@ -30,5 +30,5 @@ TransactionDescDialog::TransactionDescDialog(const QModelIndex& idx, QWidget* pa
 
 TransactionDescDialog::~TransactionDescDialog()
 {
-    ui->deleteLater();
+    delete ui;
 }
