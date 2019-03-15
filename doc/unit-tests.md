@@ -6,13 +6,13 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with 'make check'.
 
-To run the trttiumd tests manually, launch src/test/test_trttium .
+To run the dogecashd tests manually, launch src/test/test_dogecash .
 
-To add more trttiumd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more dogecashd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the test/ directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the trttium-qt tests manually, launch src/qt/test/trttium-qt_test
+To run the dogecash-qt tests manually, launch src/qt/test/dogecash-qt_test
 
-To add more trttium-qt tests, add them to the `src/qt/test/` directory and
+To add more dogecash-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.

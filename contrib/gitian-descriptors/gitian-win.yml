@@ -22,8 +22,8 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/dogecashcoin/dogecash-core"
-  "dir": "dogecash-core"
+- "url": "https://github.com/dogecash/dogecash"
+  "dir": "dogecash"
 files: []
 script: |
   WRAP_DIR=$HOME/wrapped
