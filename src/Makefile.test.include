@@ -5,6 +5,8 @@ TEST_BINARY=test/test_dogecash$(EXEEXT)
 
 
 EXTRA_DIST += \
+        src/crypto/md_helper.c \
+	src/crypto/haval_helper.c \
 	test/bctest.py \
 	test/bitcoin-util-test.py \
 	test/data/bitcoin-util-test.json \
