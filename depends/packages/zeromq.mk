@@ -12,8 +12,8 @@ define $(package)_set_vars
 endef
 
 define $(package)_preprocess_cmds
-  patch -p1 < $($(package)_patch_dir)/9114d3957725acd34aa8b8d011585812f3369411.patch && \
-  patch -p1 < $($(package)_patch_dir)/9e6745c12e0b100cd38acecc16ce7db02905e27c.patch && \
+  patch -p1 < $($(package)_patch_dir)/build-older-mingw.patch && \
+  patch -p1 < $($(package)_patch_dir)/disable-pthread.patch && \
   ./autogen.sh
 endef
 
