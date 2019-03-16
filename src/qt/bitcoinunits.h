@@ -119,6 +119,7 @@ public:
     static QString removeSpaces(QString text)
     {
         text.remove(' ');
+        text.remove(',');
         text.remove(QChar(THIN_SP_CP));
 #if (THIN_SP_CP != REAL_THIN_SP_CP)
         text.remove(QChar(REAL_THIN_SP_CP));

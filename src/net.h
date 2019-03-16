@@ -67,7 +67,6 @@ unsigned int SendBufferSize();
 void AddOneShot(std::string strDest);
 bool RecvLine(SOCKET hSocket, std::string& strLine);
 void AddressCurrentlyConnected(const CService& addr);
-void WakeMessageHandler();
 CNode* FindNode(const CNetAddr& ip);
 CNode* FindNode(const std::string& addrName);
 CNode* FindNode(const CService& ip);
@@ -78,6 +77,7 @@ unsigned short GetListenPort();
 bool BindListenPort(const CService& bindAddr, std::string& strError, bool fWhitelisted = false);
 void StartNode(boost::thread_group& threadGroup);
 bool StopNode();
+void SocketSendData(CNode* pnode);
 
 typedef int NodeId;
 
@@ -225,15 +225,12 @@ public:
     uint64_t nSendBytes;
     std::deque<CSerializeData> vSendMsg;
     CCriticalSection cs_vSend;
-    
-    CCriticalSection cs_vProcessMsg;
-    std::list<CNetMessage> vProcessMsg;
-    size_t nProcessQueueSize;
-    std::atomic<int> nRecvVersion;
 
-    
     std::deque<CInv> vRecvGetData;
+    std::deque<CNetMessage> vRecvMsg;
+    CCriticalSection cs_vRecvMsg;
     uint64_t nRecvBytes;
+    int nRecvVersion;
 
     int64_t nLastSend;
     int64_t nLastRecv;
@@ -270,9 +267,6 @@ public:
     CBloomFilter* pfilter;
     int nRefCount;
     NodeId id;
-    
-    std::atomic_bool fPauseRecv;
-    std::atomic_bool fPauseSend;
 
 protected:
     // Denial-of-service detection/prevention
@@ -289,7 +283,6 @@ protected:
 
     // Basic fuzz-testing
     void Fuzz(int nChance); // modifies ssSend
-    std::list<CNetMessage> vRecvMsg;  // Used only by SocketHandler thread
 
 public:
     uint256 hashContinue;
@@ -342,13 +335,20 @@ public:
         assert(nRefCount >= 0);
         return nRefCount;
     }
-    }
-    int GetRecvVersion()
+
+    // requires LOCK(cs_vRecvMsg)
+    unsigned int GetTotalRecvSize()
     {
-        return nRecvVersion;
+        unsigned int total = 0;
+        BOOST_FOREACH (const CNetMessage& msg, vRecvMsg)
+            total += msg.vRecv.size() + 24;
+        return total;
+    }
+
     // requires LOCK(cs_vRecvMsg)
     bool ReceiveMsgBytes(const char* pch, unsigned int nBytes);
 
+    // requires LOCK(cs_vRecvMsg)
     void SetRecvVersion(int nVersionIn)
     {
         nRecvVersion = nVersionIn;
@@ -386,6 +386,7 @@ public:
             }
         }
     }
+
 
     void AddInventoryKnown(const CInv& inv)
     {

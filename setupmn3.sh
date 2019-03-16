@@ -7,7 +7,7 @@ COIN_DAEMON='dogecashd'
 COIN_CLI='dogecash-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO=''
-COIN_TGZ='https://github.com/dogecash/dogecash/releases/download/2.5.0/dogecash.zip'
+COIN_TGZ='https://github.com/dogecash/dogecash/releases/download/v2.5.0/dogecash.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='DogeCash'
 COIN_PORT=6740 #Updated Port
@@ -115,8 +115,9 @@ EOF
 
   systemctl daemon-reload
   sleep 10
-  systemctl start $COIN_NAME.service
   systemctl enable $COIN_NAME.service
+  sleep 5
+  systemctl start $COIN_NAME.service
 
   if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
     echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
