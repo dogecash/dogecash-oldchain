@@ -28,7 +28,7 @@ MasternodeList::MasternodeList(QWidget* parent) : QWidget(parent),
 
     int columnAliasWidth = 90;
     int columnAddressWidth = 200;
-    int columnProtocolWidth = 120;
+    int columnProtocolWidth = 110;
     int columnStatusWidth = 80;
     int columnActiveWidth = 130;
     int columnLastSeenWidth = 150;

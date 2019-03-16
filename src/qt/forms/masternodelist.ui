@@ -28,8 +28,14 @@
    </property>
    <item>
     <layout class="QGridLayout" name="gridLayout_2">
+     <property name="verticalSpacing">
+      <number>6</number>
+     </property>
      <item row="0" column="0">
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <property name="bottomMargin">
         <number>0</number>
        </property>
@@ -79,10 +85,13 @@ background-repeat: none;
            <number>0</number>
           </property>
           <property name="topMargin">
-           <number>9</number>
+           <number>0</number>
           </property>
           <property name="rightMargin">
            <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>15</number>
           </property>
           <item>
            <widget class="QLabel" name="label">
@@ -156,6 +165,12 @@ background-repeat: none;
             </property>
             <property name="selectionBehavior">
              <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="showGrid">
+             <bool>false</bool>
+            </property>
+            <property name="gridStyle">
+             <enum>Qt::NoPen</enum>
             </property>
             <property name="sortingEnabled">
              <bool>true</bool>
@@ -242,6 +257,9 @@ background-repeat: none;
           </property>
           <property name="topMargin">
            <number>20</number>
+          </property>
+          <property name="bottomMargin">
+           <number>15</number>
           </property>
           <item>
            <widget class="QPushButton" name="startAllButton">

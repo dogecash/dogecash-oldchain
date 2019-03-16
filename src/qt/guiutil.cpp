@@ -121,7 +121,7 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
 //    widget->setPlaceholderText(QObject::tr("Enter A DogeCash address (e.g. %1)").arg("TTh3VPSJA1zsit4sHqVVn92ARKDuM3xjTC"));
-    widget->setPlaceholderText(QObject::tr("ENTER A DOGECASH CHANGE ADDRESS"));
+    widget->setPlaceholderText(QObject::tr("Enter a Dogecash change address"));
 #endif
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
     widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
@@ -392,15 +392,7 @@ void showBackups()
     if (boost::filesystem::exists(pathBackups))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
 }
-void showDataFolder()
-{
-    boost::filesystem::path pathData = GetDataDir() ;
 
-
-     /* Open folder with default browser */
-    if (boost::filesystem::exists(pathData))
-        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathData)));
-}
 void SubstituteFonts(const QString& language)
 {
 #if defined(Q_OS_MAC)
@@ -816,14 +808,17 @@ void restoreWindowGeometry(const QString& strSetting, const QSize& defaultSize, 
     QPoint pos = settings.value(strSetting + "Pos").toPoint();
     QSize size = settings.value(strSetting + "Size", defaultSize).toSize();
 
-    if (!pos.x() && !pos.y()) {
-        QRect screen = QApplication::desktop()->screenGeometry();
-        pos.setX((screen.width() - size.width()) / 2);
-        pos.setY((screen.height() - size.height()) / 2);
-    }
-
     parent->resize(size);
     parent->move(pos);
+    
+    if ((!pos.x() && !pos.y()) || (QApplication::desktop()->screenNumber(parent) == -1))
+    {
+        QRect screen = QApplication::desktop()->screenGeometry();
+        QPoint defaultPos = screen.center() -
+        QPoint(defaultSize.width() / 2, defaultSize.height() / 2);
+        parent->resize(defaultSize);
+        parent->move(defaultPos);
+    }
 }
 
 // Check whether a theme is not build-in

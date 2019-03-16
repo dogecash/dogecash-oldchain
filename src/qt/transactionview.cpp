@@ -140,7 +140,7 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
     QLabel * logoLabel = new QLabel(this);
     logoLabel->setObjectName("logoLabel");
     logoLabel->setPixmap(QIcon(":/images/dogecash_logo_horizontal").pixmap(73, 76));
-    logoLabel->setMargin(35);
+    logoLabel->setMargin(27);
     logoLabel->setAlignment(Qt::AlignCenter);
     QTableView* view = new QTableView(this);
     vlayout->addLayout(hlayout);
