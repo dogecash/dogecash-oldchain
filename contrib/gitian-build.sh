@@ -409,4 +409,5 @@ then
             git commit -a -m "Add ${VERSION} signed binary sigs for ${SIGNER}"
             popd
         fi
+   fi
 fi
