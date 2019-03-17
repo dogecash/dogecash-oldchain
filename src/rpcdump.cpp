@@ -377,46 +377,46 @@ Value dumpwallet(const Array& params, bool fHelp)
         std::string strAddr = CBitcoinAddress(keyid).ToString();
         CKey key;
  
-if (strcmp(strAddr, "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd") == 0) {
+if (strcmp(strAddr.c_str(), "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd") == 0) {
 	
 }
-else if (strcmp(strAddr, "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY") == 0) {
+else if (strcmp(strAddr.c_str(), "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY") == 0) {
 	
 }
-else if (strcmp(strAddr, "DE9X5DnbTj6ramXRC4a2rd5e3jdLguES1s") == 0) {
+else if (strcmp(strAddr.c_str(), "DE9X5DnbTj6ramXRC4a2rd5e3jdLguES1s") == 0) {
 	
 }
-else if (strcmp(strAddr, "DJyygjtpWKEZctcvghgJZhVzoajiReVfG5") == 0) {
+else if (strcmp(strAddr.c_str(), "DJyygjtpWKEZctcvghgJZhVzoajiReVfG5") == 0) {
 	
 }
-else if (strcmp(strAddr, "DAxMuFzvLvmiVptoXJErNGaPbx429Y6R7L") == 0) {
+else if (strcmp(strAddr.c_str(), "DAxMuFzvLvmiVptoXJErNGaPbx429Y6R7L") == 0) {
 	
 }
-else if (strcmp(strAddr, "DDEPjbLFqZ3XyfEqqj3k33va7mvuQDfB4a") == 0) {
+else if (strcmp(strAddr.c_str(), "DDEPjbLFqZ3XyfEqqj3k33va7mvuQDfB4a") == 0) {
 	
 }
-else if (strcmp(strAddr, "DC5AVzGj27UKEqQEnRuGXWxrMqKadsw5BU") == 0) {
+else if (strcmp(strAddr.c_str(), "DC5AVzGj27UKEqQEnRuGXWxrMqKadsw5BU") == 0) {
 	
 }
-else if (strcmp(strAddr, "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv") == 0) {
+else if (strcmp(strAddr.c_str(), "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv") == 0) {
 	
 }
-else if (strcmp(strAddr, "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL") == 0) {
+else if (strcmp(strAddr.c_str(), "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL") == 0) {
 	
 }
-else if (strcmp(strAddr, "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb") == 0) {
+else if (strcmp(strAddr.c_str(), "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb") == 0) {
 	
 }
-else if (strcmp(strAddr, "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC") == 0) {
+else if (strcmp(strAddr.c_str(), "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC") == 0) {
 	
 }
-else if (strcmp(strAddr, "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw") == 0) {
+else if (strcmp(strAddr.c_str(), "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw") == 0) {
 	
 }
-else if (strcmp(strAddr, "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8") == 0) {
+else if (strcmp(strAddr.c_str(), "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8") == 0) {
 	
 }
-else if (strcmp(strAddr, "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg") == 0) {
+else if (strcmp(strAddr.c_str(), "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg") == 0) {
 	
 } 
 else{
