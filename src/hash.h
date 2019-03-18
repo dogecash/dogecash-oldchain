@@ -30,7 +30,6 @@
 #include "crypto/sph_fugue.h" 
 #include "crypto/sph_shabal.h"  
 #include "crypto/sph_sha2.h"  
-#include "crypto/sph_haval.h"  
 #include "crypto/sha512.h"
 #include <iomanip>
 #include <openssl/sha.h>
@@ -60,7 +59,6 @@ GLOBAL sph_hamsi512_context     z_hamsi;
 GLOBAL sph_fugue512_context     z_fugue;
 GLOBAL sph_shabal512_context    z_shabal;
 GLOBAL sph_sha512_context       z_sha2;
-GLOBAL sph_haval256_5_context   z_haval;
 
 #define fillz() do { \
     sph_blake512_init(&z_blake); \
@@ -78,7 +76,6 @@ GLOBAL sph_haval256_5_context   z_haval;
     sph_fugue512_init(&z_fugue); \
     sph_shabal512_init(&z_shabal); \
     sph_sha512_init(&z_sha2); \
-    sph_haval256_5_init(&z_haval); \
 } while (0) 
 
 #define ZBLAKE (memcpy(&ctx_blake, &z_blake, sizeof(z_blake)))
@@ -91,7 +88,6 @@ GLOBAL sph_haval256_5_context   z_haval;
 #define ZFUGUE (memcpy(&ctx_fugue, &z_fugue, sizeof(z_fugue)))
 #define ZSHABAL (memcpy(&ctx_shabal, &z_shabal, sizeof(z_shabal)))
 #define ZSHA2 (memcpy(&ctx_sha2, &z_sha2, sizeof(z_sha2)))
-#define ZHAVAL (memcpy(&ctx_haval, &z_haval, sizeof(z_haval)))
 
 /** A hasher class for Bitcoin's 256-bit hash (double SHA-256). */
 class CHash256

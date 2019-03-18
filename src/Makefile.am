@@ -292,7 +292,6 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/shabal.c \
   crypto/simd.c \
   crypto/echo.c \
-  crypto/haval.c \
   crypto/hamsi.c \
   crypto/fugue.c \
   crypto/sha2.c \
@@ -321,7 +320,6 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/sph_shabal.h \
   crypto/sph_whirlpool.h \
   crypto/sph_sha2.h \
-  crypto/sph_haval.h \
   crypto/sph_types.h
 
 # univalue JSON library
