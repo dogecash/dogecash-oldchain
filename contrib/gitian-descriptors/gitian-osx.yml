@@ -1,5 +1,5 @@
 ---
-name: "dogecash-osx-1.2"
+name: "dogecash-osx-3.0"
 enable_cache: true
 suites:
 - "trusty"

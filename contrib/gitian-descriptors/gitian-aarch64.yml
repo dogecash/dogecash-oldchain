@@ -1,5 +1,5 @@
 ---
-name: "dogecash-aarch64-1.2"
+name: "dogecash-aarch64-3.0"
 enable_cache: true
 suites:
 - "trusty"
