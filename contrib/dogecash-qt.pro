@@ -149,7 +149,6 @@ HEADERS += src/activemasternode.h \
            src/crypto/sph_jh.h \
            src/crypto/sph_keccak.h \
            src/crypto/sph_luffa.h \
-           src/crypto/sph_shavite.h \
            src/crypto/sph_simd.h \
            src/crypto/sph_skein.h \
            src/crypto/sph_types.h \
@@ -452,7 +451,6 @@ SOURCES += src/activemasternode.cpp \
            src/crypto/sha1.cpp \
            src/crypto/sha256.cpp \
            src/crypto/sha512.cpp \
-           src/crypto/shavite.c \
            src/crypto/simd.c \
            src/crypto/skein.c \
            src/json/json_spirit_reader.cpp \

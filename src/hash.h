@@ -23,13 +23,7 @@
 #include "crypto/sph_skein.h"
 #include "crypto/sph_luffa.h"
 #include "crypto/sph_cubehash.h" 
-#include "crypto/sph_shavite.h"
 #include "crypto/sph_simd.h"
-#include "crypto/sph_echo.h" 
-#include "crypto/sph_hamsi.h"  
-#include "crypto/sph_fugue.h" 
-#include "crypto/sph_shabal.h"  
-#include "crypto/sph_sha2.h"  
 #include "crypto/sha512.h"
 #include <iomanip>
 #include <openssl/sha.h>
@@ -52,13 +46,7 @@ GLOBAL sph_keccak512_context    z_keccak;
 GLOBAL sph_skein512_context     z_skein;
 GLOBAL sph_luffa512_context     z_luffa;
 GLOBAL sph_cubehash512_context  z_cubehash;
-GLOBAL sph_shavite512_context   z_shavite;
 GLOBAL sph_simd512_context      z_simd;
-GLOBAL sph_echo512_context      z_echo;
-GLOBAL sph_hamsi512_context     z_hamsi;
-GLOBAL sph_fugue512_context     z_fugue;
-GLOBAL sph_shabal512_context    z_shabal;
-GLOBAL sph_sha512_context       z_sha2;
 
 #define fillz() do { \
     sph_blake512_init(&z_blake); \
@@ -69,13 +57,7 @@ GLOBAL sph_sha512_context       z_sha2;
     sph_skein512_init(&z_skein); \
     sph_luffa512_init(&z_luffa); \
     sph_cubehash512_init(&z_cubehash); \
-    sph_shavite512_init(&z_shavite); \
     sph_simd512_init(&z_simd); \
-    sph_echo512_init(&z_echo); \
-    sph_hamsi512_init(&z_hamsi); \
-    sph_fugue512_init(&z_fugue); \
-    sph_shabal512_init(&z_shabal); \
-    sph_sha512_init(&z_sha2); \
 } while (0) 
 
 #define ZBLAKE (memcpy(&ctx_blake, &z_blake, sizeof(z_blake)))
@@ -84,9 +66,6 @@ GLOBAL sph_sha512_context       z_sha2;
 #define ZJH (memcpy(&ctx_jh, &z_jh, sizeof(z_jh)))
 #define ZKECCAK (memcpy(&ctx_keccak, &z_keccak, sizeof(z_keccak)))
 #define ZSKEIN (memcpy(&ctx_skein, &z_skein, sizeof(z_skein)))
-#define ZHAMSI (memcpy(&ctx_hamsi, &z_hamsi, sizeof(z_hamsi)))
-#define ZFUGUE (memcpy(&ctx_fugue, &z_fugue, sizeof(z_fugue)))
-#define ZSHABAL (memcpy(&ctx_shabal, &z_shabal, sizeof(z_shabal)))
 #define ZSHA2 (memcpy(&ctx_sha2, &z_sha2, sizeof(z_sha2)))
 
 /** A hasher class for Bitcoin's 256-bit hash (double SHA-256). */
