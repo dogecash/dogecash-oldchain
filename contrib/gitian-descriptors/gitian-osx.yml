@@ -50,8 +50,6 @@ script: |
     export BASE_CACHE=${GBUILD_PACKAGE_CACHE}
     mkdir -p ${BASE_CACHE} ${SOURCES_PATH}
   fi
-  pip install setuptools
-  pip install ez_setup
   export ZERO_AR_DATE=1
 
   # Create global faketime wrappers
