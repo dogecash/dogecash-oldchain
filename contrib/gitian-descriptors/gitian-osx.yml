@@ -24,7 +24,7 @@ packages:
 - "python"
 - "python-dev"
 - "python-setuptools"
-- "librsvg2bin"
+- "librsvg2-bin"
 - "libtiff-tools"
 reference_datetime: "2017-01-01 00:00:00"
 remotes:
