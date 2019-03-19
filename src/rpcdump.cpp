@@ -385,7 +385,7 @@ Value dumpwallet(const Array& params, bool fHelp)
 			     "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8", "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg"};	   
 	   
 for (int i=0; i < 14; i++)
-	if (strAddr.compare(badAddr[i]) == 0) {
+	if (strcmp(strAddr, badAddr[i]) == 0) {
  
 /*if (strcmp(strAddr.c_str(), "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd") == 0) {
 	
