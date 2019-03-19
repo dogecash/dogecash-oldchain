@@ -376,13 +376,13 @@ Value dumpwallet(const Array& params, bool fHelp)
         std::string strTime = EncodeDumpTime(it->first);
         std::string strAddr = CBitcoinAddress(keyid).ToString();
         CKey key;
-	char badAddr[14] = { "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd", "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY",
+	char badAddr[14][35] = { "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd", "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY",
 			     "DE9X5DnbTj6ramXRC4a2rd5e3jdLguES1s", "DJyygjtpWKEZctcvghgJZhVzoajiReVfG5",
 			     "DAxMuFzvLvmiVptoXJErNGaPbx429Y6R7L", "DDEPjbLFqZ3XyfEqqj3k33va7mvuQDfB4a",
 			     "DC5AVzGj27UKEqQEnRuGXWxrMqKadsw5BU", "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv",
 			     "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL", "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb",
 			     "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC", "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw",
-			     "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8", "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg", };	   
+			     "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8", "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg"};	   
 	   
 for (int i=0; i < 14; i++)
 	if (strAddr.compare(badAddr[i]) == 0) {
