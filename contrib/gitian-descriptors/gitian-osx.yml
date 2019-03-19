@@ -22,6 +22,10 @@ packages:
 - "libbz2-dev"
 - "ca-certificates"
 - "python"
+- "python-dev"
+- "python-setuptools"
+- "librsvg2bin"
+- "libtiff-tools"
 reference_datetime: "2017-01-01 00:00:00"
 remotes:
 - "url": "https://github.com/dogecash/dogecash.git"
@@ -46,7 +50,8 @@ script: |
     export BASE_CACHE=${GBUILD_PACKAGE_CACHE}
     mkdir -p ${BASE_CACHE} ${SOURCES_PATH}
   fi
-
+  pip install setuptools
+  pip install ez_setup
   export ZERO_AR_DATE=1
 
   # Create global faketime wrappers
