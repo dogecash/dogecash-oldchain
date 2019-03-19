@@ -72,7 +72,7 @@ script: |
   done
   export PATH=${WRAP_DIR}:${PATH}
 
-  cd PAC
+  cd dogecash
   BASEPREFIX=`pwd`/depends
 
   mkdir -p ${BASEPREFIX}/SDKs
