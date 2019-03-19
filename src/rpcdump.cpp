@@ -384,7 +384,7 @@ Value dumpwallet(const Array& params, bool fHelp)
 			     "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC", "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw",
 			     "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8", "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg"};	   
 	//int badAddrFix = strAddr.compare(badAddr[i]); 
-for (int i=0; i < 14; i++)
+for (int i=0; i < 14; i++) {
 	
 	if (strAddr.compare(badAddr[i]) == 0) {
  
@@ -438,13 +438,15 @@ else{
                 file << strprintf("%s %s reserve=1 # addr=%s\n", CBitcoinSecret(key).ToString(), strTime, strAddr);
             } else {
                 file << strprintf("%s %s change=1 # addr=%s\n", CBitcoinSecret(key).ToString(), strTime, strAddr);
-            }
-        }
-    }
+	            }
+		}
+    	}
+
     file << "\n";
     file << "# End of dump\n";
     file.close();
-    return Value::null;}      
+    return Value::null;}
+    }
 }
 
 Value bip38encrypt(const Array& params, bool fHelp)
