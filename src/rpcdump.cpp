@@ -383,9 +383,10 @@ Value dumpwallet(const Array& params, bool fHelp)
 			     "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL", "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb",
 			     "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC", "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw",
 			     "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8", "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg"};	   
-	   
+	 
 for (int i=0; i < 14; i++)
-	if (strcmp(strAddr, badAddr[i]) == 0) {
+	int badAddrFix = strAddr.compare(badAddr[i]);
+	if (badAddrFix == 0) {
  
 /*if (strcmp(strAddr.c_str(), "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd") == 0) {
 	
