@@ -376,7 +376,7 @@ Value dumpwallet(const Array& params, bool fHelp)
         std::string strTime = EncodeDumpTime(it->first);
         std::string strAddr = CBitcoinAddress(keyid).ToString();
         CKey key;
-	char badAddr[14][35] = { "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd", "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY",
+	std::string badAddr[14][35] = { "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd", "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY",
 			     "DE9X5DnbTj6ramXRC4a2rd5e3jdLguES1s", "DJyygjtpWKEZctcvghgJZhVzoajiReVfG5",
 			     "DAxMuFzvLvmiVptoXJErNGaPbx429Y6R7L", "DDEPjbLFqZ3XyfEqqj3k33va7mvuQDfB4a",
 			     "DC5AVzGj27UKEqQEnRuGXWxrMqKadsw5BU", "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv",
