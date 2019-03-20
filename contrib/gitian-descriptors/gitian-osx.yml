@@ -83,6 +83,7 @@ script: |
 
   # Build dependencies for each host
   for i in $HOSTS; do
+    make distclean
     make ${MAKEOPTS} -C ${BASEPREFIX} HOST="${i}"
   done
 
