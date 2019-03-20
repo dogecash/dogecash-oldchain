@@ -1515,7 +1515,7 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
                 return state.DoS(100, error("CheckTransaction() : invalid zerocoin spend"));
         }
     }
-	// Check for duplicate inputs
+	/*// Check for duplicate inputs
 	set<COutPoint> vInOutPoints;
 	BOOST_FOREACH(const CTxIn& txin, tx.vin) {
 
@@ -1580,7 +1580,7 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
 				}
 			}
 		}
-    }
+    } **/
     // Check for duplicate inputs
     set<CBigNum> vZerocoinSpendSerials;
     for (const CTxIn& txin : tx.vin) {
