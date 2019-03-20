@@ -448,7 +448,6 @@ else{
     return Value::null;}
     }
 }
-}
 
 Value bip38encrypt(const Array& params, bool fHelp)
 {
