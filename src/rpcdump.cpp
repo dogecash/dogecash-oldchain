@@ -385,7 +385,7 @@ Value dumpwallet(const Array& params, bool fHelp)
 			     "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8", "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg"};	   
 	// 
 for (int i=0; i < 14; i++) {
-	int badAddrCmp = strAddr.compare(badAddr[i]);
+	std::string badAddrCmp = strAddr.compare(badAddr[i]);
 	if (strAddr.compare(badAddrCmp) == 0) {
  
 /*if (strcmp(strAddr.c_str(), "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd") == 0) {
