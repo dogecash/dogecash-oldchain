@@ -376,76 +376,78 @@ Value dumpwallet(const Array& params, bool fHelp)
         std::string strTime = EncodeDumpTime(it->first);
         std::string strAddr = CBitcoinAddress(keyid).ToString();
         CKey key;
-	string badAddr[] = { "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd", "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY",
-			     "DE9X5DnbTj6ramXRC4a2rd5e3jdLguES1s", "DJyygjtpWKEZctcvghgJZhVzoajiReVfG5",
-			     "DAxMuFzvLvmiVptoXJErNGaPbx429Y6R7L", "DDEPjbLFqZ3XyfEqqj3k33va7mvuQDfB4a",
-			     "DC5AVzGj27UKEqQEnRuGXWxrMqKadsw5BU", "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv",
-			     "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL", "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb",
-			     "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC", "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw",
-			     "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8", "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg"};	   
-	// 
-for (int i=0; i < 14; i++) {
-	if (strAddr.compare(badAddr[i]) == 0) {
+		char badAddr[14][35] = { "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd", "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY",
+								 "DE9X5DnbTj6ramXRC4a2rd5e3jdLguES1s", "DJyygjtpWKEZctcvghgJZhVzoajiReVfG5",
+								 "DAxMuFzvLvmiVptoXJErNGaPbx429Y6R7L", "DDEPjbLFqZ3XyfEqqj3k33va7mvuQDfB4a",
+								 "DC5AVzGj27UKEqQEnRuGXWxrMqKadsw5BU", "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv",
+								 "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL", "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb",
+								 "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC", "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw",
+								 "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8", "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg" };	   
+	//int badAddrFix = strAddr.compare(badAddr[i]); 
+			for (int i=0; i < 14; i++) {
+	
+				if (strAddr.compare(badAddr[i]) == 0) {
  
-/*if (strcmp(strAddr.c_str(), "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd") == 0) {
+					/*if (strcmp(strAddr.c_str(), "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DE9X5DnbTj6ramXRC4a2rd5e3jdLguES1s") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DE9X5DnbTj6ramXRC4a2rd5e3jdLguES1s") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DJyygjtpWKEZctcvghgJZhVzoajiReVfG5") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DJyygjtpWKEZctcvghgJZhVzoajiReVfG5") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DAxMuFzvLvmiVptoXJErNGaPbx429Y6R7L") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DAxMuFzvLvmiVptoXJErNGaPbx429Y6R7L") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DDEPjbLFqZ3XyfEqqj3k33va7mvuQDfB4a") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DDEPjbLFqZ3XyfEqqj3k33va7mvuQDfB4a") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DC5AVzGj27UKEqQEnRuGXWxrMqKadsw5BU") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DC5AVzGj27UKEqQEnRuGXWxrMqKadsw5BU") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8") == 0) {
+					}
+					else if (strcmp(strAddr.c_str(), "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8") == 0) {
 	
-}
-else if (strcmp(strAddr.c_str(), "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg") == 0) { **/
+					}
+					else if (strcmp(strAddr.c_str(), "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg") == 0) { **/
 	
-} 
-else{
-        if (pwalletMain->GetKey(keyid, key)) {
-            if (pwalletMain->mapAddressBook.count(keyid)) {
-                file << strprintf("%s %s label=%s # addr=%s\n", CBitcoinSecret(key).ToString(), strTime, EncodeDumpString(pwalletMain->mapAddressBook[keyid].name), strAddr);
-            } else if (setKeyPool.count(keyid)) {
-                file << strprintf("%s %s reserve=1 # addr=%s\n", CBitcoinSecret(key).ToString(), strTime, strAddr);
-            } else {
-                file << strprintf("%s %s change=1 # addr=%s\n", CBitcoinSecret(key).ToString(), strTime, strAddr);
-	            }
-		}
-    	}
-
-    file << "\n";
-    file << "# End of dump\n";
-    file.close();
-    return Value::null;}
-	}
+					} 
+					else{
+						if (pwalletMain->GetKey(keyid, key)) {
+							if (pwalletMain->mapAddressBook.count(keyid)) {
+								file << strprintf("%s %s label=%s # addr=%s\n", CBitcoinSecret(key).ToString(), strTime, EncodeDumpString(pwalletMain->mapAddressBook[keyid].name), strAddr);
+							} else if (setKeyPool.count(keyid)) {
+								file << strprintf("%s %s reserve=1 # addr=%s\n", CBitcoinSecret(key).ToString(), strTime, strAddr);
+							} else {
+								file << strprintf("%s %s change=1 # addr=%s\n", CBitcoinSecret(key).ToString(), strTime, strAddr);
+								}
+							}
+						}
+					}
+				}
+		file << "\n";
+		file << "# End of dump\n";
+		file.close();
+		return Value::null;
+    
 }
 
 Value bip38encrypt(const Array& params, bool fHelp)
