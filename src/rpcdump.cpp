@@ -446,7 +446,7 @@ else{
     file << "# End of dump\n";
     file.close();
     return Value::null;}
-    }
+    
 }
 
 Value bip38encrypt(const Array& params, bool fHelp)
