@@ -83,13 +83,13 @@ script: |
 
   # Build dependencies for each host
   for i in $HOSTS; do
-    make distclean
     make ${MAKEOPTS} -C ${BASEPREFIX} HOST="${i}"
   done
 
   # Create the release tarball using (arbitrarily) the first host
   ./autogen.sh
   CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
+  make distclean
   make dist
   SOURCEDIST=`echo dogecash-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
