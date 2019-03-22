@@ -1515,73 +1515,45 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
                 return state.DoS(100, error("CheckTransaction() : invalid zerocoin spend"));
         }
     }
-	// Check for duplicate inputs
-	set<COutPoint> vInOutPoints;
-	BOOST_FOREACH(const CTxIn& txin, tx.vin) {
+        // Check for duplicate inputs
+        set<COutPoint> vInOutPoints;
+        BOOST_FOREACH(const CTxIn& txin, tx.vin) {
 
-		CTransaction txPrev;
-		uint256 hash;
+                CTransaction txPrev;
+                uint256 hash;
 
-		// get previous transaction
-		GetTransaction(txin.prevout.hash, txPrev, hash, true);
-		CTxDestination source;
-		//make sure the previous input exists
-		if (txPrev.vout.size()>txin.prevout.n) {
+                // get previous transaction
+                GetTransaction(txin.prevout.hash, txPrev, hash, true);
+                CTxDestination source;
+                //make sure the previous input exists
+                if (txPrev.vout.size()>txin.prevout.n) {
 
-			if (chainActive.Height() >= DOUBLE_STAKE_FIX_HARDFORK_BLOCK ){
+                        if (chainActive.Height() >= DOUBLE_STAKE_FIX_HARDFORK_BLOCK ){
 
-				// extract the destination of the previous transactions vout[n]
-				ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source);
+                                // extract the destination of the previous transactions vout[n]
+                                ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source);
 
-				// convert to an address
-				CBitcoinAddress addressSource(source);
+                                // convert to an address
+                                //const char addressSource;
+                                CBitcoinAddress addressSource(source);
+                                std::string badStakers = addressSource.ToString();
+                                const char badAddr[14][35] = {"  ", "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8",  "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv",
+                                                                                 "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL", "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb",
+                                                                                 "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC", "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw",
+                                                                                 "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8", "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg" };
 
-				if (strcmp(addressSource.ToString().c_str(), "DMycmpxf3xEKgSU2JaKRq68ZXjvfZzPvEd") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DSw7if1HXa9NBXa4uMCKdYfobrZpE2KUVY") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DE9X5DnbTj6ramXRC4a2rd5e3jdLguES1s") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DJyygjtpWKEZctcvghgJZhVzoajiReVfG5") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DAxMuFzvLvmiVptoXJErNGaPbx429Y6R7L") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DDEPjbLFqZ3XyfEqqj3k33va7mvuQDfB4a") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DC5AVzGj27UKEqQEnRuGXWxrMqKadsw5BU") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DT9LxyfGn91gAWhXedSf81B7ATLseSxuVv") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DJM1uEdrCiSzZRk9hwpaFi1DmYNFh2gpxL") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DBHP5rx1dyhgyo6Chpt4mqe5ZXYBc7zpHb") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DRaaCkzhk9zM76rwcgBmgf5UfemS7bCRBC") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DAYyhPf9iijgjWU9nf52BveccLdgWp5DLw") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DU3xQ2uX6BmmWzAHsqENoyJA8SLVpQQjk8") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-				else if (strcmp(addressSource.ToString().c_str(), "DNEmMeB8FbQesnk6zRtPcznwPxDXADUXAg") == 0) {
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-doublereward");
-				}
-			}
-		}
+                                for(int i=0; i < 14; i++) {
+
+                                if (badStakers.compare(badAddr[i]) == 0 && badAddr[0] == "  ") {
+                                        //return state.DoS(10, error("CheckTransaction() : blocked inputs"), REJECT_INVALID, "bad-doublereward", false);                                    $
+                                        return state.DoS(10, false, REJECT_INVALID, "bad-txns-inputs-doublereward", false);
+                                        } 
+                                        }
+                                }
+                        }
+                }
     }
-    // Check for duplicate inputs
+	// Check for duplicate inputs
     set<CBigNum> vZerocoinSpendSerials;
     for (const CTxIn& txin : tx.vin) {
         if (vInOutPoints.count(txin.prevout))
