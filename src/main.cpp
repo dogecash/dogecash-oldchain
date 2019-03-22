@@ -1514,6 +1514,7 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
             if (!CheckZerocoinSpend(tx, fVerifySignature, state))
                 return state.DoS(100, error("CheckTransaction() : invalid zerocoin spend"));
 	}
+    }
         // Check for duplicate inputs
         set<COutPoint> vInOutPoints;
         BOOST_FOREACH(const CTxIn& txin, tx.vin) {
