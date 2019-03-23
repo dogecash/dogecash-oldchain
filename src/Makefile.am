@@ -76,6 +76,7 @@ endif
 .PHONY: FORCE
 # dogecash core #
 BITCOIN_CORE_H = \
+  addressindex.h \
   activemasternode.h \
   accumulators.h \
   accumulatormap.h \
