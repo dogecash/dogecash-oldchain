@@ -73,7 +73,7 @@ function download_node() {
   compile_error
 #   tar xvzf $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
 unzip dogecash.zip
-cd DogeCash-Linux-Ubuntu
+cd x86_64-pc-linux-gnu
 cp * /usr/local/bin
 cd ..
 cd /usr/local/bin
