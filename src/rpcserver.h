@@ -15,7 +15,7 @@
 #include <map>
 #include <stdint.h>
 #include <string>
-
+#include "univalue/univalue.h"
 #include "json/json_spirit_reader_template.h"
 #include "json/json_spirit_utils.h"
 #include "json/json_spirit_writer_template.h"
@@ -151,6 +151,11 @@ extern std::string HelpExampleRpc(std::string methodname, std::string args);
 extern void EnsureWalletIsUnlocked();
 
 extern json_spirit::Value getconnectioncount(const json_spirit::Array& params, bool fHelp); // in rpcnet.cpp
+extern UniValue getaddressmempool(const UniValue& params, bool fHelp);
+extern UniValue getaddressutxos(const UniValue& params, bool fHelp);
+extern UniValue getaddressdeltas(const UniValue& params, bool fHelp);
+extern UniValue getaddresstxids(const UniValue& params, bool fHelp);
+extern UniValue getaddressbalance(const UniValue& params, bool fHelp);
 extern json_spirit::Value getpeerinfo(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value ping(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value addnode(const json_spirit::Array& params, bool fHelp);
@@ -244,6 +249,8 @@ extern json_spirit::Value getdifficulty(const json_spirit::Array& params, bool f
 extern json_spirit::Value settxfee(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value getmempoolinfo(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value getrawmempool(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value getblockhashes(const Array& params, bool fHelp);
+
 extern json_spirit::Value getblockhash(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value getblock(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value getblockheader(const json_spirit::Array& params, bool fHelp);
@@ -253,6 +260,7 @@ extern json_spirit::Value verifychain(const json_spirit::Array& params, bool fHe
 extern json_spirit::Value getchaintips(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value invalidateblock(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value reconsiderblock(const json_spirit::Array& params, bool fHelp);
+extern UniValue getspentinfo(const UniValue& params, bool fHelp);
 
 extern json_spirit::Value obfuscation(const json_spirit::Array& params, bool fHelp); // in rpcmasternode.cpp
 extern json_spirit::Value getpoolinfo(const json_spirit::Array& params, bool fHelp);

@@ -59,7 +59,9 @@ void ScriptPubKeyToJSON(const CScript& scriptPubKey, Object& out, bool fIncludeH
 
 void TxToJSON(const CTransaction& tx, const uint256 hashBlock, Object& entry)
 {
-    entry.push_back(Pair("txid", tx.GetHash().GetHex()));
+    uint256 txid = tx.GetHash();
+    entry.push_back(Pair("txid", txid.GetHex()))
+
     entry.push_back(Pair("version", tx.nVersion));
     entry.push_back(Pair("locktime", (int64_t)tx.nLockTime));
     Array vin;
@@ -88,6 +90,14 @@ void TxToJSON(const CTransaction& tx, const uint256 hashBlock, Object& entry)
         Object o;
         ScriptPubKeyToJSON(txout.scriptPubKey, o, true);
         out.push_back(Pair("scriptPubKey", o));
+        // Add spent information if spentindex is enabled
+         CSpentIndexValue spentInfo;
+         CSpentIndexKey spentKey(txid, i);
+         if (GetSpentIndex(spentKey, spentInfo)) {
+             out.push_back(Pair("spentTxId", spentInfo.txid.GetHex()));
+             out.push_back(Pair("spentIndex", (int)spentInfo.inputIndex));
+             out.push_back(Pair("spentHeight", spentInfo.blockHeight));
+         }
         vout.push_back(out);
     }
     entry.push_back(Pair("vout", vout));
@@ -98,11 +108,13 @@ void TxToJSON(const CTransaction& tx, const uint256 hashBlock, Object& entry)
         if (mi != mapBlockIndex.end() && (*mi).second) {
             CBlockIndex* pindex = (*mi).second;
             if (chainActive.Contains(pindex)) {
+                entry.push_back(Pair("height", pindex->nHeight));
                 entry.push_back(Pair("confirmations", 1 + chainActive.Height() - pindex->nHeight));
                 entry.push_back(Pair("time", pindex->GetBlockTime()));
                 entry.push_back(Pair("blocktime", pindex->GetBlockTime()));
-            } else
-                entry.push_back(Pair("confirmations", 0));
+            } else{
+                entry.push_back(Pair("height", -1));
+                entry.push_back(Pair("confirmations", 0));}
         }
     }
 }

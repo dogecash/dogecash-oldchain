@@ -271,6 +271,7 @@ static const CRPCCommand vRPCCommands[] =
         {"blockchain", "getbestblockhash", &getbestblockhash, true, false, false},
         {"blockchain", "getblockcount", &getblockcount, true, false, false},
         {"blockchain", "getblock", &getblock, true, false, false},
+        { "blockchain","getblockhashes",&getblockhashes,true,false,false},
         {"blockchain", "getblockhash", &getblockhash, true, false, false},
         {"blockchain", "getblockheader", &getblockheader, false, false, false},
         {"blockchain", "getchaintips", &getchaintips, true, false, false},
@@ -280,6 +281,7 @@ static const CRPCCommand vRPCCommands[] =
         {"blockchain", "gettxout", &gettxout, true, false, false},
         {"blockchain", "gettxoutsetinfo", &gettxoutsetinfo, true, false, false},
         {"blockchain", "verifychain", &verifychain, true, false, false},
+        {"blockchain","getspentinfo",&getspentinfo,false,false,false },
         {"blockchain", "invalidateblock", &invalidateblock, true, true, false},
         {"blockchain", "reconsiderblock", &reconsiderblock, true, true, false},
 
@@ -297,7 +299,12 @@ static const CRPCCommand vRPCCommands[] =
         {"generating", "gethashespersec", &gethashespersec, true, false, false},
         {"generating", "setgenerate", &setgenerate, true, true, false},
 #endif
-
+ /* Address index */
+     { "addressindex",       "getaddressmempool",      &getaddressmempool,      true ,false,false },
+     { "addressindex",       "getaddressutxos",        &getaddressutxos,        false,false,false },
+     { "addressindex",       "getaddressdeltas",       &getaddressdeltas,       false,false,false },
+     { "addressindex",       "getaddresstxids",        &getaddresstxids,        false,false,false },
+     { "addressindex",       "getaddressbalance",      &getaddressbalance,      false,false,false },
         /* Raw transactions */
         {"rawtransactions", "createrawtransaction", &createrawtransaction, true, false, false},
         {"rawtransactions", "decoderawtransaction", &decoderawtransaction, true, false, false},

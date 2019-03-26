@@ -243,7 +243,37 @@ Value getrawmempool(const Array& params, bool fHelp)
         return a;
     }
 }
+Value getblockhashes(const Array& params, bool fHelp)
+ {
+     if (fHelp || params.size() != 2)
+         throw runtime_error(
+             "getblockhashes timestamp\n"
+             "\nReturns array of hashes of blocks within the timestamp range provided.\n"
+             "\nArguments:\n"
+             "1. high         (numeric, required) The newer block timestamp\n"
+             "2. low          (numeric, required) The older block timestamp\n"
+             "\nResult:\n"
+             "["
+             "  \"hash\"         (string) The block hash\n"
+             "]"
+             "\nExamples:\n"
+         );
 
+      unsigned int high = params[0].get_int();
+     unsigned int low = params[1].get_int();
+     std::vector<uint256> blockHashes;
+
+      if (!GetTimestampIndex(high, low, blockHashes)) {
+         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "No information available for block hashes");
+     }
+
+    Object ret;
+     for (std::vector<uint256>::const_iterator it=blockHashes.begin(); it!=blockHashes.end(); it++) {
+         ret.push_back(it->GetHex());
+     }
+
+      return ret;
+ }
 Value getblockhash(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
