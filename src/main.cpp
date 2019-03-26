@@ -5056,7 +5056,7 @@ bool TestBlockValidity(CValidationState& state, const CBlock& block, CBlockIndex
 
 static bool AbortNode(const std::string& strMessage, const std::string& userMessage="")
 {
-    SetMiscWarning(strMessage);
+       strMiscWarning = strMessage;	
     LogPrintf("*** %s\n", strMessage);
     uiInterface.ThreadSafeMessageBox(
         userMessage.empty() ? _("Error: A fatal internal error occurred, see debug.log for details") : userMessage,
