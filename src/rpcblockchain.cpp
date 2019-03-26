@@ -17,7 +17,7 @@
 #include "json/json_spirit_value.h"
 #include "utilmoneystr.h"
 #include "base58.h"
-
+#include "univalue/univalue.h"
 using namespace json_spirit;
 using namespace std;
 
@@ -243,7 +243,7 @@ Value getrawmempool(const Array& params, bool fHelp)
         return a;
     }
 }
-Value getblockhashes(const Array& params, bool fHelp)
+UniValue getblockhashes(const Array& params, bool fHelp)
  {
      if (fHelp || params.size() != 2)
          throw runtime_error(
@@ -267,12 +267,12 @@ Value getblockhashes(const Array& params, bool fHelp)
          throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "No information available for block hashes");
      }
 
-    Object ret;
+    UniValue result(UniValue::VARR);
      for (std::vector<uint256>::const_iterator it=blockHashes.begin(); it!=blockHashes.end(); it++) {
          ret.push_back(it->GetHex());
      }
 
-      return ret;
+      return result;
  }
 Value getblockhash(const Array& params, bool fHelp)
 {
