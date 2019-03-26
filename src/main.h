@@ -902,6 +902,7 @@ private:
     bool corruptionPossible;
 
 public:
+
     CValidationState() : mode(MODE_VALID), nDoS(0), chRejectCode(0), corruptionPossible(false) {}
     bool DoS(int level, bool ret = false, unsigned char chRejectCodeIn = 0, std::string strRejectReasonIn = "", bool corruptionIn = false)
     {
@@ -920,6 +921,7 @@ public:
     {
         return DoS(0, ret, _chRejectCode, _strRejectReason);
     }
+    bool AbortNode(const std::string& strMessage, const std::string& userMessage="");
     bool Error(std::string strRejectReasonIn = "")
     {
         if (mode == MODE_VALID)
