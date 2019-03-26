@@ -131,6 +131,89 @@ private:
     void writeArray(unsigned int prettyIndent, unsigned int indentLevel, std::string& s) const;
     void writeObject(unsigned int prettyIndent, unsigned int indentLevel, std::string& s) const;
 };
+public:
+    // Strict type-specific getters, these throw std::runtime_error if the
+    // value is of unexpected type
+    std::vector<std::string> getKeys() const;
+    std::vector<UniValue> getValues() const;
+    bool get_bool() const;
+    std::string get_str() const;
+    int get_int() const;
+    int64_t get_int64() const;
+    double get_real() const;
+    const UniValue& get_obj() const;
+    const UniValue& get_array() const;
+
+    enum VType type() const { return getType(); }
+    bool push_back(std::pair<std::string,UniValue> pear) {
+        return pushKV(pear.first, pear.second);
+    }
+    friend const UniValue& find_value( const UniValue& obj, const std::string& name);
+};
+
+//
+// The following were added for compatibility with json_spirit.
+// Most duplicate other methods, and should be removed.
+//
+static inline std::pair<std::string,UniValue> Pair(const char *cKey, const char *cVal)
+{
+    std::string key(cKey);
+    UniValue uVal(cVal);
+    return std::make_pair(key, uVal);
+}
+
+static inline std::pair<std::string,UniValue> Pair(const char *cKey, std::string strVal)
+{
+    std::string key(cKey);
+    UniValue uVal(strVal);
+    return std::make_pair(key, uVal);
+}
+
+static inline std::pair<std::string,UniValue> Pair(const char *cKey, uint64_t u64Val)
+{
+    std::string key(cKey);
+    UniValue uVal(u64Val);
+    return std::make_pair(key, uVal);
+}
+
+static inline std::pair<std::string,UniValue> Pair(const char *cKey, int64_t i64Val)
+{
+    std::string key(cKey);
+    UniValue uVal(i64Val);
+    return std::make_pair(key, uVal);
+}
+
+static inline std::pair<std::string,UniValue> Pair(const char *cKey, bool iVal)
+{
+    std::string key(cKey);
+    UniValue uVal(iVal);
+    return std::make_pair(key, uVal);
+}
+
+static inline std::pair<std::string,UniValue> Pair(const char *cKey, int iVal)
+{
+    std::string key(cKey);
+    UniValue uVal(iVal);
+    return std::make_pair(key, uVal);
+}
+
+static inline std::pair<std::string,UniValue> Pair(const char *cKey, double dVal)
+{
+    std::string key(cKey);
+    UniValue uVal(dVal);
+    return std::make_pair(key, uVal);
+}
+
+static inline std::pair<std::string,UniValue> Pair(const char *cKey, const UniValue& uVal)
+{
+    std::string key(cKey);
+    return std::make_pair(key, uVal);
+}
+
+static inline std::pair<std::string,UniValue> Pair(std::string key, const UniValue& uVal)
+{
+    return std::make_pair(key, uVal);
+}
 
 enum jtokentype {
     JTOK_ERR        = -1,
@@ -152,4 +235,41 @@ extern enum jtokentype getJsonToken(std::string& tokenVal,
                                     unsigned int& consumed, const char *raw);
 extern const char *uvTypeName(UniValue::VType t);
 
-#endif // BITCOIN_UNIVALUE_UNIVALUE_H
+static inline bool jsonTokenIsValue(enum jtokentype jtt)
+{
+    switch (jtt) {
+    case JTOK_KW_NULL:
+    case JTOK_KW_TRUE:
+    case JTOK_KW_FALSE:
+    case JTOK_NUMBER:
+    case JTOK_STRING:
+        return true;
+
+    default:
+        return false;
+    }
+
+    // not reached
+}
+
+static inline bool json_isspace(int ch)
+{
+    switch (ch) {
+    case 0x20:
+    case 0x09:
+    case 0x0a:
+    case 0x0d:
+        return true;
+
+    default:
+        return false;
+    }
+
+    // not reached
+}
+
+extern const UniValue NullUniValue;
+
+const UniValue& find_value( const UniValue& obj, const std::string& name);
+
+#endif // __UNIVALUE_H__
