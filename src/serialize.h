@@ -19,6 +19,8 @@
 #include <utility>
 #include <vector>
 #include "libzerocoin/Denominations.h"
+#include "compat/endian.h"
+#include "prevector.h"
 
 class CScript;
 
