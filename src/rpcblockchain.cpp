@@ -269,7 +269,7 @@ UniValue getblockhashes(const Array& params, bool fHelp)
 
     UniValue result(UniValue::VARR);
      for (std::vector<uint256>::const_iterator it=blockHashes.begin(); it!=blockHashes.end(); it++) {
-         ret.push_back(it->GetHex());
+         result.push_back(it->GetHex());
      }
 
       return result;
