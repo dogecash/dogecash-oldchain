@@ -15,7 +15,7 @@
 #include "utilmoneystr.h"
 
 #include <boost/tokenizer.hpp>
-
+#include "univalue.h"
 #include <fstream>
 using namespace json_spirit;
 
