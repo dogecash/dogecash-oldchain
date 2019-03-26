@@ -254,16 +254,7 @@ int64_t GetTreasuryAward(int nHeight);
 /** Create a new block index entry for a given block hash */
 CBlockIndex* InsertBlockIndex(uint256 hash);
 /** Abort with a message */
-static bool AbortNode(const std::string& strMessage, const std::string& userMessage="")
- {
-    SetMiscWarning(strMessage);
-    LogPrintf("*** %s\n", strMessage);
-    uiInterface.ThreadSafeMessageBox(
-        userMessage.empty() ? _("Error: A fatal internal error occurred, see debug.log for details") : userMessage,
-        "", CClientUIInterface::MSG_ERROR);
-    StartShutdown();
-    return false;
-}
+static bool AbortNode(const std::string& strMessage, const std::string& userMessage="");
 /** Get statistics from node state */
 bool GetNodeStateStats(NodeId nodeid, CNodeStateStats& stats);
 /** Increase a node's misbehavior score. */
