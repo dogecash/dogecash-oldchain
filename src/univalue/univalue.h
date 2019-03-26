@@ -138,14 +138,14 @@ public:
     // Strict type-specific getters, these throw std::runtime_error if the
     // value is of unexpected type
     std::vector<std::string> getKeys() const;
-    std::vector<UniValue> getValues() const;
-    bool get_bool() const;
-    std::string get_str() const;
-    int get_int() const;
-    int64_t get_int64() const;
-    double get_real() const;
-    const UniValue& get_obj() const;
-    const UniValue& get_array() const;
+    std::vector<UniValue> getValues();
+    bool get_bool();
+    std::string get_str();
+    int get_int();
+    int64_t get_int64();
+    double get_real();
+    const UniValue& get_obj();
+    const UniValue& get_array();
 
     enum VType type() const { return getType(); }
     bool push_back(std::pair<std::string,UniValue> pear) {
