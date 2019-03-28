@@ -230,6 +230,7 @@ RES_ICONS = \
   qt/res/icons/privacy.png \
   qt/res/icons/remove.png \
   qt/res/icons/send.png \
+  qt/res/icons/search.png \
   qt/res/icons/staking_active.png \
   qt/res/icons/staking_inactive.png \
   qt/res/icons/synced.png \
