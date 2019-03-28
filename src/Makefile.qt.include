@@ -190,64 +190,98 @@ BITCOIN_QT_H = \
   qt/zdogecashcontroldialog.h
 
 RES_ICONS = \
-  qt/res/icons/add.png \
-  qt/res/icons/address-book.png \
-  qt/res/icons/bitcoin.ico \
-  qt/res/icons/bitcoin.png \
-  qt/res/icons/bitcoin_testnet.ico \
-  qt/res/icons/bitcoin_testnet.png \
-  qt/res/icons/browse.png \
-  qt/res/icons/clock1.png \
-  qt/res/icons/clock2.png \
-  qt/res/icons/clock3.png \
-  qt/res/icons/clock4.png \
-  qt/res/icons/clock5.png \
-  qt/res/icons/configure.png \
-  qt/res/icons/connect0_16.png \
-  qt/res/icons/connect1_16.png \
-  qt/res/icons/connect2_16.png \
-  qt/res/icons/connect3_16.png \
-  qt/res/icons/connect4_16.png \
-  qt/res/icons/debugwindow.png \
-  qt/res/icons/edit.png \
-  qt/res/icons/editcopy.png \
-  qt/res/icons/editpaste.png \
-  qt/res/icons/explorer.png \
-  qt/res/icons/export.png \
-  qt/res/icons/eye.png \
-  qt/res/icons/eye_minus.png \
-  qt/res/icons/eye_plus.png \
-  qt/res/icons/filesave.png \
-  qt/res/icons/history.png \
-  qt/res/icons/key.png \
-  qt/res/icons/lock_closed.png \
-  qt/res/icons/lock_open.png \
-  qt/res/icons/masternodes.png \
-  qt/res/icons/overview.png \
-  qt/res/icons/qrcode.png \
-  qt/res/icons/quit.png \
-  qt/res/icons/receive.png \
-  qt/res/icons/privacy.png \
-  qt/res/icons/remove.png \
-  qt/res/icons/send.png \
-  qt/res/icons/search.png \
-  qt/res/icons/staking_active.png \
-  qt/res/icons/staking_inactive.png \
-  qt/res/icons/synced.png \
-  qt/res/icons/trade.png \
-  qt/res/icons/transaction0.png \
-  qt/res/icons/transaction2.png \
-  qt/res/icons/transaction_conflicted.png \
-  qt/res/icons/tx_inout.png \
-  qt/res/icons/tx_input.png \
-  qt/res/icons/tx_output.png \
-  qt/res/icons/tx_mined.png \
-  qt/res/icons/unit_dogecash.png \
-  qt/res/icons/unit_mdogecash.png \
-  qt/res/icons/unit_udogecash.png \
-  qt/res/icons/unit_tdogecash.png \
-  qt/res/icons/unit_tmdogecash.png \
-  qt/res/icons/unit_tudogecash.png
+qt/res/icons/__receive.png \
+qt/res/icons/_clock1.png \
+qt/res/icons/_clock2.png \
+qt/res/icons/_clock3.png \
+qt/res/icons/_clock4.png \
+qt/res/icons/_clock5.png \
+qt/res/icons/_connect4_16.png \
+qt/res/icons/_history.png \
+qt/res/icons/_lock_closed.png \
+qt/res/icons/_masternodes.png \
+qt/res/icons/_overview.png \
+qt/res/icons/_receive.png \
+qt/res/icons/_receive_active.png \
+qt/res/icons/_send.png \
+qt/res/icons/_staking_active.png \
+qt/res/icons/_staking_inactive.png \
+qt/res/icons/_transaction2.png \
+qt/res/icons/aboutqt.png \
+qt/res/icons/add.png \
+qt/res/icons/address-book.png \
+qt/res/icons/bitcoin.png \
+qt/res/icons/bitcoin_testnet.png \
+qt/res/icons/bittrex.png \
+qt/res/icons/browse.png \
+qt/res/icons/check_check.png \
+qt/res/icons/check_uncheck.png \
+qt/res/icons/clock1.png \
+qt/res/icons/clock2.png \
+qt/res/icons/clock3.png \
+qt/res/icons/clock4.png \
+qt/res/icons/clock5.png \
+qt/res/icons/configure.png \
+qt/res/icons/connect0_16.png \
+qt/res/icons/connect1_16.png \
+qt/res/icons/connect2_16.png \
+qt/res/icons/connect3_16.png \
+qt/res/icons/connect4_16.png \
+qt/res/icons/debugwindow.png \
+qt/res/icons/dogecash_logo_horizontal (copy 2).png \
+qt/res/icons/edit.png \
+qt/res/icons/editcopy.png \
+qt/res/icons/editpaste.png \
+qt/res/icons/explorer.png \
+qt/res/icons/export.png \
+qt/res/icons/eye.png \
+qt/res/icons/eye_minus.png \
+qt/res/icons/eye_plus.png \
+qt/res/icons/filesave.png \
+qt/res/icons/history.png \
+qt/res/icons/history_active.png \
+qt/res/icons/import.png \
+qt/res/icons/info.png \
+qt/res/icons/key.png \
+qt/res/icons/line_bg.png \
+qt/res/icons/line_bg_1.png \
+qt/res/icons/lock_closed.png \
+qt/res/icons/lock_open.png \
+qt/res/icons/masternodes.png \
+qt/res/icons/masternodes_active.png \
+qt/res/icons/no.png \
+qt/res/icons/notsynced.png \
+qt/res/icons/overview.png \
+qt/res/icons/overview_active.png \
+qt/res/icons/privacy.png \
+qt/res/icons/qrcode.png \
+qt/res/icons/quit.png \
+qt/res/icons/radio_check.png \
+qt/res/icons/radio_uncheck.png \
+qt/res/icons/receive.png \
+qt/res/icons/receive_active.png \
+qt/res/icons/remove.png \
+qt/res/icons/search.png \
+qt/res/icons/send.png \
+qt/res/icons/send_active.png \
+qt/res/icons/staking_active.png \
+qt/res/icons/staking_inactive.png \
+qt/res/icons/synced.png \
+qt/res/icons/trade.png \
+qt/res/icons/transaction0.png \
+qt/res/icons/transaction2.png \
+qt/res/icons/transaction_conflicted.png \
+qt/res/icons/tx_inout.png \
+qt/res/icons/tx_input.png \
+qt/res/icons/tx_mined.png \
+qt/res/icons/tx_output.png \
+qt/res/icons/unit_dogecash.png \
+qt/res/icons/unit_mdogecash.png \
+qt/res/icons/unit_tdogecash.png \
+qt/res/icons/unit_tmdogecash.png \
+qt/res/icons/unit_tudogecash.png \
+qt/res/icons/unit_udogecash.png \
+qt/res/icons/yes.png 
 
 BITCOIN_QT_CPP = \
   qt/bitcoinaddressvalidator.cpp \
