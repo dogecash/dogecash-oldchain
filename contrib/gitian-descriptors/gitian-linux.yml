@@ -39,11 +39,11 @@ script: |
   CONFIGFLAGS="--enable-glibc-back-compat --enable-reduce-exports --disable-bench --disable-gui-tests"
   FAKETIME_HOST_PROGS=""
   FAKETIME_PROGS="date ar ranlib nm"
-  HOST_CFLAGS="-O2 -g"
-  HOST_CXXFLAGS="-O2 -g"
-  HOST_LDFLAGS=-static-libstdc++
+  # HOST_CFLAGS="-O2 -g"
+  # HOST_CXXFLAGS="-O2 -g"
+  # HOST_LDFLAGS=-static-libc++
 
-  export QT_RCC_TEST=1
+  # export QT_RCC_TEST=1
   export GZIP="-9n"
   export TAR_OPTIONS="--mtime="$REFERENCE_DATE\\\ $REFERENCE_TIME""
   export TZ="UTC"
