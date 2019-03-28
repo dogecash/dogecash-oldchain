@@ -131,7 +131,7 @@ script: |
   # Create the release tarball using (arbitrarily) the first host
   ./autogen.sh
   CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --enable-tests=no --prefix=/
-  make dist
+  make dist -j10
   SOURCEDIST=`echo dogecash-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
   # Correct tar file order
@@ -152,9 +152,9 @@ script: |
     tar --strip-components=1 -xf ../$SOURCEDIST
 
     CONFIG_SITE=${BASEPREFIX}/${i}/share/config.site ./configure --prefix=/ --disable-ccache --disable-maintainer-mode --disable-dependency-tracking ${CONFIGFLAGS} CFLAGS="${HOST_CFLAGS}" CXXFLAGS="${HOST_CXXFLAGS}" LDFLAGS="${HOST_LDFLAGS} --enable-tests=no"
-    make ${MAKEOPTS}
+    make -j10 ${MAKEOPTS}
 
-    make install DESTDIR=${INSTALLPATH}
+    make install -j10 DESTDIR=${INSTALLPATH}
     cd installed
     find . -name "lib*.la" -delete
     find . -name "lib*.a" -delete

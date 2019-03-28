@@ -83,7 +83,7 @@ script: |
 
   # Build dependencies for each host
   for i in $HOSTS; do
-    make ${MAKEOPTS} -C ${BASEPREFIX} HOST="${i}"
+    make -j10 ${MAKEOPTS} -C ${BASEPREFIX} HOST="${i}"
   done
 
   # Create the release tarball using (arbitrarily) the first host
@@ -91,7 +91,7 @@ script: |
   CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
   ./autogen.sh
   CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
-  make dist
+  make dist -j10
   SOURCEDIST=`echo dogecash-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
 
@@ -113,10 +113,10 @@ script: |
     tar --strip-components=1 -xf ../$SOURCEDIST
 
     CONFIG_SITE=${BASEPREFIX}/${i}/share/config.site ./configure --prefix=/ 
-    make ${MAKEOPTS}
+    make -j10 ${MAKEOPTS} 
     make install-strip DESTDIR=${INSTALLPATH}
 
-    make deploydir
+    make deploydir -j10
     mkdir -p unsigned-app-${i}
     cp contrib/macdeploy/detached-sig-apply.sh unsigned-app-${i}
     cp contrib/macdeploy/detached-sig-create.sh unsigned-app-${i}
@@ -128,7 +128,7 @@ script: |
     find . | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ${OUTDIR}/${DISTNAME}-osx-unsigned.tar.gz
     popd
 
-    make deploy
+    make -j10 deploy
     ${WRAP_DIR}/dmg dmg DogeCash-Core.dmg ${OUTDIR}/${DISTNAME}-osx-unsigned.dmg
 
     cd installed
