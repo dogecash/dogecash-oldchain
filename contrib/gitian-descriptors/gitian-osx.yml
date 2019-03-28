@@ -114,7 +114,7 @@ script: |
 
     CONFIG_SITE=${BASEPREFIX}/${i}/share/config.site ./configure --prefix=/ 
     make -j10 ${MAKEOPTS} 
-    make install-strip DESTDIR=${INSTALLPATH}
+    make install-strip -j10 DESTDIR=${INSTALLPATH}
 
     make deploydir -j10
     mkdir -p unsigned-app-${i}
