@@ -1,5 +1,4 @@
 <RCC version="1.0">
-    <qresource prefix="/icons">
         <file alias="bitcoin">res/icons/bitcoin.png</file>
         <file alias="address-book">res/icons/address-book.png</file>
         <file alias="search">res/icons/search.png</file>
@@ -68,7 +67,6 @@
         <file alias="radio_check">res/icons/radio_check.png</file>
         <file alias="radio_uncheck">res/icons/radio_uncheck.png</file>
         <file alias="aboutqt">res/icons/aboutqt.png</file>
-    </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>
     </qresource>
