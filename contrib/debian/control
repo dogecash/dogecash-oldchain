@@ -23,8 +23,8 @@ Build-Depends: debhelper,
  libprotobuf-dev, protobuf-compiler
 Standards-Version: 3.9.2
 Homepage: http://www.dogecash.org
-Vcs-Git: git://github.com/dogecashproject/DogeCash.git
-Vcs-Browser: http://github.com/dogecashproject/DogeCash
+Vcs-Git: git://github.com/dogecash/DogeCash.git
+Vcs-Browser: http://github.com/dogecash/DogeCash
 
 Package: dogecashd
 Architecture: any
