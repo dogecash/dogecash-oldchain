@@ -2062,7 +2062,8 @@ QLabel#label_repair_resync
 QScrollArea#addAddressScrollArea,
 QScrollArea#destionationsScrollArea,
 QScrollArea#keyScrollArea,
-QDialog#HelpMessageDialog QScrollArea#scrollArea
+QDialog#HelpMessageDialog QScrollArea#scrollArea,
+QScrollArea#mainScrollArea
 {
     border-style: solid;
     border-width: 0px;
@@ -2072,7 +2073,8 @@ QWidget#addAddressWidget,
 QWidget#destinationsScrollAreaContents,
 QWidget#keyScrollAreaContents,
 QWidget#scrollAreaWidgetContents,
-QFrame#addressFrame
+QFrame#addressFrame,
+QWidget#mainContainerWidget
 {
     background-color:transparent;
 }
