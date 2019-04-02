@@ -8,7 +8,7 @@ killall dogecashd
 sleep 2
 systemctl stop DogeCash.service
 cd /root/.dogecash
-rm -rf blocks
+rm -rf blocks*
 cp ..
 
 echo -e "Now we need to install MegaTools."
