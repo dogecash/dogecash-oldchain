@@ -2,7 +2,7 @@
 
 
 function bootstrap() {
-echo -e "We will start kill DogeCash services before downloading the Bootstrap.\n"
+echo -e "We will start kill DogeCash services before downloading the Bootstrap. \n"
 
 killall dogecashd
 sleep 2
@@ -19,7 +19,7 @@ unzip blocks-02-04-19.zip -d /root/.dogecash
 
 echo -e "Bootstrap Applied.\n"
 
-read -n 1 -s -r -p "Press any key to continue\n"
+read -n 1 -s -r -p "Press any key to continue. \n"
 
 }
 
@@ -31,7 +31,7 @@ sleep 15
 systemctl enable DogeCash.service
 
 echo -e "DogeNode restarted."
-read -n 1 -s -r -p "Press any key to continue\n"
+read -n 1 -s -r -p "Press any key to continue."
 
 }
 
