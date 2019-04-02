@@ -1,7 +1,5 @@
 #!/bin/bash
 
-BLOCK_DL='https://mega.nz/#!pAJzkYZR!fx7gDaNyaf19V_Xt4da3T0ifevmUgKGJmbRqc7lMLVs'
-
 
 function bootstrap() {
 echo -e "We will start kill DogeCash services before downloading the Bootstrap."
@@ -13,7 +11,7 @@ systemctl stop DogeCash.service
 echo -e "Now we need to install MegaTools."
 sudo apt-get install -y megatools unzip
 
-megadl '$BLOCK_DL'
+megadl 'https://mega.nz/#!pAJzkYZR!fx7gDaNyaf19V_Xt4da3T0ifevmUgKGJmbRqc7lMLVs'
 unzip blocks_01.04.19.zip
 progress-bar 100
 cp -R /blocks /home/.dogecash
