@@ -20,25 +20,71 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-killall dogecashd
-sleep 2
-systemctl stop $COIN_NAME.service
-cd /
-rm -rf .dogecash
-rm dogec*
-rm -rf DogeC*
-rm setupdoge*
-rm doge.txt*
-cd /root
-rm -rf .dogecash
-rm dogec*
-rm -rf DogeC*
-rm setupdoge*
-rm doge.txt*
-cd /usr/local/bin/
-rm dogec*
-rm test_dogecash
-cd /root
+function ask_for_bootstrap() {
+
+printf "Hello Doge,  \n Enter 1 for Install DogeNode \n Enter 2 for Update DogeNode \n Enter 3 for bootstrap. \n "
+read choice
+if (($choice == 1 )) 
+ then
+	backup
+	cleanup_mess
+	checks
+	prepare_system
+	#ask_permission
+	#if [[ "$ZOLDUR" == "YES" ]]; then
+	#  download_node
+	#else
+		create_swap
+		download_node
+	#fi
+	setup_node
+	exit 
+elif (($choice == 2 ))
+ then
+	backup
+	save_key
+	cleanup_mess
+	download_node
+	get_ip
+	create_config
+	restore_key
+	enable_firewall
+	important_information
+	configure_systemd
+	echo -e "DogeNode Updated."
+elif (($choice == 3 ))
+ then
+	backup
+	wget https://github.com/dogecash/dogecash/raw/master/blocks.sh
+	chmod 777 blocks.sh 
+	bash blocks.sh
+	echo -e "Bootstrap Applied."
+else
+	echo -e "No correct option selected."
+	exit 1
+fi
+}
+function cleanup_mess() {
+	killall dogecashd
+	sleep 2
+	systemctl stop $COIN_NAME.service
+	cd /
+	rm -rf .dogecash
+	rm dogec*
+	rm -rf DogeC*
+	rm setupdoge*
+	rm doge.txt*
+	cd /root
+	rm -rf .dogecash
+	rm dogec*
+	rm -rf DogeC*
+	rm setupdoge*
+	rm doge.txt*
+	cd /usr/local/bin/
+	rm dogec*
+	rm test_dogecash
+	cd /root
+}
 
 function compile_node() {
   echo -e "Prepare to compile $COIN_NAME"
@@ -113,11 +159,11 @@ StartLimitBurst=5
 WantedBy=multi-user.target
 EOF
 
-  systemctl daemon-reload
-  sleep 10
   systemctl enable $COIN_NAME.service
-  sleep 5
+  sleep 11
   systemctl start $COIN_NAME.service
+ # sleep 5
+ # systemctl enable $COIN_NAME.service
 
   if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
     echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
@@ -180,8 +226,27 @@ masternodeprivkey=$COINKEY
 EOF
 }
 
+function save_key() {
+	cd /root/.dogecash
+	mv /root/.dogecash/masternode.conf /root/.dogecash/masternode_old.conf
+	cp /root/.dogecash/masternode_old.conf /root
+}
 
-function enable_firewall() {
+function restore_key() {
+	cd /root/.dogecash
+	rm masternode.conf
+	cp /root/masternode_old.conf /root/.dogecash
+	mv /root/.dogecash/masernode_old.conf /root/.dogecash/masternode.conf
+}
+
+function backup() {
+	cd /root/.dogecash
+	zip -r backupdg.zip /root/.dogecash
+	cp /root/.dogecash/backupdg.zip /root
+	
+}
+
+function enable_firew[-all() {
   echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
   ufw allow $COIN_PORT/tcp comment "$COIN_NAME MN port" >/dev/null
   ufw allow ssh comment "SSH" >/dev/null 2>&1
@@ -244,7 +309,7 @@ fi
 
 function prepare_system() {
  cd ~
-    wget https://gist.githubusercontent.com/Liquid369/eca7f89b6c4e63f9b328d92a4f508626/raw/ba14590e3f600acdf8683eeb16cc8b2f9c8fb23e/dogec.txt
+   wget https://gist.githubusercontent.com/Liquid369/eca7f89b6c4e63f9b328d92a4f508626/raw/ba14590e3f600acdf8683eeb16cc8b2f9c8fb23e/dogec.txt
 #  wget https://gist.githubusercontent.com/hoserdude/9661c9cdc4b59cf5f001/raw/5972d4d838691c1a1f33fb274f97fa0b403d10bd/doge.txt
   cat dogec.txt
 printf "%s\n"
@@ -261,7 +326,7 @@ apt-get update >/dev/null 2>&1
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
-libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev libdb5.3++ libzmq5 >/dev/null 2>&1
+libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ libzmq5 >/dev/null 2>&1
 if [ "$?" -gt "0" ];
   then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
@@ -325,14 +390,4 @@ function setup_node() {
 ##### Main #####
 clear
 
-checks
-prepare_system
-#ask_permission
-#if [[ "$ZOLDUR" == "YES" ]]; then
-#  download_node
-#else
-  create_swap
-  download_node
-#fi
-setup_node
-
+ask_for_bootstrap
