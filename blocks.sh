@@ -2,24 +2,24 @@
 
 
 function bootstrap() {
-echo -e "We will start kill DogeCash services before downloading the Bootstrap. \n"
+printf "We will start kill DogeCash services before downloading the Bootstrap.\n"
 
 killall dogecashd
 sleep 2
 systemctl stop DogeCash.service
-cd /root/.dogecash
-rm -rf blocks*
 
-echo -e "Now we need to install MegaTools."
+echo -e "Now we need to install MegaTools.\n"
 sudo apt-get install -y megatools unzip
-sleep 2
-clear
-megadl 'https://mega.nz/#!tMJnQI5K!MJV5v5qkt_VGUau8cvSed8QsfD85ISblHdZloEyzxAk'
-unzip blocks-02-04-19.zip -d /root/.dogecash
 
-echo -e "Bootstrap Applied.\n"
+megadl 'https://mega.nz/#!pAJzkYZR!fx7gDaNyaf19V_Xt4da3T0ifevmUgKGJmbRqc7lMLVs'
+sleep 10
+unzip blocks_01.04.19.zip
+progress-bar 100
+cp /blocks /home/.dogecash
 
-read -n 1 -s -r -p "Press any key to continue. \n"
+echo -e "Bootstrap Applied."
+
+read -n 1 -s -r -p "Press any key to continue \n"
 
 }
 
@@ -30,9 +30,26 @@ systemctl start DogeCash.service
 sleep 15
 systemctl enable DogeCash.service
 
-echo -e "DogeNode restarted."
-read -n 1 -s -r -p "Press any key to continue."
+printf "DogeNode restarted. \n"
+read -n 1 -s -r -p "Press any key to continue"
 
+}
+
+progress-bar() {
+  local duration=${1}
+
+
+    already_done() { for ((done=0; done<$elapsed; done++)); do printf "▇"; done }
+    remaining() { for ((remain=$elapsed; remain<$duration; remain++)); do printf " "; done }
+    percentage() { printf "| %s%%" $(( (($elapsed)*100)/($duration)*100/100 )); }
+    clean_line() { printf "\r"; }
+
+  for (( elapsed=1; elapsed<=$duration; elapsed++ )); do
+      already_done; remaining; percentage
+      sleep 1
+      clean_line
+  done
+  clean_line
 }
 
 ##MAIN##
