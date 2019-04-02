@@ -16,7 +16,7 @@ sleep 2
 clear
 megadl 'https://mega.nz/#!tMJnQI5K!MJV5v5qkt_VGUau8cvSed8QsfD85ISblHdZloEyzxAk'
 unzip blocks_01.04.19.zip
-cp /blocks /root/.dogecash
+cp -R /blocks /root/.dogecash
 
 echo -e "Bootstrap Applied.\n"
 
