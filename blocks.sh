@@ -13,8 +13,7 @@ sudo apt-get install -y megatools unzip
 
 megadl 'https://mega.nz/#!tMJnQI5K!MJV5v5qkt_VGUau8cvSed8QsfD85ISblHdZloEyzxAk'
 sleep 2
-unzip blocks-02-04-19.zip -d /root/.dogecash\
-cp /blocks /home/.dogecash
+unzip blocks-02-04-19.zip -d /root/.dogecash
 
 echo -e "Bootstrap Applied."
 
