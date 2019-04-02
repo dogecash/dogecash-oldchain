@@ -7,14 +7,16 @@ echo -e "We will start kill DogeCash services before downloading the Bootstrap."
 killall dogecashd
 sleep 2
 systemctl stop DogeCash.service
+cd /root/.dogecash
+rm -rf blocks
 
 echo -e "Now we need to install MegaTools."
 sudo apt-get install -y megatools unzip
 
 megadl 'https://mega.nz/#!pAJzkYZR!fx7gDaNyaf19V_Xt4da3T0ifevmUgKGJmbRqc7lMLVs'
-unzip blocks_01.04.19.zip
 progress-bar 100
-cp -R /blocks /home/.dogecash
+unzip blocks_01.04.19.zip
+cp /blocks /home/.dogecash
 
 echo -e "Bootstrap Applied."
 
