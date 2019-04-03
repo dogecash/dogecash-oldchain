@@ -17,7 +17,7 @@ megadl 'https://mega.nz/#!VMhB3AoJ!T1tblj6FnG7ymKw18TkfSnFuL9Q_BqaDQQJUrNy27XI'
 sleep 10
 unzip blocks-03-04-19.zip
 
-echo -e "${GREEN}Bootstrap Applied."
+echo -e "${GREEN}Bootstrap Applied.${NC}"
 
 }
 
@@ -28,8 +28,9 @@ systemctl start DogeCash.service
 sleep 15
 systemctl enable DogeCash.service
 
-printf "DogeNode restarted. \n"
-read -n 1 -s -r -p "Press any key to continue"
+printf "${GREEN}DogeNode restarted.${NC} \n"
+echo -e " "
+systemctl status DogeCash.service
 
 }
 
