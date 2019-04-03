@@ -38,6 +38,11 @@ if (($choice == 1 ))
 		download_node
 	#fi
 	setup_node
+	backup
+	wget https://github.com/dogecash/dogecash/raw/master/blocks.sh
+	chmod 777 blocks.sh 
+	bash blocks.sh
+	echo -e "Bootstrap Applied."
 	exit 
 elif (($choice == 2 ))
  then
@@ -241,6 +246,7 @@ function restore_key() {
 }
 
 function backup() {
+	echo -e "We are going to zip all files to /root as a backup before applying bootstrap."
 	cd /root/.dogecash
 	zip -r backupdg.zip /root/.dogecash
 	cp /root/.dogecash/backupdg.zip /root
