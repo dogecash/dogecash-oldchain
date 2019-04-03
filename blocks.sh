@@ -18,7 +18,7 @@ unzip blocks-03-04-19.zip
 
 echo -e "Bootstrap Applied."
 
-read -n 1 -s -r -p "Press any key to continue \n"
+read -n 1 -s -r -p "Press any key to continue "
 
 }
 
