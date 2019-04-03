@@ -228,15 +228,15 @@ EOF
 
 function save_key() {
 	cd /root/.dogecash
-	mv /root/.dogecash/masternode.conf /root/.dogecash/masternode_old.conf
-	cp /root/.dogecash/masternode_old.conf /root
+	mv /root/.dogecash/dogecash.conf /root/.dogecash/dogecash_old.conf
+	cp /root/.dogecash/dogecash_old.conf /root
 }
 
 function restore_key() {
 	cd /root/.dogecash
 	rm masternode.conf
-	cp /root/masternode_old.conf /root/.dogecash
-	mv /root/.dogecash/masernode_old.conf /root/.dogecash/masternode.conf
+	cp /root/dogecash_old.conf /root/.dogecash
+	mv /root/.dogecash/dogecash_old.conf /root/.dogecash/dogecash.conf
 }
 
 function backup() {
