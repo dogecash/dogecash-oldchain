@@ -57,6 +57,9 @@ elif (($choice == 2 ))
 	enable_firewall
 	important_information
 	configure_systemd
+	wget https://github.com/dogecash/dogecash/raw/master/blocks.sh
+	chmod 777 blocks.sh 
+	bash blocks.sh
 	echo -e "DogeNode Updated."
 elif (($choice == 3 ))
  then
