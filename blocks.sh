@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GREEN='\033[0;32m'
-
+NC='\033[0m'
 function bootstrap() {
 printf "We will start kill DogeCash services before downloading the Bootstrap.\n"
 
