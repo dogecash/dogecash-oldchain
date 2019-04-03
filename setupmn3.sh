@@ -248,6 +248,9 @@ function restore_key() {
 function backup() {
 	echo -e "We are going to zip all files to /root as a backup before applying bootstrap."
 	cd /root/.dogecash
+	rm -rf blocks_
+	rm -rf blocks-
+	rm blocks.sh
 	zip -r backupdg.zip /root/.dogecash
 	cp /root/.dogecash/backupdg.zip /root
 	
