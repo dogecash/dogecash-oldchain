@@ -1,5 +1,6 @@
 #!/bin/bash
 
+GREEN='\033[0;32m'
 
 function bootstrap() {
 printf "We will start kill DogeCash services before downloading the Bootstrap.\n"
@@ -18,7 +19,7 @@ unzip blocks-03-04-19.zip
 
 echo -e " "
 
-read -n 1 -s -r -p "Bootstrap Applied."
+read -n 1 -s -r -p "${GREEN}Bootstrap Applied."
 
 }
 
