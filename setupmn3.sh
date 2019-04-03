@@ -47,6 +47,7 @@ elif (($choice == 2 ))
 	download_node
 	get_ip
 	create_config
+	update_config
 	restore_key
 	enable_firewall
 	important_information
@@ -246,7 +247,7 @@ function backup() {
 	
 }
 
-function enable_firew[-all() {
+function enable_firewall() {
   echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
   ufw allow $COIN_PORT/tcp comment "$COIN_NAME MN port" >/dev/null
   ufw allow ssh comment "SSH" >/dev/null 2>&1
