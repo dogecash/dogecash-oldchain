@@ -51,8 +51,6 @@ elif (($choice == 2 ))
 	cleanup_mess
 	download_node
 	get_ip
-	create_config
-	update_config
 	restore_key
 	enable_firewall
 	important_information
