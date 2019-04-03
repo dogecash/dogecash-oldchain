@@ -17,9 +17,7 @@ megadl 'https://mega.nz/#!VMhB3AoJ!T1tblj6FnG7ymKw18TkfSnFuL9Q_BqaDQQJUrNy27XI'
 sleep 10
 unzip blocks-03-04-19.zip
 
-echo -e " "
-
-read -n 1 -s -r -p "${GREEN}Bootstrap Applied."
+echo -e "${GREEN}Bootstrap Applied."
 
 }
 
