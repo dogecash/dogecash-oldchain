@@ -211,7 +211,9 @@ qt/res/icons/aboutqt.png \
 qt/res/icons/add.png \
 qt/res/icons/address-book.png \
 qt/res/icons/bitcoin.png \
+qt/res/icons/bitcoin.ico \
 qt/res/icons/bitcoin_testnet.png \
+qt/res/icons/bitcoin_testnet.ico \
 qt/res/icons/bittrex.png \
 qt/res/icons/browse.png \
 qt/res/icons/check_check.png \
