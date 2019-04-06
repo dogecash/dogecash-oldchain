@@ -1,5 +1,5 @@
 ---
-name: "dogecash-linux-3.0.0"
+name: "dogecash-linux-3.1.0"
 enable_cache: true
 suites:
 - "trusty"
