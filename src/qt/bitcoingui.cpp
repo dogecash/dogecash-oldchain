@@ -57,6 +57,7 @@
 #include <QVBoxLayout>
 #include <QFontDatabase>
 #include <QToolButton>
+#include <QScrollArea>
 
 #if QT_VERSION < 0x050000
 #include <QTextDocument>
@@ -657,9 +658,14 @@ void BitcoinGUI::createToolBars()
         layout->addWidget(walletFrame);
         layout->setSpacing(0);
         layout->setContentsMargins(QMargins());
+        QScrollArea * scrollArea = new QScrollArea();
+        scrollArea->setObjectName("mainScrollArea");
+        scrollArea->setWidgetResizable(true);
         QWidget* containerWidget = new QWidget();
+        containerWidget->setObjectName("mainContainerWidget");
         containerWidget->setLayout(layout);
-        setCentralWidget(containerWidget);
+        scrollArea->setWidget(containerWidget);
+        setCentralWidget(scrollArea);
     }
 }
 
