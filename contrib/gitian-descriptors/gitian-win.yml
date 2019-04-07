@@ -145,6 +145,7 @@ script: |
     make  ${MAKEOPTS}
     make deploy 
     make install  DESTDIR=${INSTALLPATH}
+    rename 's/-setup\.exe$/-setup-unsigned.exe/' *-setup.exe
     cp -f dogecash-*setup*.exe $OUTDIR/
     cd installed
     # mv ${DISTNAME}/bin/*.dll ${DISTNAME}/lib/ # temporarily disabled for Zerocoin
