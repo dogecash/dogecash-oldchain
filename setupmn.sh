@@ -73,7 +73,7 @@ fi
 }
 function cleanup_mess() {
 	killall dogecashd
-	sleep 2
+	sleep 11
 	systemctl stop $COIN_NAME.service
 	cd /
 	rm -rf .dogecash
@@ -122,7 +122,6 @@ function download_node() {
   rm -rf dogecash*
   cd ~
   wget -q $COIN_TGZ
-  apt install unzip 
   compile_error
 #   tar xvzf $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
 # unzip dogecash.zip
@@ -167,6 +166,7 @@ StartLimitBurst=5
 WantedBy=multi-user.target
 EOF
 
+  sleep 5
   systemctl enable $COIN_NAME.service
   sleep 11
   systemctl start $COIN_NAME.service
@@ -249,6 +249,7 @@ function restore_key() {
 
 function backup() {
 	echo -e "We are going to zip all files to /root as a backup before applying bootstrap."
+	apt-get install -y zip unzip
 	cd /root/.dogecash
 	rm -rf blocks_
 	rm -rf blocks-
@@ -378,7 +379,7 @@ function important_information() {
  echo
  echo -e "================================================================================================================================"
  echo -e "$COIN_NAME Cold Masternode is up and running listening on port ${RED}$COIN_PORT${NC}."
-echo -e "MNCONF Line: mn1 ${RED}$NODEIP:$COIN_PORT${NC} ${RED}$COINKEY${NC} txhash txid "
+ echo -e "MNCONF Line: mn1 ${RED}$NODEIP:$COIN_PORT${NC} ${RED}$COINKEY${NC} txhash txid "
  echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
  echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
  echo -e "Stop: ${RED}systemctl stop $COIN_NAME.service${NC}"
