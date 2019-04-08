@@ -13,9 +13,9 @@ printf "Now we need to install MegaTools.\n"
 sudo apt-get install -y megatools unzip
 
 cd /root/.dogecash
-megadl 'https://mega.nz/#!VMhB3AoJ!T1tblj6FnG7ymKw18TkfSnFuL9Q_BqaDQQJUrNy27XI'
+megadl 'https://mega.nz/#!QNAnFIBS!VVJ0EX1-oAuWf1TXhLJrEKrPW4bUgQA1BJy8mgRP4dk'
 sleep 10
-unzip blocks-03-04-19.zip
+unzip blocks-08-04-19 .zip
 
 echo -e "${GREEN}Bootstrap Applied.${NC}"
 
