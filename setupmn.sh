@@ -87,7 +87,7 @@ function cleanup_mess() {
 	rm -rf DogeC*
 	rm setupdoge*
 	rm doge.txt*
-	cd /usr/local/bin/
+	cd $COIN_PATH
 	rm dogec*
 	rm test_dogecash
 	cd /root
@@ -127,9 +127,10 @@ function download_node() {
 # unzip dogecash.zip
 tar xvzf dogecash-3.1.0-x86_64-linux-gnu.tar.gz
 cd dogecash-3.1.0-x86_64-linux-gnu/dogecash-3.1.0/bin
-cp * /usr/local/bin
+chmod -R 775 *
+cp * $COIN_PATH
 cd ..
-cd /usr/local/bin
+cd $COIN_PATH
 chmod -R 775 *
 cd ..
   cd - >/dev/null 2>&1
