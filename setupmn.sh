@@ -126,7 +126,7 @@ function download_node() {
 #   tar xvzf $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
 # unzip dogecash.zip
 tar xvzf dogecash-3.1.0-x86_64-linux-gnu.tar.gz
-cd dogecash-3.1.0-x86_64-linux-gnu/dogecash-3.1.0/bin
+cd dogecash-3.1.0/bin
 chmod -R 775 *
 cp * $COIN_PATH
 cd ..
