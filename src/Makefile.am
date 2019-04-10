@@ -134,12 +134,10 @@ BITCOIN_CORE_H = \
   protocol.h \
   pubkey.h \
   random.h \
-  reverselock.h \
   reverse_iterate.h \
   rpcclient.h \
   rpcprotocol.h \
   rpcserver.h \
-  scheduler.h \
   script/interpreter.h \
   script/script.h \
   script/sigcache.h \
@@ -217,7 +215,6 @@ libbitcoin_server_a_SOURCES = \
   rpcnet.cpp \
   rpcrawtransaction.cpp \
   rpcserver.cpp \
-  scheduler.cpp \
   script/sigcache.cpp \
   sporkdb.cpp \
   timedata.cpp \
