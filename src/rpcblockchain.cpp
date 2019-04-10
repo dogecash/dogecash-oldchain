@@ -13,7 +13,8 @@
 #include "util.h"
 
 #include <stdint.h>
-
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Options.hpp>
 #include "json/json_spirit_value.h"
 #include "utilmoneystr.h"
 #include "base58.h"
@@ -549,7 +550,45 @@ Value getblockchaininfo(const Array& params, bool fHelp)
     obj.push_back(Pair("chainwork", chainActive.Tip()->nChainWork.GetHex()));
     return obj;
 }
+Value checkifsynced const Array& params,bool fHelp)
+{
+    if (fHelp || params.size() != 0)
+        throw runtime_error(
+            "checkifsynced\n"
+            "Returns an object containing various state info regarding sync status\n"
+            "\nResult:\n"
+            "{\n"
+            "  \"isinlinewithexplorer\": \"xxxx\",        (boolean) returns if diff and block number matches to explorer api\n"
+            "  \"blockslocal\": xxxxxx,         (numeric) the current number of blocks processed in the server\n"
+            "  \"blocksexplorer\": xxxxxx,        (numeric) the current number of headers we have validated\n"
+            "  \"bestblockhash\": \"...\", (string) the hash of the currently best block\n"
+            "  \"difficultylocal\": xxxxxx,     (numeric) the current difficulty\n"
+            "  \"difficultyexplorer\": xxxx, (numeric) the current difficulty from explorer\n"
+            "  \"chainwork\": \"xxxx\"     (string) total amount of work in active chain, in hexadecimal\n"
+            "}\n"
+            "\nExamples:\n" +
+            HelpExampleCli("checkifsynced", "") + HelpExampleRpc("checkifsynced", ""));
 
+ curlpp::Cleanup myCleanup;
+
+// Send request and get a result.
+// Here I use a shortcut to get it in a string stream ...
+
+std::ostringstream os;
+os << curlpp::options::Url(std::string("https://api.dogec.io/api/coin/"));
+
+string asAskedInQuestion = os.str();
+    Object obj;
+
+    obj.push_back(Pair("chain", Params().NetworkIDString()));
+    obj.push_back(Pair("blocks", (int)chainActive.Height()));
+    obj.push_back(Pair("headers", pindexBestHeader ? pindexBestHeader->nHeight : -1));
+    obj.push_back(Pair("bestblockhash", chainActive.Tip()->GetBlockHash().GetHex()));
+    obj.push_back(Pair("difficulty", (double)GetDifficulty()));
+    obj.push_back(Pair("verificationprogress", Checkpoints::GuessVerificationProgress(chainActive.Tip())));
+    // obj.push_back(Pair("chainwork", chainActive.Tip()->nChainWork.GetHex()));
+    return obj;
+}
 /** Comparison function for sorting the getchaintips heads.  */
 struct CompareBlocksByHeight {
     bool operator()(const CBlockIndex* a, const CBlockIndex* b) const
