@@ -11,6 +11,7 @@
 #include "main.h"
 #include "masternodeconfig.h"
 #include "noui.h"
+#include "scheduler.h"
 #include "rpcserver.h"
 #include "ui_interface.h"
 #include "util.h"
@@ -58,6 +59,7 @@ void DetectShutdownThread(boost::thread_group* threadGroup)
 bool AppInit(int argc, char* argv[])
 {
     boost::thread_group threadGroup;
+    CScheduler scheduler;
     boost::thread* detectShutdownThread = NULL;
 
     bool fRet = false;
@@ -144,7 +146,7 @@ bool AppInit(int argc, char* argv[])
         SoftSetBoolArg("-server", true);
 
         detectShutdownThread = new boost::thread(boost::bind(&DetectShutdownThread, &threadGroup));
-        fRet = AppInit2(threadGroup);
+        fRet = AppInit2(threadGroup, scheduler);
     } catch (std::exception& e) {
         PrintExceptionContinue(&e, "AppInit()");
     } catch (...) {
