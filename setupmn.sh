@@ -73,15 +73,18 @@ function cleanup_mess() {
 	rm -rf DogeC*
 	rm setupdoge*
 	rm doge.txt*
+	rm block*
 	cd /root
 	rm -rf .dogecash
 	rm dogec*
 	rm -rf DogeC*
 	rm setupdoge*
+	rm block*
 	rm doge.txt*
 	cd $COIN_PATH
 	rm dogec*
 	rm test_dogecash
+	rm block*
 	cd /root
 }
 
