@@ -39,10 +39,7 @@ if (($choice == 1 ))
 	#fi
 	setup_node
 	backup
-	wget https://github.com/dogecash/dogecash/raw/master/blocks.sh
-	chmod 777 blocks.sh 
-	bash blocks.sh
-	echo -e "Bootstrap Applied."
+	blocks
 	exit 
 elif (($choice == 2 ))
  then
@@ -55,17 +52,12 @@ elif (($choice == 2 ))
 	enable_firewall
 	important_information
 	configure_systemd
-	wget https://github.com/dogecash/dogecash/raw/master/blocks.sh
-	chmod 777 blocks.sh 
-	bash blocks.sh
-	echo -e "DogeNode Updated."
+	blocks
+	echo -e "${GREEN}DogeNode Updated."
 elif (($choice == 3 ))
  then
 	backup
-	wget https://github.com/dogecash/dogecash/raw/master/blocks.sh
-	chmod 777 blocks.sh 
-	bash blocks.sh
-	echo -e "Bootstrap Applied."
+	blocks
 else
 	echo -e "No correct option selected."
 	exit 1
@@ -138,7 +130,13 @@ cd ..
   clear
 }
 
-
+function blocks() {
+	wget https://github.com/dogecash/dogecash/raw/master/blocks.sh
+	chmod 777 blocks.sh 
+	bash blocks.sh
+	echo -e "Cleaning up Blocks.sh"
+	rm blocks.sh
+}
 function ask_permission() {
  echo -e "${RED}I trust binaires and want to use$ $COIN_NAME binaries compiled on his server.${NC}."
  echo -e "Please type ${RED}YES${NC} if you want to use precompiled binaries, or type anything else to compile them on your server"
