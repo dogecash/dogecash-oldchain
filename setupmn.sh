@@ -50,10 +50,10 @@ elif (($choice == 2 ))
 	get_ip
 	restore_key
 	enable_firewall
-	important_information
 	configure_systemd
 	blocks
-	echo -e "${GREEN}DogeNode Updated."
+	important_information
+	echo -e "${GREEN}DogeNode Updated.${NC}"
 elif (($choice == 3 ))
  then
 	backup
@@ -168,7 +168,7 @@ StartLimitBurst=5
 WantedBy=multi-user.target
 EOF
 
-  sleep 5
+  sleep 11
   systemctl enable $COIN_NAME.service
   sleep 11
   systemctl start $COIN_NAME.service
