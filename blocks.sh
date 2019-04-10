@@ -6,7 +6,7 @@ function bootstrap() {
 printf "We will start kill DogeCash services before downloading the Bootstrap.\n"
 
 killall dogecashd
-sleep 2
+sleep 5
 systemctl stop DogeCash.service
 
 printf "Now we need to install MegaTools.\n"
@@ -25,8 +25,9 @@ echo -e "${GREEN}Bootstrap Applied.${NC}"
 function restart_mn() {
 
 systemctl start DogeCash.service
-sleep 15
+sleep 11
 systemctl enable DogeCash.service
+sleep 11
 
 printf "${GREEN}DogeNode restarted.${NC} \n"
 echo -e " "
