@@ -40,6 +40,7 @@ if (($choice == 1 ))
 	setup_node
 	backup
 	blocks
+	important_information
 	exit 
 elif (($choice == 2 ))
  then
