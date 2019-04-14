@@ -4757,25 +4757,8 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
         if (!checked) {
             return error ("%s : CheckBlock FAILED for block %s", __func__, pblock->GetHash().GetHex());
         }
-       if (pfrom && GetBoolArg("-blockspamfilter", DEFAULT_BLOCK_SPAM_FILTER)) {
-             CNodeState *nodestate = State(pfrom->GetId());
-             BlockMap::iterator mi = mapBlockIndex.find(pblock->hashPrevBlock);
-             // we already checked this isn't the end
-             nodestate->nodeBlocks.onBlockReceived(mi->second->nHeight);
-             bool nodeStatus = true;
-             // UpdateState will return false if the node is attacking us or update the score and return true.
-             nodeStatus = nodestate->nodeBlocks.updateState(state, nodeStatus);
-             int nDoS = 0;
-             if (state.IsInvalid(nDoS)) {
-                 if (nDoS > 0)
-                     Misbehaving(pfrom->GetId(), nDoS);
-                 nodeStatus = false;
-             }
-             if(!nodeStatus)
-                 return error("%s : AcceptBlock FAILED - block spam protection", __func__);
-         }
-
-        // Store to disk
+     
+	// Store to disk
         CBlockIndex* pindex = NULL;
         bool ret = AcceptBlock (*pblock, state, &pindex, dbp, checked);
         if (pindex && pfrom) {
@@ -4783,9 +4766,28 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
         }
         CheckBlockIndex();
         if (!ret)
-            return error ("%s : AcceptBlock FAILED", __func__);
+		if (pindex && pfrom && GetBoolArg("-blockspamfilter", DEFAULT_BLOCK_SPAM_FILTER)) {
+             	CNodeState *nodestate = State(pfrom->GetId());
+             	BlockMap::iterator mi = mapBlockIndex.find(pblock->hashPrevBlock);
+             	// we already checked this isn't the end
+             	nodestate->nodeBlocks.onBlockReceived(mi->second->nHeight);
+             	bool nodeStatus = true;
+             	// UpdateState will return false if the node is attacking us or update the score and return true.
+             	nodeStatus = nodestate->nodeBlocks.updateState(state, nodeStatus);
+             	int nDoS = 0;
+             		if (state.IsInvalid(nDoS)) {
+                 		if (nDoS > 0)
+                     			Misbehaving(pfrom->GetId(), nDoS);
+                 			nodeStatus = false;
+             	}
+             	if(!nodeStatus)
+                 	return error("%s : AcceptBlock FAILED - block spam protection", __func__);
+         }
+		 
+		             return error ("%s : AcceptBlock FAILED", __func__);
     }
-
+	    
+	    
     if (!ActivateBestChain(state, pblock, checked))
         return error("%s : ActivateBestChain failed", __func__);
 
