@@ -97,10 +97,8 @@ bool IsProtocolMaturityV2(int nHeight)
 
 unsigned int GetStakeMinAge(int nHeight)
 {
-    if(IsProtocolMaturityV2(nHeight)) 
+    if(nHeight >= 276000) 
         return nStakeMinAgeV2;
-    else
-        return nStakeMinAgeV1;
 }
 
 int GetMinPeerProtoVersion(int nHeight)
@@ -4254,13 +4252,15 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 
     // Check that the header is valid (particularly PoW).  This is mostly
     // redundant with the call in AcceptBlockHeader.
-    if (!CheckBlockHeader(block, state, fCheckPOW))
+    if (!CheckBlockHeader(block, state, block.IsProofOfWork()))
         return state.DoS(100, error("CheckBlock() : CheckBlockHeader failed"),
             REJECT_INVALID, "bad-header", true);
 
+
+
     // Check timestamp
     LogPrint("debug", "%s: block=%s  is proof of stake=%d\n", __func__, block.GetHash().ToString().c_str(), block.IsProofOfStake());
-    if (block.GetBlockTime() > GetAdjustedTime() + (block.IsProofOfStake() ? 180 : 7200)) // 3 minute future drift for PoS
+    if (block.GetBlockTime() > GetAdjustedTime() + (block.IsProofOfStake() ? 180 : 7200)  && (GetAdjustedTime() - 600) > block.GetBlockTime()) // 3 minute future drift for PoS
         return state.Invalid(error("CheckBlock() : block timestamp too far in the future"),
             REJECT_INVALID, "time-too-new");
 
@@ -4768,9 +4768,10 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
         if (!ret)
 		if (pindex && pfrom && GetBoolArg("-blockspamfilter", DEFAULT_BLOCK_SPAM_FILTER)) {
              	CNodeState *nodestate = State(pfrom->GetId());
-             	BlockMap::iterator mi = mapBlockIndex.find(pblock->hashPrevBlock);
+		if(nodestate != nullptr) {
+             	//BlockMap::iterator mi = mapBlockIndex.find(pblock->hashPrevBlock);
              	// we already checked this isn't the end
-             	nodestate->nodeBlocks.onBlockReceived(mi->second->nHeight);
+             	nodestate->nodeBlocks.onBlockReceived(pindex->nHeight);
              	bool nodeStatus = true;
              	// UpdateState will return false if the node is attacking us or update the score and return true.
              	nodeStatus = nodestate->nodeBlocks.updateState(state, nodeStatus);
@@ -4783,11 +4784,10 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
              	if(!nodeStatus)
                  	return error("%s : AcceptBlock FAILED - block spam protection", __func__);
          }
-		 
+	
 		             return error ("%s : AcceptBlock FAILED", __func__);
     }
-	    
-	    
+}
     if (!ActivateBestChain(state, pblock, checked))
         return error("%s : ActivateBestChain failed", __func__);
 
