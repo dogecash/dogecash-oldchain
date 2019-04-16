@@ -97,7 +97,7 @@ bool IsProtocolMaturityV2(int nHeight)
 
 unsigned int GetStakeMinAge(int nHeight)
 {
-    if(nHeight >= 276000) 
+    if(nHeight >= 277000) 
         return nStakeMinAgeV2;
 }
 
