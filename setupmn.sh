@@ -38,9 +38,6 @@ if (($choice == 1 ))
 		download_node
 	#fi
 	setup_node
-	backup
-	blocks
-	important_information
 	exit 
 elif (($choice == 2 ))
  then
@@ -393,6 +390,7 @@ function important_information() {
 }
 
 function setup_node() {
+  blocks
   get_ip
   create_config
   create_key
