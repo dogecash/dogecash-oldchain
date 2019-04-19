@@ -39,4 +39,3 @@ systemctl status DogeCash.service
 
 clear
 bootstrap
-restart_mn
