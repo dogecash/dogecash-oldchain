@@ -26,7 +26,6 @@ printf "Hello Doge,  \n Enter 1 for Install DogeNode \n Enter 2 for Update DogeN
 read choice
 if (($choice == 1 )) 
  then
-	backup
 	cleanup_mess
 	checks
 	prepare_system
@@ -390,12 +389,12 @@ function important_information() {
 }
 
 function setup_node() {
-  blocks
   get_ip
   create_config
   create_key
   update_config
   enable_firewall
+  blocks
   important_information
   configure_systemd
 }
