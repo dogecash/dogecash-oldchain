@@ -165,6 +165,7 @@ StartLimitBurst=5
 WantedBy=multi-user.target
 EOF
 
+  systemctl stop $COIN_NAME.service
   sleep 11
   systemctl enable $COIN_NAME.service
   sleep 11
