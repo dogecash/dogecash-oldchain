@@ -15,7 +15,7 @@ sudo apt-get install -y megatools p7zip-full
 cd /root/.dogecash
 megadl 'https://mega.nz/#!BcoWEIjK!s1QHoXIQH3NrLWwleOaXcWbwgdF7HbUGt_ALdi94iPI'
 sleep 10
-7z -e blocks-21-04-19.7z
+7z e blocks-21-04-19.7z
 
 echo -e "${GREEN}Bootstrap Applied.${NC}"
 
