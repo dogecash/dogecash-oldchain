@@ -10,12 +10,12 @@ sleep 5
 systemctl stop DogeCash.service
 
 printf "Now we need to install MegaTools.\n"
-sudo apt-get install -y megatools unzip
+sudo apt-get install -y megatools p7zip-full
 
 cd /root/.dogecash
-megadl 'https://mega.nz/#!QNAnFIBS!VVJ0EX1-oAuWf1TXhLJrEKrPW4bUgQA1BJy8mgRP4dk'
+megadl 'https://mega.nz/#!BcoWEIjK!s1QHoXIQH3NrLWwleOaXcWbwgdF7HbUGt_ALdi94iPI'
 sleep 10
-unzip blocks-08-04-19.zip
+7z -e blocks-21-04-19.7z
 
 echo -e "${GREEN}Bootstrap Applied.${NC}"
 
