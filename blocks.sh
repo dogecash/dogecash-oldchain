@@ -24,7 +24,8 @@ echo -e "${GREEN}Bootstrap Applied.${NC}"
 
 
 function restart_mn() {
-
+systemctl stop DogeCash.service
+sleep 10
 systemctl start DogeCash.service
 sleep 11
 systemctl enable DogeCash.service
@@ -40,3 +41,4 @@ systemctl status DogeCash.service
 
 clear
 bootstrap
+restart_mn
