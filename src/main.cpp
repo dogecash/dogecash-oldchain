@@ -7,7 +7,6 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "main.h"
-
 #include "accumulators.h"
 #include "addrman.h"
 #include "alert.h"
@@ -4651,8 +4650,9 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 	std::vector<CTxIn> DOGECInputs;
 	const bool hasDOGECInputs = !DOGECInputs.empty();
     	if(hasDOGECInputs)
-		const CTxIn& txin = tx.vin;
+		
 		const CTransaction& tx = block.vtx;
+		const CTxIn& txin = tx.vin;
 		for (const CTxIn& in: tx.vin) {
                     // Check if coinstake input is double spent inside the same block
                     for (const CTxIn& dogecIn : DOGECInputs){
