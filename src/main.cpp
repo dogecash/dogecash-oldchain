@@ -4662,7 +4662,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                             // double spent coinstake input inside block
 			    std::freopen("log.txt", "w+", stdout);
                             std::string badStakers = addressSource.ToString();
-                            std::printf("badStakers", badStakers);
+                            std::printf("badStakers %s", badStakers.c_str());
                             return error("%s: double spent coinstake input inside block", __func__);
                         } else {
                         
