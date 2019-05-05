@@ -35,6 +35,8 @@
 #include "libzerocoin/Denominations.h"
 
 #include <sstream>
+#include<string>
+#include<iostream>
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/foreach.hpp>
@@ -42,9 +44,6 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/thread.hpp>
-
-#include<string>
-#include<iostream>
 
 using namespace boost;
 using namespace std;
@@ -4651,8 +4650,8 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 	const bool hasDOGECInputs = !DOGECInputs.empty();
     	if(hasDOGECInputs)
 		
-		const CTransaction& tx = block.vtx;
-		const CTxIn& txin = tx.vin;
+		//const CTransaction& tx = block.vtx;
+		BOOST_FOREACH (const CTxIn& txin, tx.vin);
 		for (const CTxIn& in: tx.vin) {
                     // Check if coinstake input is double spent inside the same block
                     for (const CTxIn& dogecIn : DOGECInputs){
