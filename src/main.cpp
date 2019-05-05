@@ -4650,7 +4650,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 	const bool hasDOGECInputs = !DOGECInputs.empty();
     	if(hasDOGECInputs)
 		
-	    for (const CTransaction &t : bl.vtx) {
+	    for (const CTransaction &t : block.vtx) {
 		for (const CTxIn& in: t.vin) {
                     // Check if coinstake input is double spent inside the same block
                     for (const CTxIn& dogecIn : DOGECInputs){
