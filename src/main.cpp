@@ -38,6 +38,7 @@
 #include <sstream>
 
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/foreach.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/lexical_cast.hpp>
@@ -4650,7 +4651,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 	std::vector<CTxIn> DOGECInputs;
 	const bool hasDOGECInputs = !DOGECInputs.empty();
     	if(hasDOGECInputs)
-		BOOST_FOREACH(const CTxIn& txin, tx, tx.vin)
+		BOOST_FOREACH(const CTxIn& txin, tx, tx.vin);
 		for (const CTxIn& in: tx.vin) {
                     // Check if coinstake input is double spent inside the same block
                     for (const CTxIn& dogecIn : DOGECInputs){
