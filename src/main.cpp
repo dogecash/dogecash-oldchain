@@ -4644,7 +4644,23 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         return state.Abort(std::string("System error: ") + e.what());
     }
 
-    return true;
+	std::vector<CTxIn> DOGECInputs;
+	const bool hasDOGECInputs = !DOGECInputs.empty();
+
+    	if(hasDOGECInputs)
+                    // Check if coinstake input is double spent inside the same block
+                    for (const CTxIn& dogecIn : DOGECInputs){
+                        if(dogecIn.prevout == in.prevout){
+                            // double spent coinstake input inside block
+                            CBitcoinAddress addressSource(source);
+                            std::string badStakers = addressSource.ToString();
+                            std::printf("badStakers", badStakers);
+                            return error("%s: double spent coinstake input inside block", func);
+                        } else {
+                        
+                        return true;
+                    }
+    
 }
 
 bool CBlockIndex::IsSuperMajority(int minVersion, const CBlockIndex* pstart, unsigned int nRequired)
