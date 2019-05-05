@@ -4647,18 +4647,18 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         return state.Abort(std::string("System error: ") + e.what());
     }
 	
+	std::vector<CTxIn> DOGECInputs;
+	const bool hasDOGECInputs = !DOGECInputs.empty();
     	if(hasDOGECInputs)
-		CTxDestination source;
-		std::vector<CTxIn> DOGECInputs;
-		const bool hasDOGECInputs = !DOGECInputs.empty();
-		//convert to an address
-		//const char addressSource;
-		CBitcoinAddress addressSource(source);
-		
+		BOOST_FOREACH(const CTxIn& txin, tx.vin)
 		for (const CTxIn& in: tx.vin) {
                     // Check if coinstake input is double spent inside the same block
                     for (const CTxIn& dogecIn : DOGECInputs){
                         if(dogecIn.prevout == in.prevout){
+			    CTxDestination source;
+			    //convert to an address
+			    //const char addressSource;
+	   		    CBitcoinAddress addressSource(source);
                             // double spent coinstake input inside block
 			    std::freopen("log.txt", "w+", stdout);
                             std::string badStakers = addressSource.ToString();
