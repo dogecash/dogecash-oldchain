@@ -4646,7 +4646,8 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 
 	std::vector<CTxIn> DOGECInputs;
 	const bool hasDOGECInputs = !DOGECInputs.empty();
-
+	CTxDestination source;
+	
     	if(hasDOGECInputs)
                     // Check if coinstake input is double spent inside the same block
                     for (const CTxIn& dogecIn : DOGECInputs){
