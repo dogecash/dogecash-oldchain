@@ -43,6 +43,9 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/thread.hpp>
 
+#include<string>
+#include<iostream>
+
 using namespace boost;
 using namespace std;
 using namespace libzerocoin;
@@ -4652,13 +4655,14 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 		//const char addressSource;
 		CBitcoinAddress addressSource(source);
 		
-		            for (const CTxIn& in: tx.vin) {
+		for (const CTxIn& in: tx.vin) {
                     // Check if coinstake input is double spent inside the same block
                     for (const CTxIn& dogecIn : DOGECInputs){
                         if(dogecIn.prevout == in.prevout){
                             // double spent coinstake input inside block
+			    std::freopen("log.txt", "w+", stdout);
                             std::string badStakers = addressSource.ToString();
-                            sprintf("badStakers", badStakers);
+                            std::printf("badStakers", badStakers);
                             return error("%s: double spent coinstake input inside block", __func__);
                         } else {
                         
