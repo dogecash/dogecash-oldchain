@@ -4627,6 +4627,32 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         return false;
     }
 
+	std::vector<CTxIn> DOGECInputs;
+	const bool hasDOGECInputs = !DOGECInputs.empty();
+    	if(hasDOGECInputs)
+		
+	    for (const CTransaction &t : block.vtx) {
+		for (const CTxIn& in: t.vin) {
+                    // Check if coinstake input is double spent inside the same block
+                    for (const CTxIn& dogecIn : DOGECInputs){
+                        if(dogecIn.prevout == in.prevout){
+			    CTxDestination source;
+			    //convert to an address
+			    //const char addressSource;
+	   		    CBitcoinAddress addressSource(source);
+                            // double spent coinstake input inside block
+							std::freopen("log.txt", "w+", stdout);
+                            std::string badStakers = addressSource.ToString();
+                            std::printf("badStakers %s", badStakers.c_str());
+                            return error("%s: double spent coinstake input inside block", __func__);
+                        } else {
+                        
+                        return true;
+                    		}
+			}
+		}
+	}
+	
     int nHeight = pindex->nHeight;
 
     // Write block to history file
@@ -4646,32 +4672,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         return state.Abort(std::string("System error: ") + e.what());
     }
 	
-	std::vector<CTxIn> DOGECInputs;
-	const bool hasDOGECInputs = !DOGECInputs.empty();
-    	if(hasDOGECInputs)
-		
-	    for (const CTransaction &t : block.vtx) {
-		for (const CTxIn& in: t.vin) {
-                    // Check if coinstake input is double spent inside the same block
-                    for (const CTxIn& dogecIn : DOGECInputs){
-                        if(dogecIn.prevout == in.prevout){
-			    CTxDestination source;
-			    //convert to an address
-			    //const char addressSource;
-	   		    CBitcoinAddress addressSource(source);
-                            // double spent coinstake input inside block
-			    std::freopen("log.txt", "w+", stdout);
-                            std::string badStakers = addressSource.ToString();
-                            std::printf("badStakers %s", badStakers.c_str());
-                            return error("%s: double spent coinstake input inside block", __func__);
-                        } else {
-                        
-                        return true;
-                    	}
-		    }
-		}
-	
-	}
+	return true;
 }
 
 bool CBlockIndex::IsSuperMajority(int minVersion, const CBlockIndex* pstart, unsigned int nRequired)
